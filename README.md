@@ -1,4 +1,3 @@
-help-desk
-=========
+# HelpDesk
 
 Software engineering task.
