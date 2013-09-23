@@ -1,4 +1,4 @@
-#encoding=utf8
+# encoding=utf8
 from django.db import models
 
 PHONE_NUMBER_MAX_LENGTH = 20
