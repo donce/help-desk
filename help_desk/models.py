@@ -1,14 +1,58 @@
 # encoding=utf8
+from django.conf import settings
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from django.contrib.auth import get_user_model
 
 PHONE_NUMBER_MAX_LENGTH = 20
+
+class UserManager(BaseUserManager):
+	def create_user(self, username, password=None):
+		user = self.model(username=username)
+		user.set_password(password)
+		user.save()
+		return user
+	def create_superuser(self, username, password):
+		user = self.create_user(username, password)
+		user.is_superuser = True
+		user.save()
+		return user
+	def create_client(self, username, password, title, address):
+		user = self.create_user(username, password)
+		client = Client.objects.create(user=user, title=title, address=address)
+		return client
+
+class BaseUser(AbstractBaseUser):
+	username = models.CharField(max_length=40, unique=True, db_index=True)
+	USERNAME_FIELD = 'username'
+	REQUIRED_FIELDS = []
+
+	objects = UserManager()
+
+	def is_active(self):
+		return True
+	def get_full_name(self):
+		#TODO: return company name/first name-second name, depending on type
+		return self.get_short_name()
+	def get_short_name(self):
+		return self.username
+	def is_staff(self):
+		return self.is_superuser #TODO: check keys
+	def has_module_perms(self, perm):
+		return True
+	def has_perm(self, perm):
+		return True
 
 class Service(models.Model):
 	description = models.TextField()
 
 class Client(models.Model):
+	user = models.OneToOneField(settings.AUTH_USER_MODEL)
 	title = models.CharField(max_length=255)
 	address = models.CharField(max_length=255)
+
+	def __unicode__(self):
+		return self.title
 
 class ClientPhoneNumber(models.Model):
 	client = models.ForeignKey(Client)

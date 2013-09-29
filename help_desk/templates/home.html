@@ -2,7 +2,7 @@
 {% block title %}Pagrindinis{% endblock %}
 {% block content %}
 Klientų savitarnos svetainė.<br />
-<form action="/" method="post">{% csrf_token %}
+<form action="" method="post">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Login" class="button" />
 </form>

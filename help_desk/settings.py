@@ -8,6 +8,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+AUTH_USER_MODEL = 'help_desk.BaseUser'
 
 DATABASES = {
     'default': {
