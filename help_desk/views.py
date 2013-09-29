@@ -9,17 +9,9 @@ def main(request):
 def home(request):
 	if request.user.is_authenticated():
 		return main(request)
-	else:
-		print 'not auth'
-	print request.method
 	if request.method == 'POST':
-		print 'post'
 		form = AuthenticationForm(data=request.POST)
-		print request.POST
 		if form.is_valid():
-			#username = request.POST['username']
-			#password = request.POST['password']
-			#user = authenticate(username=username, password=password)
 			login(request, form.get_user())
 			return main(request)
 	else:
