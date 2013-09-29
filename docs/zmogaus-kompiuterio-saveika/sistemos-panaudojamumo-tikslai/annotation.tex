@@ -1,0 +1,41 @@
+%%
+%% annotation.tex
+%% Dokumento anotacija
+%%
+%% Patogesniam darbu ir redagavimui - komandas, 
+%% palengvinančias darbą su anotacija, palieku šiame dokumente
+
+
+%	--- Anotacija su INDĖLIU ---
+%	Naudojimas:
+%	\anotacijaIndelis{AUTORIUS}{EL@PAŠTAS.com}{INDĖLIS}
+\newcommand{\anotacijaIndelis}[3]{
+	\textbf{#1}
+	\begin{flushleft}
+	\hspace*{1cm}
+	Kontaktai: #2
+	\\
+	\hspace*{1cm}
+	Indėlis: #3
+	\end{flushleft}
+}
+
+%	--- Anotacija ---
+%	Naudojimas:
+%	\anotacija{AUTORIUS}{EL@PAŠTAS.com}
+\newcommand{\anotacija}[2]{
+	\textbf{#1}
+	\begin{flushleft}
+	\hspace*{1cm}
+	Kontaktai: #2
+	\end{flushleft}
+}
+
+\section*{Anotacija}
+	
+		\textbf{Darbą atliko:}\\\\
+		%% Autoriai:
+		\anotacija{Karolis Jocevičius}{karolis.jocevicius@gmail.com}
+		\anotacija{Laima Čižiūtė}{ugne.ciziute@gmail.com.com}
+		\anotacija{Rytis Karpuška}{jauleris@gmail.com.com}
+		\anotacija{Donatas Kučinskas}{donce.lt@gmail.com.com}
