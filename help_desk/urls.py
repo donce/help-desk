@@ -6,6 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'help_desk.views.home', name='home'),
+    url(r'^logout/$', 'help_desk.views.logout_view', name='logout'),
     # url(r'^help_desk/', include('help_desk.foo.urls')),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
