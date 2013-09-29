@@ -28,10 +28,16 @@ REQUEST_TYPE_CHOICES = (
 	(REQUEST_TYPE_REQUEST, 'Request'),
 )
 
+REQUEST_RECEIVE_TYPE_CHOICES = (
+	('phone', 'By phone'),
+	('email', 'By email'),
+	('website', 'By website'),
+)
+
 class Request(models.Model):
 	type = models.CharField(choices=REQUEST_TYPE_CHOICES, max_length=255)
 	client = models.ForeignKey(Client)
-	#gavimo būdas
+	receive_type = models.CharField(choices=REQUEST_RECEIVE_TYPE_CHOICES, max_length=255)
 	service = models.ForeignKey(Service)
 	created = models.DateTimeField(auto_now_add=True)
 	closed = models.DateTimeField()
