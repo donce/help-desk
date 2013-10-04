@@ -18,12 +18,10 @@
 
 			Išeitys, priklausomai nuo aplinkybių gali būti:
 			\begin{itemize}
-				\item Išspręsta problema (jei tai incidentas)
-				\item Suteikta informacija (jei tai prašymas(REQ))
+				\item Išspręsta problema (jei tai kreipinys - incidentas(INC))
+				\item Suteikta informacija (jei tai kreipinys - prašymas(REQ))
 				\item Atmestas kreipinys
 			\end{itemize}
-
-		\subsubsection{Matavimai}
 
 		\subsubsection{Grėsmės}
 			\begin{itemize}
@@ -31,17 +29,30 @@
 				\item Problemos gali nepavykti išspręsti laiku
 				\item Klientui gali nepavykti pateikti užklausos
 			\end{itemize}
+			
+		\subsubsection{Efektyvumo matavimas}
+		
+			Išoriškai sistemos efektyvumas gali būti matuojamas pagal šitaiuos kriterijus:
+			\begin{itemize}
+				\item Užduoties pateikimo trukmė
+					\subitem telefonu
+					\subitem savitarnos svetainėje
+				\item Užduoties įvykdymo trukmė
+			\end{itemize}
 
 		\subsubsection{Galimybės}
 
 			\begin{itemize}
-				\item Palengvinti kreipinių pateikimą 
+				\item Lengvas kreipinių pateikimas savitarnos svetainėje
+					\subitem Supaprastinti užklausų pateikimo vartotojo sąsają
+					\subitem Supaprastinti užklausų atsakymų gavimą
+				\item Sutrumpintas laikas sugaištas užklausos vykdymui
 			\end{itemize}
 
 	\subsection{Vidinė verslo proceso analizė}
 
 		\subsubsection{Agentai}
-
+			Procese veikiantys agentai:
 			\begin{itemize}
 				\item Klientas
 				\item Vadovas
@@ -49,7 +60,7 @@
 				\item Inžinierius
 			\end{itemize}
 
-			\subsubsection{Naudojimo atvejai}
+		\subsubsection{Naudojimo atvejai}
 
 			Sistemos naudojimo atvejai:
 			\begin{itemize}
@@ -63,6 +74,32 @@
 				\item Perskirti sprendžiamą užklausą iš bet kurio inžinieriaus bet kuriam kitam
 				\item Tvarkyti Paslaugų, Klientų, Darbuotojų ir Sutarčių registrus
 			\end{itemize}
+			
+			Skirtingi agentai gali atlikti skirtingus veiksmus.
+			Tai iliustruoja naudojimo atvejų (use-case) diagrama pateikta \referToPicture{usecase.png}
 
+			\insertPicture[0.5]{usecase.png}{Naudojimo atvejų diagrama}
 
+		\subsubsection{Efektyvumo matavimas}
+		
+			Proceso efektyvumas matuojamas šiais kriterijais:
+			\begin{itemize}
+				\item Užklausos įvykdymo trukmė
+				\item Įvykdytų užklausų kiekis
+				\item Įvykdytų užklausų per tam tikrą laiko tarpą kiekis
+				\item Laikas nuo užklausos pateikimo iki perdavimo inžinieriui
+				\item Laikas nuo užklausos pateikimo iki vykdymo pradžios 
+			\end{itemize}
+			
+		\subsubsection{Galimybės}
 
+			Proceso efektyvumą galima pagerinti skiriant dėmesį šioms sritims:
+			\begin{itemize}
+				\item Užklausų paskirstymas inžinieriams pagal jų užimtumą
+				(t.y. visada skirti užklausą mažiausiai užimtiems inžinieriams)
+				\item Užklausų prioritetizavimas
+				\item Užklausų sudėtingumo įvertinimas
+				(t.y. negalima skirti vienam inžinieriui daug sudėtingų užduočių - geriau jas paskirstyti)
+				\item Inžinieriaus darbo efektyvumo įvertinimas
+				(spręsti kiek ir kokio sudėtingumo užduočių skirti pagal inžinieriaus efektyvumo įvertinimą)
+			\end{itemize}
