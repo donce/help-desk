@@ -16,12 +16,33 @@
 
 \subsection{Funkciniai programų sistemos reikalavimai}
 	\requirements{F}{
-		\req{tekstas1}
-		\req{tekstas2}
-	}
+		\req{Sistema turi suteikti galimybę atstovui pateikti kreipinį savitarnos svetainėje}
+		\req{Sistema turi suteikti galimybę atstovui pateikti kreipinį telefonu (per administratorių)}
+		\req{Sistema turi suteikti galimybę atstovui pateikti kreipinį el. paštu (per administratorių)}
+		\req{Sistema turi suteikti galimybę administratoriui užregistruotį telefonu ar el. paštu pateiktą kreipinį}
+		
+	}	
 	
 \subsection{Nefunkciniai sistemos reikalavimai}
+
 	\requirements{NF}{
-		\req{text1}
-		\req{text2}
+		\req{Sistemoje turi būti apibrėžta "paslaugos" esybė}
+		\req{Paslaugos esybei turi būti apibrėžti parametrai: 
+			paslaugos kodas, aprašas, skirtingų kreipinių tipų išsprendimo terminai (valandomis)}
+		\req{Paslaugos esybei turi būti galimybė pridėti papildomus parametrus}
+		\req{Sistemoje turi būti apibrėžta "kliento" esybė}
+		\req{Kliento esybei turi būti apibrėžti parametrai:
+			kliento kodas, įmonės pavadinimas, adresas, atstovų el. pašto adresai, telefono numeriai}
+	}
+
+\subsection{Interfeiso reikalavimai}
+
+\subsubsection{Dalykinės srities metaforų reikalavimai}
+
+	\requirements{I-DSM}{
+		\req{Juridinis asmuo užsisakęs paslaugą(-as) vadinamas "klientu"}
+		\req{Kliento įgaliotas asmuo vadinamas "atstovu"}
+		\req{Kliento pateiktas pranešimas apie gedimą arba klausimas vadinamas "kreipiniu"}
+		\req{Kreipinys dėl paslaugos neveikimo vadinamas "incidentu" ("INC")}
+		\req{Kreipinys dėl informacijos suteikimo vadinamas "paklausimu" ("REQ")}
 	}
