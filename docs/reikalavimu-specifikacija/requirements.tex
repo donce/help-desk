@@ -20,8 +20,31 @@
 		\req{Sistema turi suteikti galimybę atstovui pateikti kreipinį telefonu (per administratorių)}
 		\req{Sistema turi suteikti galimybę atstovui pateikti kreipinį el. paštu (per administratorių)}
 		\req{Sistema turi suteikti galimybę administratoriui užregistruotį telefonu ar el. paštu pateiktą kreipinį}
+		\req{Sistema turi suteikti galimybę inžinieriui: išspręsti kreipinį}
+		\req{Sistema turi suteikti galimybę inžinieriui: nuspręsti neišspręsti kreipinio}
+		\req{Sistema turi suteikti galimybę inžinieriui: grąžinti neišspręstą kreipinį atgal jį paskyrusiam darbuotojui}
+		\req{Sistema turi suteikti galimybę administratoriui reigistruoti kreipinį}
+		\req{Sistema turi suteikti galimybę administratoriui paskirti kreipinį inžinieriui}
+		\req{Sistema turi suteikti galimybę administratoriui tvarkyti esybių registrus}
+		\req{Sistema turi suteikti galimybę vadovui atlikti administratoriaus veiksmus}
+		\req{Sistema turi suteikti galimybę vadovui atlikti inžinieriaus veiksmus}
+		\req{Sistema turi suteikti galimybę vadovui perskirti kreipinį tarp inžinierių}
+		\req{Sistema turi suteikti galimybę peržiūrėti sąrašą kreipinių, kuriuose nebuvo laikomasi terminų tam tikru laikotarpiu}
+		\req{Sistema turi suteikti galimybę importuoti duomenis iš \placeholder{struktūra} struktūros}
+		\req{Sistema turi suteikti galimybę išvalyti visus sistemos duomenis}
+		\req{Sistema turi suteikti galimybę pateikti savo veiksmų priežastis}
 		
 	}	
+	
+	\requirements{F-BN}{
+		\req{Sistema turi suteikti galimybę vadovui peržiūrėti daugiausiai darbuotojų laiko pareikalavusių paslaugų trejetuką}
+		\req{Sistema turi suteikti galimybę vadovui stebėti įmonės darbą realiu laiko (atkreipiant dėmesį į vadovo dėmesio reikalaujančias vietas t.y. vėluojantys kreipiniai, žemas produktyvumas, daug perdavimų tarp administratoriaus ir inžinieriaus, didelis klientų nepasitenkinimas)}
+		\req{Sistema turi vertinti darbuotojus, pateikti 3 geriausius ir blogiausius, vertindama juos pagal:
+			klientų įvertinimą, sprendimo trukmę, sėkmingai ir nesėkmingai išspręstų kreipinių santykį}
+		\req{Sistema, vertindama darbuotoją, turi atsižvelgti į to darbuotojo atliktų kreipinių įvertinimus}
+		\req{Sistema turi suteikti galimybę grafiškai pavaizduoti pavaizduoti kelių pasirinktų inžinierių apkrovimą per mėnesį}
+		\req{Sistema turi suteikti galimybę grafiškai pavaizduoti klientų pelningumą įmonei}
+	}
 	
 \subsection{Nefunkciniai sistemos reikalavimai}
 
@@ -33,9 +56,24 @@
 		\req{Sistemoje turi būti apibrėžta "kliento" esybė}
 		\req{Kliento esybei turi būti apibrėžti parametrai:
 			kliento kodas, įmonės pavadinimas, adresas, atstovų el. pašto adresai, telefono numeriai}
+		\req{Sistemoje turi būti apibrėžta "kreipinio" esybė}
+		\req{Kreipinio esybei turi būti apibrėžti parametrai:
+			kliento kodas, gavimo būdas, tipas (INC ar REQ), paslaugos kodas, registravimo laikas, išsprendimo ar atsisakymo išspręsti laikas, realiai sprendimui sugaištas laikas, jei reikia, nuoroda į prieš tai registruotą kreipinį, kliento ivertinimas}
+		\req{Kreipinį gali vykdyti daugiau nei vienas darbuotojas}
+		\req{Registruojamo laiko forma: data ir laikas}
+		\req{Sistemoje turi būti apibrėžta "sutarties" esybė}
+		\req{Klientas gali turėti daugiau nei vieną sutartį}
+		\req{Sutartyje gali būti numatyta daugiau nei viena paslauga}
+		\req{Paslaugos sutartyje nesidubliuoja}
+		\req{Sutarties esybėje turi būti apibrėžti parametrai:
+			kliento kodas, paslaugų kodų sąrašas, sutarties pasirašymo data, sutarties įsigaliojimo data, sutarties pabaigos data}
+		\req{Sistemoje turi būti apibrėžta "darbuotojo" esybė}
+		\req{Darbuotojo esybėje turi būti apibrėžti parametrai:
+			vardas, pavardė, pareigos, el. paštas, tel. nr.}
+		\req{Darbuotojų pareigos: inžinierius, administratorius, vadovas}
+		\req{Klientui pasirašant sutartį turi būti suteikiami prisijungimo duomenys prie savitarnos svetainės (jeigu kleintas jų neturi)}
 	}
 
-\subsection{Interfeiso reikalavimai}
 
 \subsubsection{Dalykinės srities metaforų reikalavimai}
 
@@ -45,4 +83,6 @@
 		\req{Kliento pateiktas pranešimas apie gedimą arba klausimas vadinamas "kreipiniu"}
 		\req{Kreipinys dėl paslaugos neveikimo vadinamas "incidentu" ("INC")}
 		\req{Kreipinys dėl informacijos suteikimo vadinamas "paklausimu" ("REQ")}
+		\req{Susitarimas tarp HD ir kliento tam tikrą laikotarpį teikti vieną ar daugiau paslaugų vadinamas "sutartimi"}
+		\req{Įmonėje dirbantis asmuo vadinamas "darbuotoju"}
 	}
