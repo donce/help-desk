@@ -4,20 +4,20 @@
 
 		\subsubsection{Proceso įeitys ir išeitys}
 
-			Įeitis - užklausa - parametrai:
+			\textbf{Įeitis} - kreipinys - parametrai:
 			\begin{itemize}
 				\item Klientas
-				\item Užklausos gavimo būdas
+				\item Kreipinio gavimo būdas
 				\item Tipas (INC ar REQ)
 				\item Paslauga
 				\item Registravimo laikas (data ir laikas)
-				\item Jei reikia – nuoroda į prieš tai registruotą užklausą
+				\item Jei reikia – nuoroda į prieš tai registruotą kreipinį
 			\end{itemize}
 
-			Išeitys, priklausomai nuo aplinkybių gali būti:
+			\textbf{Išeitys}, priklausomai nuo aplinkybių gali būti:
 			\begin{itemize}
-				\item Išspręsta problema (jei tai užklausa - incidentas (INC))
-				\item Suteikta informacija (jei tai užklausa - prašymas (REQ))
+				\item Išspręsta problema (jei tai kreipinys - incidentas (INC))
+				\item Suteikta informacija (jei tai kreipinys - prašymas (REQ))
 				\item Išsprendimo (ar atsisakymo išspręsti) laikas
 				\item Realiai sprendimui sugaištas laikas
 				\item Atmestas kreipinys
@@ -26,28 +26,28 @@
 		\subsubsection{Grėsmės}
 		
 			\begin{itemize}
-				\item Problema gali būti neišsprendžiama
-				\item Problemos gali nepavykti išspręsti laiku
-				\item Klientui gali nepavykti pateikti užklausos
+				\item Kripinys gali būti neišsprendžiamas
+				\item Kreipinio gali nepavykti išspręsti laiku
+				\item Klientui gali nepavykti pateikti kreipinio
 			\end{itemize}
 			
 		\subsubsection{Efektyvumo matavimas}
 		
-			Išoriškai sistemos efektyvumas gali būti matuojamas pagal šitaiuos kriterijus:
+			Išoriškai sistemos efektyvumas gali būti matuojamas pagal šiuos kriterijus:
 			\begin{itemize}
-				\item Užduoties pateikimo trukmė
+				\item Kreipinio pateikimo trukmė
 					\subitem telefonu
 					\subitem savitarnos svetainėje
-				\item Užduoties įvykdymo trukmė
+				\item Kreipinio įvykdymo trukmė
 			\end{itemize}
 
 		\subsubsection{Galimybės}
 
 			\begin{itemize}
 				\item Lengvas kreipinių pateikimas savitarnos svetainėje
-					\subitem Supaprastinti užklausų pateikimo vartotojo sąsają
-					\subitem Supaprastinti užklausų atsakymų gavimą
-				\item Sutrumpintas laikas sugaištas užklausos vykdymui
+					\subitem Supaprastinti kreipinių pateikimo vartotojo sąsają
+					\subitem Supaprastinti kreipinių atsakymų gavimą
+				\item Sutrumpintas laikas sugaištas kreipinio vykdymui
 			\end{itemize}
 
 	\subsection{Vidinė verslo proceso analizė}
@@ -66,14 +66,14 @@
 
 			Sistemos naudojimo atvejai:
 			\begin{itemize}
-				\item Pateikti užklausą (REQ)
-				\item Pateikti užklausą (INC)
+				\item Pateikti kreipinį (REQ)
+				\item Pateikti kreipinį (INC)
 				\item Pranešti apie incidentą
 				\item Registruoti pateiktą užklausą telefonu/el. paštu
-				\item Paskirti užklausą inžinieriui
-				\item Išspręsti užklausą
-				\item Atmesti užklausą
-				\item Perskirti sprendžiamą užklausą iš bet kurio inžinieriaus bet kuriam kitam
+				\item Paskirti kreipinį inžinieriui
+				\item Išspręsti kreipinį
+				\item Atmesti kreipinį
+				\item Perskirti sprendžiamą kreipinį iš bet kurio inžinieriaus bet kuriam kitam
 				\item Tvarkyti Paslaugų, Klientų, Darbuotojų ir Sutarčių registrus
 			\end{itemize}
 			
@@ -87,21 +87,21 @@
 		
 			Proceso efektyvumas matuojamas šiais kriterijais:
 			\begin{itemize}
-				\item Užklausos įvykdymo trukmė
-				\item Įvykdytų užklausų kiekis
-				\item Įvykdytų užklausų per tam tikrą laiko tarpą kiekis
-				\item Laikas nuo užklausos pateikimo iki perdavimo inžinieriui
-				\item Laikas nuo užklausos pateikimo iki vykdymo pradžios 
+				\item Kreipinio įvykdymo trukmė
+				\item Įvykdytų kreipinių kiekis
+				\item Įvykdytų kreipinių per tam tikrą laiko tarpą kiekis
+				\item Laikas nuo kreipinio pateikimo iki perdavimo inžinieriui
+				\item Laikas nuo kreipinio pateikimo iki vykdymo pradžios 
 			\end{itemize}
 			
 		\subsubsection{Galimybės}
 
 			Proceso efektyvumą galima pagerinti skiriant dėmesį šioms sritims:
 			\begin{itemize}
-				\item Užklausų paskirstymas inžinieriams pagal jų užimtumą
+				\item Kreipinių paskirstymas inžinieriams pagal jų užimtumą
 				(t.y. visada skirti užklausą mažiausiai užimtiems inžinieriams)
-				\item Užklausų prioritetizavimas
-				\item Užklausų sudėtingumo įvertinimas
+				\item Kreipinių prioritetizavimas
+				\item Kreipinių sudėtingumo įvertinimas
 				(t.y. negalima skirti vienam inžinieriui daug sudėtingų užduočių - geriau jas paskirstyti)
 				\item Inžinieriaus darbo efektyvumo įvertinimas
 				(spręsti kiek ir kokio sudėtingumo užduočių skirti pagal inžinieriaus efektyvumo įvertinimą)
@@ -114,8 +114,8 @@
   				\begin{tabular}{ | c | c | c | }
 				\hline
     						& Padedančios & Trukdančios   \\ \hline
-    				Vidinės savybės & Greitas užklausų valdymas & Brangesnis išlaikymas \\ \hline
-    				Išorinės savybės & Kokybiškesnės, pigesnės paslaugos & Per didelis užklausų srautas \\
+    				Vidinės savybės & Greitas kreipinių valdymas & Brangesnis išlaikymas \\ \hline
+    				Išorinės savybės & Kokybiškesnės, pigesnės paslaugos & Per didelis kreipinių srautas \\
 				\hline
   				\end{tabular}
 			\end{center}	
