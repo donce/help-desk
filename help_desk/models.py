@@ -42,6 +42,27 @@ class BaseUser(AbstractBaseUser):
 		return True
 	def has_perm(self, perm):
 		return True
+	
+	def is_client(self):
+		try:
+			self.client
+			return True
+		except Client.DoesNotExist:
+			return False
+		
+	def is_employee(self):
+		try:
+			self.employee
+			return True
+		except Employee.DoesNotExist:
+			return False
+	
+	#TODO: needed? if yes, then get_client
+	def get_employee(self):
+		try:
+			return self.employee
+		except Employee.DoesNotExist:
+			return None
 
 class Service(models.Model):
 	description = models.TextField()
@@ -101,14 +122,34 @@ ROLE_ADMINISTRATOR = 'administrator'
 ROLE_MANAGER = 'manager'
 
 ROLE_CHOICES = (
-	(ROLE_ENGINEER, 'Engineer'),
-	(ROLE_ADMINISTRATOR, 'Administrator'),
-	(ROLE_MANAGER, 'Manager'),
+	(ROLE_ENGINEER, 'Inžinierius'),
+	(ROLE_ADMINISTRATOR, 'Administratorius'),
+	(ROLE_MANAGER, 'Vadovas'),
 )
 
 class Employee(models.Model):
+	user = models.OneToOneField(settings.AUTH_USER_MODEL)
 	first_name = models.CharField(max_length=255)
 	last_name = models.CharField(max_length=255)
 	role = models.CharField(choices=ROLE_CHOICES, max_length=255)
 	email = models.CharField(max_length=255)
 	phone_number = models.CharField(max_length=PHONE_NUMBER_MAX_LENGTH)
+	
+	def is_engineer(self):
+		return self.role == ROLE_ENGINEER
+	def is_administrator(self):
+		return self.role == ROLE_ADMINISTRATOR
+	def is_manager(self):
+		return self.role == ROLE_MANAGER
+	
+	def can_solve_issues(self):
+		return self.is_engineer() or self.is_manager()
+	def can_manage_issues(self):
+		return self.is_administrator() or self.is_manager()
+	def can_reassign_issues(self):
+		return self.is_manager()
+	
+	def title(self):
+		return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.get_role_display())
+	def __unicode__(self):
+		return self.title()

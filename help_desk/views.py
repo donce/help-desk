@@ -1,14 +1,20 @@
 # encoding=utf8
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import login as login_user, logout as logout_user
 from models import BaseUser
+
+#TODO: decorator employee_only
+
 
 def register(request):
 	#TODO: implement
 	print BaseUser.objects.create_client('username3', 'password', 'bendrove', 'adresas')
 
 def main(request):
+	if request.user.is_employee():
+		return redirect(management_home)
+	#TODO: /self-service/ url for clients?
 	return render(request, 'main.html', {})
 
 def home(request):
@@ -17,7 +23,7 @@ def home(request):
 	if request.method == 'POST':
 		form = AuthenticationForm(data=request.POST)
 		if form.is_valid():
-			login(request, form.get_user())
+			login_user(request, form.get_user())
 			return main(request)
 		else:
 			print 'invalid'
@@ -27,6 +33,17 @@ def home(request):
 		'form': form,
 	})
 
-def logout_view(request):
-	logout(request)
+def logout(request):
+	logout_user(request)
 	return redirect('/')
+
+
+def management_home(request):
+	return render(request, 'management/home.html')
+
+def solve_issues(request):
+	return render(request, 'management/solve_issues.html')
+
+def manage_issues(request):
+	return render(request, 'management/manage_issues.html')
+
