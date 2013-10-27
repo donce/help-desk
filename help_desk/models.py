@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.contrib.auth import get_user_model
+from docutils.nodes import description
 
 PHONE_NUMBER_MAX_LENGTH = 20
 
@@ -21,6 +22,11 @@ class UserManager(BaseUserManager):
 		user = self.create_user(username, password)
 		client = Client.objects.create(user=user, title=title, address=address)
 		return client
+	def create_employee(self, username, password, first_name, last_name, role, email, phone_number):
+		user = self.create_user(username, password)
+		employee = Employee.objects.create(user=user, first_name=first_name, last_name=last_name,
+										   role=role, email=email, phone_number=phone_number)
+		return employee
 
 class BaseUser(AbstractBaseUser):
 	username = models.CharField(max_length=40, unique=True, db_index=True)
@@ -66,6 +72,9 @@ class BaseUser(AbstractBaseUser):
 
 class Service(models.Model):
 	description = models.TextField()
+	
+	def __unicode__(self):
+		return self.description
 
 class Client(models.Model):
 	user = models.OneToOneField(settings.AUTH_USER_MODEL)
@@ -94,9 +103,9 @@ REQUEST_TYPE_CHOICES = (
 )
 
 REQUEST_RECEIVE_TYPE_CHOICES = (
-	('phone', 'By phone'),
-	('email', 'By email'),
-	('website', 'By website'),
+	('phone', 'Telefonu'),
+	('email', 'El. paštu'),
+	('website', 'Savitarnos svetainėje'),
 )
 
 class Request(models.Model):
@@ -105,7 +114,14 @@ class Request(models.Model):
 	receive_type = models.CharField(choices=REQUEST_RECEIVE_TYPE_CHOICES, max_length=255)
 	service = models.ForeignKey(Service)
 	created = models.DateTimeField(auto_now_add=True)
-	closed = models.DateTimeField()
+	closed = models.DateTimeField(null=True)
+
+class RequestHistory(models.Model):
+	request = models.ForeignKey(Request)
+	employee = models.ForeignKey('Employee')
+	start = models.DateTimeField(auto_now_add=True)
+	end = models.DateTimeField()
+	#TODO: status (solved, closed, declined)
 
 class Contract(models.Model):
 	client = models.ForeignKey(Client)

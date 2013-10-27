@@ -4,11 +4,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 solve_issues_patterns = patterns('help_desk.views',
-    url('^$', 'manage_issues'),
+    url('^$', 'solve_issues'),
 )
 
 manage_issues_patterns = patterns('help_desk.views',
-    url('^$', 'solve_issues'),
+    url('^$', 'manage_issues'),
 )
 
 management_patterns = patterns('help_desk.views',
