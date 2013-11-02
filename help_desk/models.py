@@ -3,7 +3,6 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.contrib.auth import get_user_model
-from docutils.nodes import description
 
 PHONE_NUMBER_MAX_LENGTH = 20
 

@@ -2,7 +2,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as login_user, logout as logout_user
-from models import BaseUser, Request
+from django.views.generic import ListView
+
+from models import BaseUser, Request, Client
 
 #TODO: decorator employee_only
 
@@ -51,3 +53,5 @@ def manage_issues(request):
 		'requests': requests,
 	})
 
+class ClientList(ListView):
+	model = Client
