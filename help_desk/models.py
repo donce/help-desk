@@ -163,6 +163,8 @@ class Employee(models.Model):
 		return self.is_administrator() or self.is_manager()
 	def can_reassign_issues(self):
 		return self.is_manager()
+	def can_manage_models(self):
+		return self.is_administrator() or self.is_manager()
 	
 	def title(self):
 		return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.get_role_display())

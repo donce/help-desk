@@ -1,0 +1,14 @@
+{% extends "management/base.html" %}
+{% block management_content %}
+<a href="{% url 'help_desk.views.model_add' model %}">
+<button>Sukurti</button>
+</a>
+<table>
+<tr>
+{% block list_headers %}
+</tr>
+{% endblock %}
+{% block list_content %}
+{% endblock %}
+</table>
+{% endblock %}
