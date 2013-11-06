@@ -2,6 +2,6 @@
 {% block management_content %}
 Registrų rūšys:<br />
 {% for model in models %}
-<a href="{% url 'help_desk.views.model_list' model %}">{{ model }}</a>
+<a href="{% url 'help_desk.views.model_list' model %}">{{ model|title }}</a><br />
 {% endfor %}
 {% endblock %}

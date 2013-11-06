@@ -63,7 +63,6 @@ def get_form(model, instance=None):
 		raise Http404
 	form = MODEL_FORMS[model]
 	if instance:
-		print 'Model:', form.Meta.model
 		modelClass = form.Meta.model
 		try:
 			instance = modelClass.objects.get(pk=instance)
