@@ -116,6 +116,7 @@ class Request(models.Model):
 	client = models.ForeignKey(Client)
 	receive_type = models.CharField(choices=REQUEST_RECEIVE_TYPE_CHOICES, max_length=255)
 	service = models.ForeignKey(Service)
+	details = models.TextField()
 	created = models.DateTimeField(auto_now_add=True)
 	closed = models.DateTimeField(null=True)
 
