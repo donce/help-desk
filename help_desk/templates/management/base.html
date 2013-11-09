@@ -22,6 +22,13 @@ Tvarkyti kreipinius
 </span>
 </a>
 {% endif %}
+{% if user.employee.can_manage_models %}
+<a href="{% url 'help_desk.views.models' %}">
+<span class="menu_item">
+Tvarkyti registrus
+</span>
+</a>
+{% endif %}
 <span class="menu_employee_title">
 {{ user.employee.title }}
 <a href="{% url 'help_desk.views.logout' %}">Atsijungti</a>

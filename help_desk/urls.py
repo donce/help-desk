@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from views import ClientList
 
 admin.autodiscover()
 
@@ -13,11 +12,23 @@ manage_issues_patterns = patterns('help_desk.views',
     url(r'^$', 'manage_issues'),
 )
 
+models_actions_patterns = patterns('help_desk.views',
+	url(r'^$', 'model_list'),
+	url(r'^add/$', 'model_add'),
+	url(r'^edit/(?P<instance>\d+)/$', 'model_edit'),
+	url(r'^remove/(?P<instance>\d+)/$', 'model_remove'),
+)
+
+models_patterns = patterns('help_desk.views',
+	url(r'^(?P<model>\w+)/', include(models_actions_patterns)),
+	url(r'^$', 'models'),
+)
+
 management_patterns = patterns('help_desk.views',
     url(r'^$', 'management_home'),
     url(r'^manage_issues/', include(manage_issues_patterns)),
     url(r'^solve_issues/', include(solve_issues_patterns)),
-	url(r'^client', ClientList.as_view()),
+	url(r'^models/', include(models_patterns)),
 )
 
 urlpatterns = patterns('',

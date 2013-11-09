@@ -1,0 +1,13 @@
+{% extends "management/models/list_base.html" %}
+{% block list_headers %}
+<th>Pavadinimas</th>
+<th>Adresas</th>
+{% endblock %}
+{% block list_content %}
+{% for client in objects %}
+<tr>
+<td><a href="{{ client.get_absolute_url }}">{{ client.title }}</a></td>
+<td>{{ client.address }}</td>
+</tr>
+{% endfor %}
+{% endblock %}

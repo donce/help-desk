@@ -1,0 +1,15 @@
+{% extends "management/base.html" %}
+{% block management_content %}
+<form method="POST">
+<table>
+{{ form.as_table }}
+{% csrf_token %}
+<tr>
+<td />
+<td>
+<input type="submit" value="Sukurti" />
+</td>
+</tr>
+</table>
+<form>
+{% endblock %}

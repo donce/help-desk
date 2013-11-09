@@ -1,8 +1,9 @@
 # encoding=utf8
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.db import models
 from django.contrib.auth import get_user_model
+from django.core.urlresolvers import reverse
+from django.db import models
 
 PHONE_NUMBER_MAX_LENGTH = 20
 
@@ -82,6 +83,9 @@ class Client(models.Model):
 
 	def __unicode__(self):
 		return self.title
+	
+	def get_absolute_url(self):
+		return reverse('help_desk.views.model_edit', args=('client', self.id))
 
 class ClientPhoneNumber(models.Model):
 	client = models.ForeignKey(Client)
@@ -163,6 +167,8 @@ class Employee(models.Model):
 		return self.is_administrator() or self.is_manager()
 	def can_reassign_issues(self):
 		return self.is_manager()
+	def can_manage_models(self):
+		return self.is_administrator() or self.is_manager()
 	
 	def title(self):
 		return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.get_role_display())
