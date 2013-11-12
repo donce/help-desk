@@ -1,2 +1,0 @@
-#!/bin/bash
-for f in *.dia; do dia ${f} -e ../images/${f:0:-4}.png; done
