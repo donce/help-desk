@@ -9,11 +9,19 @@ from models import BaseUser, Request, Client
 
 from forms import MODEL_FORMS
 
-#TODO: decorator employee_only
+
+def employee_only(function):
+	def f(request, *args, **kwargs):
+		if not request.user.is_employee():
+			raise Http404
+		employee = request.user.employee
+		return function(request, employee, *args, **kwargs)
+		
+	return f
 
 
 def register(request):
-	#TODO: implement
+	#TODO: remove; add in management
 	print BaseUser.objects.create_client('username3', 'password', 'bendrove', 'adresas')
 
 def main(request):
@@ -42,20 +50,24 @@ def logout(request):
 	logout_user(request)
 	return redirect('/')
 
-
-def management_home(request):
+@employee_only
+def management_home(request, employee):
 	return render(request, 'management/home.html')
 
-def solve_issues(request):
-	return render(request, 'management/solve_issues.html')
+@employee_only
+def solve_issues(request, employee):
+	requests = employee.issues()
+	return render(request, 'management/solve_issues.html', {
+		'requests': requests,
+	})
 
-def manage_issues(request):
+@employee_only
+def manage_issues(request, employee):
 	requests = Request.objects.all()
 	
 	return render(request, 'management/manage_issues.html', {
 		'requests': requests,
 	})
-
 
 
 def get_form(model, instance=None):
@@ -76,14 +88,16 @@ def get_model(model):
 		raise Http404
 	return MODEL_FORMS[model].Meta.model
 
-def models(request):
+@employee_only
+def models(request, employee):
 	model_types = [name for name in MODEL_FORMS]
 	print model_types
 	return render(request, 'management/models/list_all.html', {
 		'models': model_types,
 	})
 
-def model_list(request, model):
+@employee_only
+def model_list(request, employee, model):
 	objects = get_model(model).objects.all()
 	path = 'management/models/list_' + model + '.html'
 	print 'path:', path
@@ -92,19 +106,22 @@ def model_list(request, model):
 		'model': model,
 	})
 
-def model_add(request, model):
+@employee_only
+def model_add(request, employee, model):
 	form = get_form(model)
 	return render(request, 'management/models/add.html', {
 		'form': form,
 	})
 
-def model_edit(request, model, instance):
+@employee_only
+def model_edit(request, employee, model, instance):
 	form = get_form(model, instance)
 	return render(request, 'management/models/edit.html', {
 		'form': form,
 	})
 
-def model_remove(request, model, instance):
+@employee_only
+def model_remove(request, employee, model, instance):
 	pass
 	#TODO: implement
 	#confirmation?

@@ -111,6 +111,13 @@ REQUEST_RECEIVE_TYPE_CHOICES = (
 	('website', 'Savitarnos svetainėje'),
 )
 
+class RequestAssignment(models.Model):
+	request = models.ForeignKey('Request')
+	employee = models.ForeignKey('Employee')
+	start = models.DateTimeField(auto_now_add=True)
+	end = models.DateTimeField(null=True)
+	#TODO: status (solved, closed, declined)
+
 class Request(models.Model):
 	type = models.CharField(choices=REQUEST_TYPE_CHOICES, max_length=255)
 	client = models.ForeignKey(Client)
@@ -119,13 +126,15 @@ class Request(models.Model):
 	details = models.TextField()
 	created = models.DateTimeField(auto_now_add=True)
 	closed = models.DateTimeField(null=True)
+	current = models.ForeignKey('RequestAssignment', related_name='current', null=True)
 
-class RequestHistory(models.Model):
-	request = models.ForeignKey(Request)
-	employee = models.ForeignKey('Employee')
-	start = models.DateTimeField(auto_now_add=True)
-	end = models.DateTimeField()
-	#TODO: status (solved, closed, declined)
+	def assign(self, employee):
+		assignment = RequestAssignment.objects.create(request=self, employee=employee)
+		#if (self.current)
+			#self.current.end = NOW
+		self.current = assignment
+		self.save()
+
 
 class Contract(models.Model):
 	client = models.ForeignKey(Client)
@@ -175,3 +184,5 @@ class Employee(models.Model):
 		return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.get_role_display())
 	def __unicode__(self):
 		return self.title()
+	def issues(self):
+		return Request.objects.filter(current__employee=self)
