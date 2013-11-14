@@ -1,8 +1,7 @@
-
 \section{Analizė}
 
 \subsection{Inžinieriaus užduočių analizė}
-
+	
 	\subsubsection{Kreipinio išsprendimas}
 	
 		\begin{itemize}
@@ -12,14 +11,16 @@
 				\subitem {Išspręstas kreipinys}
 		\end{itemize}
 		
+		
 	\paragraph{Užduoties dekompozicija}
 	
-	Užduoties dekompozicjai panaudojome Hierarchinės Užduočių Analizės metodus.
-	Kreipinio išsprendimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. 
-	Žr. \referToPicture{Inzinierius-ispresti.png}
- 		
-	\insertPicture[0.8]{Inzinierius-ispresti.png}{Kreipinio išsprendimo analize}
+	\insertPicture[0.8]{Inzinierius-ispresti}{Kreipinio išsprendimo analize}
 	
+	Užduoties dekompozicijai panaudojome Hierarchinės Užduočių Analizės metodus.
+	Kreipinio išsprendimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. 
+	Žr. \referToPicture{Inzinierius-ispresti}
+	
+ 		
 	\subsubsection{Nusprendimas neišspręsti kreipinio}
 	
 		\begin{itemize}
@@ -29,14 +30,16 @@
 				\subitem {Atmestas kreipinys}
 		\end{itemize}
 		
+		
 	\paragraph{Užduoties dekompozicija} 
+	
+	\insertPicture[0.8]{Inzinierius-atmesti}{Kreipinio atmetimo analizė}
 	
 	Užduoties dekompozicjai panaudojome Hierarchinės Užduočių Analizės metodus.
 	Kreipinio atmetimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. 
-	Žr. \referToPicture{Inzinierius-atmesti.png}
- 		
-	\insertPicture[0.8]{Inzinierius-atmesti.png}{Kreipinio atmetimo analizė}
+	Žr. \referToPicture{Inzinierius-atmesti}
 	
+ 		
 	\subsubsection{Kreipinio gražinimas}	
 	
 		\begin{itemize}
@@ -47,14 +50,16 @@
 				\subitem {Įspėtas administratorius apie kreipinio gražinimą}
 		\end{itemize}
 
+
 	\paragraph{Užduoties dekompozicija} 
+
+	\insertPicture[0.8]{Inzinierius-grazinti}{Kreipinio atmetimo analizė}
 
 	Užduoties dekompozicijai panaudojome Hierarchinės Užduočių Analizės metodus.
 	Kreipinio atmetimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. 
-	Žr. \referToPicture{Inzinierius-grazinti.png}
+	Žr. \referToPicture{Inzinierius-grazinti}
+	
  		
-	\insertPicture[0.8]{Inzinierius-grazinti.png}{Kreipinio atmetimo analizė}
-
 \subsection{Vadovo užduočių analizė}
 
 	\subsubsection{Pasiekti inžinieriaus veiksmus}
@@ -62,27 +67,32 @@
 	Užduotis neturi konkrečios įvesties. 
 	Rezultatas - vadovas gali vykdyti inžinieriaus užduotis.
 		
+		
 	\paragraph{Užduoties dekompozicija}
 	
+	\insertPicture[0.6]{vadovas-eng}{Inžinieriaus veiksmų pasiekimo analizė}
+
 	Užduoties dekompozicijai panaudojome Hierarchinės Užduočių Analizės metodus.
 	Kreipinio išsprendimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. 
-	Žr. \referToPicture{vadovas-admin.png}
+	Žr. \referToPicture{vadovas-eng}
  		
-	\insertPicture[0.6]{vadovas-eng.png}{Inžinieriaus veiksmų pasiekimo analizė}
-
+ 		
 	\subsubsection{Pasiekti administratoriaus veiksmus}
 
 	Užduotis neturi konkrečios įvesties. 
 	Rezultatas - vadovas gali vykdyti administratoriaus užduotis.
 		
+		
 	\paragraph{Užduoties dekompozicija}
 	
+	\insertPicture[0.6]{vadovas-admin}{Administratoriaus veiksmų pasiekimo analizė}
+
 	Užduoties dekompozicijai panaudojome Hierarchinės Užduočių Analizės metodus.
 	Kreipinio išsprendimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. 
-	Žr. \referToPicture{vadovas-eng.png}	
+	
+	Žr. \referToPicture{vadovas-admin}	
+	
  		
-	\insertPicture[0.6]{vadovas-admin.png}{Administratoriaus veiksmų pasiekimo analizė}
-
 	\subsubsection{Perskirti kreipinį kitam inžinieriui}
 
 		\begin{itemize}
@@ -93,14 +103,17 @@
 				\subitem {Kreipinys su pakeistu jį vykdančiu inžinieriumi}
 		\end{itemize}
 		
+		
 	\paragraph{Užduoties dekompozicija}
 	
+	\insertPicture[0.6]{vadovas-perskirti}{Kreipinio išsprendimo analize}
+
 	Užduoties dekompozicijai panaudojome Hierarchinės Užduočių Analizės metodus.
 	Kreipinio išsprendimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. 
-	Žr. \referToPicture{vadovas-perskirti.png}
+	
+	Žr. \referToPicture{vadovas-perskirti}
+	
  	
-	\insertPicture[0.6]{vadovas-perskirti.png}{Kreipinio išsprendimo analize}
-
 \subsection{Administratoriaus užduočių analizė}
 
 	\subsubsection{Kreipinio registravimas}
@@ -112,10 +125,15 @@
 				\subitem {Užregistruotas kreipinys}
 		\end{itemize}
 		
-	\subsubsection{Užduoties dekompozicija}
+		
+	\paragraph{Užduoties dekompozicija}
+
+	\insertPicture[0.6]{admin-registruoti.png}{Kreipinio registravimo analizė}
 
 	Užduoties dekompozicjai panaudojome Hierarchinės Užduočių Analizės metodus.
-
+	Žr. \referToPicture{admin-registruoti.png}
+	
+	
 	\subsubsection{Kreipinio paskyrimas inžinieriui}
 
 		\begin{itemize}
@@ -125,9 +143,15 @@
 				\subitem {Inžinieriui priskirtas kreipinys}
 		\end{itemize}
 		
-	\subsubsection{Užduoties dekompozicija}
+		
+	\paragraph{Užduoties dekompozicija}
 
+
+	\insertPicture[0.6]{admin-priskirti.png}{Kreipinio paskyrimo inžinieriui analizė}
+	
 	Užduoties dekompozicjai panaudojome Hierarchinės Užduočių Analizės metodus.
+	Žr. \referToPicture{admin-priskirti}
+
 	
 	\subsubsection{Registrų tvarkymas}
 
@@ -138,26 +162,36 @@
 				\subitem {Papildyta registru aibė}
 		\end{itemize}
 		
-	\subsubsection{Užduoties dekompozicija}
+		
+	\paragraph{Užduoties dekompozicija}
 
-	Užduoties dekompozicjai panaudojome Hierarchinės Užduočių Analizės metodus.
-	Žr. \referToPicture{admin-tvarkyti_registrus.png}
-	\insertPicture[0.6]{admin-tvarkyti_registrus.png}{Registru tvarkymo analize}
+	\insertPicture[0.6]{admin-tvarkyti-registrus}{Registrų tvarkymo analizė}
+	
+	Užduoties dekompozicijai panaudojome Hierarchinės Užduočių Analizės metodus.
+	Žr. \referToPicture{admin-tvarkyti-registrus}
+	
+	
 	\subsubsection{Duomenų importavimas iš struktūros}
 
 		\begin{itemize}
-			\item \textbf{Įvestis}
+			\item` \textbf{Įvestis}
 				\subitem {Duomenų struktūros failas}
 			\item \textbf{Išvestis} 
 				\subitem {Duomenys sistemoje}
 		\end{itemize}
-		
-	\subsubsection{Užduoties dekompozicija}
 
-	Užduoties dekompozicjai panaudojome Hierarchinės Užduočių Analizės metodus.
+		
+	\paragraph{Užduoties dekompozicija}
+
+	\insertPicture[0.6]{admin-importuoti}{Duomenų importavimo analizė}
+	
+	Užduoties dekompozicijai panaudojome Hierarchinės Užduočių Analizės metodus.
+	Žr. \referToPicture{admin-importuoti}
+	
+	
 \subsection{Kliento užduočių analizė}
 
-	\subsection{Pateikti kreipinį savitarnos svetainėje}
+	\subsubsection{Pateikti kreipinį savitarnos svetainėje}
 		
 		\begin{itemize}
 			\item \textbf{Įvestis}
@@ -166,9 +200,12 @@
 				\subitem {Pateiktas kreipinys}
 		\end{itemize}
 
-	\subsubsection{Užduoties dekompozicija}
 
-	Užduoties dekompozicjai panaudojome Hierarchinės Užduočių Analizės metodus.
-	Kreipinio pateikimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. Žr. \referToPicture{Klientas-pateikti.png}
+	\paragraph{Užduoties dekompozicija}
 
-	
+	\insertPicture{klientas}{Kreipinio pateikimo savitarnos sistemoje analizė}
+
+	Užduoties dekompozicijai panaudojome Hierarchinės Užduočių Analizės metodus.
+	Kreipinio pateikimo užduotį skirstome hierarchiškai pagal abstraktumo lygmenis. 
+	Žr. \referToPicture{klientas}
+
