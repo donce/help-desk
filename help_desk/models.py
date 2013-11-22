@@ -48,21 +48,21 @@ class BaseUser(AbstractBaseUser):
 		return True
 	def has_perm(self, perm):
 		return True
-	
+
 	def is_client(self):
 		try:
 			self.client
 			return True
 		except Client.DoesNotExist:
 			return False
-		
+
 	def is_employee(self):
 		try:
 			self.employee
 			return True
 		except Employee.DoesNotExist:
 			return False
-	
+
 	#TODO: needed? if yes, then get_client
 	def get_employee(self):
 		try:
@@ -75,7 +75,7 @@ class Service(models.Model):
 	description = models.TextField()
 	limit_inc = models.IntegerField()
 	limit_req = models.IntegerField()
-	
+
 	def __unicode__(self):
 		return self.description
 
@@ -86,7 +86,7 @@ class Client(models.Model):
 
 	def __unicode__(self):
 		return self.title
-	
+
 	def get_absolute_url(self):
 		return reverse('help_desk.views.model_edit', args=('client', self.id))
 
@@ -133,8 +133,8 @@ class Request(models.Model):
 	current = models.ForeignKey('Assignment', related_name='current', null=True)
 	previous = models.ForeignKey('Request', null=True)#TODO: purpose of this?
 
-	def assign(self, employee):
-		assignment = Assignment.objects.create(request=self, employee=employee)
+	def assign(self, assigned, worker):
+		assignment = Assignment.objects.create(request=self, assigned=assigned, worker=worker)
 		#if (self.current)
 			#self.current.end = NOW
 		self.current = assignment
@@ -142,8 +142,8 @@ class Request(models.Model):
 
 class Assignment(models.Model):
 	request = models.ForeignKey('Request')
-	assigned = models.ForeignKey('Employee')
-	worker = models.ForeignKey('Employee')
+	assigned = models.ForeignKey('Employee', related_name='assigned')
+	worker = models.ForeignKey('Employee', related_name='working')
 	start = models.DateTimeField(auto_now_add=True)
 	end = models.DateTimeField(null=True)
 	text = models.TextField()
@@ -180,14 +180,14 @@ class Employee(models.Model):
 	role = models.CharField(choices=ROLE_CHOICES, max_length=255)
 	phone_number = models.CharField(max_length=PHONE_NUMBER_MAX_LENGTH)
 	email = models.CharField(max_length=255)
-	
+
 	def is_engineer(self):
 		return self.role == ROLE_ENGINEER
 	def is_administrator(self):
 		return self.role == ROLE_ADMINISTRATOR
 	def is_manager(self):
 		return self.role == ROLE_MANAGER
-	
+
 	def can_solve_issues(self):
 		return self.is_engineer() or self.is_manager()
 	def can_manage_issues(self):
@@ -196,10 +196,10 @@ class Employee(models.Model):
 		return self.is_manager()
 	def can_manage_models(self):
 		return self.is_administrator() or self.is_manager()
-	
+
 	def title(self):
 		return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.get_role_display())
 	def __unicode__(self):
 		return self.title()
 	def issues(self):
-		return Request.objects.filter(current__employee=self)
+		return Request.objects.filter(current__worker=self)

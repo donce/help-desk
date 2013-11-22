@@ -16,7 +16,7 @@ def employee_only(function):
 			raise Http404
 		employee = request.user.employee
 		return function(request, employee, *args, **kwargs)
-		
+
 	return f
 
 
@@ -64,7 +64,7 @@ def solve_issues(request, employee):
 @employee_only
 def manage_issues(request, employee):
 	requests = Request.objects.all()
-	
+
 	return render(request, 'management/manage_issues.html', {
 		'requests': requests,
 	})
