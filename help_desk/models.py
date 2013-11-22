@@ -1,7 +1,6 @@
 # encoding=utf8
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.db import models
 
@@ -117,20 +116,20 @@ REQUEST_TYPE_INCIDENT = 'INC'
 REQUEST_TYPE_REQUEST = 'REQ'
 
 REQUEST_TYPE_CHOICES = (
-(REQUEST_TYPE_INCIDENT, 'Incident'),
-(REQUEST_TYPE_REQUEST, 'Request'),
+    (REQUEST_TYPE_INCIDENT, 'Incident'),
+    (REQUEST_TYPE_REQUEST, 'Request'),
 )
 
 REQUEST_RECEIVE_TYPE_CHOICES = (
-('phone', 'Telefonu'),
-('email', 'El. paštu'),
-('website', 'Savitarnos svetainėje'),
+    ('phone', 'Telefonu'),
+    ('email', 'El. paštu'),
+    ('website', 'Savitarnos svetainėje'),
 )
 
 #TODO: add statuses
 REQUEST_STATUS_CHOICES = (
-('solved', 'Solved'),
-('rejected', 'Rejected'),
+    ('solved', 'Solved'),
+    ('rejected', 'Rejected'),
 )
 
 
@@ -187,9 +186,9 @@ ROLE_ADMINISTRATOR = 'administrator'
 ROLE_MANAGER = 'manager'
 
 ROLE_CHOICES = (
-(ROLE_ENGINEER, 'Inžinierius'),
-(ROLE_ADMINISTRATOR, 'Administratorius'),
-(ROLE_MANAGER, 'Vadovas'),
+    (ROLE_ENGINEER, 'Inžinierius'),
+    (ROLE_ADMINISTRATOR, 'Administratorius'),
+    (ROLE_MANAGER, 'Vadovas'),
 )
 
 

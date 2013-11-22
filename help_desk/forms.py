@@ -24,8 +24,8 @@ class ContractForm(ModelForm):
 
 
 MODEL_FORMS = {
-'service': ServiceForm,
-'client': ClientForm,
-'employee': EmployeeForm,
-'contract': ContractForm,
+    'service': ServiceForm,
+    'client': ClientForm,
+    'employee': EmployeeForm,
+    'contract': ContractForm,
 }

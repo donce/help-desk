@@ -2,10 +2,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as login_user, logout as logout_user
-from django.views.generic import ListView
 from django.http import Http404
 
-from models import BaseUser, Request, Client
+from models import BaseUser, Request
 
 from forms import MODEL_FORMS
 
@@ -28,7 +27,7 @@ def register(request):
 def main(request):
     if request.user.is_employee():
         return redirect(management_home)
-    #TODO: /self-service/ url for clients?
+        #TODO: /self-service/ url for clients?
     return render(request, 'main.html', {})
 
 
@@ -45,7 +44,7 @@ def home(request):
     else:
         form = AuthenticationForm()
     return render(request, 'home.html', {
-    'form': form,
+        'form': form,
     })
 
 
@@ -63,7 +62,7 @@ def management_home(request, employee):
 def solve_issues(request, employee):
     requests = employee.issues()
     return render(request, 'management/solve_issues.html', {
-    'requests': requests,
+        'requests': requests,
     })
 
 
@@ -72,7 +71,7 @@ def manage_issues(request, employee):
     requests = Request.objects.all()
 
     return render(request, 'management/manage_issues.html', {
-    'requests': requests,
+        'requests': requests,
     })
 
 
@@ -101,7 +100,7 @@ def models(request, employee):
     model_types = [name for name in MODEL_FORMS]
     print model_types
     return render(request, 'management/models/list_all.html', {
-    'models': model_types,
+        'models': model_types,
     })
 
 
@@ -111,8 +110,8 @@ def model_list(request, employee, model):
     path = 'management/models/list_' + model + '.html'
     print 'path:', path
     return render(request, path, {
-    'objects': objects,
-    'model': model,
+        'objects': objects,
+        'model': model,
     })
 
 
@@ -120,7 +119,7 @@ def model_list(request, employee, model):
 def model_add(request, employee, model):
     form = get_form(model)
     return render(request, 'management/models/add.html', {
-    'form': form,
+        'form': form,
     })
 
 
@@ -128,7 +127,7 @@ def model_add(request, employee, model):
 def model_edit(request, employee, model, instance):
     form = get_form(model, instance)
     return render(request, 'management/models/edit.html', {
-    'form': form,
+        'form': form,
     })
 
 
