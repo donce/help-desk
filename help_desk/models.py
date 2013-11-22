@@ -71,7 +71,10 @@ class BaseUser(AbstractBaseUser):
 			return None
 
 class Service(models.Model):
+	#TODO: id - string?
 	description = models.TextField()
+	limit_inc = models.IntegerField()
+	limit_req = models.IntegerField()
 	
 	def __unicode__(self):
 		return self.description
@@ -87,13 +90,13 @@ class Client(models.Model):
 	def get_absolute_url(self):
 		return reverse('help_desk.views.model_edit', args=('client', self.id))
 
-class ClientPhoneNumber(models.Model):
+class Delegate(models.Model):
 	client = models.ForeignKey(Client)
+	first_name = models.CharField(max_length=255)
+	last_name = models.CharField(max_length=255)
 	phone_number = models.CharField(max_length=PHONE_NUMBER_MAX_LENGTH)
-	
-class ClientEmail(models.Model):
-	client = models.ForeignKey(Client)
 	email = models.CharField(max_length=255)
+	active = models.BooleanField(default=True)
 
 
 #TODO: rename request model
@@ -111,32 +114,45 @@ REQUEST_RECEIVE_TYPE_CHOICES = (
 	('website', 'Savitarnos svetainėje'),
 )
 
-class RequestAssignment(models.Model):
-	request = models.ForeignKey('Request')
-	employee = models.ForeignKey('Employee')
-	start = models.DateTimeField(auto_now_add=True)
-	end = models.DateTimeField(null=True)
-	#TODO: status (solved, closed, declined)
+#TODO: add statuses
+REQUEST_STATUS_CHOICES = (
+	('solved', 'Solved'),
+	('rejected', 'Rejected'),
+)
 
 class Request(models.Model):
-	type = models.CharField(choices=REQUEST_TYPE_CHOICES, max_length=255)
 	client = models.ForeignKey(Client)
-	receive_type = models.CharField(choices=REQUEST_RECEIVE_TYPE_CHOICES, max_length=255)
 	service = models.ForeignKey(Service)
-	details = models.TextField()
+	type = models.CharField(choices=REQUEST_TYPE_CHOICES, max_length=255)
+	receive_type = models.CharField(choices=REQUEST_RECEIVE_TYPE_CHOICES, max_length=255)
+	text = models.TextField()
 	created = models.DateTimeField(auto_now_add=True)
 	closed = models.DateTimeField(null=True)
-	current = models.ForeignKey('RequestAssignment', related_name='current', null=True)
+	status = models.CharField(choices=REQUEST_STATUS_CHOICES, max_length=255)
+	rating = models.PositiveIntegerField(null=True)
+	current = models.ForeignKey('Assignment', related_name='current', null=True)
+	previous = models.ForeignKey('Request', null=True)#TODO: purpose of this?
 
 	def assign(self, employee):
-		assignment = RequestAssignment.objects.create(request=self, employee=employee)
+		assignment = Assignment.objects.create(request=self, employee=employee)
 		#if (self.current)
 			#self.current.end = NOW
 		self.current = assignment
 		self.save()
 
+class Assignment(models.Model):
+	request = models.ForeignKey('Request')
+	assigned = models.ForeignKey('Employee')
+	worker = models.ForeignKey('Employee')
+	start = models.DateTimeField(auto_now_add=True)
+	end = models.DateTimeField(null=True)
+	text = models.TextField()
+	#TODO: result
+	time = models.PositiveIntegerField(null=True)
 
 class Contract(models.Model):
+	number = models.CharField(max_length=255)
+	title = models.CharField(max_length=255)
 	client = models.ForeignKey(Client)
 	start = models.DateField()
 	end = models.DateField()
@@ -144,7 +160,8 @@ class Contract(models.Model):
 class ContractService(models.Model):
 	contract = models.ForeignKey(Contract)
 	service = models.ForeignKey(Service)
-#TODO: primary key
+	class Meta:
+		unique_together = ('contract', 'service')
 
 ROLE_ENGINEER = 'engineer'
 ROLE_ADMINISTRATOR = 'administrator'
@@ -161,8 +178,8 @@ class Employee(models.Model):
 	first_name = models.CharField(max_length=255)
 	last_name = models.CharField(max_length=255)
 	role = models.CharField(choices=ROLE_CHOICES, max_length=255)
-	email = models.CharField(max_length=255)
 	phone_number = models.CharField(max_length=PHONE_NUMBER_MAX_LENGTH)
+	email = models.CharField(max_length=255)
 	
 	def is_engineer(self):
 		return self.role == ROLE_ENGINEER

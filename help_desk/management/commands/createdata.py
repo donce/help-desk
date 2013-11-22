@@ -20,7 +20,7 @@ class Command(BaseCommand):
         employee = BaseUser.objects.create_employee('admin', 'admin', 'Petras', 'Petraitis', ROLE_MANAGER, 'petras@petraitis.lt', '865432100')
         employeeB = BaseUser.objects.create_employee('admin2', 'admin2', 'Antanas', 'Antanaitis', ROLE_MANAGER, 'antanas@antanaitis.lt', '865432101')
         
-        service = Service.objects.create(description='Serverių hostingas')
+        service = Service.objects.create(description='Serverių hostingas', limit_inc=5, limit_req=2)
         request = Request.objects.create(type=REQUEST_TYPE_REQUEST, client=client, receive_type='phone', service=service)
         request.assign(employeeB)
         request.assign(employee)
