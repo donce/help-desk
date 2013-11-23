@@ -3,32 +3,32 @@
 {% block content %}
 <hr/>
 <div class="menu">
-<a href="{% url 'help_desk.views.management_home' %}">
+    <a href="{% url 'help_desk.views.management_home' %}">
 <span class="menu_item">
 Pagrindinis
 </span>
-</a>
-{% if user.employee.can_solve_issues %}
-<a href="{% url 'help_desk.views.solve_issues' %}">
+    </a>
+    {% if user.employee.can_solve_issues %}
+    <a href="{% url 'help_desk.views.solve_issues' %}">
 <span class="menu_item">
 Spręsti kreipinius
 </span>
-</a>
-{% endif %}
-{% if user.employee.can_manage_issues %}
-<a href="{% url 'help_desk.views.manage_issues' %}">
+    </a>
+    {% endif %}
+    {% if user.employee.can_manage_issues %}
+    <a href="{% url 'help_desk.views.manage_issues' %}">
 <span class="menu_item">
 Tvarkyti kreipinius
 </span>
-</a>
-{% endif %}
-{% if user.employee.can_manage_models %}
-<a href="{% url 'help_desk.views.models' %}">
+    </a>
+    {% endif %}
+    {% if user.employee.can_manage_models %}
+    <a href="{% url 'help_desk.views.models' %}">
 <span class="menu_item">
 Tvarkyti registrus
 </span>
-</a>
-{% endif %}
+    </a>
+    {% endif %}
 <span class="menu_employee_title">
 {{ user.employee.title }}
 <a href="{% url 'help_desk.views.logout' %}">Atsijungti</a>
