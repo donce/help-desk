@@ -2,27 +2,31 @@
 {% block management_content %}
 <h1>Kreipiniai</h1>
 <table border="1">
-    <tr>
-        <th>Klientas</th>
-        <th>Gavimo būdas</th>
-        <th>Paslauga</th>
-    </tr>
+	<thead>
+		<tr>
+			<th>Klientas</th>
+			<th>Gavimo būdas</th>
+			<th>Paslauga</th>
+		</tr>
+	</thead>
+	<tbody>
     {% for request in requests %}
-    <tr class="row{% if forloop.counter|divisibleby:"2" %}2{% else %}1{% endif %}">
-        <td>
-            <a href="/management/client/">
-                {{ request.client }}
-            </a>
-        </td>
-        <td>
-            {{ request.get_receive_type_display }}
-        </td>
-        <td>
-            <a href="">
-                {{ request.service }}
-            </a>
-        </td>
-    </tr>
+		<tr class="{% cycle 'row1' 'row2' %}">
+			<td>
+				<a href="/management/client/">
+					{{ request.client }}
+				</a>
+			</td>
+			<td>
+				{{ request.get_receive_type_display }}
+			</td>
+			<td>
+				<a href="">
+					{{ request.service }}
+				</a>
+			</td>
+		</tr>
     {% endfor %}
+	</tbody>
 </table>
 {% endblock %}
