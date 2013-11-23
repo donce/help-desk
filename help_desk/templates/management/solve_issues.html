@@ -8,7 +8,7 @@
         <th>Paslauga</th>
     </tr>
     {% for request in requests %}
-    <tr>
+    <tr class="row{% if forloop.counter|divisibleby:"2" %}2{% else %}1{% endif %}">
         <td>
             <a href="/management/client/">
                 {{ request.client }}

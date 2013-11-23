@@ -2,7 +2,7 @@
 from django.core.management.base import BaseCommand
 
 from help_desk.models import BaseUser, ROLE_MANAGER, Client, Employee, Request, \
-    Service, REQUEST_TYPE_REQUEST
+    Service, REQUEST_TYPE_REQUEST, REQUEST_TYPE_INCIDENT
 
 
 class Command(BaseCommand):
@@ -20,11 +20,15 @@ class Command(BaseCommand):
         client = BaseUser.objects.create_client('client', 'client', 'UAB "Įmonė"', "Imonės g, Vilnius, Lietuva")
         employee = BaseUser.objects.create_employee('admin', 'admin', 'Petras', 'Petraitis', ROLE_MANAGER,
                                                     'petras@petraitis.lt', '865432100')
-        employeeB = BaseUser.objects.create_employee('admin2', 'admin2', 'Antanas', 'Antanaitis', ROLE_MANAGER,
+        employee_b = BaseUser.objects.create_employee('admin2', 'admin2', 'Antanas', 'Antanaitis', ROLE_MANAGER,
                                                      'antanas@antanaitis.lt', '865432101')
 
         service = Service.objects.create(description='Serverių hostingas', limit_inc=5, limit_req=2)
         request = Request.objects.create(type=REQUEST_TYPE_REQUEST, client=client, receive_type='phone',
                                          service=service)
-        request.assign(employeeB)
-        request.assign(employee)
+        for i in range(10):
+            r = Request.objects.create(type=REQUEST_TYPE_INCIDENT, client=client, receive_type='phone', service=service)
+            r.assign(employee_b, employee)
+
+        request.assign(employee_b, employee)
+        request.assign(employee, employee_b)
