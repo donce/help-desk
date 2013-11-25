@@ -1,8 +1,26 @@
 \section{Euristinio tikrinimo ataskaita}
 
 \subsection{Santrauka}
-	%% TODO: Santrauka
+	%% TODO: Santrauka (trumpas santraukos aprasymos)
 	
+		\begin{table}[ht] 
+		\caption{Nonlinear Model Results} % title of Table 
+		\centering % used for centering table 
+			\begin{tabular}{c c} % centered columns (2 columns) 
+		\hline\hline %inserts double horizontal lines 
+		Kodas & Vertintojas\\ [0.5ex] % inserts table 
+		%heading 
+		\hline % inserts single horizontal line 
+		U & Ugnė Laima Čižiūtė
+		K & Karolis Jocevičius
+		D & Donatas Kučinskas
+		R & Rytis Karpuška
+		O & Oleg Koldun
+		\hline %inserts single line 
+		\end{tabular} 
+		\label{table:nonlin} % is used to refer this table in the text 
+		\end{table} 
+		
 	\subsubsection{Problemos ir taisymo rekomendacijos}
 	
 		\begin{table}[ht] 
@@ -16,7 +34,7 @@
 		1 & Administratorius>Registrai, mygtukas "Importuoti" per arti kitų mygtukų. & Jį reikėtų perkelti į dešinę pusę.\\
 		2 & Kortelės "Pagrindinis" turinys yra be reikalo pateikiamas atidarius puslapį. & Šios kortelės turinys turėtų būti pateikiamas paspaudus ant vartotojo vardo dešiniajame kampe.\\
 		3 & Administratorius neturi galimybės peržiūrėti priskirtų kreipinių. & Suteikti galimybę pasirinkti tarp priskirtų ir nepriskirtų kreipinių rodymo.\\
-		4 & Nėra būdo grįžti iš kreipinio priskirimo vaizdo bei struktūros importavimo lango. & Kairiajame kampe pridėti mygtuką "Grįžti".\\
+		4 & Nėra būdo grįžti iš kreipinio priskirimo lango bei struktūros importavimo lango. & Kairiajame kampe pridėti mygtuką "Grįžti".\\
 		5 & Kreipinių sąrašuose yra neįvardintos paslaugos & Pridėti stulpelį su paslaugos pavadinimu.\\
 		6 & Administratoriui kuriant kreipinį nėra galimybės nurodyti paslaugą, kuriai skirtas kreipinys. & Reikia pridėti išskleidžiamą paslaugų sąrašą.\\
 		7 & Nėra galymybės greitai rasti visus neišspręstus kreipinius & Įdiegti sistemoje rikiavimą.\\
@@ -93,7 +111,17 @@
 	
 	\subsubsection{Administratorius neturi galimybės peržiūrėti priskirtų kreipinių}
 		
+		Administratoriui yra pateiktas naujų kreipinių sąrašas.
+		Tačiau, peržiūrėti priskirtus kreipinius inžinieriams galimybės nėra.
+		Čia pažeista sistemos atitikimo realiai situacijai euristika.
+		Šia problemą galima išspręsti pridedant du mygtukus pasirinkimui tarp priskirtų ir nepriskirtų kreipinių.
 		
+	\subsubsection{Nėra būdo grįžti iš kreipinio priskirimo lango bei struktūros importavimo lango}
+	
+		Administratoriaus interfeiso kreipinio priskyrimo bei struktūros importavimo lanuose nėra grįžimo arba atšaukimo mygtukų.
+		Todėl nusprendus nevykdyti pasirinktos funkcijos nėra galimybės grįžti į ankstesnį vaizdą.
+		Čia pažeista laisvo vartotojo valdymo dialogo euristika.
+		Šią problemą galima išspręsti pridedant langų kairiuose kampuose mygtukus "Grįžti".
 	
 \subsection{Defektų sąrašas}
 	%% TODO: Defektų sąrašas
@@ -109,7 +137,7 @@
 	1 & Administratorius>Registrai, mygtukas "Importuoti" per arti kitų mygtukų. & U, K & Klaidų vengimas & Vidutinis\\
 	2 & Kortelės "Pagrindinis" turinys yra be reikalo pateikiamas atidarius puslapį. & U, K & Naudojimo lankstumas ir efektyvumas & Vidutinis\\
 	3 & Administratorius neturi galimybės peržiūrėti priskirtų kreipinių. & U, K & Sistemos atitikimas realiai situacijai & Aukštas\\
-	4 & Nėra būdo grįžti iš kreipinio priskirimo vaizdo bei struktūros importavimo lango & U, K & Laisvas vartotojo valdymo dialogas & Aukštas\\
+	4 & Nėra būdo grįžti iš kreipinio priskirimo lango bei struktūros importavimo lango & U, K & Laisvas vartotojo valdymo dialogas & Aukštas\\
 	5 & Kreipinių sąrašuose yra neįvardintos paslaugos & U, K & Sistemos atitikimas realiai situacijai & Vidutinis\\
 	6 & Administratoriui kuriant kreipinį nėra galimybės nurodyti paslaugą, kuriai skirtas kreipinys. & U, K & Sistemos atitikimas realiai situacijai & Vidutinis\\
 	7 & Nėra galymybės greitai rasti visus neišspręstus kreipinius & U, K & Sistemos neatitikimas realiai situacijai & Žemas\\
