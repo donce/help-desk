@@ -1,7 +1,38 @@
 \section{Euristinio tikrinimo ataskaita}
 
 \subsection{Santrauka}
-	%% TODO: Santrauka (trumpas santraukos aprasymos)
+
+	\subsubsection{Vertinimo vykdytojai}
+
+	Vertinimą atliko panaudojamumo ekspertų komanda:
+	%% TODO: list
+		Ugnė Laima Čižiūtė
+		Karolis Jocevičius
+		Donatas Kučinskas
+		Rytis Karpuška
+		Oleg Koldun
+	
+	Visų vertinimo vykdytojų amžius buvo labai panašus.
+	Visi vykdytojai yra studentai, studijuojantys Programų Sistemų 3 kursą Vilniaus Universitete.
+	Keturi vykdymo nariai yra vyriškos lyties, vienas - moteriškos.
+
+	\subsubsection{Vertinimo aplinka}
+
+	Vertinimo komanda naudojo pakankamai skirtingas vertinimo aplinkas - vertinimui buvo naudotos tiek Windows, tiek Linux operacinės sistemos.
+	Populiariausia operacinė sistema - Ubuntu (skaičiuojant su tokiomis atšakomis kaip Xubuntu).
+	Vertinimui naudojami monitoriai buvo skirtingų dydžių bei rezoliucijų, tačiau visi turėjo 32 bitus spalvų.
+
+	\subsubsection{Vertinimo eiga}
+
+	Prieš maketo testavimą, buvo sudarytas užduočių sąrašas.
+	Kiekvienas vertinimo narys kiekvieną užduotį turėjo perskaityti ir ją vaizduotėje pagal maketą atlikti.
+	Atliekant veiksmus, reikėjo išskirti labiausiai patikusius maketo dalykus, juos pasižymėti.
+	Rastus maketo nepatogumus ir problemas taipogi pasižymėti ir surašyti lentelėje, įvertinti jų svarbą.
+
+	\subsubsection{Vertinimo rezultatai}
+
+	Atlikus vertinimą, buvo rasta tiek teigiamų, tiek ir neigiamų savybių.
+	%TODO: vertinimo rezultatai
 	
 		\begin{table}[ht] 
 		\caption{Nonlinear Model Results} % title of Table 
@@ -34,13 +65,13 @@
 		1 & Administratorius>Registrai, mygtukas "Importuoti" per arti kitų mygtukų. & Jį reikėtų perkelti į dešinę pusę.\\ %%+
 		2 & Kortelės "Pagrindinis" turinys yra be reikalo pateikiamas atidarius puslapį. & Šios kortelės turinys turėtų būti pateikiamas paspaudus ant vartotojo vardo dešiniajame kampe.\\%%+
 		3 & Administratorius neturi galimybės peržiūrėti priskirtų kreipinių. & Suteikti galimybę pasirinkti tarp priskirtų ir nepriskirtų kreipinių rodymo.\\ %%+
-		4 & Nėra būdo grįžti iš kreipinio priskirimo lango bei struktūros importavimo lango. & Kairiajame kampe pridėti mygtuką "Grįžti".\\ %%+
+		4 & Nėra būdo grįžti iš kreipinio priskyrimo lango bei struktūros importavimo lango. & Kairiajame kampe pridėti mygtuką "Grįžti".\\ %%+
 		5 & Kreipinių sąrašuose yra neįvardintos paslaugos & Pridėti stulpelį su paslaugos pavadinimu.\\%%+
 		6 & Administratoriui kuriant kreipinį nėra galimybės nurodyti paslaugą, kuriai skirtas kreipinys. & Reikia pridėti išskleidžiamą paslaugų sąrašą.\\%%+
-		7 & Inžinierius, nėra galymybės greitai rasti visus neišspręstus kreipinius & Įdiegti sistemoje rikiavimą.\\ %%+
+		7 & Inžinierius, nėra galimybės greitai rasti visus neišspręstus kreipinius & Įdiegti sistemoje rikiavimą.\\ %%+
 		8 & Klientas, nereikalingas žodis "kreipiniai" - jis akivaizdus. & Pašalinti žodį "kreipiniai".\\%%?
 		9 & Klientas, mygtukas "Naujas kreipinys" yra netinkamoje vietoje. & Jį reikėtų perkelti į dešinę pusę.\\%%?
-		10 & Statistikos peržiūroje trūksta metų pasirinkimo galymybės. & Reikia pridėti išskleidžiamą metų pasirinkimo sąrašą.\\ %%+
+		10 & Statistikos peržiūroje trūksta metų pasirinkimo galimybės. & Reikia pridėti išskleidžiamą metų pasirinkimo sąrašą.\\ %%+
 		11 & Netikslinga laikyti sistemos duomenų ištrynimo pasirinkimą duomenų importavimo lange. & Duomenų ištrynimo mygtuką sukurti sistemos administravimo lange.\\%%+
 		\hline %inserts single line 
 		\end{tabular} 
@@ -116,9 +147,9 @@
 		Čia pažeista sistemos atitikimo realiai situacijai euristika.
 		Šia problemą galima išspręsti pridedant du mygtukus pasirinkimui tarp priskirtų ir nepriskirtų kreipinių.
 		
-	\subsubsection{Nėra būdo grįžti iš kreipinio priskirimo lango bei struktūros importavimo lango}
+	\subsubsection{Nėra būdo grįžti iš kreipinio priskyrimo lango bei struktūros importavimo lango}
 	
-		Administratoriaus interfeiso kreipinio priskyrimo bei struktūros importavimo lanuose nėra grįžimo arba atšaukimo mygtukų.
+		Administratoriaus interfeiso kreipinio priskyrimo bei struktūros importavimo languose nėra grįžimo arba atšaukimo mygtukų.
 		Todėl nusprendus nevykdyti pasirinktos funkcijos nėra galimybės grįžti į ankstesnį vaizdą.
 		Čia pažeista laisvo vartotojo valdymo dialogo euristika.
 		Šią problemą galima išspręsti pridedant langų kairiuose kampuose mygtukus "Grįžti".
@@ -137,13 +168,13 @@
 	1 & Administratorius>Registrai, mygtukas "Importuoti" per arti kitų mygtukų. & U, K & Klaidų vengimas & Vidutinis\\%%+
 	2 & Kortelės "Pagrindinis" turinys yra be reikalo pateikiamas atidarius puslapį. & U, K & Naudojimo lankstumas ir efektyvumas & Vidutinis\\%%+
 	3 & Administratorius neturi galimybės peržiūrėti priskirtų kreipinių. & U, K & Sistemos atitikimas realiai situacijai & Aukštas\\%%+
-	4 & Nėra būdo grįžti iš kreipinio priskirimo lango bei struktūros importavimo lango & U, K & Laisvas vartotojo valdymo dialogas & Aukštas\\%%+
+	4 & Nėra būdo grįžti iš kreipinio priskyrimo lango bei struktūros importavimo lango & U, K & Laisvas vartotojo valdymo dialogas & Aukštas\\%%+
 	5 & Kreipinių sąrašuose yra neįvardintos paslaugos & U, K & Sistemos atitikimas realiai situacijai & Vidutinis\\%%+
 	6 & Administratoriui kuriant kreipinį nėra galimybės nurodyti paslaugą, kuriai skirtas kreipinys. & U, K & Sistemos atitikimas realiai situacijai & Vidutinis\\%%+
-	7 & Nėra galymybės greitai rasti visus neišspręstus kreipinius & U, K & Sistemos neatitikimas realiai situacijai & Žemas\\%%+
+	7 & Nėra galimybės greitai rasti visus neišspręstus kreipinius & U, K & Sistemos neatitikimas realiai situacijai & Žemas\\%%+
 	8 & Nereikalingas žodis "kreipiniai" - jis akivaizdus. & U, K & Estetiškas dizainas & Žemas\\%%?
 	9 & Klientas, mygtukas "Naujas kreipinys" yra netinkamoje vietoje. & U, K & Darnus dialogas & Žemas\\%%?
-	10 & Statistikos peržiūroje trūksta metų pasirinkimo galymybės. & U, K & Sistemos atitikimas realiai situacijai & Vidutinis\\%%+
+	10 & Statistikos peržiūroje trūksta metų pasirinkimo galimybės. & U, K & Sistemos atitikimas realiai situacijai & Vidutinis\\%%+
 	11 & Netikslinga laikyti sistemos duomenų ištrynimo pasirinkimą duomenų importavimo lange. & U, K & Sistemos atitikimas realiai situacijai & Žemas\\%%+
 	12 & Nėra būdo prisijungti pamiršus slaptažodį. & D & & Vidutinis\\%%+
 	13 & Nėra būdo prirašyti komentarą išsprendžiant/atmetant kreipinį. & D & & Vidutinis\\%%+
