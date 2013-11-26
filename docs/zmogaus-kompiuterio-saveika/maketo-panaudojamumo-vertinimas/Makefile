@@ -2,6 +2,7 @@ BOOK_NAME    := main
 SOURCE_FILES := $(wildcard *.tex *.sty *.bib)
 PASS_1_FLAGS := -output-directory=./
 PASS_2_FLAGS := $(PASS_1_FLAGS) -interaction=batchmode
+PASS_DIRTY_FLAGS := $(PASS_1_FLAGS) -interaction=nonstopmode
 
 VERSION_STRING := $(shell git rev-parse --short HEAD)
 FINAL_CONTENT  := \newcommand{\versionString}{$(VERSION_STRING)}\input{$(BOOK_NAME)}
@@ -14,6 +15,9 @@ final:
 	xelatex $(PASS_1_FLAGS) '$(FINAL_CONTENT)'
 	xelatex $(PASS_2_FLAGS) '$(FINAL_CONTENT)'
 	xelatex $(PASS_2_FLAGS) '$(FINAL_CONTENT)'
+
+dirty: clean
+	xelatex $(PASS_DIRTY_FLAGS) '$(FINAL_CONTENT)'
 
 todo:
 	grep -Eir 'TODO:|UNKNOWN:|FIXME:' . --exclude=Makefile
