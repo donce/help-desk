@@ -6,8 +6,8 @@
 {% block list_content %}
 {% for client in objects %}
 <tr>
-<td><a href="{{ client.get_absolute_url }}">{{ client.title }}</a></td>
-<td>{{ client.address }}</td>
+    <td><a href="{{ client.get_absolute_url }}">{{ client.title }}</a></td>
+    <td>{{ client.address }}</td>
 </tr>
 {% endfor %}
 {% endblock %}

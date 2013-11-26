@@ -2,27 +2,27 @@
 {% block management_content %}
 <h1>Kreipiniai</h1>
 <table border="1">
-<tr>
-<th>Klientas</th>
-<th>Gavimo būdas</th>
-<th>Paslauga</th>
-</tr>
-{% for request in requests %}
-<tr>
-<td>
-<a href="/management/client/">
-{{ request.client }}
-</a>
-</td>
-<td>
-{{ request.get_receive_type_display }}
-</td>
-<td>
-<a href="">
-{{ request.service }}
-</a>
-</td>
-</tr>
-{% endfor %}
+    <tr>
+        <th>Klientas</th>
+        <th>Gavimo būdas</th>
+        <th>Paslauga</th>
+    </tr>
+    {% for request in requests %}
+    <tr>
+        <td>
+            <a href="/management/client/">
+                {{ request.client }}
+            </a>
+        </td>
+        <td>
+            {{ request.get_receive_type_display }}
+        </td>
+        <td>
+            <a href="">
+                {{ request.service }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
 </table>
 {% endblock %}
