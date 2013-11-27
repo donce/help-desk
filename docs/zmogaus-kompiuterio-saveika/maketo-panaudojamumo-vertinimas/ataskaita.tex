@@ -5,13 +5,24 @@
 	\subsubsection{Vertinimo vykdytojai}
 
 	Vertinimą atliko panaudojamumo ekspertų komanda:
-	%% TODO: list
-		Ugnė Laima Čižiūtė
-		Karolis Jocevičius
-		Donatas Kučinskas
-		Rytis Karpuška
-		Oleg Koldun
-	
+	\begin{table}[ht] 
+		\caption{Vertintojai} % title of Table 
+		\centering % used for centering table 
+		\begin{tabular}{c c} % centered columns (2 columns) 
+			\hline\hline %inserts double horizontal lines 
+			Kodas & Vertintojas\\ [0.5ex] % inserts table 
+			%heading 
+			\hline % inserts single horizontal line 
+			U & Ugnė Laima Čižiūtė\\
+			K & Karolis Jocevičius\\
+			D & Donatas Kučinskas\\
+			R & Rytis Karpuška\\
+			O & Oleg Koldun
+			\hline %inserts single line 
+		\end{tabular} 
+		\label{table:nonlin} % is used to refer this table in the text 
+	\end{table} 
+
 	Visų vertinimo vykdytojų amžius buvo labai panašus.
 	Visi vykdytojai yra studentai, studijuojantys Programų Sistemų 3 kursą Vilniaus Universitete.
 	Keturi vykdymo nariai yra vyriškos lyties, vienas - moteriškos.
@@ -34,52 +45,77 @@
 	Atlikus vertinimą, buvo rasta tiek teigiamų, tiek ir neigiamų savybių.
 	%TODO: vertinimo rezultatai
 	
-		\begin{table}[ht] 
-		\caption{Nonlinear Model Results} % title of Table 
-		\centering % used for centering table 
-			\begin{tabular}{c c} % centered columns (2 columns) 
-		\hline\hline %inserts double horizontal lines 
-		Kodas & Vertintojas\\ [0.5ex] % inserts table 
-		%heading 
-		\hline % inserts single horizontal line 
-		U & Ugnė Laima Čižiūtė
-		K & Karolis Jocevičius
-		D & Donatas Kučinskas
-		R & Rytis Karpuška
-		O & Oleg Koldun
-		\hline %inserts single line 
-		\end{tabular} 
-		\label{table:nonlin} % is used to refer this table in the text 
-		\end{table} 
-		
+
 	\subsubsection{Problemos ir taisymo rekomendacijos}
 	
 		\begin{table}[ht] 
-		\caption{Nonlinear Model Results} % title of Table 
+		\caption{Taisymo Rekomendacijos} % title of Table 
 		\centering % used for centering table 
-			\begin{tabular}{c c c} % centered columns (3 columns) 
+		\begin{tabular}{c l l} % centered columns (3 columns) 
 		\hline\hline %inserts double horizontal lines 
 		Nr. & Problema & Sprendimas\\ [0.5ex] % inserts table 
 		%heading 
 		\hline % inserts single horizontal line 
-		1 & Administratorius>Registrai, mygtukas "Importuoti" per arti kitų mygtukų. & Jį reikėtų perkelti į dešinę pusę.\\ %%+
-		2 & Kortelės "Pagrindinis" turinys yra be reikalo pateikiamas atidarius puslapį. & Šios kortelės turinys turėtų būti pateikiamas paspaudus ant vartotojo vardo dešiniajame kampe.\\%%+
-		3 & Administratorius neturi galimybės peržiūrėti priskirtų kreipinių. & Suteikti galimybę pasirinkti tarp priskirtų ir nepriskirtų kreipinių rodymo.\\ %%+
-		4 & Nėra būdo grįžti iš kreipinio priskyrimo lango bei struktūros importavimo lango. & Kairiajame kampe pridėti mygtuką "Grįžti".\\ %%+
-		5 & Kreipinių sąrašuose yra neįvardintos paslaugos & Pridėti stulpelį su paslaugos pavadinimu.\\%%+
-		6 & Administratoriui kuriant kreipinį nėra galimybės nurodyti paslaugą, kuriai skirtas kreipinys. & Reikia pridėti išskleidžiamą paslaugų sąrašą.\\%%+
-		7 & Inžinierius, nėra galimybės greitai rasti visus neišspręstus kreipinius & Įdiegti sistemoje rikiavimą.\\ %%+
-		8 & Klientas, nereikalingas žodis "kreipiniai" - jis akivaizdus. & Pašalinti žodį "kreipiniai".\\%%?
-		9 & Klientas, mygtukas "Naujas kreipinys" yra netinkamoje vietoje. & Jį reikėtų perkelti į dešinę pusę.\\%%?
-		10 & Statistikos peržiūroje trūksta metų pasirinkimo galimybės. & Reikia pridėti išskleidžiamą metų pasirinkimo sąrašą.\\ %%+
-		11 & Netikslinga laikyti sistemos duomenų ištrynimo pasirinkimą duomenų importavimo lange. & Duomenų ištrynimo mygtuką sukurti sistemos administravimo lange.\\%%+
+		1 &
+		\begin{tabular}{l} Administratorius>Registrai, mygtukas\\"Importuoti" per arti kitų mygtukų. \end{tabular} &
+		\begin{tabular}{l}Jį reikėtų perkelti į dešinę pusę.\end{tabular}\\ %%+
+
+		\hline
+		2 &
+		\begin{tabular}{l} Kortelės "Pagrindinis" turinys yra be\\reikalo pateikiamas atidarius puslapį. \end{tabular} &
+		\begin{tabular}{l}Šios kortelės turinys turėtų būti\\pateikiamas paspaudus ant vartotojo\\vardo dešiniajame kampe.\end{tabular}\\%%+
+
+		\hline
+		3 &
+		\begin{tabular}{l} Administratorius neturi galimybės\\peržiūrėti priskirtų kreipinių. \end{tabular}&
+		\begin{tabular}{l}Suteikti galimybę pasirinkti\\tarp priskirtų ir nepriskirtų\\kreipinių rodymo.\end{tabular}\\ %%+
+
+		\hline
+		4 &
+		\begin{tabular}{l} Nėra būdo grįžti iš kreipinio priskyrimo\\lango bei struktūros importavimo lango. \end{tabular} &
+		\begin{tabular}{l}Kairiajame kampe pridėti mygtuką "Grįžti".\end{tabular}\\ %%+
+
+		\hline
+		5 &
+		\begin{tabular}{l} Kreipinių sąrašuose yra\\neįvardintos paslaugos. \end{tabular} &
+		\begin{tabular}{l}Pridėti stulpelį su paslaugos pavadinimu.\end{tabular}\\%%+
+
+		\hline
+		6 &
+		\begin{tabular}{l} Administratoriui kuriant kreipinį\\nėra galimybės nurodyti paslaugą, kuriai\\skirtas kreipinys. \end{tabular} &
+		\begin{tabular}{l}Reikia pridėti išskleidžiamą paslaugų sąrašą.\end{tabular}\\%%+
+
+		\hline
+		7 &
+		\begin{tabular}{l} Inžinierius, nėra galimybės greitai\\rasti visus neišspręstus kreipinius. \end{tabular}&
+		\begin{tabular}{l}Įdiegti sistemoje rikiavimą.\end{tabular}\\ %%+
+
+		\hline
+		8 &
+		\begin{tabular}{l} Klientas, nereikalingas žodis\\"kreipiniai" - jis akivaizdus. \end{tabular} &
+		\begin{tabular}{l}Pašalinti žodį "kreipiniai".\end{tabular}\\%%?
+
+		\hline
+		9 &
+		\begin{tabular}{l} Klientas, mygtukas "Naujas\\kreipinys" yra netinkamoje vietoje. \end{tabular} &
+		\begin{tabular}{l}Jį reikėtų perkelti į dešinę pusę.\end{tabular}\\%%?
+
+		\hline
+		10 &
+		\begin{tabular}{l} Statistikos peržiūroje trūksta\\metų pasirinkimo galimybės. \end{tabular} &
+		\begin{tabular}{l}Reikia pridėti išskleidžiamą\\metų pasirinkimo sąrašą.\end{tabular}\\ %%+
+
+		\hline
+		11 &
+		\begin{tabular}{l} Netikslinga laikyti sistemos duomenų\\ištrynimo pasirinkimą duomenų importavimo lange. \end{tabular} &
+		\begin{tabular}{l}Duomenų ištrynimo mygtuką sukurti\\sistemos administravimo lange.\end{tabular}\\%%+
+
 		\hline %inserts single line 
 		\end{tabular} 
 		\label{table:nonlin} % is used to refer this table in the text 
 		\end{table} 
 	
 \subsection{Vertinimo aplinka}
-	%% TODO: Aprašyti priemones naudotas vertinant (kompiuterius, programas - maketo peržiūros būdą)
 	\begin{table}[ht] 
 	\caption{Nonlinear Model Results} % title of Table 
 	\centering % used for centering table 
@@ -88,14 +124,14 @@
 	Vertintojas & U & K & D & R & O \\ [0.5ex] % inserts table 
 	%heading 
 	\hline % inserts single horizontal line 
-	Amžius & 21 & 21 & 21\\ % inserting body of the table 
-	Lytis & M & V & V\\
-	OS & Windows 7 & Ubuntu 13.10 & Xubuntu 13.10\\
-	Ekrano spalvos & 32b & 32b & 32b\\
-	Skiriamoji geba & 1336x768 & 1336x768 & 1600x900\\
-	Ekrano dydis & 15.6" & 15.6" & 14"\\
-	Vertinimo data & 2013-11-25 & 2013-11-25\\
-	Vertinimo laikas & 18:00- & 18:00-\\
+	Amžius & 21 & 21 & 21 & 21 & 21\\ % inserting body of the table 
+	Lytis & M & V & V & V & V\\
+	OS & Windows 7 & Ubuntu 13.10 & Xubuntu 13.10 & Ubuntu 12.04LTS & Windows 7\\
+	Ekrano spalvos & 32b & 32b & 32b & 32b & 32b\\
+	Skiriamoji geba & 1336x768 & 1336x768 & 1600x900 & 1600x900 & 1336x768\\
+	Ekrano dydis & 15.6" & 15.6" & 14" & 14" & 15.6"\\
+	Vertinimo data & 2013-11-25 & 2013-11-25 & 2013-11-25 & 2013-11-25 & 2013-11-25\\
+	Vertinimo laikas & 18:00-20:00 & 18:00-20:00 & 18:00-20:00 & 18:00-20:00 & 2013-11-25\\
 	\hline %inserts single line 
 	\end{tabular} 
 	\label{table:nonlin} % is used to refer this table in the text 
