@@ -1,4 +1,4 @@
-
+﻿
 a.button {
 	color: lime;
 	background-color: black;
@@ -19,4 +19,14 @@ a.button {
 
 .menu_employee_title {
 	float: right;
+}
+
+.row1 {
+	background-color: DeepSkyBlue;
+	color: black;
+}
+
+.row2 {
+	background-color: LightSkyBlue;
+	color: black;
 }
