@@ -1,5 +1,20 @@
 from xlrd import open_workbook, sheet, cell
+from help_desk import models
 import models
+
+
+def clean_database():
+    models.Service.objects.all().delete()
+    models.Client.objects.all().delete()
+    models.Delegate.objects.all().delete()
+    models.Request.objects.all().delete()
+    models.Assignment.objects.all().delete()
+    models.Contract.objects.all().delete()
+    models.ContractService.objects.all().delete()
+    models.Employee.objects.all().delete()
+
+    models.BaseUser.objects.all().delete()
+
 
 class XLSXImporter:
     
