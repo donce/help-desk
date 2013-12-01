@@ -1,5 +1,6 @@
-{% extends "management/base.html" %}
+{% extends "management/models/base.html" %}
 {% load objects_table %}
-{% block management_content %}
+{% block model_content %}
+<a href="{% url 'help_desk.views.model_add' model %}">Sukurti</a>
 {% objects_table fields objects %}
 {% endblock %}

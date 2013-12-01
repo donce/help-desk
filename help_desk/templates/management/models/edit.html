@@ -1,5 +1,5 @@
-{% extends "management/base.html" %}
-{% block management_content %}
+{% extends "management/models/base.html" %}
+{% block model_content %}
 <form method="POST">
     <table>
         {{ form.as_table }}
@@ -9,6 +9,7 @@
             <td>
                 <input type="submit" value="Išsaugoti"/>
             </td>
+        </tr>
     </table>
-    <form>
-        {% endblock %}
+</form>
+{% endblock %}

@@ -148,6 +148,8 @@ def model_add(request, employee, model):
 def model_edit(request, employee, model, instance):
     form = get_form(model, instance)
     return render(request, 'management/models/edit.html', {
+        'model': model,
+        'object': get_model(model).objects.get(id=instance),
         'form': form,
     })
 
