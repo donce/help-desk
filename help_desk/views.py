@@ -98,14 +98,30 @@ def models(request, employee):
         'models': model_types,
     })
 
+MODEL_MANAGEMENT_FIELDS = {
+    'client': [
+        ('title', 'Pavadinimas'),
+        ('address', 'Adresas')
+    ],
+    'employee': [
+
+    ],
+    'contract': [
+
+    ],
+    'service': [
+        
+    ]
+}
 
 @employee_only
 def model_list(request, employee, model):
     objects = get_model(model).objects.all()
-    path = 'management/models/list_' + model + '.html'
-    print 'path:', path
-    return render(request, path, {
+    fields = MODEL_MANAGEMENT_FIELDS[model] if model in MODEL_MANAGEMENT_FIELDS else []
+    print fields
+    return render(request, 'management/models/list_objects.html', {
         'objects': objects,
+        'fields': fields,
         'model': model,
     })
 

@@ -1,0 +1,18 @@
+<table>
+<thead>
+{% for name, title in fields %}
+<th>{{ title }}</th>
+{% endfor %}
+<th></th>
+</thead>
+<tbody>
+{% for object in objects %}
+<tr class="{% cycle 'row1' 'row2' %}">
+    {% for field in object %}
+        <td>{{ field|safe }}</td>
+    {% endfor %}
+        <td>ACTIONS</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>

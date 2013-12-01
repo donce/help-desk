@@ -1,0 +1,5 @@
+{% extends "management/base.html" %}
+{% load objects_table %}
+{% block management_content %}
+{% objects_table fields objects %}
+{% endblock %}
