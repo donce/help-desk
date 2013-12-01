@@ -4,8 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as login_user, logout as logout_user
 from django.http import Http404
 
-from models import BaseUser, Request
+from client.views import home as client_home
 
+from models import BaseUser, Request
 from forms import MODEL_FORMS
 
 
@@ -19,16 +20,10 @@ def employee_only(function):
     return f
 
 
-def register(request):
-    #TODO: remove; add in management
-    print BaseUser.objects.create_client('username3', 'password', 'bendrove', 'adresas')
-
-
 def main(request):
     if request.user.is_employee():
         return redirect(management_home)
-        #TODO: /self-service/ url for clients?
-    return render(request, 'main.html', {})
+    return redirect(client_home)
 
 
 def home(request):

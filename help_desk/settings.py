@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_extensions',
     'help_desk',
+    'client',
     'django.contrib.admin',
     'django.contrib.admindocs',
 )
