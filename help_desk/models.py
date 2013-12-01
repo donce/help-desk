@@ -88,6 +88,8 @@ class Service(models.Model):
 
     def __unicode__(self):
         return self.description
+    def get_absolute_url(self):
+        return reverse('help_desk.views.model_edit', args=('client', self.id))
 
 
 class Client(models.Model):
@@ -172,6 +174,9 @@ class Contract(models.Model):
     start = models.DateField()
     end = models.DateField()
 
+    def get_absolute_url(self):
+        return reverse('help_desk.views.model_edit', args=('contract', self.id))
+
 
 class ContractService(models.Model):
     contract = models.ForeignKey(Contract)
@@ -226,6 +231,9 @@ class Employee(models.Model):
 
     def __unicode__(self):
         return self.title()
+
+    def get_absolute_url(self):
+        return reverse('help_desk.views.model_edit', args=('employee', self.id))
 
     def issues(self):
         return Request.objects.filter(current__worker=self)

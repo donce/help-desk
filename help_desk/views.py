@@ -104,13 +104,23 @@ MODEL_MANAGEMENT_FIELDS = {
         ('address', 'Adresas')
     ],
     'employee': [
-
+        ('first_name', 'Vardas'),
+        ('last_name', u'Pavardė'),
+        ('role', 'Pareigos'),
+        ('phone_number', 'Telefonas'),
+        ('email', u'El. paštas')
     ],
     'contract': [
-
+        ('number', 'Numeris'),
+        ('title', 'Pavadinimas'),
+        ('client', 'Klientas'),
+        ('start', 'Pradžia'),
+        ('end', 'Pabaiga'),
     ],
     'service': [
-        
+        ('description', 'Aprašymas'),
+        ('limit_inc', 'Incidento limitas'),
+        ('limit_req', 'Paklausimo limitas')
     ]
 }
 
