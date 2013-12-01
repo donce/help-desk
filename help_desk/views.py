@@ -1,8 +1,10 @@
 # encoding=utf8
+from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as login_user, logout as logout_user
 from django.http import Http404
+from django.views.generic.edit import DeleteView
 
 from client.views import home as client_home
 
@@ -128,7 +130,6 @@ MODEL_MANAGEMENT_FIELDS = {
 def model_list(request, employee, model):
     objects = get_model(model).objects.all()
     fields = MODEL_MANAGEMENT_FIELDS[model] if model in MODEL_MANAGEMENT_FIELDS else []
-    print fields
     return render(request, 'management/models/list_objects.html', {
         'objects': objects,
         'fields': fields,
@@ -156,7 +157,9 @@ def model_edit(request, employee, model, instance):
 
 @employee_only
 def model_remove(request, employee, model, instance):
-    pass
-
-#TODO: implement
-#confirmation?
+    m = get_model(model)
+    try:
+        m.objects.get(pk=instance).delete()
+    except m.DoesNotExist:
+        raise Http404
+    return redirect(model_list, model)

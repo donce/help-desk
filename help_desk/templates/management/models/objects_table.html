@@ -6,12 +6,14 @@
 <th></th>
 </thead>
 <tbody>
-{% for object in objects %}
+{% for id, object in objects %}
 <tr class="{% cycle 'row1' 'row2' %}">
     {% for field in object %}
         <td>{{ field|safe }}</td>
     {% endfor %}
-        <td>ACTIONS</td>
+        <td>
+            <a href="{% url 'help_desk.views.model_remove' model id %}">Remove</a>
+        </td>
 </tr>
 {% endfor %}
 </tbody>
