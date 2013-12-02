@@ -1,4 +1,84 @@
-﻿
+﻿body {
+    background-color: #D8E2EE;
+}
+
+h1 {
+	color: #001433;
+	text-align: center;
+	text-shadow: 5px 5px 10px #0052CC;
+	font-size: 250%;
+	margin-top: 3%;
+	font-family:"Comic Sans MS";
+}
+
+form.login {
+	color: white;
+	text-align: center;
+	font-size: 150%;
+	font-family:"Comic Sans MS";
+}
+
+input.button {
+
+   border-top: 1px solid #1e445c;
+   background: #78b5de;
+   background: -webkit-linear-gradient(top, #1919FF, #4D4DFF);
+   background: -moz-linear-gradient(top, #1919FF, #4D4DFF);
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-border-radius: 12px;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   border-radius: 8px;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   font-family:"Comic Sans MS";
+   }
+input.button:hover {
+   border-top-color: #0e16ad;
+   background: #0e16ad;
+   color: #f2f2f2;
+   }
+input.button:active {
+   border-top-color: #ffffff;
+   background: #ffffff;
+   }
+
+div.login{
+	margin: auto auto;
+	width: 350px;
+	height: 250px;
+    border-top: 1px solid #1e445c;
+    background: #78b5de;
+    background: -webkit-linear-gradient(top, #175178, #78b5de);
+	background: -moz-linear-gradient(top, #175178, #78b5de);
+    padding: 5px 10px;
+    -webkit-border-radius: 8px;
+	-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	-moz-border-radius: 12px;
+	-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	border-radius: 8px;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle;
+	display: -webkit-box;
+-webkit-box-pack:center;
+-webkit-box-align:center;
+-webkit-box-sizing: content-box;
+-moz-box-pack:center;
+-moz-box-align:center;
+-moz-box-sizing: content-box;
+}
+
 a.button {
 	color: lime;
 	background-color: black;
