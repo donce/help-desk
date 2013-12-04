@@ -107,7 +107,7 @@ div.login{
    text-decoration: none;
    vertical-align: middle;
    }
-.menu_item:active  {
+.menu_item_active {
    background: -webkit-linear-gradient(top, #0b073b, #65a9d7);
    background: -webkit-linear-gradient(top, #0b073b, #65a9d7);
    }

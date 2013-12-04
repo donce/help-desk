@@ -27,10 +27,10 @@ models_patterns = patterns('help_desk.views',
 )
 
 management_patterns = patterns('help_desk.views',
-                               url(r'^$', 'management_home'),
-                               url(r'^manage_issues/', include(manage_issues_patterns)),
-                               url(r'^solve_issues/', include(solve_issues_patterns)),
-                               url(r'^models/', include(models_patterns)),
+                               url(r'^$', 'management_home', {'tab': 'main'}),
+                               url(r'^manage_issues/', include(manage_issues_patterns), {'tab': 'manage_issues'}),
+                               url(r'^solve_issues/', include(solve_issues_patterns), {'tab': 'solve_issues'}),
+                               url(r'^models/', include(models_patterns), {'tab': 'models'}),
 )
 
 

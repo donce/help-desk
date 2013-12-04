@@ -4,27 +4,27 @@
 <hr/>
 <div class="menu">
     <a href="{% url 'help_desk.views.management_home' %}">
-<span class="menu_item">
+<span class="menu_item{% if tab == 'main' %} menu_item_active{% endif %}">
 Pagrindinis
 </span>
     </a>
     {% if user.employee.can_solve_issues %}
     <a href="{% url 'help_desk.views.solve_issues' %}">
-<span class="menu_item">
+<span class="menu_item{% if tab == 'solve_issues' %} menu_item_active{% endif %}">
 Spręsti kreipinius
 </span>
     </a>
     {% endif %}
     {% if user.employee.can_manage_issues %}
     <a href="{% url 'help_desk.views.manage_issues' %}">
-<span class="menu_item">
+<span class="menu_item{% if tab == 'manage_issues' %} menu_item_active{% endif %}">
 Tvarkyti kreipinius
 </span>
     </a>
     {% endif %}
     {% if user.employee.can_manage_models %}
     <a href="{% url 'help_desk.views.models' %}">
-<span class="menu_item">
+<span class="menu_item{% if tab == 'models' %} menu_item_active{% endif %}">
 Tvarkyti registrus
 </span>
     </a>
