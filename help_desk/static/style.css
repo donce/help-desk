@@ -177,3 +177,9 @@ tr.row2 {
 a.create {
 	font-family:"Comic Sans MS";
 }
+
+.radio_kreipiniai {
+	font-family:"Comic Sans MS";
+	color: #001433;
+	font-size: 125%;
+}
