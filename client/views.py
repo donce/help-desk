@@ -1,21 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
-def home(request):
-    return render(request, 'client/home.html', {})
+def home(request, tab):
+    return redirect(issues)
 
 
-def issues(request):
-    return render(request, 'client/home.html', {})
+def issues(request, tab):
+    return render(request, 'client/issues.html', {
+        'tab': tab,
+    })
 
 
-def services(request):
-    return render(request, 'client/home.html', {})
+def services(request, tab):
+    return render(request, 'client/services.html', {
+        'tab': tab,
+    })
 
 
-def contracts(request):
-    return render(request, 'client/home.html', {})
+def contracts(request, tab):
+    return render(request, 'client/contracts.html', {
+        'tab': tab,
+    })
 
 
-def information(request):
-    return render(request, 'client/home.html', {})
+def information(request, tab):
+    return render(request, 'client/information.html', {
+        'tab': tab,
+    })

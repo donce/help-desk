@@ -1,9 +1,31 @@
+{% extends 'base.html' %}
 <html>
 <head>
-    <title>Help-desk savitarnos svetainė</title>
-</head>
-<body>
+{% block title %}Help-desk savitarnos svetainė{% endblock %}
 {% block content %}
+<div class="menu">
+    <a href="{% url 'client.views.issues' %}">
+        <span class="menu_item{% if tab == 'issues' %} menu_item_active{% endif %}">
+        Kreipiniai
+        </span>
+    </a>
+    <a href="{% url 'client.views.services' %}">
+        <span class="menu_item{% if tab == 'services' %} menu_item_active{% endif %}">
+        Paslaugos
+        </span>
+    </a>
+    <a href="{% url 'client.views.contracts' %}">
+        <span class="menu_item{% if tab == 'contracts' %} menu_item_active{% endif %}">
+        Sutartys
+        </span>
+    </a>
+    <a href="{% url 'client.views.information' %}">
+        <span class="menu_item{% if tab == 'information' %} menu_item_active{% endif %}">
+        Informacija
+        </span>
+    </a>
+</div>
+<hr />
+{% block client_content %}
 {% endblock %}
-</body>
-</html>
+{% endblock %}
