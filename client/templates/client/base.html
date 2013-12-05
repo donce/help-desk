@@ -23,7 +23,11 @@
         <span class="menu_item{% if tab == 'information' %} menu_item_active{% endif %}">
         Informacija
         </span>
-    </a>
+    </a><span class="menu_employee_title">
+    {{ user.client.title }}
+    <a class="menu_item" href="{% url 'help_desk.views.logout' %}">Atsijungti</a>
+    </span>
+
 </div>
 <hr />
 {% block client_content %}

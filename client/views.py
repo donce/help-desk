@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 
-def home(request, tab):
+def home(request):
     return redirect(issues)
 
 
