@@ -188,3 +188,10 @@ def model_remove(request, employee, tab, model, instance):
     except m.DoesNotExist:
         raise Http404
     return redirect(model_list, model)
+
+@tab
+@employee_only
+def administration(request, employee, tab):
+    return render(request, 'management/administration.html', {
+        'tab': tab,
+    })

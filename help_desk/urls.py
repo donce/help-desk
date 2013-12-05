@@ -26,16 +26,20 @@ models_patterns = patterns('help_desk.views',
                            url(r'^$', 'models'),
 )
 
+administration_patterns = patterns('help_desk.views',
+                                   url(r'$', 'administration'),
+                                   )
+
 management_patterns = patterns('help_desk.views',
                                url(r'^$', 'management_home', {'tab': 'main'}),
                                url(r'^manage_issues/', include(manage_issues_patterns), {'tab': 'manage_issues'}),
                                url(r'^solve_issues/', include(solve_issues_patterns), {'tab': 'solve_issues'}),
                                url(r'^models/', include(models_patterns), {'tab': 'models'}),
+                               url(r'^administration/', include(administration_patterns), {'tab': 'administration'}),
 )
 
 
 urlpatterns = patterns('',
-                       # Examples:
                        url(r'^$', 'help_desk.views.home', name='home'),
                        url(r'^logout/$', 'help_desk.views.logout', name='logout'),
 
