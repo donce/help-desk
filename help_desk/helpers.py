@@ -17,20 +17,20 @@ def clean_database():
 
 
 class XLSXImporter:
-    
-    def importXLSX(self, filename):
+    def import_xlsx(self, filename):
         book = open_workbook(filename)
-        
-        sheetPaslaugos = book.sheet_by_name("Paslaugos")
-        sheetDarbuotojai = book.sheet_by_name("Darbuotojai")
-        sheetKlientai = book.sheet_by_name("Klientai")
-        sheetAtstovai = book.sheet_by_name("Atstovai")
-        sheetSutartys = book.sheet_by_name("Sutartys")
-        sheetSutPasl = book.sheet_by_name("SutPasl")
-        sheetKreipiniai = book.sheet_by_name("Kreipiniai")
-        sheetPaskyrimai = book.sheet_by_name("Paskyrimai")
-        
-    def parsePaslaugos(self, sheet):
+
+        sheet_paslaugos = book.sheet_by_name("Paslaugos")
+        sheet_darbuotojai = book.sheet_by_name("Darbuotojai")
+        sheet_klientai = book.sheet_by_name("Klientai")
+        sheet_atstovai = book.sheet_by_name("Atstovai")
+        sheet_sutartys = book.sheet_by_name("Sutartys")
+        sheet_sut_pasl = book.sheet_by_name("SutPasl")
+        sheet_kreipiniai = book.sheet_by_name("Kreipiniai")
+        sheet_paskyrimai = book.sheet_by_name("Paskyrimai")
+
+
+    def parse_paslaugos(self, sheet):
         for i in range(sheet.nrows):
             service.description = sheet.cell(i, B)
             print service.description # TODO: remove
