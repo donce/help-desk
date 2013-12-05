@@ -71,6 +71,14 @@ def management_home(request, employee, tab):
 @employee_only
 def solve_issues(request, employee, tab):
     requests = employee.issues()
+
+    filter = ''
+    if request.method == 'GET' and 'filter' in request.GET:
+        filter = request.GET['filter']
+    if filter != 'open' and filter != 'solved':
+        filter = 'all'
+    print filter
+
     return render(request, 'management/solve_issues.html', {
         'requests': requests,
         'tab': tab,
