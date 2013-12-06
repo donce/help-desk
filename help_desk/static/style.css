@@ -208,7 +208,7 @@ a.create {
 }
 
 .naujas_kreipinys_button {
-	margin-left: 51%; 	
+	margin-left: 50.5%; 	
 }
 
 input[value="Naujas kreipinys"] {
@@ -219,15 +219,12 @@ input[value="Naujas kreipinys"]:hover {
 	background:#002E3D;
 }
 
-.naujas_kreipinys {
+.issue {
 	width: 49%;
 	float:right;
 	font-family:"Comic Sans MS";
 	color:white;
 	margin-top: 1%;
-}
-
-.box_outset {
 	border-style:outset;
 	background-color: #004C66;
 	height:85%;
@@ -235,7 +232,6 @@ input[value="Naujas kreipinys"]:hover {
 	border-left-color: #008AB8;
 	border-right-color: #004C66;
 	border-top-color: #008AB8;
-
 }
 
 input[name=tema], textarea{
@@ -251,14 +247,14 @@ textarea {
 	height: 75%;
 }
 
-input[value="Siųsti"] {
+.button.klientas {
 	float: right;
 	margin-top: 3.5%;
 	margin-right: 5%;
 	background: -webkit-linear-gradient(top, #002E3D, #33ADD6);	width:20%;
 }
 
-input[value="Siųsti"]:hover {
+.button.klientas:hover {
 	background:#002E3D;
 }
 .pasirinkti_paslauga {
@@ -277,7 +273,11 @@ div.vid {
 	margin-left:5%;
 }
 
-
+.pasirinkimas {
+	font-size:90%;
+	font-family: "Times New Roman", Times, serif;
+	color:silver;
+}
 
 
 
