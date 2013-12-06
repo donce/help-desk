@@ -1,4 +1,60 @@
-{% extends 'client/base.html' %}
+﻿{% extends 'client/base.html' %}
 {% block client_content %}
-Kreipiniai
+<div class="naujas_kreipinys_button">
+	<input class="button" type="submit" value="Naujas kreipinys"/>
+</div>
+<table class="klientas_kreipiniai" border="1">
+	<thead>
+		<tr>
+			<th>Kreipinys</th>
+			<th class="labai_trumpas">Tipas</th>
+			<th class="trumpas" >Paslauga</th>
+			<th class="labai_trumpas">Atsakyta</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="{% cycle 'row1' 'row2' %}">
+
+			<td>
+			<!--gauti kreipini-->
+			</td>
+			<td>
+			<!--gauti kreipinio tipa-->
+			</td>
+			<td>
+			<!--gauti paslauga-->
+			</td>
+			<td>
+			<!--ar gautas atsakymas?-->
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="naujas_kreipinys">
+	<div class="box_outset">
+	<div class="vid">
+		Tema</br>
+		<input type="text" name="tema"/></br>
+		Dėstymas</br>
+		<textarea></textarea></br>	
+		<div class="pasirinkti_paslauga">
+		Paslauga</br>
+		<!--Sudeti kaip pavyzdys, reiks uzkrauti is duombazes galimas paslaugas-->
+		<select>
+			<option>Nuotolinis serveris</option>
+			<option>Kopijavimo programa</option>
+			<option>Naujokų instrukcija</option>
+		</select>
+		</div>
+		<div class="pasirinkti_tipa">
+		Tipas</br>
+		<select>
+			<option>INC</option>
+			<option>REQ</option>
+		</select>
+		</div>
+		<input class="button" type="submit" value="Siųsti"/></div>
+	</div>
+</div>
 {% endblock %}

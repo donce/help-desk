@@ -2,7 +2,7 @@
     background-color: #D8E2EE;
 }
 
-h1 {
+h1{
 	color: #001433;
 	text-align: center;
 	text-shadow: 5px 5px 10px #0052CC;
@@ -25,6 +25,7 @@ form.login {
    background: #78b5de;
    background: -webkit-linear-gradient(top, #1919FF, #4D4DFF);
    background: -moz-linear-gradient(top, #1919FF, #4D4DFF);
+   background: -ms-linear-gradient(top, #1919FF, #4D4DFF);
    padding: 5px 10px;
    -webkit-border-radius: 8px;
    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
@@ -59,6 +60,7 @@ div.login{
     background: #78b5de;
     background: -webkit-linear-gradient(top, #175178, #78b5de);
 	background: -moz-linear-gradient(top, #175178, #78b5de);
+	background: -ms-linear-gradient(top, #175178, #78b5de);
     padding: 5px 10px;
     -webkit-border-radius: 8px;
 	-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
@@ -92,6 +94,7 @@ div.login{
    background: #65a9d7;
    background: -webkit-linear-gradient(top, #65a9d7, #0b073b);
    background: -moz-linear-gradient(top, #65a9d7, #0b073b);
+   background: -ms-linear-gradient(top, #65a9d7, #0b073b);
    padding: 5px 10px;
    -webkit-border-radius: 8px;
    -moz-border-radius: 8px;
@@ -109,7 +112,6 @@ div.login{
    }
 .menu_item_active {
    background: -webkit-linear-gradient(top, #0b073b, #65a9d7);
-   background: -webkit-linear-gradient(top, #0b073b, #65a9d7);
    }
    
 .menu_item:hover  {
@@ -117,7 +119,10 @@ div.login{
    background: #0e1133;
    color: #ffffff;
    }
-   
+
+.menu_employee_title {
+	margin-top: -0.35%;
+}   
 .menu_employee_title {
 	float: right;
 }
@@ -154,7 +159,7 @@ table.create tr {
 
 td, th {
 	font-size: 1em;
-	border: 1px solid #0000FF;
+	border: 1px solid #002E3D;
 	padding: 3px 7px 2px 7px;
 }
 th {
@@ -162,7 +167,7 @@ th {
 	text-align: left;
 	padding-top: 5px;
 	padding-bottom: 4px;
-	background-color: #3333FF;
+	background-color: #004C66;
 	color: #ffffff;
 }
 tr.row1 {
@@ -183,3 +188,97 @@ a.create {
 	color: #001433;
 	font-size: 125%;
 }
+
+.klientas_kreipiniai {
+	width: 50%;
+	margin-top: 1%;
+	float:left;
+}
+
+.ilgas {
+	width: 50%;
+}
+
+.labai_trumpas {
+	width: 10%;
+}
+
+.trumpas {
+	width: 20%;
+}
+
+.naujas_kreipinys_button {
+	margin-left: 51%; 	
+}
+
+input[value="Naujas kreipinys"] {
+	background: -webkit-linear-gradient(top, #002E3D, #33ADD6);
+}
+
+input[value="Naujas kreipinys"]:hover {
+	background:#002E3D;
+}
+
+.naujas_kreipinys {
+	width: 49%;
+	float:right;
+	font-family:"Comic Sans MS";
+	color:white;
+	margin-top: 1%;
+}
+
+.box_outset {
+	border-style:outset;
+	background-color: #004C66;
+	height:85%;
+	border-bottom-color: #004C66;
+	border-left-color: #008AB8;
+	border-right-color: #004C66;
+	border-top-color: #008AB8;
+
+}
+
+input[name=tema], textarea{
+	width:95%;
+    background-color: white;
+    border:solid 1px #BFBDBD;
+    padding-left:10px;
+    box-shadow: 2px 2px 0 #828181 inset;
+    font-family:"Comic Sans MS";
+}
+
+textarea {
+	height: 75%;
+}
+
+input[value="Siųsti"] {
+	float: right;
+	margin-top: 3.5%;
+	margin-right: 5%;
+	background: -webkit-linear-gradient(top, #002E3D, #33ADD6);	width:20%;
+}
+
+input[value="Siųsti"]:hover {
+	background:#002E3D;
+}
+.pasirinkti_paslauga {
+	width: 30%;
+	float: left;
+	margin-top: 1.5%;
+}
+
+.pasirinkti_tipa {
+	width: 10%;
+	float:left;
+	margin-top: 1.5%;
+}
+
+div.vid {
+	margin-left:5%;
+}
+
+
+
+
+
+

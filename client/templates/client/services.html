@@ -1,4 +1,21 @@
-{% extends 'client/base.html' %}
+﻿{% extends 'client/base.html' %}
 {% block client_content %}
-Paslaugos
+<table border="1">
+	<thead>
+		<tr>
+			<th class="trumpas">Paslauga</th>
+			<th>Aprašymas</th>
+		</tr>
+	</thead>
+	<tbody>    
+		<tr class="{% cycle 'row1' 'row2' %}">
+			<td>
+			<!--gauti paslauga-->
+			</td>
+			<td>
+			<!--gauti aprasyma-->
+			</td>
+		</tr>
+	</tbody>
+</table>
 {% endblock %}
