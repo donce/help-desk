@@ -7,6 +7,7 @@ from django.http import Http404
 from django.views.generic.edit import DeleteView
 
 from client.views import home as client_home
+from help_desk.forms import ImportForm
 
 from models import BaseUser, Request
 from forms import MODEL_FORMS
@@ -202,4 +203,5 @@ def model_remove(request, employee, tab, model, instance):
 def administration(request, employee, tab):
     return render(request, 'management/administration.html', {
         'tab': tab,
+        'import_form': ImportForm(),
     })

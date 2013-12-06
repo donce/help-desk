@@ -33,11 +33,7 @@ $(document).ready(function() {
 });
 </script>
 -->
-<input type="text" class="file_input_textbox" readonly="readonly" value='aaaaa'>
-<div class="file_input_div">
-    <input type="button" value="Failas" class="button file_input_button" />
-    <input type="file" name="uploaded_file" class="file_input_hidden"/>
-</div>
+{{ import_form.as_p }}
 <input class="button importuoti" type="submit" value="Importuoti"/>
 {% endblock %}
 

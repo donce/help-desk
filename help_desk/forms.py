@@ -1,24 +1,25 @@
-from django.forms import ModelForm
+from django import forms
+from django.forms import fields
 
 from models import Service, Client, Employee, Contract
 
 
-class ServiceForm(ModelForm):
+class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
 
 
-class ClientForm(ModelForm):
+class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
 
 
-class EmployeeForm(ModelForm):
+class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
 
 
-class ContractForm(ModelForm):
+class ContractForm(forms.ModelForm):
     class Meta:
         model = Contract
 
@@ -29,3 +30,7 @@ MODEL_FORMS = {
     'employee': EmployeeForm,
     'contract': ContractForm,
 }
+
+
+class ImportForm(forms.Form):
+    file = fields.FileField(label='Failas')
