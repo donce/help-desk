@@ -1,7 +1,43 @@
 {% extends "management/base.html" %}
 {% block tab_title %}Administracija{% endblock %}
 {% block management_content %}
-Išvalyti
-<hr />
-Importuoti
+<input class="button" type="submit" value="Išvalyti duomenis"/>
+<hr/>
+<h2>Importuoti struktūrą</h2></br>
+
+<!--Padarius sita turi normaliai veikti importavimas, bet nezinau kur reikia imesti jquery-1.8.2.min.js failiuka
+
+<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+  $('.file_input_button').mouseover(function(){
+          $(this).addClass('file_input_button_hover');
+    });
+
+  $('.file_input_button').mouseout(function(){
+        $(this).removeClass('file_input_button_hover');
+    });
+
+  $('.file_input_hidden').change(function(){
+
+        var fileInputVal = $(this).val();
+
+        fileInputVal = fileInputVal.replace("C:\\fakepath\\", "");
+
+        $(this).parent().prev().val(fileInputVal);
+
+    });
+});
+</script>
+-->
+<input type="text" class="file_input_textbox" readonly="readonly" value='aaaaa'>
+<div class="file_input_div">
+    <input type="button" value="Failas" class="button file_input_button" />
+    <input type="file" name="uploaded_file" class="file_input_hidden"/>
+</div>
+<input class="button importuoti" type="submit" value="Importuoti"/>
 {% endblock %}
+
