@@ -33,7 +33,10 @@ $(document).ready(function() {
 });
 </script>
 -->
+<form action="{% url 'help_desk.views.import_database' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
 {{ import_form.as_p }}
 <input class="button importuoti" type="submit" value="Importuoti"/>
+</form>
 {% endblock %}
 

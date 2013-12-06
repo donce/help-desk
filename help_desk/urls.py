@@ -27,8 +27,9 @@ models_patterns = patterns('help_desk.views',
 )
 
 administration_patterns = patterns('help_desk.views',
-                                   url(r'$', 'administration'),
-                                   )
+                                   url(r'^$', 'administration'),
+                                   url(r'import/$', 'import_database'),
+)
 
 management_patterns = patterns('help_desk.views',
                                url(r'^$', 'management_home', {'tab': 'main'}),

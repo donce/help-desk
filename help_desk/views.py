@@ -1,15 +1,13 @@
 # encoding=utf8
-from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as login_user, logout as logout_user
 from django.http import Http404
-from django.views.generic.edit import DeleteView
 
 from client.views import home as client_home
 from help_desk.forms import ImportForm
 
-from models import BaseUser, Request
+from models import Request
 from forms import MODEL_FORMS
 
 
@@ -198,6 +196,7 @@ def model_remove(request, employee, tab, model, instance):
         raise Http404
     return redirect(model_list, model)
 
+
 @tab
 @employee_only
 def administration(request, employee, tab):
@@ -205,3 +204,15 @@ def administration(request, employee, tab):
         'tab': tab,
         'import_form': ImportForm(),
     })
+
+
+@tab
+@employee_only
+def import_database(request, employee, tab):
+    if request.method == 'POST':
+        form = ImportForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['file']
+            print file
+            # XLSXImporter.import_xlsx(file)
+    return redirect(administration)
