@@ -1,5 +1,4 @@
 from xlrd import open_workbook, sheet, cell
-from help_desk import models
 import models
 
 
@@ -32,6 +31,47 @@ class XLSXImporter:
         
     def parsePaslaugos(self, sheet):
         for i in range(sheet.nrows):
-            service.description = sheet.cell(i, B)
-            print service.description # TODO: remove
-            # TODO: fix models / think how to map everything to models
+            description = sheet.cell(i, 2)
+            limit_inc = sheet.cell(i, 3)
+            limit_req = sheet.cell(i, 4)
+            service = Service(description=description, limit_inc=limit_inc, limit_req=limit_req)
+            service.save()
+            
+    def parseDarbuotojai(self, sheet):
+        for i in range(sheet.nrows):
+            first_name = sheet.cell(i,2)
+            last_name = sheet.cell(i,3)
+            role = sheet.cell(i,4)
+            phone_number = sheet.cell(i,5)
+            email = sheet.cell(i,6)
+            
+            if role == 'I':
+                role = ROLE_ENGINEER
+            elif role == 'V':
+                role = ROLE_MANAGER
+            elif role == 'A':
+                role = ROLE_ADMINISTRATOR
+            
+            # TODO : user ???
+            employee = Employee(first_name=first_name, last_name=last_name, role=role, phone_number=phone_number, email=email)
+            employee.save()
+            
+    def parseKlientai(self, sheet):
+        for i in range(sheet.nrows):
+            title = sheet.cell(i,2)
+            address = sheet.cell(i,3)
+            
+            # TODO : user ???
+            client = Client(title=title, address=address)
+            client.save()
+            
+    def parseAtstovai(self, sheet):
+        client = sheet.cell(i,2)
+        first_name = sheet.cell(i,3)
+        last_name = sheet.cell(i,4)
+        phone_number = sheet.cell(i,5)
+        email = sheet.cell(i,6)
+        active = sheet.cell(i,7)
+            
+            
+            
