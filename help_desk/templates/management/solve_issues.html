@@ -16,22 +16,22 @@
 		</tr>
 	</thead>
 	<tbody>
-    {% for request in requests %}
+    {% for issue in issues %}
 		<tr class="{% cycle 'row1' 'row2' %}">
 			<td>
 				<a href="/management/client/">
-					{{ request.client }}
+					{{ issue.client }}
 				</a>
 			</td>
 			<!--<td>
-				{{ request.get_receive_type_display }}
+				{{ issue.get_receive_type_display }}
 			</td>-->
 			<td>
 			<!--gauti kreipinio tipa-->
 			</td>
 			<td>
 				<a href="">
-					{{ request.service }}
+					{{ issue.service }}
 				</a>
 			</td>
 			<td>

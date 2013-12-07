@@ -7,7 +7,7 @@ def clean_database():
     models.Service.objects.all().delete()
     models.Client.objects.all().delete()
     models.Delegate.objects.all().delete()
-    models.Request.objects.all().delete()
+    models.Issue.objects.all().delete()
     models.Assignment.objects.all().delete()
     models.Contract.objects.all().delete()
     models.ContractService.objects.all().delete()

@@ -35,7 +35,7 @@
 
 <form action="{% url 'client.views.create_issue' %}" method="post">
 {% csrf_token %}
-{{ client_request_form.as_p }}
+{{ client_issue_form.as_p }}
 <input type="submit" value="Siųsti"/>
 </form>
 

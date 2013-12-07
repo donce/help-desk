@@ -113,44 +113,43 @@ class Delegate(models.Model):
     active = models.BooleanField(default=True)
 
 
-#TODO: rename request model
-REQUEST_TYPE_INCIDENT = 'INC'
-REQUEST_TYPE_REQUEST = 'REQ'
+ISSUE_TYPE_INCIDENT = 'INC'
+ISSUE_TYPE_REQUEST = 'REQ'
 
-REQUEST_TYPE_CHOICES = (
-    (REQUEST_TYPE_INCIDENT, 'Incident'),
-    (REQUEST_TYPE_REQUEST, 'Request'),
+ISSUE_TYPE_CHOICES = (
+    (ISSUE_TYPE_INCIDENT, 'Incident'),
+    (ISSUE_TYPE_REQUEST, 'Request'),
 )
 
-REQUEST_RECEIVE_TYPE_CHOICES = (
+ISSUE_RECEIVE_TYPE_CHOICES = (
     ('phone', 'Telefonu'),
     ('email', 'El. paštu'),
     ('website', 'Savitarnos svetainėje'),
 )
 
 #TODO: add statuses
-REQUEST_STATUS_CHOICES = (
+ISSUE_STATUS_CHOICES = (
     ('solved', 'Solved'),
     ('rejected', 'Rejected'),
 )
 
 
-class Request(models.Model):
+class Issue(models.Model):
     client = models.ForeignKey(Client)
     service = models.ForeignKey(Service, verbose_name='Paslauga')
-    type = models.CharField('Tipas', choices=REQUEST_TYPE_CHOICES, max_length=255)
-    receive_type = models.CharField(choices=REQUEST_RECEIVE_TYPE_CHOICES, max_length=255)
+    type = models.CharField('Tipas', choices=ISSUE_TYPE_CHOICES, max_length=255)
+    receive_type = models.CharField(choices=ISSUE_RECEIVE_TYPE_CHOICES, max_length=255)
     title = models.CharField('Pavadinimas', max_length=255)
     text = models.TextField('Tekstas')
     created = models.DateTimeField(auto_now_add=True)
     closed = models.DateTimeField(null=True)
-    status = models.CharField(choices=REQUEST_STATUS_CHOICES, max_length=255)
+    status = models.CharField(choices=ISSUE_STATUS_CHOICES, max_length=255)
     rating = models.PositiveIntegerField(null=True)
     current = models.ForeignKey('Assignment', related_name='current', null=True)
-    previous = models.ForeignKey('Request', null=True)#TODO: purpose of this?
+    previous = models.ForeignKey('Issue', null=True)#TODO: purpose of this?
 
     def assign(self, assigned, worker):
-        assignment = Assignment.objects.create(request=self, assigned=assigned, worker=worker)
+        assignment = Assignment.objects.create(issue=self, assigned=assigned, worker=worker)
         #if (self.current)
         #self.current.end = NOW
         self.current = assignment
@@ -158,7 +157,7 @@ class Request(models.Model):
 
 
 class Assignment(models.Model):
-    request = models.ForeignKey('Request')
+    issue = models.ForeignKey('Issue')
     assigned = models.ForeignKey('Employee', related_name='assigned')
     worker = models.ForeignKey('Employee', related_name='working')
     start = models.DateTimeField(auto_now_add=True)
@@ -240,4 +239,4 @@ class Employee(models.Model):
         return reverse('help_desk.views.model_edit', args=('employee', self.id))
 
     def issues(self):
-        return Request.objects.filter(current__worker=self)
+        return Issue.objects.filter(current__worker=self)

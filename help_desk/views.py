@@ -7,7 +7,7 @@ from django.http import Http404
 from client.views import home as client_home
 from help_desk.forms import ImportForm
 
-from models import Request
+from models import Issue
 from forms import MODEL_FORMS
 
 
@@ -69,7 +69,7 @@ def management_home(request, employee, tab):
 @tab
 @employee_only
 def solve_issues(request, employee, tab):
-    requests = employee.issues()
+    issues = employee.issues()
 
     filter = ''
     if request.method == 'GET' and 'filter' in request.GET:
@@ -79,7 +79,7 @@ def solve_issues(request, employee, tab):
     print filter
 
     return render(request, 'management/solve_issues.html', {
-        'requests': requests,
+        'issues': issues,
         'tab': tab,
     })
 
@@ -87,10 +87,10 @@ def solve_issues(request, employee, tab):
 @tab
 @employee_only
 def manage_issues(request, employee, tab):
-    requests = Request.objects.all()
+    issues = Issue.objects.all()
 
     return render(request, 'management/manage_issues.html', {
-        'requests': requests,
+        'issues': issues,
         'tab': tab,
     })
 

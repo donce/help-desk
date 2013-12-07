@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from help_desk.forms import ClientRequestForm
+from help_desk.forms import ClientIssueForm
 
 
 def home(request):
@@ -9,7 +9,7 @@ def home(request):
 def issues(request, tab):
     return render(request, 'client/issues.html', {
         'tab': tab,
-        'client_request_form': ClientRequestForm(),
+        'client_issue_form': ClientIssueForm(),
     })
 
 
