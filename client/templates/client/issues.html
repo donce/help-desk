@@ -33,7 +33,11 @@
 	</tbody>
 </table>
 
-{{ client_request_form }}
+<form action="{% url 'client.views.create_issue' %}" method="post">
+{% csrf_token %}
+{{ client_request_form.as_p }}
+<input type="submit" value="Siųsti"/>
+</form>
 
 <div id="naujas_kreipinys" class="issue">
 	<div class="vid">

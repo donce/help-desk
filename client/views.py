@@ -13,6 +13,11 @@ def issues(request, tab):
     })
 
 
+def create_issue(request, tab):
+    #TODO: implement
+    return redirect(issues)
+
+
 def services(request, tab):
     return render(request, 'client/services.html', {
         'tab': tab,
