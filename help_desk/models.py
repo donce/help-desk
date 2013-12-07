@@ -137,10 +137,11 @@ REQUEST_STATUS_CHOICES = (
 
 class Request(models.Model):
     client = models.ForeignKey(Client)
-    service = models.ForeignKey(Service)
-    type = models.CharField(choices=REQUEST_TYPE_CHOICES, max_length=255)
+    service = models.ForeignKey(Service, verbose_name='Paslauga')
+    type = models.CharField('Tipas', choices=REQUEST_TYPE_CHOICES, max_length=255)
     receive_type = models.CharField(choices=REQUEST_RECEIVE_TYPE_CHOICES, max_length=255)
-    text = models.TextField()
+    title = models.CharField('Pavadinimas', max_length=255)
+    text = models.TextField('Tekstas')
     created = models.DateTimeField(auto_now_add=True)
     closed = models.DateTimeField(null=True)
     status = models.CharField(choices=REQUEST_STATUS_CHOICES, max_length=255)

@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import fields
 
-from models import Service, Client, Employee, Contract
+from models import Service, Client, Employee, Contract, Request
 
 
 class ServiceForm(forms.ModelForm):
@@ -34,3 +34,10 @@ MODEL_FORMS = {
 
 class ImportForm(forms.Form):
     file = fields.FileField(label='Failas')
+
+
+class ClientRequestForm(forms.ModelForm):
+    class Meta:
+        model = Request
+        exclude = ('client', 'receive_type', 'closed', 'status', 'rating',
+                   'current', 'previous')
