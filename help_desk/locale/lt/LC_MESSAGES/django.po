@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-07 06:13-0600\n"
+"POT-Creation-Date: 2013-12-07 06:33-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,10 +91,38 @@ msgstr ""
 msgid "Rating"
 msgstr ""
 
-#: settings.py:9 templates/base.html:9
+#: settings.py:37
+msgid "English"
+msgstr ""
+
+#: settings.py:38
 msgid "Lithuanian"
 msgstr ""
 
 #: templates/management/administration.html:40
 msgid "Import"
 msgstr "Importuoti"
+
+#: templates/management/base.html:9
+msgid "Main"
+msgstr "Pagrindinis"
+
+#: templates/management/base.html:15
+msgid "Solve issues"
+msgstr "Spręsti kreipinius"
+
+#: templates/management/base.html:22
+msgid "Manage issues"
+msgstr "Tvarkyti kreipinius"
+
+#: templates/management/base.html:29
+msgid "Manage registers"
+msgstr "Tvarkyti registrus"
+
+#: templates/management/base.html:36
+msgid "Administration"
+msgstr "Administracija"
+
+#: templates/management/base.html:42
+msgid "Logout"
+msgstr "Atsijungti"

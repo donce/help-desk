@@ -1,44 +1,45 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}Darbuotojo vieta{% endblock %}
 {% block content %}
 <hr/>
 <div class="menu">
     <a href="{% url 'help_desk.views.management_home' %}">
 <span class="menu_item{% if tab == 'main' %} menu_item_active{% endif %}">
-Pagrindinis
+{% trans 'Main' %}
 </span>
     </a>
     {% if user.employee.can_solve_issues %}
     <a href="{% url 'help_desk.views.solve_issues' %}">
 <span class="menu_item{% if tab == 'solve_issues' %} menu_item_active{% endif %}">
-Spręsti kreipinius
+{% trans 'Solve issues' %}
 </span>
     </a>
     {% endif %}
     {% if user.employee.can_manage_issues %}
     <a href="{% url 'help_desk.views.manage_issues' %}">
 <span class="menu_item{% if tab == 'manage_issues' %} menu_item_active{% endif %}">
-Tvarkyti kreipinius
+{% trans 'Manage issues' %}
 </span>
     </a>
     {% endif %}
     {% if user.employee.can_manage_models %}
     <a href="{% url 'help_desk.views.models' %}">
 <span class="menu_item{% if tab == 'models' %} menu_item_active{% endif %}">
-Tvarkyti registrus
+{% trans 'Manage registers' %}
 </span>
     </a>
     {% endif %}
     {% if user.employee.can_administrate %}
     <a href="{% url 'help_desk.views.administration' %}">
 <span class="menu_item{% if tab == 'administration' %} menu_item_active{% endif %}">
-Administracija
+{% trans 'Administration' %}
 </span>
     </a>
     {% endif %}
 <span class="menu_employee_title">
 {{ user.employee.title }}
-<a class="menu_item" href="{% url 'help_desk.views.logout' %}">Atsijungti</a>
+<a class="menu_item" href="{% url 'help_desk.views.logout' %}">{% trans 'Logout' %}</a>
 </span>
 </div>
 <hr/>
