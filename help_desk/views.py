@@ -1,4 +1,4 @@
-# encoding=utf8
+# encoding=utf-8
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as login_user, logout as logout_user

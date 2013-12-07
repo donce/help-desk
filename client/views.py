@@ -1,3 +1,4 @@
+from django.utils.translation import get_language_info
 from django.shortcuts import render, redirect
 from help_desk.forms import ClientIssueForm
 
