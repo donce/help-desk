@@ -1,21 +1,37 @@
-from django.shortcuts import render
+from django.utils.translation import get_language_info
+from django.shortcuts import render, redirect
+from help_desk.forms import ClientIssueForm
 
 
 def home(request):
-    return render(request, 'client/home.html', {})
+    return redirect(issues)
 
 
-def issues(request):
-    return render(request, 'client/home.html', {})
+def issues(request, tab):
+    return render(request, 'client/issues.html', {
+        'tab': tab,
+        'client_issue_form': ClientIssueForm(),
+    })
 
 
-def services(request):
-    return render(request, 'client/home.html', {})
+def create_issue(request, tab):
+    #TODO: implement
+    return redirect(issues)
 
 
-def contracts(request):
-    return render(request, 'client/home.html', {})
+def services(request, tab):
+    return render(request, 'client/services.html', {
+        'tab': tab,
+    })
 
 
-def information(request):
-    return render(request, 'client/home.html', {})
+def contracts(request, tab):
+    return render(request, 'client/contracts.html', {
+        'tab': tab,
+    })
+
+
+def information(request, tab):
+    return render(request, 'client/information.html', {
+        'tab': tab,
+    })

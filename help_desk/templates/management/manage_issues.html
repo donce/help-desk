@@ -1,27 +1,42 @@
 {% extends "management/base.html" %}
+{% block tab_title %}Tvarkyti kreipinius{% endblock %}
 {% block management_content %}
-<h1>Kreipiniai</h1>
+<input type="radio" name="kreipiniai" checked><a class="radio_kreipiniai">Visi</a>
+<input type="radio" name="kreipiniai"><a class="radio_kreipiniai">Priskirti</a>
+<input type="radio" name="kreipiniai"><a class="radio_kreipiniai">Nepriskirti</a>
 <table border="1">
     <tr>
-        <th>Klientas</th>
-        <th>Gavimo būdas</th>
-        <th>Paslauga</th>
+		<th>Klientas</th>
+		<!--<th>Gavimo būdas</th>-->
+		<th>Tipas</th>
+		<th>Paslauga</th>
+		<th>Registravimas</th>
+		<th>Pabaigimas</th>
     </tr>
-    {% for request in requests %}
+    {% for issue in issues %}
     <tr class="{% cycle 'row1' 'row2' %}">
-        <td>
-            <a href="/management/client/">
-                {{ request.client }}
-            </a>
-        </td>
-        <td>
-            {{ request.get_receive_type_display }}
-        </td>
-        <td>
-            <a href="">
-                {{ request.service }}
-            </a>
-        </td>
+		<td>
+			<a href="/management/client/">
+				{{ issue.client }}
+			</a>
+		</td>
+		<!--<td>
+			{{ issue.get_receive_type_display }}
+		</td>-->
+		<td>
+		<!--gauti kreipinio tipa-->
+		</td>
+		<td>
+			<a href="">
+				{{ issue.service }}
+			</a>
+		</td>
+		<td>
+		<!--gauti registravima-->
+		</td>
+		<td>
+		<!--gauti pabaiga-->
+		</td>
     </tr>
     {% endfor %}
 </table>

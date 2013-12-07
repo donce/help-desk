@@ -1,29 +1,44 @@
 {% extends "management/base.html" %}
+{% block tab_title %}Spręsti kreipinius{% endblock %}
 {% block management_content %}
-<h1>Kreipiniai</h1>
+<a href="?filter=all">Visi</a>
+<a href="?filter=solved">Išspręsti</a>
+<a href="?filter=open">Neišspręsti</a>
 <table border="1">
 	<thead>
 		<tr>
 			<th>Klientas</th>
-			<th>Gavimo būdas</th>
+			<!--<th>Gavimo būdas</th>-->
+			<th>Tipas</th>
 			<th>Paslauga</th>
+			<th>Registravimas</th>
+			<th>Pabaigimas</th>
 		</tr>
 	</thead>
 	<tbody>
-    {% for request in requests %}
+    {% for issue in issues %}
 		<tr class="{% cycle 'row1' 'row2' %}">
 			<td>
 				<a href="/management/client/">
-					{{ request.client }}
+					{{ issue.client }}
 				</a>
 			</td>
+			<!--<td>
+				{{ issue.get_receive_type_display }}
+			</td>-->
 			<td>
-				{{ request.get_receive_type_display }}
+			<!--gauti kreipinio tipa-->
 			</td>
 			<td>
 				<a href="">
-					{{ request.service }}
+					{{ issue.service }}
 				</a>
+			</td>
+			<td>
+			<!--gauti registravima-->
+			</td>
+			<td>
+			<!--gauti pabaiga-->
 			</td>
 		</tr>
     {% endfor %}

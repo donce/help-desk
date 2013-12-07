@@ -1,8 +1,10 @@
-# encoding=utf8
+# encoding=utf-8
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.urlresolvers import reverse
 from django.db import models
+
+from django.utils.translation import ugettext_lazy as _
 
 PHONE_NUMBER_MAX_LENGTH = 20
 
@@ -82,9 +84,9 @@ class BaseUser(AbstractBaseUser):
 
 class Service(models.Model):
     #TODO: id - string?
-    description = models.TextField()
-    limit_inc = models.IntegerField()
-    limit_req = models.IntegerField()
+    description = models.TextField(_('Description'))
+    limit_inc = models.IntegerField(_('Incident limit'))
+    limit_req = models.IntegerField(_('Request limit'))
 
     def __unicode__(self):
         return self.description
@@ -94,8 +96,8 @@ class Service(models.Model):
 
 class Client(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    title = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
+    title = models.CharField(_('Title'), max_length=255)
+    address = models.CharField(_('Address'), max_length=255)
 
     def __unicode__(self):
         return self.title
@@ -105,51 +107,51 @@ class Client(models.Model):
 
 
 class Delegate(models.Model):
-    client = models.ForeignKey(Client)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=PHONE_NUMBER_MAX_LENGTH)
-    email = models.CharField(max_length=255)
-    active = models.BooleanField(default=True)
+    client = models.ForeignKey(Client, verbose_name=_('Client'))
+    first_name = models.CharField(_('First name'), max_length=255)
+    last_name = models.CharField(_('Last name'), max_length=255)
+    phone_number = models.CharField(_('Phone number'), max_length=PHONE_NUMBER_MAX_LENGTH)
+    email = models.CharField(_('Email'), max_length=255)
+    active = models.BooleanField(_('Active'), default=True)
 
 
-#TODO: rename request model
-REQUEST_TYPE_INCIDENT = 'INC'
-REQUEST_TYPE_REQUEST = 'REQ'
+ISSUE_TYPE_INCIDENT = 'INC'
+ISSUE_TYPE_REQUEST = 'REQ'
 
-REQUEST_TYPE_CHOICES = (
-    (REQUEST_TYPE_INCIDENT, 'Incident'),
-    (REQUEST_TYPE_REQUEST, 'Request'),
+ISSUE_TYPE_CHOICES = (
+    (ISSUE_TYPE_INCIDENT, 'Incident'),
+    (ISSUE_TYPE_REQUEST, 'Request'),
 )
 
-REQUEST_RECEIVE_TYPE_CHOICES = (
+ISSUE_RECEIVE_TYPE_CHOICES = (
     ('phone', 'Telefonu'),
     ('email', 'El. paštu'),
     ('website', 'Savitarnos svetainėje'),
 )
 
 #TODO: add statuses
-REQUEST_STATUS_CHOICES = (
+ISSUE_STATUS_CHOICES = (
     ('solved', 'Solved'),
     ('rejected', 'Rejected'),
 )
 
 
-class Request(models.Model):
-    client = models.ForeignKey(Client)
-    service = models.ForeignKey(Service)
-    type = models.CharField(choices=REQUEST_TYPE_CHOICES, max_length=255)
-    receive_type = models.CharField(choices=REQUEST_RECEIVE_TYPE_CHOICES, max_length=255)
-    text = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-    closed = models.DateTimeField(null=True)
-    status = models.CharField(choices=REQUEST_STATUS_CHOICES, max_length=255)
-    rating = models.PositiveIntegerField(null=True)
+class Issue(models.Model):
+    client = models.ForeignKey(Client, verbose_name=_('Client'))
+    service = models.ForeignKey(Service, verbose_name=_('Service'))
+    type = models.CharField(_('Type'), choices=ISSUE_TYPE_CHOICES, max_length=255)
+    receive_type = models.CharField(_('Receive type'), choices=ISSUE_RECEIVE_TYPE_CHOICES, max_length=255)
+    title = models.CharField(_('Title'), max_length=255)
+    description = models.TextField(_('Description'))
+    created = models.DateTimeField(_('Created'), auto_now_add=True)
+    closed = models.DateTimeField(_('Closed'), null=True)
+    status = models.CharField(_('Status'), choices=ISSUE_STATUS_CHOICES, max_length=255)
+    rating = models.PositiveIntegerField(_('Rating'), null=True)
     current = models.ForeignKey('Assignment', related_name='current', null=True)
-    previous = models.ForeignKey('Request', null=True)#TODO: purpose of this?
+    previous = models.ForeignKey('Issue', null=True)#TODO: purpose of this?
 
     def assign(self, assigned, worker):
-        assignment = Assignment.objects.create(request=self, assigned=assigned, worker=worker)
+        assignment = Assignment.objects.create(issue=self, assigned=assigned, worker=worker)
         #if (self.current)
         #self.current.end = NOW
         self.current = assignment
@@ -157,7 +159,7 @@ class Request(models.Model):
 
 
 class Assignment(models.Model):
-    request = models.ForeignKey('Request')
+    issue = models.ForeignKey('Issue')
     assigned = models.ForeignKey('Employee', related_name='assigned')
     worker = models.ForeignKey('Employee', related_name='working')
     start = models.DateTimeField(auto_now_add=True)
@@ -226,6 +228,9 @@ class Employee(models.Model):
     def can_manage_models(self):
         return self.is_administrator() or self.is_manager()
 
+    def can_administrate(self):
+        return self.is_administrator() or self.is_manager()
+
     def title(self):
         return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.get_role_display())
 
@@ -236,4 +241,4 @@ class Employee(models.Model):
         return reverse('help_desk.views.model_edit', args=('employee', self.id))
 
     def issues(self):
-        return Request.objects.filter(current__worker=self)
+        return Issue.objects.filter(current__worker=self)

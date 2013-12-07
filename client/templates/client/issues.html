@@ -1,0 +1,107 @@
+﻿{% extends 'client/base.html' %}
+{% block client_content %}
+<div class="naujas_kreipinys_button">
+	<input class="button" type="submit" value="Naujas kreipinys"/>
+	<!--pasalinti kai tik bus galima paspausti ant tikruju atsakytu/neatsakytu kreipiniu
+	<input class="button" type="submit" value="Jeigu neatsakytas kreipinys" onclick="nerodyti(this);"/>
+	<input class="button" type="submit" value="Jeigu atsakytas kreipinys""/>-->
+</div>
+<table class="klientas_kreipiniai" border="1">
+	<thead>
+		<tr>
+			<th>Kreipinys</th>
+			<th class="labai_trumpas">Tipas</th>
+			<th class="trumpas" >Paslauga</th>
+			<th class="labai_trumpas">Atsakymas</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="{% cycle 'row1' 'row2' %}">
+			<td>
+			<!--gauti kreipini-->
+			</td>
+			<td>
+			<!--gauti kreipinio tipa-->
+			</td>
+			<td>
+			<!--gauti paslauga-->
+			</td>
+			<td>
+			<!--ar gautas atsakymas? pavyzdziui sudeti + ten kur atsakyta-->
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<form action="{% url 'client.views.create_issue' %}" method="post">
+{% csrf_token %}
+{{ client_issue_form.as_p }}
+<input type="submit" value="Siųsti"/>
+</form>
+
+<div id="naujas_kreipinys" class="issue">
+	<div class="vid">
+		Tema</br>
+		<input type="text" name="tema"/></br>
+		Dėstymas</br>
+		<textarea></textarea></br>	
+		<div class="pasirinkti_paslauga">
+			Paslauga</br>
+			<!--Sudeti kaip pavyzdys, reiks uzkrauti is duombazes galimas paslaugas-->
+			<select>
+				<option>Nuotolinis serveris</option>
+				<option>Kopijavimo programa</option>
+				<option>Naujokų instrukcija</option>
+			</select>
+		</div>
+		<div class="pasirinkti_tipa">
+			Tipas</br>
+			<select>
+				<option>INC</option>
+				<option>REQ</option>
+			</select>
+		</div>
+		<input class="button klientas" type="submit" value="Siųsti"/>
+	</div>
+</div>
+
+<!--<div id="issiustas_kreipinys" class="issue">
+	<div class="vid">
+		Tema</br>
+		<!--importinti temos pavadinima
+		<input disabled type="text" name="tema"/></br>
+		Dėstymas</br>
+		<!--importinti teksta
+		<textarea disabled></textarea></br>	
+		<div class="pasirinkti_paslauga">
+		Paslauga</br>
+		<!--Sudeti kaip pavyzdys, reiks uzkrauti is duombazes pasirinkta paslauga ir tipa
+		<a class="pasirinkimas">Kopijavimo programa</a>
+		</div>
+		<div class="pasirinkti_tipa">
+		Tipas</br>
+		<a class="pasirinkimas">INC</a>
+		</div>
+	</div>
+</div>
+
+<div id="atsakytas_kreipinys" class="issue">
+	<div class="vid">
+		Tema</br>
+		<!--importinti temos pavadinima
+		<input disabled type="text" name="tema"/></br>
+		Atsakymas</br>
+		<!--importinti atsakyma
+		<textarea disabled></textarea></br>	
+		<div class="pasirinkti_paslauga">
+			Įvertinti atliktą kreipinį</br>
+			<select>
+				<option>1</option><option>2</option><option>3</option><option>4</option>
+				<option>5</option><option>6</option><option>7</option><option>8</option>
+				<option>9</option><option>10</option>
+			</select>
+		</div>
+		<input class="button klientas" type="submit" value="Pateikti"/>
+	</div>
+</div>-->
+{% endblock %}

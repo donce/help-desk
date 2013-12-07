@@ -1,8 +1,8 @@
 #encoding: utf-8
 from django.core.management.base import BaseCommand
 
-from help_desk.models import BaseUser, ROLE_MANAGER, Client, Employee, Request, \
-    Service, REQUEST_TYPE_REQUEST, REQUEST_TYPE_INCIDENT
+from help_desk.models import BaseUser, ROLE_MANAGER, Client, Employee, Issue, \
+    Service, ISSUE_TYPE_REQUEST, ISSUE_TYPE_INCIDENT
 
 
 class Command(BaseCommand):
@@ -24,11 +24,11 @@ class Command(BaseCommand):
                                                      'antanas@antanaitis.lt', '865432101')
 
         service = Service.objects.create(description='Serverių hostingas', limit_inc=5, limit_req=2)
-        request = Request.objects.create(type=REQUEST_TYPE_REQUEST, client=client, receive_type='phone',
+        issues = Issue.objects.create(type=ISSUE_TYPE_REQUEST, client=client, receive_type='phone',
                                          service=service)
         for i in range(10):
-            r = Request.objects.create(type=REQUEST_TYPE_INCIDENT, client=client, receive_type='phone', service=service)
+            r = Issue.objects.create(type=ISSUE_TYPE_INCIDENT, client=client, receive_type='phone', service=service)
             r.assign(employee_b, employee)
 
-        request.assign(employee_b, employee)
-        request.assign(employee, employee_b)
+        issues.assign(employee_b, employee)
+        issues.assign(employee, employee_b)

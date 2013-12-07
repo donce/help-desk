@@ -1,0 +1,43 @@
+{% extends "management/base.html" %}
+{% load i18n %}
+{% block tab_title %}Administracija{% endblock %}
+{% block management_content %}
+<input class="button" type="submit" value="Išvalyti duomenis"/>
+<hr/>
+<h2>Importuoti struktūrą</h2></br>
+
+<!--Padarius sita turi normaliai veikti importavimas, bet nezinau kur reikia imesti jquery-1.8.2.min.js failiuka
+
+<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+  $('.file_input_button').mouseover(function(){
+          $(this).addClass('file_input_button_hover');
+    });
+
+  $('.file_input_button').mouseout(function(){
+        $(this).removeClass('file_input_button_hover');
+    });
+
+  $('.file_input_hidden').change(function(){
+
+        var fileInputVal = $(this).val();
+
+        fileInputVal = fileInputVal.replace("C:\\fakepath\\", "");
+
+        $(this).parent().prev().val(fileInputVal);
+
+    });
+});
+</script>
+-->
+<form action="{% url 'help_desk.views.import_database' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ import_form.as_p }}
+<input type="submit" value="{% trans 'Import' %}"/>
+</form>
+{% endblock %}
+ugn

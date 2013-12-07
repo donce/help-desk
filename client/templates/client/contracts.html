@@ -1,0 +1,25 @@
+﻿{% extends 'client/base.html' %}
+{% block client_content %}
+<table border="1">
+	<thead>
+		<tr>
+			<th class="ilgas">Sutartis</th>
+			<th>Galiojimo pradžia</th>
+			<th>Galiojimo pabaiga</th>
+		</tr>
+	</thead>
+	<tbody>    
+		<tr class="{% cycle 'row1' 'row2' %}">
+			<td>
+			<!--gauti paslauga-->
+			</td>
+			<td>
+			<!--gauti pradzia-->
+			</td>
+			<td>
+			<!--gauti pabaiga-->
+			</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock %}
