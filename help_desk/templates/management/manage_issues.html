@@ -1,16 +1,16 @@
 {% extends "management/base.html" %}
 {% block management_content %}
 <!--sudeti filteriu funkcionaluma-->
-<a class="filter" href="">All</a>
-<a class="filter" href="">Assigned</a>
-<a class="filter" href="">Unassigned</a>
+<a class="filter" href="">{% trans 'All' %}</a>
+<a class="filter" href="">{% trans 'Assigned' %}</a>
+<a class="filter" href="">{% trans 'Unassigned' %}</a>
 <table class="has_filters" border="1">
     <tr>
-		<th>Client</th>
-		<th>Type</th>
-		<th>Service</th>
-		<th>Register</th>
-		<th>End</th>
+		<th>{% trans 'Client' %}</th>
+		<th>{% trans 'Type' %}</th>
+		<th>{% trans 'Service' %}</th>
+		<th>{% trans 'Register' %}</th>
+		<th>{% trans 'End' %}</th>
     </tr>
     {% for issue in issues %}
     <tr class="{% cycle 'row1' 'row2' %}">

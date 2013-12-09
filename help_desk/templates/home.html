@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Pagrindinis{% endblock %}
 {% block content %}
-<h1 class="login">Customer self-service</h1><br/>
+<h1 class="login">{% trans 'Customer self-service' %}</h1><br/>
 <div class="login"><form class="login" action="" method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Login"/>
+    <input type="submit" value="{% trans 'Login' %}"/>
 </form></div>
 {% endblock %}

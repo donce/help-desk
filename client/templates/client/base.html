@@ -4,22 +4,22 @@
 <div class="menu">
     <a href="{% url 'client.views.issues' %}">
         <span class="menu_item{% if tab == 'issues' %} menu_item_active{% endif %}">
-        Issues
+        {% trans 'Issues' %}
         </span>
     </a>
     <a href="{% url 'client.views.services' %}">
         <span class="menu_item{% if tab == 'services' %} menu_item_active{% endif %}">
-        Services
+        {% trans 'Services' %}
         </span>
     </a>
     <a href="{% url 'client.views.contracts' %}">
         <span class="menu_item{% if tab == 'contracts' %} menu_item_active{% endif %}">
-        Contracts
+        {% trans 'Contracts' %}
         </span>
     </a>
     <a href="{% url 'client.views.information' %}">
         <span class="menu_item{% if tab == 'information' %} menu_item_active{% endif %}">
-        Information
+        {% trans 'Information' %}
         </span>
     </a><span class="menu_employee_title">
     {{ user.client.title }}

@@ -1,16 +1,17 @@
 {% extends "management/base.html" %}
+{% block tab_title %}Spresti kreipinius{% endblock %}
 {% block management_content %}
-<a class="filter" href="?filter=all">All</a>
-<a class="filter" href="?filter=solved">Solved</a>
-<a class="filter" href="?filter=open">Unsolved</a>
+<a class="filter" href="?filter=all">{% trans 'All' %}</a>
+<a class="filter" href="?filter=solved">{% trans 'Solved' %}</a>
+<a class="filter" href="?filter=open">{% trans 'Unsolved' %}</a>
 <table class="has_filters" border="1">
 	<thead>
 		<tr>
-			<th>Client</th>
-			<th>Type</th>
-			<th>Service</th>
-			<th>Register</th>
-			<th>End</th>
+			<th>{% trans 'Client' %}</th>
+			<th>{% trans 'Type' %}</th>
+			<th>{% trans 'Service' %}</th>
+			<th>{% trans 'Register' %}</th>
+			<th>{% trans 'End' %}</th>
 		</tr>
 	</thead>
 	<tbody>

@@ -1,15 +1,15 @@
 ﻿{% extends 'client/base.html' %}
 {% block client_content %}
 <div class="naujas_kreipinys_button">
-	<input class="darker" type="submit" value="Naujas kreipinys"/>
+	<input class="darker" type="submit" value="{% trans 'New issue' %}"/>
 </div>
 <table class="klientas_kreipiniai" border="1">
 	<thead>
 		<tr>
-			<th>Issue</th>
-			<th class="labai_trumpas">Type</th>
-			<th class="trumpas" >Service</th>
-			<th class="labai_trumpas">Answer</th>
+			<th>{% trans 'Issue' %}</th>
+			<th class="labai_trumpas">{% trans 'Type' %}</th>
+			<th class="trumpas" >{% trans 'Service' %}</th>
+			<th class="labai_trumpas">{% trans 'Answer' %}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,7 +34,7 @@
 		<form action="{% url 'client.views.create_issue' %}" method="post">
 			{% csrf_token %}
 			{{ client_issue_form.as_p }}
-			<input class="darker klientas" type="submit" value="Send"/>
+			<input class="darker klientas" type="submit" value="{% trans 'Send' %}"/>
 		</form>
 	</div>
 </div>
