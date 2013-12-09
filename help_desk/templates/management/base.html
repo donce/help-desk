@@ -1,45 +1,18 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n menu_item %}
 {% block title %}Darbuotojo vieta{% endblock %}
 {% block content %}
 <hr/>
 <div class="menu">
-    <a href="{% url 'help_desk.views.management_home' %}">
-<span class="menu_item{% if tab == 'main' %} menu_item_active{% endif %}">
-{% trans 'Main' %}
-</span>
-    </a>
-    {% if user.employee.can_solve_issues %}
-    <a href="{% url 'help_desk.views.solve_issues' %}">
-<span class="menu_item{% if tab == 'solve_issues' %} menu_item_active{% endif %}">
-{% trans 'Solve issues' %}
-</span>
-    </a>
-    {% endif %}
-    {% if user.employee.can_manage_issues %}
-    <a href="{% url 'help_desk.views.manage_issues' %}">
-<span class="menu_item{% if tab == 'manage_issues' %} menu_item_active{% endif %}">
-{% trans 'Manage issues' %}
-</span>
-    </a>
-    {% endif %}
-    {% if user.employee.can_manage_models %}
-    <a href="{% url 'help_desk.views.models' %}">
-<span class="menu_item{% if tab == 'models' %} menu_item_active{% endif %}">
-{% trans 'Manage registers' %}
-</span>
-    </a>
-    {% endif %}
-    {% if user.employee.can_administrate %}
-    <a href="{% url 'help_desk.views.administration' %}">
-<span class="menu_item{% if tab == 'administration' %} menu_item_active{% endif %}">
-{% trans 'Administration' %}
-</span>
-    </a>
-    {% endif %}
+{% menu_item 'main' _('Main') 'help_desk.views.management_home' %}
+{% menu_item 'solve_issues' _('Solve issues') 'help_desk.views.solve_issues' 'solve_issues' %}
+{% menu_item 'manage_issues' _('Manage issues') 'help_desk.views.manage_issues' 'manage_issues' %}
+{% menu_item 'models' _('Manage registers') 'help_desk.views.models' 'manage_models' %}
+{% menu_item 'administration' _('Administration') 'help_desk.views.administration' 'administrate' %}
 <span class="menu_employee_title">
 {{ user.employee.title }}
-<a class="menu_item" href="{% url 'help_desk.views.logout' %}">{% trans 'Logout' %}</a>
+{% url 'help_desk.views.logout' as logout_url %}
+{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}
 </span>
 </div>
 <hr/>

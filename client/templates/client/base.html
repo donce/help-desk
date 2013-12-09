@@ -1,31 +1,17 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n menu_item %}
 {% block title %}Help-desk savitarnos svetainė{% endblock %}
 {% block content %}
 <div class="menu">
-    <a href="{% url 'client.views.issues' %}">
-        <span class="menu_item{% if tab == 'issues' %} menu_item_active{% endif %}">
-        {% trans 'Issues' %}
-        </span>
-    </a>
-    <a href="{% url 'client.views.services' %}">
-        <span class="menu_item{% if tab == 'services' %} menu_item_active{% endif %}">
-        {% trans 'Services' %}
-        </span>
-    </a>
-    <a href="{% url 'client.views.contracts' %}">
-        <span class="menu_item{% if tab == 'contracts' %} menu_item_active{% endif %}">
-        {% trans 'Contracts' %}
-        </span>
-    </a>
-    <a href="{% url 'client.views.information' %}">
-        <span class="menu_item{% if tab == 'information' %} menu_item_active{% endif %}">
-        {% trans 'Information' %}
-        </span>
-    </a><span class="menu_employee_title">
-    {{ user.client.title }}
-    <a class="menu_item" href="{% url 'help_desk.views.logout' %}">Logout</a>
-    </span>
+{% menu_item 'issues' _('Issues') 'client.views.issues' %}
+{% menu_item 'services' _('Services') 'client.views.services' %}
+{% menu_item 'contracts' _('Contracts') 'client.views.contracts' %}
+{% menu_item 'information' _('Information') 'client.views.information' %}
+<span class="menu_employee_title">
+{{ user.client.title }}
+{% url 'help_desk.views.logout' as logout_url %}
+{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}
+</span>
 
 </div>
 <hr />

@@ -1,0 +1,6 @@
+{% load i18n %}
+{% if url %}
+<a href="{{ url }}" class="menu_item{% if selected %} menu_item_active{% endif %}">
+{{ title }}
+</a>
+{% endif %}

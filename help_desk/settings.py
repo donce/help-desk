@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'help_desk',
     'client',
+    'common',
     'django.contrib.admin',
     'django.contrib.admindocs',
 )
