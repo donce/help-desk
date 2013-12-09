@@ -35,7 +35,7 @@ class UserManager(BaseUserManager):
 
 
 class BaseUser(AbstractBaseUser):
-    username = models.CharField(max_length=40, unique=True, db_index=True)
+    username = models.CharField(_('Username'), max_length=40, unique=True, db_index=True)
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
