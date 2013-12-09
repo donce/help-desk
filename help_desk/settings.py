@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 TIME_ZONE = 'America/Chicago'
 
 LANGUAGES = (
-    ('en-us', _('English')),
+    ('en', _('English')),
     ('lt', _('Lithuanian')),
 )
 # Language code for this installation. All choices can be found here:
