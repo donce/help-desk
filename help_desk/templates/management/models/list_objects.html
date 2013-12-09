@@ -1,4 +1,5 @@
 {% extends "management/models/base.html" %}
+{% load i18n %}
 {% load objects_table %}
 {% block model_content %}
 <a class="create" href="{% url 'help_desk.views.model_add' model %}">{% trans 'Create' %}</a>
