@@ -1,10 +1,9 @@
 {% extends "management/base.html" %}
 {% load i18n %}
-{% block tab_title %}Administracija{% endblock %}
 {% block management_content %}
-<input type="submit" value="Išvalyti duomenis"/>
+<input type="submit" value="Wipe data"/>
 <hr/>
-<h2>Importuoti struktūrą</h2></br>
+<h2>Import a structure</h2></br>
 
 <form class="import" action="{% url 'help_desk.views.import_database' %}" method="post" enctype="multipart/form-data">
 {% csrf_token %}

@@ -1,18 +1,16 @@
 {% extends "management/base.html" %}
-{% block tab_title %}Spręsti kreipinius{% endblock %}
 {% block management_content %}
-<a class="filter" href="?filter=all">Visi</a>
-<a class="filter" href="?filter=solved">Išspręsti</a>
-<a class="filter" href="?filter=open">Neišspręsti</a>
+<a class="filter" href="?filter=all">All</a>
+<a class="filter" href="?filter=solved">Solved</a>
+<a class="filter" href="?filter=open">Unsolved</a>
 <table class="has_filters" border="1">
 	<thead>
 		<tr>
-			<th>Klientas</th>
-			<!--<th>Gavimo būdas</th>-->
-			<th>Tipas</th>
-			<th>Paslauga</th>
-			<th>Registravimas</th>
-			<th>Pabaigimas</th>
+			<th>Client</th>
+			<th>Type</th>
+			<th>Service</th>
+			<th>Register</th>
+			<th>End</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,9 +21,6 @@
 					{{ issue.client }}
 				</a>
 			</td>
-			<!--<td>
-				{{ issue.get_receive_type_display }}
-			</td>-->
 			<td>
 			<!--gauti kreipinio tipa-->
 			</td>

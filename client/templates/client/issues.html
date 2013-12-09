@@ -6,10 +6,10 @@
 <table class="klientas_kreipiniai" border="1">
 	<thead>
 		<tr>
-			<th>Kreipinys</th>
-			<th class="labai_trumpas">Tipas</th>
-			<th class="trumpas" >Paslauga</th>
-			<th class="labai_trumpas">Atsakymas</th>
+			<th>Issue</th>
+			<th class="labai_trumpas">Type</th>
+			<th class="trumpas" >Service</th>
+			<th class="labai_trumpas">Answer</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,7 +34,7 @@
 		<form action="{% url 'client.views.create_issue' %}" method="post">
 			{% csrf_token %}
 			{{ client_issue_form.as_p }}
-			<input class="darker klientas" type="submit" value="Siųsti"/>
+			<input class="darker klientas" type="submit" value="Send"/>
 		</form>
 	</div>
 </div>

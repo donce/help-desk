@@ -1,18 +1,16 @@
 {% extends "management/base.html" %}
-{% block tab_title %}Tvarkyti kreipinius{% endblock %}
 {% block management_content %}
 <!--sudeti filteriu funkcionaluma-->
-<a class="filter" href="">Visi</a>
-<a class="filter" href="">Priskirti</a>
-<a class="filter" href="">Nepriskirti</a>
+<a class="filter" href="">All</a>
+<a class="filter" href="">Assigned</a>
+<a class="filter" href="">Unassigned</a>
 <table class="has_filters" border="1">
     <tr>
-		<th>Klientas</th>
-		<!--<th>Gavimo būdas</th>-->
-		<th>Tipas</th>
-		<th>Paslauga</th>
-		<th>Registravimas</th>
-		<th>Pabaigimas</th>
+		<th>Client</th>
+		<th>Type</th>
+		<th>Service</th>
+		<th>Register</th>
+		<th>End</th>
     </tr>
     {% for issue in issues %}
     <tr class="{% cycle 'row1' 'row2' %}">
@@ -21,9 +19,6 @@
 				{{ issue.client }}
 			</a>
 		</td>
-		<!--<td>
-			{{ issue.get_receive_type_display }}
-		</td>-->
 		<td>
 		<!--gauti kreipinio tipa-->
 		</td>
