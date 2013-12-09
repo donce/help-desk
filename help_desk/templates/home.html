@@ -2,9 +2,17 @@
 {% load i18n %}
 {% block title %}Pagrindinis{% endblock %}
 {% block content %}
-<h1 class="login">{% trans 'Customer self-service' %}</h1><br/>
-<div class="login"><form class="login" action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="{% trans 'Login' %}"/>
-</form></div>
+    <h1 class="login">{% trans 'Customer self-service' %}</h1><br/>
+    <form class="login" action="" method="post">{% csrf_token %}
+        <div class="login">
+            <table>
+                {{ form.as_table }}
+                <tr>
+                    <td colspan="2" style="text-align: center">
+                        <input type="submit" value="{% trans 'Login' %}"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
 {% endblock %}
