@@ -1,10 +1,10 @@
 {% extends "management/base.html" %}
 {% block tab_title %}Spręsti kreipinius{% endblock %}
 {% block management_content %}
-<a href="?filter=all">Visi</a>
-<a href="?filter=solved">Išspręsti</a>
-<a href="?filter=open">Neišspręsti</a>
-<table border="1">
+<a class="filter" href="?filter=all">Visi</a>
+<a class="filter" href="?filter=solved">Išspręsti</a>
+<a class="filter" href="?filter=open">Neišspręsti</a>
+<table class="has_filters" border="1">
 	<thead>
 		<tr>
 			<th>Klientas</th>

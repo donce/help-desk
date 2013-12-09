@@ -1,10 +1,11 @@
 {% extends "management/base.html" %}
 {% block tab_title %}Tvarkyti kreipinius{% endblock %}
 {% block management_content %}
-<input type="radio" name="kreipiniai" checked><a class="radio_kreipiniai">Visi</a>
-<input type="radio" name="kreipiniai"><a class="radio_kreipiniai">Priskirti</a>
-<input type="radio" name="kreipiniai"><a class="radio_kreipiniai">Nepriskirti</a>
-<table border="1">
+<!--sudeti filteriu funkcionaluma-->
+<a class="filter" href="">Visi</a>
+<a class="filter" href="">Priskirti</a>
+<a class="filter" href="">Nepriskirti</a>
+<table class="has_filters" border="1">
     <tr>
 		<th>Klientas</th>
 		<!--<th>Gavimo būdas</th>-->
