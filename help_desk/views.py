@@ -20,6 +20,7 @@ def employee_only(function):
 
     return f
 
+
 def tab(function):
     def f(request, *args, **kwargs):
         if 'tab' in kwargs:
@@ -29,6 +30,17 @@ def tab(function):
             tab = 'main'
         return function(request, tab, *args, **kwargs)
     return f
+
+
+def get_filter(get, name, options):
+    if name in get:
+        value = get[name]
+        if value not in options:
+            value = options[0]
+    else:
+        value = options[0]
+    return value
+
 
 def main(request):
     if request.user.is_employee():
@@ -70,14 +82,7 @@ def management_home(request, employee, tab):
 @employee_only
 def solve_issues(request, employee, tab):
     issues = employee.issues()
-
-    filter = ''
-    if request.method == 'GET' and 'filter' in request.GET:
-        filter = request.GET['filter']
-    if filter != 'open' and filter != 'solved':
-        filter = 'all'
-    print filter
-
+    filter = get_filter(request.GET, 'filter', ('all', 'open', 'solved'))
     return render(request, 'management/solve_issues.html', {
         'issues': issues,
         'tab': tab,
@@ -88,7 +93,7 @@ def solve_issues(request, employee, tab):
 @employee_only
 def manage_issues(request, employee, tab):
     issues = Issue.objects.all()
-
+    filter = get_filter(request.GET, 'filter', ('all', 'assigned', 'unassigned'))
     return render(request, 'management/manage_issues.html', {
         'issues': issues,
         'tab': tab,
