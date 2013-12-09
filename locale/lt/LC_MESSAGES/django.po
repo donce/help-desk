@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-07 06:33-0600\n"
+"POT-Creation-Date: 2013-12-09 11:55-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,110 +19,114 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: models.py:87 models.py:145
-msgid "Description"
-msgstr "Aprašymas"
+#: client/templates/client/base.html:5
+msgid "Test text"
+msgstr ""
 
-#: models.py:88
+#: help_desk/models.py:87 help_desk/models.py:145
+msgid "Description"
+msgstr ""
+
+#: help_desk/models.py:88
 msgid "Incident limit"
 msgstr ""
 
-#: models.py:89
+#: help_desk/models.py:89
 msgid "Request limit"
 msgstr ""
 
-#: models.py:99 models.py:144
+#: help_desk/models.py:99 help_desk/models.py:144
 msgid "Title"
 msgstr ""
 
-#: models.py:100
+#: help_desk/models.py:100
 msgid "Address"
 msgstr ""
 
-#: models.py:110 models.py:140
+#: help_desk/models.py:110 help_desk/models.py:140
 msgid "Client"
 msgstr ""
 
-#: models.py:111
+#: help_desk/models.py:111
 msgid "First name"
 msgstr ""
 
-#: models.py:112
+#: help_desk/models.py:112
 msgid "Last name"
 msgstr ""
 
-#: models.py:113
+#: help_desk/models.py:113
 msgid "Phone number"
 msgstr ""
 
-#: models.py:114
+#: help_desk/models.py:114
 msgid "Email"
 msgstr ""
 
-#: models.py:115
+#: help_desk/models.py:115
 msgid "Active"
 msgstr ""
 
-#: models.py:141
+#: help_desk/models.py:141
 msgid "Service"
 msgstr ""
 
-#: models.py:142
+#: help_desk/models.py:142
 msgid "Type"
 msgstr ""
 
-#: models.py:143
+#: help_desk/models.py:143
 msgid "Receive type"
 msgstr ""
 
-#: models.py:146
+#: help_desk/models.py:146
 msgid "Created"
 msgstr ""
 
-#: models.py:147
+#: help_desk/models.py:147
 msgid "Closed"
 msgstr ""
 
-#: models.py:148
+#: help_desk/models.py:148
 msgid "Status"
 msgstr ""
 
-#: models.py:149
+#: help_desk/models.py:149
 msgid "Rating"
 msgstr ""
 
-#: settings.py:37
+#: help_desk/settings.py:37
 msgid "English"
 msgstr ""
 
-#: settings.py:38
+#: help_desk/settings.py:38
 msgid "Lithuanian"
 msgstr ""
 
-#: templates/management/administration.html:40
+#: help_desk/templates/management/administration.html:40
 msgid "Import"
-msgstr "Importuoti"
+msgstr ""
 
-#: templates/management/base.html:9
+#: help_desk/templates/management/base.html:10
 msgid "Main"
-msgstr "Pagrindinis"
+msgstr ""
 
-#: templates/management/base.html:15
+#: help_desk/templates/management/base.html:16
 msgid "Solve issues"
-msgstr "Spręsti kreipinius"
+msgstr ""
 
-#: templates/management/base.html:22
+#: help_desk/templates/management/base.html:23
 msgid "Manage issues"
-msgstr "Tvarkyti kreipinius"
+msgstr ""
 
-#: templates/management/base.html:29
+#: help_desk/templates/management/base.html:30
 msgid "Manage registers"
-msgstr "Tvarkyti registrus"
+msgstr ""
 
-#: templates/management/base.html:36
+#: help_desk/templates/management/base.html:37
 msgid "Administration"
-msgstr "Administracija"
+msgstr ""
 
-#: templates/management/base.html:42
+#: help_desk/templates/management/base.html:43
 msgid "Logout"
-msgstr "Atsijungti"
+msgstr ""
