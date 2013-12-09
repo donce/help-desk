@@ -5,6 +5,6 @@
 <h1 class="login">{% trans 'Customer self-service' %}</h1><br/>
 <div class="login"><form class="login" action="" method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input class="login" type="submit" value="{% trans 'Login' %}"/>
+    <input type="submit" value="{% trans 'Login' %}"/>
 </form></div>
 {% endblock %}
