@@ -2,7 +2,7 @@
 from django.core.management.base import BaseCommand
 
 from help_desk.models import BaseUser, ROLE_MANAGER, Client, Employee, Issue, \
-    Service, ISSUE_TYPE_REQUEST, ISSUE_TYPE_INCIDENT
+    Service, ISSUE_TYPE_REQUEST, ISSUE_TYPE_INCIDENT, Delegate
 
 
 class Command(BaseCommand):
@@ -17,7 +17,10 @@ class Command(BaseCommand):
         print 'Creating'
         print 'Sample employee account: admin admin'
         print 'Sample client account: client client'
-        client = BaseUser.objects.create_client('client', 'client', 'UAB "Įmonė"', "Imonės g, Vilnius, Lietuva")
+
+        client = BaseUser.objects.create_client('UAB "Įmonė"', "Imonės g, Vilnius, Lietuva")
+        delegate = BaseUser.objects.create_delegate(client, 'client', 'client', 'Ponas', 'Klientas', '+37061234567')
+
         employee = BaseUser.objects.create_employee('admin', 'admin', 'Petras', 'Petraitis', ROLE_MANAGER,
                                                     'petras@petraitis.lt', '865432100')
         employee_b = BaseUser.objects.create_employee('admin2', 'admin2', 'Antanas', 'Antanaitis', ROLE_MANAGER,

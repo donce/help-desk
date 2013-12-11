@@ -22,10 +22,15 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_client(self, username, password, title, address):
-        user = self.create_user(username, password)
-        client = Client.objects.create(user=user, title=title, address=address)
+    def create_client(self, title, address):
+        client = Client.objects.create(title=title, address=address)
         return client
+
+    def create_delegate(self, client, email, password, first_name, last_name, phone_number):
+        user = self.create_user(email, password)
+        delegate = Delegate.objects.create(client=client, first_name=first_name, last_name=last_name,
+                                           phone_number=phone_number)
+        return delegate
 
     def create_employee(self, username, password, first_name, last_name, role, email, phone_number):
         user = self.create_user(username, password)
@@ -95,7 +100,6 @@ class Service(models.Model):
 
 
 class Client(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL)
     title = models.CharField(_('Title'), max_length=255)
     address = models.CharField(_('Address'), max_length=255)
 
