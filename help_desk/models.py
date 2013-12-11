@@ -163,30 +163,30 @@ class Issue(models.Model):
 
 
 class Assignment(models.Model):
-    issue = models.ForeignKey('Issue')
+    issue = models.ForeignKey('Issue', verbose_name=_('Issue'))
     assigned = models.ForeignKey('Employee', related_name='assigned')
     worker = models.ForeignKey('Employee', related_name='working')
-    start = models.DateTimeField(auto_now_add=True)
-    end = models.DateTimeField(null=True)
-    text = models.TextField()
+    start = models.DateTimeField(_('Start'), auto_now_add=True)
+    end = models.DateTimeField(_('End'), null=True)
+    text = models.TextField(_('Text'))
     #TODO: result
     time = models.PositiveIntegerField(null=True)
 
 
 class Contract(models.Model):
-    number = models.CharField(max_length=255)
-    title = models.CharField(max_length=255)
-    client = models.ForeignKey(Client)
-    start = models.DateField()
-    end = models.DateField()
+    number = models.CharField(_('Number'), max_length=255)
+    title = models.CharField(_('Title'), max_length=255)
+    client = models.ForeignKey(Client, verbose_name=_('Client'))
+    start = models.DateField(_('Start'))
+    end = models.DateField(_('End'))
 
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('contract', self.id))
 
 
 class ContractService(models.Model):
-    contract = models.ForeignKey(Contract)
-    service = models.ForeignKey(Service)
+    contract = models.ForeignKey(Contract, verbose_name=_('Contract'))
+    service = models.ForeignKey(Service, verbose_name=_('Service'))
 
     class Meta:
         unique_together = ('contract', 'service')
@@ -205,11 +205,11 @@ ROLE_CHOICES = (
 
 class Employee(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    role = models.CharField(choices=ROLE_CHOICES, max_length=255)
-    phone_number = models.CharField(max_length=PHONE_NUMBER_MAX_LENGTH)
-    email = models.CharField(max_length=255)
+    first_name = models.CharField(_('First name'), max_length=255)
+    last_name = models.CharField(_('Last name'), max_length=255)
+    role = models.CharField(_('Role'), choices=ROLE_CHOICES, max_length=255)
+    phone_number = models.CharField(_('Phone number'), max_length=PHONE_NUMBER_MAX_LENGTH)
+    email = models.CharField(_('Email'), max_length=255)
 
     def is_engineer(self):
         return self.role == ROLE_ENGINEER
