@@ -28,7 +28,7 @@ class UserManager(BaseUserManager):
 
     def create_delegate(self, client, email, password, first_name, last_name, phone_number):
         user = self.create_user(email, password)
-        delegate = Delegate.objects.create(client=client, first_name=first_name, last_name=last_name,
+        delegate = Delegate.objects.create(user=user, client=client, first_name=first_name, last_name=last_name,
                                            phone_number=phone_number)
         return delegate
 
@@ -65,9 +65,9 @@ class BaseUser(AbstractBaseUser):
     def has_perm(self, perm):
         return True
 
-    def is_client(self):
+    def is_delegate(self):
         try:
-            self.client
+            self.delegate
             return True
         except Client.DoesNotExist:
             return False
@@ -111,6 +111,7 @@ class Client(models.Model):
 
 
 class Delegate(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL)
     client = models.ForeignKey(Client, verbose_name=_('Client'))
     first_name = models.CharField(_('First name'), max_length=255)
     last_name = models.CharField(_('Last name'), max_length=255)

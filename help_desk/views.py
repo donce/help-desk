@@ -13,9 +13,12 @@ from forms import MODEL_FORMS
 
 def employee_only(function):
     def f(request, *args, **kwargs):
-        if not request.user.is_employee():
+        user = request.user
+        if not user.is_authenticated():
             raise Http404
-        employee = request.user.employee
+        if not user.is_employee():
+            raise Http404
+        employee = user.employee
         return function(request, employee, *args, **kwargs)
 
     return f
