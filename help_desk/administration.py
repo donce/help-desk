@@ -17,8 +17,8 @@ def clean_database():
 
 
 class XLSXImporter:
-    def import_xlsx(self, filename):
-        book = open_workbook(filename)
+    def import_xlsx(self, data):
+        book = open_workbook(file_contents=data.read())
 
         sheet_paslaugos = book.sheet_by_name("Paslaugos")
         sheet_darbuotojai = book.sheet_by_name("Darbuotojai")

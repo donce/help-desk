@@ -5,6 +5,7 @@ from django.contrib.auth import login as login_user, logout as logout_user
 from django.http import Http404
 
 from client.views import home as client_home
+from help_desk.administration import XLSXImporter
 from help_desk.forms import ImportForm
 
 from models import Issue
@@ -246,7 +247,6 @@ def import_database(request, employee, tab):
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
-            print file
-            # XLSXImporter.import_xlsx(file)
+            XLSXImporter().import_xlsx(file)
     return redirect(administration)
 
