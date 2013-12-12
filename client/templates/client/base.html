@@ -8,7 +8,7 @@
 {% menu_item 'contracts' _('Contracts') 'client.views.contracts' %}
 {% menu_item 'information' _('Information') 'client.views.information' %}
 <span class="menu_employee_title">
-{{ user.client.title }}
+{{ user.delegate }}
 {% url 'help_desk.views.logout' as logout_url %}
 {% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}
 </span>

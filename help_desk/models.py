@@ -119,6 +119,8 @@ class Delegate(models.Model):
     email = models.CharField(_('Email'), max_length=255)
     active = models.BooleanField(_('Active'), default=True)
 
+    def __unicode__(self):
+        return '{0} {1} ({2})'.format(self.first_name, self.last_name, self.client)
 
 ISSUE_TYPE_INCIDENT = 'INC'
 ISSUE_TYPE_REQUEST = 'REQ'
