@@ -180,17 +180,11 @@ class Contract(models.Model):
     client = models.ForeignKey(Client, verbose_name=_('Client'))
     start = models.DateField(_('Start'))
     end = models.DateField(_('End'))
+    services = models.ManyToManyField('Service', related_name='contracts')
 
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('contract', self.id))
 
-
-class ContractService(models.Model):
-    contract = models.ForeignKey(Contract, verbose_name=_('Contract'))
-    service = models.ForeignKey(Service, verbose_name=_('Service'))
-
-    class Meta:
-        unique_together = ('contract', 'service')
 
 
 ROLE_ENGINEER = 'engineer'
