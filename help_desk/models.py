@@ -50,8 +50,14 @@ class BaseUser(AbstractBaseUser):
         return True
 
     def get_full_name(self):
-        #TODO: return company name/first name-second name, depending on type
+        if self.is_delegate():
+            return self.delegate.__unicode__()
+        elif self.is_employee():
+            return self.employee.__unicode__()
         return self.get_short_name()
+
+    def __unicode__(self):
+        return self.get_full_name()
 
     def get_short_name(self):
         return self.username
@@ -95,6 +101,7 @@ class Service(models.Model):
 
     def __unicode__(self):
         return self.description
+
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('client', self.id))
 

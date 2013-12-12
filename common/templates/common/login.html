@@ -1,7 +1,7 @@
-{% extends "common/base.html" %}
+{% extends "common/skeleton.html" %}
 {% load i18n %}
 {% block title %}Pagrindinis{% endblock %}
-{% block content %}
+{% block body %}
     <h1 class="login">{% trans 'Customer self-service' %}</h1><br/>
     <form class="login" action="" method="post">{% csrf_token %}
         <div class="login">
@@ -13,6 +13,7 @@
                     </td>
                 </tr>
             </table>
+        {% include 'common/languages.html' %}
         </div>
     </form>
 {% endblock %}
