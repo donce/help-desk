@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
                        url(r'^$', 'help_desk.views.home', name='home'),
                        url(r'^logout/$', 'help_desk.views.logout', name='logout'),
+                       url(r'^change_language/$', 'common.views.set_language'),
 
                        url(r'^service/', include(client_patterns)),
                        url(r'^management/', include(management_patterns)),
