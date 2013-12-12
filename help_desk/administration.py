@@ -70,7 +70,7 @@ class XLSXImporter:
             
     def parseAtstovai(self, sheet):
         for i in range(sheet.nrows):
-            client = trimID(sheet.cell(i,2), "K")
+            client = Client.get(id=trimID(sheet.cell(i,2), "K"))
             first_name = sheet.cell(i,3)
             last_name = sheet.cell(i,4)
             phone_number = sheet.cell(i,5)
@@ -85,7 +85,7 @@ class XLSXImporter:
             id = sheet.cell(i,1)
             number = sheet.cell(i,2)
             title = sheet.cell(i,3)
-            client = trimID(sheet.cell(i,4), "K")
+            client = Client.get(id=trimID(sheet.cell(i,4), "K"))
             start = sheet.cell(i,5)
             end = sheet.cell(i,6)
             contract = Contract(id=id, number=number, title=title, client=client, start=start, end=end)
@@ -94,7 +94,7 @@ class XLSXImporter:
     def parseKreipiniai(self, sheet):
         for i in range(sheet.nrows):
             id = sheet.cell(i,1)
-            client = trimID(sheet.cell(i,2), "K")
+            client = Client.get(id=trimID(sheet.cell(i,2), "K"))
             service = trimID(sheet.cell(i,3), "P")
             type = sheet.cell(i,4)
             receive_type = sheet.cell(i,5)
@@ -108,7 +108,7 @@ class XLSXImporter:
             previous = sheet.cell(i,13) #TODO: purpose of this?
             issue = Issue(id=id, client=client, service=service, type=type, receive_type=receive_type, title=title, description=description, created=created, closed=closed, status=status, rating=rating, current=current, previous=previous)
             issue.save()
-            
+    
             
     def trimID(self, id, prefix):
         return int(id.lstrip(prefix))
