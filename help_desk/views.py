@@ -44,6 +44,25 @@ def get_filter(get, name, options):
         value = options[0]
     return value
 
+def doIssueFiltering(objList, filterContent, filterType):
+    if filterType == 'all':
+        return objList
+
+    filteredIssues = []
+    for i in objList:
+        if filterContent == 'assignment':
+            obj = i.current
+        elif filterContent == 'status':
+            obj = i.closed
+        else:
+            return objList
+
+        if obj != None and filterType == 'keep':
+            filteredIssues.append(i)
+        elif obj == None and filterType == 'drop':
+            filteredIssues.append(i)
+
+    return filteredIssues
 
 def main(request):
     if request.user.is_employee():
@@ -85,9 +104,12 @@ def management_home(request, employee, tab):
 @employee_only
 def solve_issues(request, employee, tab):
     issues = employee.issues()
-    filter = get_filter(request.GET, 'filter', ('all', 'open', 'solved'))
+    filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
+
+    filteredIssues = doIssueFiltering(issues, 'status', filter)
+
     return render(request, 'management/solve_issues.html', {
-        'issues': issues,
+        'issues': filteredIssues,
         'tab': tab,
     })
 
@@ -96,9 +118,12 @@ def solve_issues(request, employee, tab):
 @employee_only
 def manage_issues(request, employee, tab):
     issues = Issue.objects.all()
-    filter = get_filter(request.GET, 'filter', ('all', 'assigned', 'unassigned'))
+    filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
+
+    filteredIssues = doIssueFiltering(issues, 'assignment', filter)
+
     return render(request, 'management/manage_issues.html', {
-        'issues': issues,
+        'issues': filteredIssues,
         'tab': tab,
     })
 
@@ -224,3 +249,4 @@ def import_database(request, employee, tab):
             print file
             # XLSXImporter.import_xlsx(file)
     return redirect(administration)
+
