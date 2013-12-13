@@ -75,7 +75,7 @@ class BaseUser(AbstractBaseUser):
         try:
             self.delegate
             return True
-        except Client.DoesNotExist:
+        except Delegate.DoesNotExist:
             return False
 
     def is_employee(self):
