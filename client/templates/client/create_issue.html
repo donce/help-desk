@@ -1,0 +1,10 @@
+﻿{% load i18n %}
+<div id="naujas_kreipinys" class="issue">
+	<div class="vid">
+		<form action="{% url 'client.views.create_issue' %}" method="post">
+			{% csrf_token %}
+			{{ client_issue_form.as_p }}
+			<input class="darker klientas" type="submit" value="{% trans 'Send' %}"/>
+		</form>
+	</div>
+</div>

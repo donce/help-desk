@@ -123,7 +123,6 @@ def get_model(model):
 @employee_only
 def models(request, employee, tab):
     model_types = [name for name in MODEL_FORMS]
-    print model_types
     return render(request, 'management/models/list_all.html', {
         'models': model_types,
         'tab': tab,
