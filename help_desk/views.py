@@ -1,10 +1,8 @@
 # encoding=utf-8
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login as login_user, logout as logout_user
 from django.http import Http404
 
-from client.views import home as client_home
+from help_desk.administration import XLSXImporter
 from help_desk.forms import ImportForm
 
 from models import Issue
@@ -63,33 +61,6 @@ def doIssueFiltering(objList, filterContent, filterType):
             filteredIssues.append(i)
 
     return filteredIssues
-
-def main(request):
-    if request.user.is_employee():
-        return redirect(management_home)
-    return redirect(client_home)
-
-
-def home(request):
-    if request.user.is_authenticated():
-        return main(request)
-    if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            login_user(request, form.get_user())
-            return main(request)
-        else:
-            print 'invalid'
-    else:
-        form = AuthenticationForm()
-    return render(request, 'home.html', {
-        'form': form,
-    })
-
-
-def logout(request):
-    logout_user(request)
-    return redirect('/')
 
 
 @tab
@@ -152,7 +123,6 @@ def get_model(model):
 @employee_only
 def models(request, employee, tab):
     model_types = [name for name in MODEL_FORMS]
-    print model_types
     return render(request, 'management/models/list_all.html', {
         'models': model_types,
         'tab': tab,
@@ -246,7 +216,6 @@ def import_database(request, employee, tab):
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
-            print file
-            # XLSXImporter.import_xlsx(file)
+            XLSXImporter().import_xlsx(file)
     return redirect(administration)
 

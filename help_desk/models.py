@@ -50,8 +50,14 @@ class BaseUser(AbstractBaseUser):
         return True
 
     def get_full_name(self):
-        #TODO: return company name/first name-second name, depending on type
+        if self.is_delegate():
+            return self.delegate.__unicode__()
+        elif self.is_employee():
+            return self.employee.__unicode__()
         return self.get_short_name()
+
+    def __unicode__(self):
+        return self.get_full_name()
 
     def get_short_name(self):
         return self.username
@@ -69,7 +75,7 @@ class BaseUser(AbstractBaseUser):
         try:
             self.delegate
             return True
-        except Client.DoesNotExist:
+        except Delegate.DoesNotExist:
             return False
 
     def is_employee(self):
@@ -95,6 +101,7 @@ class Service(models.Model):
 
     def __unicode__(self):
         return self.description
+
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('client', self.id))
 
@@ -109,6 +116,10 @@ class Client(models.Model):
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('client', self.id))
 
+    def register_issue(self, service, type, receive_type, title, description):
+        return Issue.objects.create(client=self, service=service, type=type, receive_type=receive_type,
+                             title=title, description=description)
+
 
 class Delegate(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
@@ -119,6 +130,8 @@ class Delegate(models.Model):
     email = models.CharField(_('Email'), max_length=255)
     active = models.BooleanField(_('Active'), default=True)
 
+    def __unicode__(self):
+        return '{0} {1} ({2})'.format(self.first_name, self.last_name, self.client)
 
 ISSUE_TYPE_INCIDENT = 'INC'
 ISSUE_TYPE_REQUEST = 'REQ'

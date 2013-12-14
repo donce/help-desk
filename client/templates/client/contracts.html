@@ -1,6 +1,6 @@
 ﻿{% extends 'client/base.html' %}
 {% load i18n %}
-{% block client_content %}
+{% block content %}
 <table border="1">
 	<thead>
 		<tr>
@@ -9,10 +9,11 @@
 			<th>{% trans 'End' %}</th>
 		</tr>
 	</thead>
-	<tbody>    
+	<tbody>
+        {% for contract in contracts %}
 		<tr class="{% cycle 'row1' 'row2' %}">
 			<td>
-			<!--gauti paslauga-->
+                {{ contract.service }}
 			</td>
 			<td>
 			<!--gauti pradzia-->
@@ -21,6 +22,7 @@
 			<!--gauti pabaiga-->
 			</td>
 		</tr>
+        {% endfor %}
 	</tbody>
 </table>
 {% endblock %}

@@ -1,26 +1,21 @@
-{% load i18n %}
-<html>
-<head>
-    <title>{% block title %}{% endblock %}</title>
-    <link href="/static/style.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-
-<form action="{% url 'set_language' %}" method="post">
-{% csrf_token %}
-<input name="next" type="hidden" value="{{ redirect_to }}" />
-<select name="language">
-{% get_language_info_list for LANGUAGES as languages %}
-{% for language in languages %}
-<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-    {{ language.name_local }} ({{ language.code }})
-</option>
-{% endfor %}
-</select>
-<input class="darker" type="submit" value="{% trans 'Go' %}" />
-</form>
-
+{% extends 'common/skeleton.html' %}
+{% load i18n menu_item %}
+{% block javascript %}
+<script src="/static/jquery-1.10.2.min.js"></script>
+{% endblock %}
+{% block title %}Help-desk savitarnos svetainė{% endblock %}
+{% block body %}
+<div class="menu">
+{% block menu %}
+{% endblock %}
+<span class="menu_employee_title">
+{% include 'common/languages.html' %}
+{{ user.get_full_name }}
+{% url 'common.views.logout' as logout_url %}
+{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}
+</span>
+</div>
+<hr />
 {% block content %}
 {% endblock %}
-</body>
-</html>
+{% endblock %}
