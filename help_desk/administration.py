@@ -96,7 +96,7 @@ class XLSXImporter:
         for i in range(sheet.nrows):
             id = sheet.cell(i, 1)
             client = Client.get(id=self.trimID(sheet.cell(i, 2), "K"))
-            service = self.trimID(sheet.cell(i, 3), "P")
+            service = Service.get(id=self.trimID(sheet.cell(i, 3), "P"))
             type = sheet.cell(i, 4)
             receive_type = sheet.cell(i, 5)
             title = sheet.cell(i, 6)
