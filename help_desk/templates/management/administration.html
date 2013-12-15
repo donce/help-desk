@@ -1,13 +1,13 @@
 {% extends "management/base.html" %}
 {% load i18n %}
 {% block content %}
-<input type="submit" value="{% trans 'Wipe data' %}"/>
+<input class="darker" type="submit" value="{% trans 'Wipe data' %}"/>
 <hr/>
 <h2>Import a structure</h2></br>
 
 <form class="import" action="{% url 'help_desk.views.import_database' %}" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 {{ import_form.as_p }}
-<input class="importuoti" type="submit" value="{% trans 'Import' %}"/>
+<input class="importuoti darker" type="submit" value="{% trans 'Import' %}"/>
 </form>
 {% endblock %}

@@ -5,6 +5,12 @@
 <a class="filter" href="?filter=all">{% trans 'All' %}</a>
 <a class="filter" href="?filter=keep">{% trans 'Assigned' %}</a>
 <a class="filter" href="?filter=drop">{% trans 'Unassigned' %}</a>
+<div class="right">
+	<input class="darker" type="submit" value="{% trans 'Create' %}"/>
+	<input class="darker" type="submit" value="{% trans 'Assign' %}"/>
+	<input class="darker" type="submit" value="{% trans 'Edit' %}"/>
+	<input class="darker" type="submit" value="{% trans 'Delete' %}"/>
+</div>
 <table class="has_filters" border="1">
     <tr>
 		<th>{% trans 'Client' %}</th>
@@ -12,6 +18,7 @@
 		<th>{% trans 'Service' %}</th>
 		<th>{% trans 'Register' %}</th>
 		<th>{% trans 'End' %}</th>
+		<th>{% trans 'Assigned to' %}</th>
     </tr>
     {% for issue in issues %}
     <tr class="{% cycle 'row1' 'row2' %}">
@@ -33,6 +40,9 @@
 		</td>
 		<td>
 		<!--gauti pabaiga-->
+		</td>
+		<td>
+		<!--jei kazkam priskirta, tai kam-->
 		</td>
     </tr>
     {% endfor %}

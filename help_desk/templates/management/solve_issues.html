@@ -4,6 +4,12 @@
 <a class="filter" href="?filter=all">{% trans 'All' %}</a>
 <a class="filter" href="?filter=keep">{% trans 'Solved' %}</a>
 <a class="filter" href="?filter=drop">{% trans 'Unsolved' %}</a>
+<div class="right">
+	<input class="darker" type="submit" value="{% trans 'Solved' %}"/>
+	<input class="darker" type="submit" value="{% trans 'Reject' %}"/>
+	<input class="darker" type="submit" value="{% trans 'Return' %}"/>
+	<input class="darker" type="submit" value="{% trans 'Delete' %}"/>
+</div>
 <table class="has_filters" border="1">
 	<thead>
 		<tr>
