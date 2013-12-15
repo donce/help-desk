@@ -1,0 +1,55 @@
+%%
+%% annotation.tex
+%% Dokumento anotacija
+%%
+%% Patogesniam darbu ir redagavimui - komandas, 
+%% palengvinančias darbą su anotacija, palieku šiame dokumente
+
+
+%	--- Anotacija su INDĖLIU ---
+%	Naudojimas:
+%	\anotacijaIndelis{AUTORIUS}{EL@PAŠTAS.com}{INDĖLIS}
+\newcommand{\anotacijaIndelis}[3]{
+	\textbf{#1}
+	\begin{flushleft}
+	\hspace*{1cm}
+	Kontaktai: #2
+	\\
+	\hspace*{1cm}
+	Indėlis: #3
+	\end{flushleft}
+}
+
+%	--- Anotacija ---
+%	Naudojimas:
+%	\anotacija{AUTORIUS}{EL@PAŠTAS.com}
+\newcommand{\anotacija}[2]{
+	\textbf{#1}
+	\begin{flushleft}
+	\hspace*{1cm}
+	Kontaktai: #2
+	\end{flushleft}
+}
+
+\section*{Anotacija}
+
+		Darbo tikslas – įvertinti sukurtą maketą euristinio tikrinimo metodu ir atsižvelgiant į vertinimo išvadas jį pataisyti. 
+		Šiame darbe studentai veikia panaudojamumo ekspertų vaidmenyje. \\
+		
+		\textbf{Bibliografinis aprašas:}\\
+		Kristina Moroz-Lapin Žmogaus ir kompiuterio sąveika. Vilniaus universitetas, 2008. 248 p. ISBN 978-9955-680-99-4
+		\\
+		
+		\textbf{Darbą atliko:}\\
+		%% Autoriai:
+
+		% TODO: Pakeisti indėlį
+		\anotacijaIndelis{Karolis Jocevičius PS1}{karolis.jocevicius@gmail.com}{Teigiamų ir neigiamų įspūdžių analizė}
+		
+		\anotacijaIndelis{Laima Čižiūtė PS1}{ugne.ciziute@gmail.com.com}{Teigiamų ir neigiamų įspūdžių analizė}
+		
+		\anotacijaIndelis{Rytis Karpuška PS1}{jauleris@gmail.com.com}{Santrauka, lentelių struktūra}
+
+		\anotacijaIndelis{Donatas Kučinskas PS1}{donce.lt@gmail.com.com}{Santrauka}
+
+		\anotacijaIndelis{Oleg Koldun PS1}{okoldun@gmail.com}{Atnaujinti maketai}
