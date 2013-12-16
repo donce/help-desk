@@ -1,12 +1,11 @@
 ﻿body {
-	background-color: #D8E2EE;
+	background-color: #E5E5E5;
 }
 
 h1, h2 {
 	color: #001433;
 	text-align: center;
-	text-shadow: 5px 5px 10px #0052CC;
-	font-family: "Comic Sans MS";
+	font-family: Trebuchet MS;
 }
 
 h2 {
@@ -22,15 +21,12 @@ form.login {
 	color: white;
 	text-align: center;
 	font-size: 150%;
-	font-family: "Comic Sans MS";
+	font-family: "Trebuchet MS";
 }
 
-input[type=submit], .filter {
+input[type=submit], .filter{
 	border-top: 1px solid #1e445c;
-	background: #78b5de;
-	background: -webkit-linear-gradient(top, #0000CC, #8080FF);
-	background: -moz-linear-gradient(top, #0000CC, #8080FF);
-	background: -ms-linear-gradient(top, #0000CC, #8080FF);
+	background: #1A566B;
 	padding: 5px 10px;
 	-webkit-border-radius: 8px;
 	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
@@ -41,17 +37,16 @@ input[type=submit], .filter {
 	text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
 	color: #ffffff;
 	font-size: 14px;
-	font-family: Georgia, serif;
 	text-decoration: none;
 	vertical-align: middle;
-	font-family: "Comic Sans MS";
+	font-family: "Trebuchet MS";
 	font-weight: bold;
 	cursor: pointer;
 }
 
 input[type=submit]:hover {
 	border-top-color: #0e16ad;
-	background: #0e16ad;
+	background: #002E3D;
 	color: #f2f2f2;
 }
 
@@ -66,7 +61,7 @@ div.login {
 	height: 250px;
 	border-top: 1px solid #1e445c;
 	background: #78b5de;
-	background: -webkit-linear-gradient(top, #175178, #78b5de);
+	background: -webkit-linear-gradient(top, #002E3D, #33ADD6);
 	background: -moz-linear-gradient(top, #175178, #78b5de);
 	background: -ms-linear-gradient(top, #175178, #78b5de);
 	padding: 5px 10px;
@@ -79,7 +74,7 @@ div.login {
 	text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
 	color: #ffffff;
 	font-size: 14px;
-	font-family: Georgia, serif;
+	font-family: "Trebuchet MS";
 	text-decoration: none;
 	vertical-align: middle;
 	display: -webkit-box;
@@ -96,46 +91,53 @@ div.login {
 	color: #001433;
 }
 
-.menu_item {
-	margin: 0px 5px;
-	border-top: 1px solid #f7f7f7;
-	background: #002447;
-	padding: 5px 10px;
+.menu_item{	background: #002E3D;
+	padding: 10px 15px;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
-	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-	-moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-	box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-	text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
-	font-family: "Comic Sans MS";
 	color: white;
 	font-size: 14px;
-	font-family: Georgia, serif;
+	font-family: "Trebuchet MS";
 	text-decoration: none;
 	vertical-align: middle;
+	text-transform:uppercase;
+	font-weight:bold;
+	width:50px;
 }
 
 .menu_item_active {
-	background: -webkit-linear-gradient(top, #0b073b, #33ADD6);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#002E3D), to(#002E3D), color-stop(.5,#298AAB));
+	background: -moz-linear-gradient(top, #002E3D, #33ADD6);
+	background: -ms-linear-gradient(top, #002E3D, #33ADD6);
 }
 
-.menu_item:hover {
-	border-top-color: #0e1133;
-	background: #0e1133;
+.menu_item:hover, .filter:hover{
+	/*border-top-color: #0e1133;*/
+	background: #00202B;
 	color: #ffffff;
 }
 
+.menu{
+    width:100%;
+    background-color:#002E3D;
+    height:28px;
+    padding-top:10px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+}
+
 .menu_employee_title {
-	margin-top: -0.55%;
 	float: right;
+	color:white;
 }
 
 table {
 	font-family: "Trebuchet MS";
 	width: 100%;
 	border-collapse: collapse;
-}
+	}
 
 table.create {
 	width: 30%;
@@ -145,8 +147,11 @@ table.create {
 
 table.create td, th {
 	font-size: 1em;
-	border: 1px solid #0000FF;
 	padding: 3px 7px 2px 7px;
+}
+
+table.create td{
+	background-color:#C9C9FF;
 }
 
 table.create th {
@@ -154,18 +159,20 @@ table.create th {
 	text-align: left;
 	padding-top: 5px;
 	padding-bottom: 4px;
-	background-color: #6666FF;
-	color: #ffffff;
-}
-
-table.create tr {
-	background-color: #B2B2FF;
+	border:1px solid #004C66;
 }
 
 td, th {
 	font-size: 1em;
-	border: 1px solid #002E3D;
 	padding: 3px 7px 2px 7px;
+}
+
+td  {
+	border-right: 1px solid gray;
+}
+
+table.create td  {
+	border:1px solid gray;
 }
 
 th {
@@ -179,25 +186,15 @@ th {
 
 tr.row1 {
 	color: #001433;
-	background-color: #B2B2FF;
+	background-color: #D1DFE3;
 }
 
 tr.row2 {
 	color: #001433;
-	background-color: #E6E6FF;
+	background-color: #B2C9D1;
 }
 
-a.create {
-	font-family: "Comic Sans MS";
-}
-
-.radio_kreipiniai {
-	font-family: "Comic Sans MS";
-	color: #001433;
-	font-size: 125%;
-}
-
-.klientas_kreipiniai {
+#klientas_kreipiniai {
 	width: 50%;
 	margin-top: 1%;
 	float: left;
@@ -215,24 +212,18 @@ a.create {
 	width: 20%;
 }
 
-.naujas_kreipinys_button {
-	margin-left: 50.5%;
+#naujas_kreipinys_button {
+	margin-left: 40.5%;
 }
 
-input.darker {
-	background: -webkit-linear-gradient(top, #002E3D, #33ADD6);
-	background: -moz-linear-gradient(top, #002E3D, #33ADD6);
-	background: -ms-linear-gradient(top, #002E3D, #33ADD6);
-}
-
-input.darker:hover {
-	background: #002E3D;
+#naujas_kreipinys_button input[type=submit]{
+	width:130px;
 }
 
 .issue {
 	width: 49%;
 	float: right;
-	font-family: "Comic Sans MS";
+	font-family: "Trebuchet MS";
 	color: white;
 	margin-top: 1%;
 	border-style: outset;
@@ -250,19 +241,23 @@ textarea {
 	border: solid 1px #BFBDBD;
 	padding-left: 10px;
 	box-shadow: 2px 2px 0 #828181 inset;
-	font-family: "Comic Sans MS";
+	font-family: "Trebuchet MS";
 }
 
 textarea {
 	height: 60%;
 }
 
-input[type=submit].klientas {
+#naujas_kreipinys input[type=submit] {
 	float: right;
 	margin-right: 5%;
 	width: 20%;
+	background-color: #002E3D;
 }
 
+#naujas_kreipinys input[type=submit]:hover {
+	background: #00202B;
+}
 /*.pasirinkti_paslauga {
 	width: 30%;
 	float: left;
@@ -281,11 +276,11 @@ div.vid {
 
 .pasirinkimas {
 	font-size: 90%;
-	font-family: "Times New Roman", Times, serif;
+	font-family: "Trebuchet MS";
 	color: silver;
 }
 
-.importuoti {
+#import_button {
 	margin-top: 2%;
 }
 
@@ -301,8 +296,8 @@ div.vid {
 	margin-top: 1.5%;
 }
 
-.import {
-	font-family: "Comic Sans MS";
+#import {
+	font-family: "Trebuchet MS";
 	color: #001433;
 }
 
@@ -318,4 +313,9 @@ table.transparent td, table.transparent th{
 
 .right{
 	float:right;
+}
+
+#logout {	
+	float:right;
+	margin-top: -0.65cm;
 }

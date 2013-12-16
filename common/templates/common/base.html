@@ -8,12 +8,12 @@
 <div class="menu">
 {% block menu %}
 {% endblock %}
-<span class="menu_employee_title">
+<div class="menu_employee_title">
 {% include 'common/languages.html' %}
 {{ user.get_full_name }}
-{% url 'common.views.logout' as logout_url %}
-{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}
-</span>
+<div id="Logout">{% url 'common.views.logout' as logout_url %}
+{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}</div>
+</div>
 </div>
 <hr />
 {% block content %}

@@ -6,12 +6,12 @@
 <a class="filter" href="?filter=keep">{% trans 'Assigned' %}</a>
 <a class="filter" href="?filter=drop">{% trans 'Unassigned' %}</a>
 <div class="right">
-	<input class="darker" type="submit" value="{% trans 'Create' %}"/>
-	<input class="darker" type="submit" value="{% trans 'Assign' %}"/>
-	<input class="darker" type="submit" value="{% trans 'Edit' %}"/>
-	<input class="darker" type="submit" value="{% trans 'Delete' %}"/>
+	<input type="submit" value="{% trans 'Create' %}"/>
+	<input type="submit" value="{% trans 'Assign' %}"/>
+	<input type="submit" value="{% trans 'Edit' %}"/>
+	<input type="submit" value="{% trans 'Delete' %}"/>
 </div>
-<table class="has_filters" border="1">
+<table class="has_filters">
     <tr>
 		<th>{% trans 'Client' %}</th>
 		<th>{% trans 'Type' %}</th>

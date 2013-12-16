@@ -10,11 +10,11 @@
         $('#right_container').load('edit/' + number + '/');
     };
 </script>
-<div class="naujas_kreipinys_button" onclick="create_issue()">
-	<input class="darker" type="submit" value="{% trans 'New issue' %}"/>
+<div id="naujas_kreipinys_button" onclick="create_issue()">
+	<input type="submit" value="{% trans 'New issue' %}"/>
 </div>
 
-<table class="klientas_kreipiniai" border="1">
+<table id="klientas_kreipiniai">
 	<thead>
 		<tr>
 			<th>{% trans 'Issue' %}</th>
