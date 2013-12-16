@@ -1,6 +1,31 @@
 \section{Santrauka}
 
+	Vertinimą vykdė FluffySoft komandos nariai.
+	5 dalyviai buvo pasirinkti atsitiktinai iš artimiausios aplinkos, kuriuos stebėjo komandos nariai ir fiksavo jų sąveiką su kompiuteriu.
+	Dėl pasirinktos aplinkos stebimi dalyviai buvo įvairaus amžiaus ir įvairių sričių atstovai, visi turėjo patirties naudojantis kompiuteriu ankščiau.
+	Vertinimo aplinka – patalpa su kompiuteriu ir be pašalinių trikdžių.
+	Siekiant atskleisti galimas panaudojamumo problemas buvo pasirinktas „įvertinimo atitikimo taisyklėms“ metodas.
 	
+	Atlikus išsamią dalyvių atsiliepimų bei rezultatų analizę buvo nustatyti šie teigiami aspektai:
+	\begin{itemize}
+		\item Visi testo dalyviai labai gerai atsiliepė apie sistemos dizainą.
+		\item Testo dalyviams labai patiko, kad tame pačiame lange klientas gali matyti ir kreipinių sąrašą, ir pasirinktą kreipinį
+	\end{itemize}
+	
+	Pagrindinės rastos problemos sistemoje, į kurias reiktų atsižvelgti kuriant galutinę sistemos versiją:
+	\begin{itemize}
+		\item Labiausiai išryškėjo problemos kilusios dėl angliško meniu.
+		Šis defektas turėtų būti sprendžiamas verčiant pavadinimus į lietuvių kalbą.
+		\item Vykdant testavimą dalis sistemos funkcionalumo buvo išvis nerasta.
+		Taip nutiko todėl, kad sistema dar nėra pilnai užbaigta.
+		\item Kai kurios interaktyvios sritys atrodė kaip paprastos nuorodos.
+		Pažeista darna turėtų būti taisoma nuorodas pakeičiant mygtukais.
+		\item Sistemos grįžtamasis ryšys taip pat turėjo defektų.
+		Pranešimų apie sėkmingai atliktą operaciją išvis nėra.
+		Šis defektas galėtų būti ištaisytas pranešimais apie sėkmingai įvykdytą užuotį.
+		\item Taip pat nebuvo rasti klaidų pranešimai, kurie turėtų pranešti apie įvykusias klaidas.
+		Šis defektas galėtų būti ištaisytas pranešimais apie nesėkmingai įvykdytą užduotį ir padarytas klaidas.
+	\end{itemize}
 
 \section{Testavimo aprašas}
 
@@ -86,11 +111,85 @@
 
 	\subsection{Užduočių vykdymo rezultatai}
 	
+		Lentelė pildoma stebint dalyvio sąveiką su kompiuteriu kiekvienos užduoties metu.
+		Dalyvio užduoties atlikimo greitis - vertinimas minutėmis.
+		Dalyvio intuityvi orientacija sistemoje užduoties metu - vertinimas nuo 0 (visiškai nesigaudo sistemoje) iki 5 (puikiai gaudosi sistemoje).
+		Suklydimų ir grįžimų atgal skaičius - klaidų ir grįžimų skaičius prieš atliekant teisingai užduotį.
+		Lentelėje pateikti visų dalyvių užduočių vertinimo vidurkiai.
+		Kiekvieno atskirai dalyvio užduočių vertinimai pridėti priede Nr.1. Dalyvių rezultatų lentelės.
+	
+	\begin{table}[ht] 
+		\caption{Dalyvių užduočių vertinimo vidurkiai} % title of Table 
+		\centering % used for centering table 
+		\begin{tabular}{c c c c} % centered columns (2 columns) 
+			\hline\hline %inserts double horizontal lines 
+			Užduotis & Atlikimo greitis & Intuityvi orientacija  & Suklydimų ir grįžimų atgal sk.\\ [0.5pt] % inserts table 
+			%heading 
+			\hline % inserts single horizontal line 
+			1 & 0,7 & 5 & 0\\
+			2 & 0,58 & 4,6 & 0,2\\
+			3 & 0,66 & 4,2 & 0,6\\
+			4 & 0,38 & 5 & 0\\
+			5 & 0,58 & 4,6 & 0\\
+			6 & 4,5 & 4,2 & 0,2\\
+			7 & 0,94 & 4,6 & 0\\
+			8 & 2,4 & 3 & 1,4\\
+			9 & 2,7 & 5 & 0\\
+			10 & 0,54 & 4,8 & 0\\
+			\hline %inserts single line 
+		\end{tabular} 
+		\label{table:vertintojai} % is used to refer this table in the text 
+	\end{table} 
+	
 	\subsection{Dalyvių komentarai}
+	
+		Dalyvių komentarai:
+		
+		\begin{enumerate}
+			\item Prisijungimas
+			\item Kreipinio išsprendimas (Inžinierius)
+				\subitem A.Č. norėtų, kad kreipinio išsprendimo mygtukas būtų apačioje.
+			\item Nusprendimas neišspręsti kreipinio (Inžinierius)
+				\subitem A.Č. norėtų, kad kreipinio atmetimo mygtukas būtų apačioje.
+				\subitem M.P ir L.J. nesuprato, kuo skiriasi kreipinio atmetimo mygtukas nuo kreipinio grąžinimo administratoriui mygtuko.
+			\item Kreipinio grąžinimas (Inžinierius)
+				\subitem A.Č. norėtų, kad kreipinio grąžinimo administratoriui mygtukas būtų apačioje.
+			\item Peržiūrėti statistiką (Vadovas)
+				\subitem L.J. norėtų daugiau statistikos.
+			\item Kreipinio registravimas (Administratorius)
+				\subitem J.L. nesuprato, kuo skiriasi INC nuo REQ.
+			\item Kreipinio paskyrimas inžinieriui (Administratorius)
+			\item Duomenų importavimas iš struktūros (Administratorius)
+				\subitem Visiems dalyviams nebuvo aišku, kurioje kortelėje ieškoti šio funkcionalumo.
+			\item Pateikti kreipinį savitarnos svetainėje (Klientas)
+				\subitem J.L. nesuprato, kuo skiriasi INC nuo REQ.
+			\item Įvertinti atliktą kreipinį (Klientas)
+		\end{enumerate}
 
 \section{Rekomendacijos}
 
-	
+	Defektai išvardyti prioritetine tvarka
+	\begin{itemize}
+		\item Atlikus tyrimą, labiausiai išryškėjo problemos kilusios dėl angliško meniu.
+		Testo dalyviai sugaišdavo sąlyginai daug laiko ieškodami reikiamų meniu pasirinkimų užduotims įvykdyti.
+		Tai trukdė vykdyti užduotis, tačiau labiau patyrusiam vartotojui tai nekeltų problemų.
+		Šis defektas turėtų būti sprendžiamas verčiant pavadinimus į lietuvių kalbą.
+		\item Vykdant testavimą dalis sistemos funkcionalumo buvo išvis nerasta.
+		Taip nutiko todėl, kad sistema dar nėra pilnai užbaigta.
+		\item Kai kurios interaktyvios sritys atrodė kaip paprastos nuorodos, o vartotojas pripratęs prie mygtukų tiesiog nepastebėdavo šių nuorodų.
+		Pažeista darna turėtų būti taisoma nuorodas pakeičiant mygtukais.
+		\item Sistemos grįžtamasis ryšys taip pat turėjo defektų.
+		Pranešimų apie sėkmingai atliktą operaciją išvis nėra.
+		Testo dalyviui buvo sunku suprasti, kada jis teisingai atlikdavo užduotį.
+		Šis defektas galėtų būti ištaisytas pranešimais apie sėkmingai įvykdytą užuotį.
+		\item Taip pat nebuvo rasti klaidų pranešimai, kurie turėtų pranešti apie įvykusias klaidas.
+		Tokie defektai klaidino vartotoją, tačiau didelės įtakos darbui su sistema nedarė.
+		Vartotojas prarado galimybę pastebėti tikrai kilusias problemas.
+		Šis defektas galėtų būti ištaisytas pranešimais apie nesėkmingai įvykdytą užduotį ir padarytas klaidas.
+	\end{itemize}
 
 \section{Priedai}
 
+	\begin{enumerate}
+		\item Dalyvių rezultatų lentelės
+	\end{enumerate}
