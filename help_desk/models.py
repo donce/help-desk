@@ -291,3 +291,8 @@ class Employee(models.Model):
 
     def issues(self):
         return Issue.objects.filter(current__worker=self)
+
+class deflection(object):
+    Time_deflection = 0
+
+
