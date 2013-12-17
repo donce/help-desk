@@ -20,9 +20,9 @@
 	<div class="vid">
 	<table class="transparent issue_table">
 		<tr>
-			<th class=""></th>
+			<th class="labai_trumpas"></th>
 			<th></th>
-			<th class=""></th>
+			<th class="trumpas"></th>
 			<th></th>
 		</tr>
 		<tr>
@@ -44,7 +44,8 @@
 			<td><input type="text" readonly value="{{ issue.created }}"></td>
 		</tr>
 	</table>
-	<p>{% trans 'Description' %}:</p>
+	</p>
+	{% trans 'Description' %}:
 	<textarea readonly>{{ issue.description }}</textarea>
 	</div>
 </div>

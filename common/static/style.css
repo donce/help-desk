@@ -256,6 +256,10 @@ textarea {
 	height: 60%;
 }
 
+input[type=text]{
+	width:90%;
+}
+
 #naujas_kreipinys input[type=submit] {
 	float: right;
 	margin-right: 5%;
