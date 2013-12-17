@@ -175,6 +175,9 @@ class Issue(models.Model):
         self.current = assignment
         self.save()
 
+    def get_absolute_url(self):
+        return reverse('help_desk.views.view_issue', args=(self.id,))
+
 
 class Assignment(models.Model):
     issue = models.ForeignKey('Issue', verbose_name=_('Issue'))

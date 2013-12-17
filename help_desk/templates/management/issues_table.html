@@ -1,0 +1,17 @@
+{% load i18n %}
+<table>
+<thead>
+{% for name, title in fields %}
+<th>{{ title }}</th>
+{% endfor %}
+</thead>
+<tbody>
+{% for id, object in objects %}
+<tr class="{% cycle 'row1' 'row2' %}">
+    {% for field in object %}
+        <td>{{ field|safe }}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>

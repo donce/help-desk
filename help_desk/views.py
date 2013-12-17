@@ -76,12 +76,31 @@ def management_home(request, employee, tab):
 def solve_issues(request, employee, tab):
     issues = employee.issues()
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
-
-    filteredIssues = doIssueFiltering(issues, 'status', filter)
+    filtered_issues = doIssueFiltering(issues, 'status', filter)
+    fields = [
+        ('title', 'Pavadinimas'),
+        ('type', 'Tipas'),
+        ('service', 'Paslauga'),
+        ('created', 'Sukurta'),
+        ('closed', 'Pabaigta'),
+        ('status', 'Statusas')
+    ]
 
     return render(request, 'management/solve_issues.html', {
-        'issues': filteredIssues,
+        'fields': fields,
+        'objects': filtered_issues,
+        'model': 'Issue',
         'tab': tab,
+    })
+
+
+@tab
+@employee_only
+def view_issue(request, employee, tab, issue):
+    viewedIssue = Issue.objects.get(id = issue)
+    return render(request, 'management/view_issue.html', {
+        'issue': viewedIssue,
+        'tab': tab
     })
 
 

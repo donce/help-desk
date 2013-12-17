@@ -2,6 +2,7 @@ from django.conf.urls import patterns, url, include
 
 solve_issues_patterns = patterns('help_desk.views',
                                  url(r'^$', 'solve_issues'),
+                                 url(r'^view_issue/(?P<issue>\d+)/$', 'view_issue'),
                                  )
 
 manage_issues_patterns = patterns('help_desk.views',

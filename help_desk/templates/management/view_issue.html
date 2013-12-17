@@ -1,0 +1,14 @@
+{% extends "management/models/base.html" %}
+{% load i18n %}
+{% block content %}
+
+<p>Title: {{ issue.title }}</p>
+<p>Service {{ issue.service }}</p>
+<p>Client: {{ issue.client }} </p>
+<p>type: {{ issue.type }} </p>
+<p>receive_type: {{ issue.receive_type }}</p>
+<p>description: {{ issue.description }}</p>
+<p>created: {{ issue.created }} </p>
+<!-- and others -->
+
+{% endblock %}

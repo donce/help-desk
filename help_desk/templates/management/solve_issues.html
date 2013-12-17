@@ -1,5 +1,6 @@
 {% extends "management/base.html" %}
 {% load i18n %}
+{% load issues_table %}
 {% block content %}
 <a class="filter" href="?filter=all">{% trans 'All' %}</a>
 <a class="filter" href="?filter=keep">{% trans 'Solved' %}</a>
@@ -10,40 +11,6 @@
 	<input type="submit" value="{% trans 'Return' %}"/>
 	<input type="submit" value="{% trans 'Delete' %}"/>
 </div>
-<table class="has_filters">
-	<thead>
-		<tr>
-			<th>{% trans 'Client' %}</th>
-			<th>{% trans 'Type' %}</th>
-			<th>{% trans 'Service' %}</th>
-			<th>{% trans 'Register' %}</th>
-			<th>{% trans 'End' %}</th>
-		</tr>
-	</thead>
-	<tbody>
-    {% for issue in issues %}
-		<tr class="{% cycle 'row1' 'row2' %}">
-			<td>
-				<a href="/management/client/">
-					{{ issue.client }}
-				</a>
-			</td>
-			<td>
-			<!--gauti kreipinio tipa-->
-			</td>
-			<td>
-				<a href="">
-					{{ issue.service }}
-				</a>
-			</td>
-			<td>
-			<!--gauti registravima-->
-			</td>
-			<td>
-			<!--gauti pabaiga-->
-			</td>
-		</tr>
-    {% endfor %}
-	</tbody>
-</table>
+<!-- biski lipa ant mygtukų -->
+{% issues_table model fields objects %}
 {% endblock %}
