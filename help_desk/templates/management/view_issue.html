@@ -2,6 +2,20 @@
 {% load i18n %}
 {% block content %}
 
+<!-- TODO: add some style ;) -->
+<a class="action" href="?action=solve">
+{% if issue.status == "solved" %}{% trans 'Unsolve' %}
+{% else %}{% trans 'Solve' %}{% endif %}
+</a>
+<a class="action" href="?action=reject">
+{% if issue.status == "rejected" %}{% trans 'Unreject' %}
+{% else %}{% trans 'Reject' %}{% endif %}
+</a>
+{% if not issue.current == None %}
+<a class="action" href="?action=return">{% trans 'Return' %}</a>
+{% endif %}
+<a class="action" href="?action=delete">{% trans 'Delete' %}</a>
+
 <p>Title: {{ issue.title }}</p>
 <p>Service {{ issue.service }}</p>
 <p>Client: {{ issue.client }} </p>

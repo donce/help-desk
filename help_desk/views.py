@@ -42,6 +42,15 @@ def get_filter(get, name, options):
         value = options[0]
     return value
 
+def get_action(get, name, options):
+    if name in get:
+        value = get[name]
+        if value not in options:
+            return None
+        return value
+    else:
+        return None
+
 def doIssueFiltering(objList, filterContent, filterType):
     if filterType == 'all':
         return objList
@@ -93,11 +102,42 @@ def solve_issues(request, employee, tab):
         'tab': tab,
     })
 
+def mark_issue_solved(issue):
+    if issue.status == 'solved':
+        issue.unsolve()
+    else:
+        issue.solve()
+
+def mark_issue_rejected(issue):
+    if issue.status == 'rejected':
+        issue.unreject();
+    else:
+        issue.reject()
+
+def unassign_issue(issue):
+    issue.returnIssue()
+
+def delete_issue(issue):
+    #TODO: add warning message
+    issue.delete()
 
 @tab
 @employee_only
 def view_issue(request, employee, tab, issue):
     viewedIssue = Issue.objects.get(id = issue)
+
+    action = get_action(request.GET, 'action', ('solve', 'reject', 'return', 'delete'))
+    action_funcs = {'solve' : mark_issue_solved,
+                    'reject' : mark_issue_rejected,
+                    'return' : unassign_issue,
+                    'delete'  : delete_issue}
+
+    if action != None:
+        action_funcs[action](viewedIssue)
+
+    if action == 'delete' or action == 'return':
+        return redirect('/management/solve_issues')
+
     return render(request, 'management/view_issue.html', {
         'issue': viewedIssue,
         'tab': tab

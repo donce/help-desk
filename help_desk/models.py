@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.urlresolvers import reverse
 from django.db import models
+from datetime import datetime
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -149,6 +150,8 @@ ISSUE_RECEIVE_TYPE_CHOICES = (
 
 #TODO: add statuses
 ISSUE_STATUS_CHOICES = (
+    ('unassigned', 'Unassigned'),
+    ('in progress', 'In Progress'),
     ('solved', 'Solved'),
     ('rejected', 'Rejected'),
 )
@@ -168,11 +171,38 @@ class Issue(models.Model):
     current = models.ForeignKey('Assignment', related_name='current', null=True)
     previous = models.ForeignKey('Issue', null=True)#TODO: purpose of this?
 
+    def solve(self):
+        self.status = 'solved'
+        self.closed = datetime.now()
+        self.save()
+
+    def unsolve(self):
+        self.status = 'unassigned'
+        self.current = None
+        self.closed = None
+        self.save()
+
+    def reject(self):
+        self.status = 'rejected'
+        self.closed = datetime.now()
+        self.save()
+
+    def unreject(self):
+        self.status = 'unassigned'
+        self.closed = None
+        self.save()
+
+    def returnIssue(self):
+        self.status = 'unassigned'
+        self.current = None
+        self.save()
+
     def assign(self, assigned, worker):
         assignment = Assignment.objects.create(issue=self, assigned=assigned, worker=worker)
         #if (self.current)
         #self.current.end = NOW
         self.current = assignment
+        self.status = 'in progress'
         self.save()
 
     def get_absolute_url(self):
