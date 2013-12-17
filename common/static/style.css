@@ -44,7 +44,7 @@ input[type=submit], .filter{
 	cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, .action:hover {
 	border-top-color: #0e16ad;
 	background: #002E3D;
 	color: #f2f2f2;
@@ -62,8 +62,8 @@ div.login {
 	border-top: 1px solid #1e445c;
 	background: #78b5de;
 	background: -webkit-linear-gradient(top, #002E3D, #33ADD6);
-	background: -moz-linear-gradient(top, #175178, #78b5de);
-	background: -ms-linear-gradient(top, #175178, #78b5de);
+	background: -moz-linear-gradient(top, #002E3D, #33ADD6);
+	background: -ms-linear-gradient(top, #002E3D, #33ADD6);
 	padding: 5px 10px;
 	-webkit-border-radius: 8px;
 	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
@@ -235,6 +235,14 @@ tr.row2 {
 	border-top-color: #008AB8;
 }
 
+.left {
+	float:left;
+}
+
+.issue_table{
+	color:white;
+}
+
 textarea {
 	width: 95%;
 	background-color: white;
@@ -258,17 +266,6 @@ textarea {
 #naujas_kreipinys input[type=submit]:hover {
 	background: #00202B;
 }
-/*.pasirinkti_paslauga {
-	width: 30%;
-	float: left;
-	margin-top: 1.5%;
-}
-
-.pasirinkti_tipa {
-	width: 10%;
-	float:left;
-	margin-top: 1.5%;
-}*/
 
 div.vid {
 	margin-left: 5%;

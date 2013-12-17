@@ -16,13 +16,38 @@
 {% endif %}
 <a class="action" href="?action=delete">{% trans 'Delete' %}</a>
 
-<p>Title: {{ issue.title }}</p>
-<p>Service {{ issue.service }}</p>
-<p>Client: {{ issue.client }} </p>
-<p>type: {{ issue.type }} </p>
-<p>receive_type: {{ issue.receive_type }}</p>
-<p>description: {{ issue.description }}</p>
-<p>created: {{ issue.created }} </p>
+<div class="issue left">
+	<div class="vid">
+	<table class="transparent issue_table">
+		<tr>
+			<th class=""></th>
+			<th></th>
+			<th class=""></th>
+			<th></th>
+		</tr>
+		<tr>
+			<td>{% trans 'Title' %}:</td>
+			<td><input type="text" readonly value="{{ issue.title }}"></td>
+			<td>{% trans 'Client' %}:</td>
+			<td><input type="text" readonly value="{{ issue.client }}"></td>
+		</tr>
+		<tr>
+			<td>{% trans 'Service' %}:</td>
+			<td><input type="text" readonly value="{{ issue.service }}"></td>
+			<td>{% trans 'Receive type' %}:</td>
+			<td><input type="text" readonly value="{{ issue.receive_type }}"></td>
+		</tr>
+		<tr>
+			<td>{% trans 'Type' %}:</td>
+			<td><input type="text" readonly value="{{ issue.type }}"></td>
+			<td>{% trans 'Created' %}:</td>
+			<td><input type="text" readonly value="{{ issue.created }}"></td>
+		</tr>
+	</table>
+	<p>{% trans 'Description' %}:</p>
+	<textarea readonly>{{ issue.description }}</textarea>
+	</div>
+</div>
 <!-- and others -->
 
 {% endblock %}
