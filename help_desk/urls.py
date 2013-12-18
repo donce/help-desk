@@ -7,6 +7,7 @@ solve_issues_patterns = patterns('help_desk.views',
 
 manage_issues_patterns = patterns('help_desk.views',
                                   url(r'^$', 'manage_issues'),
+                                  url(r'^edit_issue/(?P<issue>\d+)/$', 'edit_issue'),
                                   )
 
 

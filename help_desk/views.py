@@ -152,11 +152,28 @@ def manage_issues(request, employee, tab):
 
     filteredIssues = doIssueFiltering(issues, 'assignment', filter)
 
+    fields = [
+        ('title', 'Pavadinimas'),
+        ('type', 'Tipas'),
+        ('service', 'Paslauga'),
+        ('created', 'Sukurta'),
+        ('closed', 'Pabaigta'),
+        ('status', 'Statusas')
+    ]
+
+
     return render(request, 'management/manage_issues.html', {
+        'fields': fields,
         'issues': filteredIssues,
+        'model' : 'Issue',
         'tab': tab,
     })
 
+
+@tab
+@employee_only
+def edit_issue(request, employee, tab, issue):
+    print 'Hello World'
 
 def get_form(model):
     if model not in MODEL_FORMS:

@@ -205,8 +205,13 @@ class Issue(models.Model):
         self.status = 'in progress'
         self.save()
 
-    def get_absolute_url(self):
-        return reverse('help_desk.views.view_issue', args=(self.id,))
+    def get_absolute_url(self, edit=None):
+        if edit == None:
+            edit=False
+        if(edit):
+            return reverse('help_desk.views.edit_issue', args=(self.id,))
+        else:
+            return reverse('help_desk.views.view_issue', args=(self.id,))
 
 
 class Assignment(models.Model):
