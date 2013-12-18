@@ -6,4 +6,5 @@
 {% menu_item 'services' _('Services') 'client.views.services' %}
 {% menu_item 'contracts' _('Contracts') 'client.views.contracts' %}
 {% menu_item 'information' _('Information') 'client.views.information' %}
+{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}
 {% endblock %}

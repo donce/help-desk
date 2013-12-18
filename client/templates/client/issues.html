@@ -12,16 +12,16 @@
     $(create_issue);
 </script>
 <div id="naujas_kreipinys_button" onclick="create_issue()">
-	<input type="submit" value="{% trans 'New issue' %}"/>
+	<input class="width_20" type="submit" value="{% trans 'New issue' %}"/>
 </div>
 
 <table id="klientas_kreipiniai">
 	<thead>
 		<tr>
 			<th>{% trans 'Issue' %}</th>
-			<th class="labai_trumpas">{% trans 'Type' %}</th>
-			<th class="trumpas" >{% trans 'Service' %}</th>
-			<th class="labai_trumpas">{% trans 'Answer' %}</th>
+			<th class="width_10">{% trans 'Type' %}</th>
+			<th class="width_20" >{% trans 'Service' %}</th>
+			<th class="width_10">{% trans 'Answer' %}</th>
 		</tr>
 	</thead>
 	<tbody>

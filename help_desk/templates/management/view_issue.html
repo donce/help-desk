@@ -33,21 +33,21 @@
 		</p>
 		{% trans 'Description' %}:
 		<textarea readonly>{{ issue.description }}</textarea>
-		<div class="zemyn">
-		<a class="action" href="?action=solve">
-		{% if issue.status == "solved" %}{% trans 'Unsolve' %}
-		{% else %}{% trans 'Solve' %}{% endif %}
-		</a>
-		<div class="right back">
-		<a class="action" href="?action=reject">
-		{% if issue.status == "rejected" %}{% trans 'Unreject' %}
-		{% else %}{% trans 'Reject' %}{% endif %}
-		</a>
-		{% if not issue.current == None %}
-		<a class="action" href="?action=return">{% trans 'Return' %}</a>
-		{% endif %}
-		<a class="action" href="?action=delete">{% trans 'Delete' %}</a>
-		</div>
+		<div class="lower_2">
+			<a class="action" href="?action=solve"><button class="darker width_20">
+			{% if issue.status == "solved" %}{% trans 'Unsolve' %}
+			{% else %}{% trans 'Solve' %}{% endif %}</button>
+			</a>
+			<div class="right back">
+				<a class="action" href="?action=reject"><button class="darker">
+				{% if issue.status == "rejected" %}{% trans 'Unreject' %}
+				{% else %}{% trans 'Reject' %}{% endif %}
+				</button></a>
+				{% if not issue.current == None %}
+				<a class="action" href="?action=return"><button class="darker">{% trans 'Return' %}</button></a>
+				{% endif %}
+				<a class="action" href="?action=delete"><button class="darker">{% trans 'Delete' %}</button></a>
+			</div>
 		</div>
 	</div>
 </div>

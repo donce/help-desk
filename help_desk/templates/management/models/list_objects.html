@@ -2,6 +2,6 @@
 {% load i18n %}
 {% load objects_table %}
 {% block model_content %}
-<a class="create" href="{% url 'help_desk.views.model_add' model %}">{% trans 'Create' %}</a>
+<a class="right upper" href="{% url 'help_desk.views.model_add' model %}"><button>{% trans 'Create' %}</button></a>
 {% objects_table model fields objects %}
 {% endblock %}
