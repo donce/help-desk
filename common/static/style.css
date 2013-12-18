@@ -328,7 +328,7 @@ table.transparent td, table.transparent th{
 	float:right;
 }
 
-.tablist {
+.tabs_menu {
     list-style:none; 
     height:2em;
     padding:0; 
@@ -336,12 +336,9 @@ table.transparent td, table.transparent th{
     border: none;
 }
 
-.tablist li {
-    float:left; 
-    margin-right:0.13em; 
-}
-
-.tablist li a {
+.tab {
+    float:left;
+    margin-right:0.13em;
     display:block;
     padding:2 2em;
     text-decoration:none;

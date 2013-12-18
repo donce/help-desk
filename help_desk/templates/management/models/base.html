@@ -1,11 +1,12 @@
 {% extends "management/base.html" %}
 {% load objects_table %}
 {% block content %}
-<ul class="tablist left">
+<div class="tabs_menu">
 	{% for item in models %}
-		<li><a href="{% url 'help_desk.views.model_list' item %}"{% if model == item %} class="current"{% endif %}>{{ item|title }}</a></li>
+            <a href="{% url 'help_desk.views.model_list' item %}" class="tab{% if model == item %} current{% endif %}">{{ item|title }}</a>
 	{% endfor %}
-</ul>
+    {% block action_buttons %}{% endblock %}
+</div>
 {% block model_content %}
 {% endblock %}
 {% endblock %}
