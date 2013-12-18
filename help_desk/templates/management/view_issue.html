@@ -2,51 +2,53 @@
 {% load i18n %}
 {% block content %}
 
-<!-- TODO: add some style ;) -->
-<a class="action" href="?action=solve">
-{% if issue.status == "solved" %}{% trans 'Unsolve' %}
-{% else %}{% trans 'Solve' %}{% endif %}
-</a>
-<a class="action" href="?action=reject">
-{% if issue.status == "rejected" %}{% trans 'Unreject' %}
-{% else %}{% trans 'Reject' %}{% endif %}
-</a>
-{% if not issue.current == None %}
-<a class="action" href="?action=return">{% trans 'Return' %}</a>
-{% endif %}
-<a class="action" href="?action=delete">{% trans 'Delete' %}</a>
-
-<div class="issue left">
+<div class="issue center">
 	<div class="vid">
-	<table class="transparent issue_table">
-		<tr>
-			<th class="labai_trumpas"></th>
-			<th></th>
-			<th class="trumpas"></th>
-			<th></th>
-		</tr>
-		<tr>
-			<td>{% trans 'Title' %}:</td>
-			<td><input type="text" readonly value="{{ issue.title }}"></td>
-			<td>{% trans 'Client' %}:</td>
-			<td><input type="text" readonly value="{{ issue.client }}"></td>
-		</tr>
-		<tr>
-			<td>{% trans 'Service' %}:</td>
-			<td><input type="text" readonly value="{{ issue.service }}"></td>
-			<td>{% trans 'Receive type' %}:</td>
-			<td><input type="text" readonly value="{{ issue.receive_type }}"></td>
-		</tr>
-		<tr>
-			<td>{% trans 'Type' %}:</td>
-			<td><input type="text" readonly value="{{ issue.type }}"></td>
-			<td>{% trans 'Created' %}:</td>
-			<td><input type="text" readonly value="{{ issue.created }}"></td>
-		</tr>
-	</table>
-	</p>
-	{% trans 'Description' %}:
-	<textarea readonly>{{ issue.description }}</textarea>
+		<table class="transparent issue_table">
+			<tr>
+				<th class="labai_trumpas"></th>
+				<th></th>
+				<th class="trumpas"></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>{% trans 'Title' %}:</td>
+				<td><input type="text" readonly value="{{ issue.title }}"></td>
+				<td>{% trans 'Client' %}:</td>
+				<td><input type="text" readonly value="{{ issue.client }}"></td>
+			</tr>
+			<tr>
+				<td>{% trans 'Service' %}:</td>
+				<td><input type="text" readonly value="{{ issue.service }}"></td>
+				<td>{% trans 'Receive type' %}:</td>
+				<td><input type="text" readonly value="{{ issue.receive_type }}"></td>
+			</tr>
+			<tr>
+				<td>{% trans 'Type' %}:</td>
+				<td><input type="text" readonly value="{{ issue.type }}"></td>
+				<td>{% trans 'Created' %}:</td>
+				<td><input type="text" readonly value="{{ issue.created }}"></td>
+			</tr>
+		</table>
+		</p>
+		{% trans 'Description' %}:
+		<textarea readonly>{{ issue.description }}</textarea>
+		<div class="zemyn">
+		<a class="action" href="?action=solve">
+		{% if issue.status == "solved" %}{% trans 'Unsolve' %}
+		{% else %}{% trans 'Solve' %}{% endif %}
+		</a>
+		<div class="right back">
+		<a class="action" href="?action=reject">
+		{% if issue.status == "rejected" %}{% trans 'Unreject' %}
+		{% else %}{% trans 'Reject' %}{% endif %}
+		</a>
+		{% if not issue.current == None %}
+		<a class="action" href="?action=return">{% trans 'Return' %}</a>
+		{% endif %}
+		<a class="action" href="?action=delete">{% trans 'Delete' %}</a>
+		</div>
+		</div>
 	</div>
 </div>
 <!-- and others -->

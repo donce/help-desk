@@ -44,7 +44,7 @@ input[type=submit], .filter{
 	cursor: pointer;
 }
 
-input[type=submit]:hover, .action:hover {
+input[type=submit]:hover {
 	border-top-color: #0e16ad;
 	background: #002E3D;
 	color: #f2f2f2;
@@ -239,6 +239,23 @@ tr.row2 {
 	float:left;
 }
 
+.center {
+	float:none;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.issue.center {
+	width:70%;
+}
+
+.zemyn {
+	margin-top:2%;
+}
+
+.right.back{
+	margin-right:5%;
+}
 .issue_table{
 	color:white;
 }
@@ -256,7 +273,7 @@ textarea {
 	height: 60%;
 }
 
-input[type=text]{
+.issue_table input[type=text]{
 	width:90%;
 }
 
@@ -273,6 +290,7 @@ input[type=text]{
 
 div.vid {
 	margin-left: 5%;
+	margin-top: 2%;
 }
 
 .pasirinkimas {
