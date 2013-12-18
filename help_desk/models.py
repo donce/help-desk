@@ -225,7 +225,7 @@ class Contract(models.Model):
     title = models.CharField(_('Title'), max_length=255)
     client = models.ForeignKey(Client, verbose_name=_('Client'))
     start = models.DateField(_('Start'))
-    end = models.DateField(_('End'))
+    end = models.DateField(_('End'), null=True)
     services = models.ManyToManyField('Service', related_name='contracts')
 
     def get_absolute_url(self):

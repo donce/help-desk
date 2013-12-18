@@ -277,4 +277,3 @@ def import_database(request, employee, tab):
             file = request.FILES['file']
             XLSXImporter().import_xlsx(file)
     return redirect(administration)
-
