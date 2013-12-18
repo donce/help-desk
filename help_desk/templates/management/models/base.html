@@ -1,6 +1,9 @@
 {% extends "management/base.html" %}
 {% load objects_table %}
 {% block content %}
+{% for model in models %}
+<a href="{% url 'help_desk.views.model_list' model %}">{{ model|title }}</a>
+{% endfor %}
 <h1>{{ model|title }}</h1>
 {% block model_content %}
 {% endblock %}

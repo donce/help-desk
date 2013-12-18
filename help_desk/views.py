@@ -215,6 +215,7 @@ def model_list(request, employee, tab, model):
         'objects': objects,
         'fields': fields,
         'model': model,
+        'models': [name for name in MODEL_FORMS],
         'tab': tab,
     })
 
@@ -232,6 +233,7 @@ def model_add(request, employee, tab, model):
         form = form_class()
     return render(request, 'management/models/add.html', {
         'form': form,
+        'models': [name for name in MODEL_FORMS],
         'tab': tab,
     })
 
@@ -257,6 +259,7 @@ def model_edit(request, employee, tab, model, instance_id):
         'model': model,
         'object': get_model(model).objects.get(id=instance_id),
         'form': form,
+        'models': [name for name in MODEL_FORMS],
         'tab': tab,
     })
 
