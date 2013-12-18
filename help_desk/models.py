@@ -168,6 +168,7 @@ class Issue(models.Model):
     closed = models.DateTimeField(_('Closed'), null=True)
     status = models.CharField(_('Status'), choices=ISSUE_STATUS_CHOICES, max_length=255)
     rating = models.PositiveIntegerField(_('Rating'), null=True)
+    assigned_to = models.ForeignKey('Employee', verbose_name=_('Employee'), null=True, blank=True)
     current = models.ForeignKey('Assignment', related_name='current', null=True, blank=True)
     previous = models.ForeignKey('Issue', null=True, blank=True)#TODO: purpose of this?
 

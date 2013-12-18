@@ -90,6 +90,7 @@ def solve_issues(request, employee, tab):
         ('title', 'Pavadinimas'),
         ('type', 'Tipas'),
         ('service', 'Paslauga'),
+        ('assigned_to', 'Paskirta'),
         ('created', 'Sukurta'),
         ('closed', 'Pabaigta'),
         ('status', 'Statusas')
@@ -156,7 +157,7 @@ def manage_issues(request, employee, tab):
         ('title', 'Pavadinimas'),
         ('type', 'Tipas'),
         ('service', 'Paslauga'),
-        ('current', 'Priskirta'),
+        ('assigned_to', 'Priskirta'),
         ('created', 'Sukurta'),
         ('closed', 'Pabaigta'),
         ('status', 'Statusas')
@@ -173,17 +174,27 @@ def manage_issues(request, employee, tab):
 
 @tab
 @employee_only
-def edit_issue(request, employee, tab, issue):
-    issue = Issue.objects.get(id=issue)
+def edit_issue(request, employee, tab, issue_id):
+    issue = Issue.objects.get(id=issue_id)
     issueForm = IssueForm(instance=issue)
+
+    #if we have already posted
     if request.method == 'POST':
         issueForm = IssueForm(request.POST, instance=issue)
         if issueForm.is_valid():
+
+            #check for status setting
             issue = issueForm.save(commit=False)
-            if issue.current == None:
+            if issue.assigned_to == None:
                 issue.status = 'unassigned'
             elif issue.status == 'unassigned':
                 issue.status = 'in progress'
+
+            #check if assignment is needed
+            if not Issue.objects.get(id=issue_id).assigned_to == issue.assigned_to:
+                issue.assign(employee, issue.assigned_to)
+
+            #save
             issue.save();
             return redirect('/management/manage_issues')
     return render(request, 'management/edit_issue.html', {
