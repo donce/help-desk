@@ -4,7 +4,7 @@
 		<form action="{% url 'client.views.create_issue' %}" method="post">
 			{% csrf_token %}
 			{{ client_issue_form.as_p }}
-			<input type="submit" value="{% trans 'Send' %}"/>
+			<input class="darker width_20" type="submit" value="{% trans 'Send' %}"/>
 		</form>
 	</div>
 </div>

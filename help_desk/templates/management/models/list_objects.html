@@ -1,7 +1,9 @@
 {% extends "management/models/base.html" %}
 {% load i18n %}
 {% load objects_table %}
+{% block action_buttons %}
+<a class="right upper" href="{% url 'help_desk.views.model_add' model %}"><button>{% trans 'Create' %}</button></a>
+{% endblock %}
 {% block model_content %}
-<a class="create" href="{% url 'help_desk.views.model_add' model %}">{% trans 'Create' %}</a>
 {% objects_table model fields objects %}
 {% endblock %}

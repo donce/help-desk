@@ -1,3 +1,29 @@
 ﻿{% load i18n %}
-Kreipinys {{ issue.id }} "{{ issue.title }}"<br />
-{{ issue.description }}
+<div class="issue no_buttons">
+	<div class="vid">
+		<table class="transparent issue_table">
+			<tr>
+				<th class="labai_trumpas"></th>
+				<th></th>
+				<th class="trumpas"></th>
+				<th></th>
+			</tr>
+
+			<tr>
+				<td>{% trans 'Title' %}:</td>
+				<td><input type="text" readonly value="{{ issue.title }}"></td>
+				<td>{% trans 'Type' %}:</td>
+				<td><input type="text" readonly value="{{ issue.type }}"></td>
+			</tr>
+			<tr>
+				<td>{% trans 'Created' %}:</td>
+				<td><input type="text" readonly value="{{ issue.created }}"></td>
+				<td>{% trans 'Service' %}:</td>
+				<td><input type="text" readonly value="{{ issue.service }}"></td>
+			</tr>
+		</table>
+		</p>
+		{% trans 'Description' %}:
+		<textarea readonly>{{ issue.description }}</textarea>
+	</div>
+</div>

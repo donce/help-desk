@@ -17,14 +17,7 @@ h1.login {
 	margin-top: 2%;
 }
 
-form.login {
-	color: white;
-	text-align: center;
-	font-size: 150%;
-	font-family: "Trebuchet MS";
-}
-
-input[type=submit], .filter{
+input[type=submit], .filter, button{
 	border-top: 1px solid #1e445c;
 	background: #1A566B;
 	padding: 5px 10px;
@@ -44,7 +37,7 @@ input[type=submit], .filter{
 	cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button:hover {
 	border-top-color: #0e16ad;
 	background: #002E3D;
 	color: #f2f2f2;
@@ -55,7 +48,7 @@ div.login input[type=submit] {
 	margin-top:10%;
 }
 
-div.login {
+form.login {
 	margin: auto auto;
 	width: 350px;
 	height: 250px;
@@ -78,6 +71,7 @@ div.login {
 	text-decoration: none;
 	vertical-align: middle;
 	display: -webkit-box;
+	display: -moz-box;
 	-webkit-box-pack: center;
 	-webkit-box-align: center;
 	-webkit-box-sizing: content-box;
@@ -91,7 +85,8 @@ div.login {
 	color: #001433;
 }
 
-.menu_item{	background: #002E3D;
+.menu_item{
+	background: #002E3D;
 	padding: 10px 15px;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
@@ -107,13 +102,12 @@ div.login {
 }
 
 .menu_item_active {
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#002E3D), to(#002E3D), color-stop(.5,#298AAB));
-	background: -moz-linear-gradient(top, #002E3D, #33ADD6);
-	background: -ms-linear-gradient(top, #002E3D, #33ADD6);
+	background: -webkit-linear-gradient(left, #002E3D 0%, #298AAB 50%, #002E3D 100%);
+	background: -moz-linear-gradient(left, #002E3D 0%, #298AAB 50%, #002E3D 100%);
+	background: -ms-linear-gradient(left, #002E3D 0%, #298AAB 50%, #002E3D 100%);
 }
 
 .menu_item:hover, .filter:hover{
-	/*border-top-color: #0e1133;*/
 	background: #00202B;
 	color: #ffffff;
 }
@@ -200,24 +194,20 @@ tr.row2 {
 	float: left;
 }
 
-.ilgas {
+.width_50 {
 	width: 50%;
 }
 
-.labai_trumpas {
+.width_10 {
 	width: 10%;
 }
 
-.trumpas {
+.width_20 {
 	width: 20%;
 }
 
 #naujas_kreipinys_button {
-	margin-left: 40.5%;
-}
-
-#naujas_kreipinys_button input[type=submit]{
-	width:130px;
+	margin-left: 37.5%;
 }
 
 .issue {
@@ -249,7 +239,7 @@ tr.row2 {
 	width:70%;
 }
 
-.zemyn {
+.lower_2 {
 	margin-top:2%;
 }
 
@@ -280,14 +270,19 @@ textarea {
 #naujas_kreipinys input[type=submit] {
 	float: right;
 	margin-right: 5%;
-	width: 20%;
+}
+
+.darker, input.darker {
 	background-color: #002E3D;
 }
 
-#naujas_kreipinys input[type=submit]:hover {
+.darker:hover, input.darker:hover {
 	background: #00202B;
 }
 
+.issue.no_buttons{
+	height: 75%;
+}
 div.vid {
 	margin-left: 5%;
 	margin-top: 2%;
@@ -299,7 +294,7 @@ div.vid {
 	color: silver;
 }
 
-#import_button {
+.lower_2 {
 	margin-top: 2%;
 }
 
@@ -321,8 +316,7 @@ div.vid {
 }
 
 #languages {
-	text-align: right;;
-
+	text-align: right;
 }
 
 table.transparent td, table.transparent th{
@@ -334,7 +328,43 @@ table.transparent td, table.transparent th{
 	float:right;
 }
 
-#logout {	
-	float:right;
-	margin-top: -0.65cm;
+.tabs_menu {
+    list-style:none; 
+    height:2em;
+    padding:0; 
+    margin:0; 
+    border: none;
 }
+
+.tab {
+    float:left;
+    margin-right:0.13em;
+    display:block;
+    padding:2 2em;
+    text-decoration:none;
+    border:0.06em solid #000;
+    border-bottom:0;
+    font:bold 0.88em/2em "Trebuchet MS";
+    color:white;
+    background-color:#002E3D;
+    webkit-border-top-right-radius:0.50em;
+    -webkit-border-top-left-radius:0.50em;
+    -moz-border-radius-topright:0.50em;
+    -moz-border-radius-topleft:0.50em;
+    border-top-right-radius:0.50em;
+    border-top-left-radius:0.50em;
+}
+
+.tablist li a:hover {
+    background:#00202B; 
+    text-decoration:none;
+}
+
+.tablist li a:active {
+    background:#004C66; 
+}
+
+.upper {
+	margin-top: -0.3%;
+}
+

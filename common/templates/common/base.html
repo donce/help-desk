@@ -6,14 +6,18 @@
 {% block title %}Help-desk savitarnos svetainė{% endblock %}
 {% block body %}
 <div class="menu">
-{% block menu %}
-{% endblock %}
-<div class="menu_employee_title">
-{% include 'common/languages.html' %}
-{{ user.get_full_name }}
-<div id="Logout">{% url 'common.views.logout' as logout_url %}
-{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}</div>
-</div>
+	{% block menu %}
+	{% endblock %}
+	<div class="right">
+		{% url 'common.views.logout' as logout_url %}
+		{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}
+	</div>
+	<div class="right">
+		{% include 'common/languages.html' %}
+	</div>
+	<div class="menu_employee_title">
+		{{ user.get_full_name }} 
+	</div>
 </div>
 <hr />
 {% block content %}

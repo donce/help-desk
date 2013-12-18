@@ -218,11 +218,8 @@ def get_model(model):
 @tab
 @employee_only
 def models(request, employee, tab):
-    model_types = [name for name in MODEL_FORMS]
-    return render(request, 'management/models/list_all.html', {
-        'models': model_types,
-        'tab': tab,
-    })
+    return model_list(request)
+
 
 MODEL_MANAGEMENT_FIELDS = {
     'client': [
@@ -252,7 +249,7 @@ MODEL_MANAGEMENT_FIELDS = {
 
 @tab
 @employee_only
-def model_list(request, employee, tab, model):
+def model_list(request, employee, tab, model='service'):
     objects = get_model(model).objects.all()
     fields = MODEL_MANAGEMENT_FIELDS[model] if model in MODEL_MANAGEMENT_FIELDS else []
     return render(request, 'management/models/list_objects.html', {

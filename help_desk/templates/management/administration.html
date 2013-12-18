@@ -8,6 +8,6 @@
 <form id="import" action="{% url 'help_desk.views.import_database' %}" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 {{ import_form.as_p }}
-<input id="import_button" type="submit" value="{% trans 'Import' %}"/>
+<input class="lower_2" type="submit" value="{% trans 'Import' %}"/>
 </form>
 {% endblock %}
