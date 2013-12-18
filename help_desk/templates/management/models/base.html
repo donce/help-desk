@@ -2,8 +2,8 @@
 {% load objects_table %}
 {% block content %}
 <ul class="tablist left">
-	{% for model in models %}
-		<li><a href="{% url 'help_desk.views.model_list' model %}">{{ model|title }}</a></li>
+	{% for item in models %}
+		<li><a href="{% url 'help_desk.views.model_list' item %}"{% if model == item %} class="current"{% endif %}>{{ item|title }}</a></li>
 	{% endfor %}
 </ul>
 {% block model_content %}
