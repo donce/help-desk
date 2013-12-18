@@ -178,6 +178,11 @@ def edit_issue(request, employee, tab, issue_id):
     issue = Issue.objects.get(id=issue_id)
     issueForm = IssueForm(instance=issue)
 
+    action = get_action(request.GET, 'action', ('delete'))
+    if action != None:
+        delete_issue(issue)
+        return redirect('/management/manage_issues')
+
     #if we have already posted
     if request.method == 'POST':
         issueForm = IssueForm(request.POST, instance=issue)
