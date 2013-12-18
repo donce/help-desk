@@ -7,10 +7,17 @@ from django.utils.http import is_safe_url
 from django.contrib.auth import login as login_user, logout as logout_user
 
 from client.views import home as client_home
-from help_desk.views import management_home as employee_home
+from help_desk.models import ROLE_ADMINISTRATOR, ROLE_ENGINEER, ROLE_MANAGER
+from help_desk.views import management_home as employee_home, solve_issues, manage_issues
+
 
 def main(request):
     if request.user.is_employee():
+        role = request.user.employee.role
+        if role == ROLE_MANAGER:
+            redirect(manage_issues)
+        elif role == ROLE_ENGINEER:
+            return redirect(solve_issues)
         return redirect(employee_home)
     return redirect(client_home)
 

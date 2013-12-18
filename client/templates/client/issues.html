@@ -9,6 +9,7 @@
     show_issue = function(number) {
         $('#right_container').load('edit/' + number + '/');
     };
+    $(create_issue);
 </script>
 <div id="naujas_kreipinys_button" onclick="create_issue()">
 	<input type="submit" value="{% trans 'New issue' %}"/>
