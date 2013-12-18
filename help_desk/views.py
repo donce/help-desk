@@ -6,7 +6,7 @@ from help_desk.administration import XLSXImporter
 from help_desk.forms import ImportForm
 
 from models import Issue
-from forms import MODEL_FORMS
+from forms import MODEL_FORMS, IssueForm
 
 
 def employee_only(function):
@@ -156,6 +156,7 @@ def manage_issues(request, employee, tab):
         ('title', 'Pavadinimas'),
         ('type', 'Tipas'),
         ('service', 'Paslauga'),
+        ('current', 'Priskirta'),
         ('created', 'Sukurta'),
         ('closed', 'Pabaigta'),
         ('status', 'Statusas')
@@ -173,7 +174,22 @@ def manage_issues(request, employee, tab):
 @tab
 @employee_only
 def edit_issue(request, employee, tab, issue):
-    print 'Hello World'
+    issue = Issue.objects.get(id=issue)
+    issueForm = IssueForm(instance=issue)
+    if request.method == 'POST':
+        issueForm = IssueForm(request.POST, instance=issue)
+        if issueForm.is_valid():
+            issue = issueForm.save(commit=False)
+            if issue.current == None:
+                issue.status = 'unassigned'
+            elif issue.status == 'unassigned':
+                issue.status = 'in progress'
+            issue.save();
+            return redirect('/management/manage_issues')
+    return render(request, 'management/edit_issue.html', {
+        'issueForm' : issueForm,
+        'tab' : tab
+    })
 
 def get_form(model):
     if model not in MODEL_FORMS:

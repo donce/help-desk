@@ -8,9 +8,6 @@
 <a class="filter" href="?filter=drop">{% trans 'Unassigned' %}</a>
 <div class="right">
 	<input type="submit" value="{% trans 'Create' %}"/>
-	<input type="submit" value="{% trans 'Assign' %}"/>
-	<input type="submit" value="{% trans 'Edit' %}"/>
-	<input type="submit" value="{% trans 'Delete' %}"/>
 </div>
 {% issues_table model fields issues 'true' %}
 {% endblock %}

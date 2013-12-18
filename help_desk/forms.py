@@ -23,6 +23,11 @@ class ContractForm(forms.ModelForm):
     class Meta:
         model = Contract
 
+class IssueForm(forms.ModelForm):
+    class Meta:
+        model = Issue
+        exclude = ('created', 'closed', 'rating', 'status');
+
 
 MODEL_FORMS = {
     'service': ServiceForm,
