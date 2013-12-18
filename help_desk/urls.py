@@ -13,8 +13,8 @@ manage_issues_patterns = patterns('help_desk.views',
 models_actions_patterns = patterns('help_desk.views',
                                    url(r'^$', 'model_list'),
                                    url(r'^add/$', 'model_add'),
-                                   url(r'^edit/(?P<instance>\d+)/$', 'model_edit'),
-                                   url(r'^remove/(?P<instance>\d+)/$', 'model_remove'),
+                                   url(r'^edit/(?P<instance_id>\d+)/$', 'model_edit'),
+                                   url(r'^remove/(?P<instance_id>\d+)/$', 'model_remove'),
                                    )
 
 

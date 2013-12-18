@@ -158,18 +158,11 @@ def manage_issues(request, employee, tab):
     })
 
 
-def get_form(model, instance=None):
+def get_form(model):
     if model not in MODEL_FORMS:
         raise Http404
     form = MODEL_FORMS[model]
-    if instance:
-        modelClass = form.Meta.model
-        try:
-            instance = modelClass.objects.get(pk=instance)
-        except modelClass.DoesNotExist:
-            raise Http404
-        return form(instance=instance)
-    return form()
+    return form
 
 
 def get_model(model):
@@ -229,7 +222,14 @@ def model_list(request, employee, tab, model):
 @tab
 @employee_only
 def model_add(request, employee, tab, model):
-    form = get_form(model)
+    form_class = get_form(model)
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(model_list, model)
+    else:
+        form = form_class()
     return render(request, 'management/models/add.html', {
         'form': form,
         'tab': tab,
@@ -238,11 +238,24 @@ def model_add(request, employee, tab, model):
 
 @tab
 @employee_only
-def model_edit(request, employee, tab, model, instance):
-    form = get_form(model, instance)
+def model_edit(request, employee, tab, model, instance_id):
+    form_class = get_form(model)
+    model_class = form_class.Meta.model
+    try:
+        instance = model_class.objects.get(id=instance_id)
+    except model_class.DoesNotExist:
+        raise Http404
+
+    if request.method == 'POST':
+        form = form_class(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect(model_list, model)
+    else:
+        form = form_class(instance=instance)
     return render(request, 'management/models/edit.html', {
         'model': model,
-        'object': get_model(model).objects.get(id=instance),
+        'object': get_model(model).objects.get(id=instance_id),
         'form': form,
         'tab': tab,
     })
@@ -250,10 +263,10 @@ def model_edit(request, employee, tab, model, instance):
 
 @tab
 @employee_only
-def model_remove(request, employee, tab, model, instance):
+def model_remove(request, employee, tab, model, instance_id):
     m = get_model(model)
     try:
-        m.objects.get(pk=instance).delete()
+        m.objects.get(pk=instance_id).delete()
     except m.DoesNotExist:
         raise Http404
     return redirect(model_list, model)
