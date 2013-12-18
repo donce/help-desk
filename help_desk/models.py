@@ -104,7 +104,7 @@ class Service(models.Model):
         return self.description
 
     def get_absolute_url(self):
-        return reverse('help_desk.views.model_edit', args=('client', self.id))
+        return reverse('help_desk.views.model_edit', args=('service', self.id))
 
 
 class Client(models.Model):
