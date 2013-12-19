@@ -1,19 +1,9 @@
 ﻿{% extends 'client/base.html' %}
 {% load i18n %}
 {% block content %}
-<script type="text/javascript">
-    create_issue = function() {
-        $('#right_container').load('create/');
-    };
-
-    show_issue = function(number) {
-        $('#right_container').load('edit/' + number + '/');
-    };
-    $(create_issue);
-</script>
-<div id="naujas_kreipinys_button" onclick="create_issue()">
-	<input class="width_20" type="submit" value="{% trans 'New issue' %}"/>
-</div>
+<a href="{% url 'client.views.create_issue' %}">
+    <button>{% trans 'New issue' %}</button>
+</a>
 
 <table id="klientas_kreipiniai">
 	<thead>
@@ -26,16 +16,17 @@
 	</thead>
 	<tbody>
         {% for issue in issues %}
-		<tr class="{% cycle 'row1' 'row2' %}" onclick="show_issue({{ issue.id }})">
+        <tr class="{% cycle 'row1' 'row2' %}" onclick="show_issue({{ issue.id }})">
 			<td>
+                <a href="{% url 'client.views.edit_issue' issue.id %}">
                 {{ issue.title }}
-			<!--gauti kreipini-->
+                </a>
 			</td>
 			<td>
-			<!--gauti kreipinio tipa-->
+                {{ issue.get_type_display }}
 			</td>
 			<td>
-			<!--gauti paslauga-->
+                {{ issue.service }}
 			</td>
 			<td>
 			<!--ar gautas atsakymas? pavyzdziui sudeti + ten kur atsakyta-->
@@ -44,5 +35,8 @@
         {% endfor %}
 	</tbody>
 </table>
-<div id="right_container" />
+<div id="right_container">
+{% block right %}
+{% endblock %}
+</div>
 {% endblock %}

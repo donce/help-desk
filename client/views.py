@@ -20,30 +20,35 @@ def client_only(function):
 
 
 def home(request):
-    return redirect(issues)
+    return redirect(create_issue)
 
 
-@client_only
-def issues(request, client, tab):
-    issues = Issue.objects.filter(client=client)
-    return render(request, 'client/issue/issues.html', {
-        'tab': tab,
-        'issues': issues,
-    })
+# @client_only
+# def issues(request, client, tab):
+#     return render(request, 'client/issue/base.html', {
+#         'tab': tab,
+#         'issues': issues,
+#     })
 
 
 @client_only
 def create_issue(request, client, tab):
-    return render(request, 'client/issue/create_issue.html', {
+    issues = Issue.objects.filter(client=client)
+    return render(request, 'client/issue/create.html', {
         'client_issue_form': ClientIssueForm(),
+        'issues': issues,
+        'tab': tab,
     })
 
 
 @client_only
 def edit_issue(request, client, tab, issue_id):
+    issues = Issue.objects.filter(client=client)
     issue = Issue.objects.get(id=int(issue_id))
-    return render(request, 'client/issue/edit_issue.html', {
+    return render(request, 'client/issue/edit.html', {
         'issue': issue,
+        'issues': issues,
+        'tab': tab,
     })
 
 

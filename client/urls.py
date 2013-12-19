@@ -1,8 +1,7 @@
 from django.conf.urls import patterns, url, include
 
 issues_patterns = patterns('client.views',
-                           url(r'^$', 'issues'),
-                           url(r'^create/$', 'create_issue'),
+                           url(r'^$', 'create_issue'),
                            url(r'^edit/(?P<issue_id>\d+)/$', 'edit_issue'),
                            )
 
