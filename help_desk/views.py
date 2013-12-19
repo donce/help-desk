@@ -252,7 +252,7 @@ def get_model(model):
 @tab
 @employee_only
 def models(request, employee, tab):
-    return model_list(request)
+    return model_list(request, tab=tab)
 
 
 MODEL_MANAGEMENT_FIELDS = {
@@ -368,3 +368,12 @@ def import_database(request, employee, tab):
             file = request.FILES['file']
             XLSXImporter().import_xlsx(file)
     return redirect(administration)
+
+
+@tab
+@employee_only
+def statistics(request, employee, tab):
+    print tab
+    return render(request, 'management/statistics.html', {
+        'tab': tab,
+    })

@@ -32,11 +32,17 @@ administration_patterns = patterns('help_desk.views',
                                    )
 
 
+statistics_patterns = patterns('help_desk.views',
+                               url(r'^$', 'statistics'),
+                               )
+
+
 management_patterns = patterns('help_desk.views',
                                url(r'^$', 'management_home', {'tab': 'main'}),
                                url(r'^manage_issues/', include(manage_issues_patterns), {'tab': 'manage_issues'}),
                                url(r'^solve_issues/', include(solve_issues_patterns), {'tab': 'solve_issues'}),
                                url(r'^models/', include(models_patterns), {'tab': 'models'}),
                                url(r'^administration/', include(administration_patterns), {'tab': 'administration'}),
+                               url(r'^statistics/', include(statistics_patterns), {'tab': 'statistics'}),
                                )
 
