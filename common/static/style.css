@@ -365,11 +365,7 @@ table.transparent td, table.transparent th{
     text-decoration:none;
 }
 
-<<<<<<< HEAD
-.tab:active {
-=======
 .tab.current {
->>>>>>> bf73b73302adff59564d2246a56f40b190c812de
     background:#004C66; 
 }
 
