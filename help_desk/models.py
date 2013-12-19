@@ -318,3 +318,4 @@ class deflection(models.Model):
     Time_deflection = models.IntegerField(_('Time_deflection'))
 
 
+

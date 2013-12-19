@@ -1,16 +1,15 @@
 import datetime
+import models
+
+def __init__(deflection):
+    models.deflection.timeDeflection = deflection
 
 
-class deflection(object):
-    timeDeflection = 0
+def __get__():
+    return models.timeDeflection
 
-    def __init__(self, var):
-        self.timeDeflection = var
 
-    def __get__(self):
-        return self.timeDeflection
-
-    def timeinc(self):
-        ret = datetime.now()
-        ret.add(datetime.day(self.timeDeflection))
-        return
+def timeinc():
+    ret = datetime.now()
+    ret.add(datetime.day(models.timeDeflection))
+    return ret
