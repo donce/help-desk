@@ -87,13 +87,13 @@ def solve_issues(request, employee, tab):
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
     fields = [
-        ('title', 'Pavadinimas'),
-        ('type', 'Tipas'),
-        ('service', 'Paslauga'),
-        ('assigned_to', 'Paskirta'),
-        ('created', 'Sukurta'),
-        ('closed', 'Pabaigta'),
-        ('status', 'Statusas')
+        ('title', 'Name'),
+        ('type', 'Type'),
+        ('service', 'Service'),
+        ('assigned_to', 'Assigned To'),
+        ('created', 'Created On'),
+        ('closed', 'Closed On'),
+        ('status', 'Status')
     ]
 
     return render(request, 'management/solve_issues.html', {
@@ -154,13 +154,13 @@ def manage_issues(request, employee, tab):
     filteredIssues = doIssueFiltering(issues, 'assignment', filter)
 
     fields = [
-        ('title', 'Pavadinimas'),
-        ('type', 'Tipas'),
-        ('service', 'Paslauga'),
-        ('assigned_to', 'Priskirta'),
-        ('created', 'Sukurta'),
-        ('closed', 'Pabaigta'),
-        ('status', 'Statusas')
+        ('title', 'Name'),
+        ('type', 'Type'),
+        ('service', 'Service'),
+        ('assigned_to', 'Assigned To'),
+        ('created', 'Created On'),
+        ('closed', 'Closed On'),
+        ('status', 'Status')
     ]
 
 
