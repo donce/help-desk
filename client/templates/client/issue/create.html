@@ -1,4 +1,6 @@
-﻿{% load i18n %}
+﻿{% extends 'client/issue/base.html' %}
+{% load i18n %}
+{% block right %}
 <div id="naujas_kreipinys" class="issue">
 	<div class="vid">
 		<form action="{% url 'client.views.create_issue' %}" method="post">
@@ -8,3 +10,4 @@
 		</form>
 	</div>
 </div>
+{% endblock %}

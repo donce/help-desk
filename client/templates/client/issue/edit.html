@@ -1,4 +1,6 @@
-﻿{% load i18n %}
+﻿{% extends 'client/issue/base.html' %}
+{% load i18n %}
+{% block right %}
 <div class="issue no_buttons">
 	<div class="vid">
 		<table class="transparent issue_table">
@@ -27,3 +29,4 @@
 		<textarea readonly>{{ issue.description }}</textarea>
 	</div>
 </div>
+{% endblock %}

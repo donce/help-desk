@@ -1,9 +1,8 @@
-from django.contrib.auth.models import AnonymousUser
 from django.http.response import Http404
 from django.shortcuts import render, redirect
 
 from help_desk.forms import ClientIssueForm
-from help_desk.models import Issue, Service, Contract
+from help_desk.models import Issue, Contract, ISSUE_RECEIVE_TYPE_WEBSITE
 
 
 def client_only(function):
@@ -20,30 +19,37 @@ def client_only(function):
 
 
 def home(request):
-    return redirect(issues)
-
-
-@client_only
-def issues(request, client, tab):
-    issues = Issue.objects.filter(client=client)
-    return render(request, 'client/issues.html', {
-        'tab': tab,
-        'issues': issues,
-    })
+    return redirect(create_issue)
 
 
 @client_only
 def create_issue(request, client, tab):
-    return render(request, 'client/create_issue.html', {
-        'client_issue_form': ClientIssueForm(),
+    if request.method == 'POST':
+        form = ClientIssueForm(request.POST)
+        if form.is_valid():
+            issue = form.save(commit=False)
+            issue.client = client
+            issue.receive_type = ISSUE_RECEIVE_TYPE_WEBSITE
+            issue.save()
+            return redirect(edit_issue, issue.id)
+    else:
+        form = ClientIssueForm()
+    issues = Issue.objects.filter(client=client)
+    return render(request, 'client/issue/create.html', {
+        'client_issue_form': form,
+        'issues': issues,
+        'tab': tab,
     })
 
 
 @client_only
 def edit_issue(request, client, tab, issue_id):
+    issues = Issue.objects.filter(client=client)
     issue = Issue.objects.get(id=int(issue_id))
-    return render(request, 'client/edit_issue.html', {
+    return render(request, 'client/issue/edit.html', {
         'issue': issue,
+        'issues': issues,
+        'tab': tab,
     })
 
 
