@@ -53,3 +53,8 @@ class ClientIssueForm(forms.ModelForm):
 class StatisticsForm(forms.Form):
     start = forms.DateField(widget=DateWidget)
     end = forms.DateField(widget=DateWidget)
+
+    def is_valid(self):
+        if super(StatisticsForm, self).is_valid():
+            return self.cleaned_data['end'] > self.cleaned_data['start']
+        return False

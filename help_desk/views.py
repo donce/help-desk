@@ -373,7 +373,15 @@ def import_database(request, employee, tab):
 @tab
 @employee_only
 def statistics(request, employee, tab):
+    form = StatisticsForm(request.GET)
+    start = None
+    end = None
+    if form.is_valid():
+        start = form.cleaned_data['start']
+        end = form.cleaned_data['end']
     return render(request, 'management/statistics.html', {
-        'form': StatisticsForm(request.GET),
+        'form': form,
         'tab': tab,
+        'start': start,
+        'end': end,
     })
