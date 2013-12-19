@@ -6,16 +6,20 @@
 		{% include 'common/languages.html' %}
 	</div>
     <h1 class="login">{% trans 'Customer self-service' %}</h1><br/>
-    <form class="login" action="" method="post">{% csrf_token %}
-        <div class="login">
-            <table class="transparent">
-                {{ form.as_table }}
-                <tr>
-                    <td colspan="2" style="text-align: center">
-                        <input type="submit" value="{% trans 'Login' %}"/>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </form>
+	
+	<div class="login_center">
+		<form class="login" action="" method="post">{% csrf_token %}
+			<div class="login">
+				<table class="transparent">
+					{{ form.as_table }}
+					<tr>
+						<td colspan="2" style="text-align: center">
+							<input type="submit" value="{% trans 'Login' %}"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+	
 {% endblock %}

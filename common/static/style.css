@@ -43,13 +43,19 @@ input[type=submit]:hover, button:hover {
 	color: #f2f2f2;
 }
 
+div.login_center {
+	width: 350px;
+	height: 250px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
 div.login input[type=submit] {
 	width: 150px;
 	margin-top:10%;
 }
 
 form.login {
-	margin: auto auto;
 	width: 350px;
 	height: 250px;
 	border-top: 1px solid #1e445c;
@@ -69,7 +75,6 @@ form.login {
 	font-size: 14px;
 	font-family: "Trebuchet MS";
 	text-decoration: none;
-	vertical-align: middle;
 	display: -webkit-box;
 	display: -moz-box;
 	-webkit-box-pack: center;
