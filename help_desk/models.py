@@ -180,6 +180,7 @@ class Issue(models.Model):
     def unsolve(self):
         self.status = 'unassigned'
         self.current = None
+        self.assigned_to = None
         self.closed = None
         self.save()
 
@@ -191,11 +192,14 @@ class Issue(models.Model):
     def unreject(self):
         self.status = 'unassigned'
         self.closed = None
+        self.current = None
+        self.assigned_to = None
         self.save()
 
     def returnIssue(self):
         self.status = 'unassigned'
         self.current = None
+        self.assigned_to = None
         self.save()
 
     def assign(self, assigned, worker):
