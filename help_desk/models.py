@@ -142,15 +142,19 @@ ISSUE_TYPE_CHOICES = (
     (ISSUE_TYPE_REQUEST, 'Request'),
 )
 
+ISSUE_RECEIVE_TYPE_WEBSITE = 'website'
+
 ISSUE_RECEIVE_TYPE_CHOICES = (
     ('phone', 'Telefonu'),
     ('email', 'El. paštu'),
-    ('website', 'Savitarnos svetainėje'),
+    (ISSUE_RECEIVE_TYPE_WEBSITE, 'Savitarnos svetainėje'),
 )
 
 #TODO: add statuses
+ISSUE_STATUS_UNASSIGNED = 'unassigned'
+
 ISSUE_STATUS_CHOICES = (
-    ('unassigned', 'Unassigned'),
+    (ISSUE_STATUS_UNASSIGNED, 'Unassigned'),
     ('in progress', 'In Progress'),
     ('solved', 'Solved'),
     ('rejected', 'Rejected'),
@@ -166,7 +170,7 @@ class Issue(models.Model):
     description = models.TextField(_('Description'))
     created = models.DateTimeField(_('Created'), auto_now_add=True)
     closed = models.DateTimeField(_('Closed'), null=True)
-    status = models.CharField(_('Status'), choices=ISSUE_STATUS_CHOICES, max_length=255)
+    status = models.CharField(_('Status'), choices=ISSUE_STATUS_CHOICES, max_length=255, default=ISSUE_STATUS_UNASSIGNED)
     rating = models.PositiveIntegerField(_('Rating'), null=True)
     assigned_to = models.ForeignKey('Employee', verbose_name=_('Employee'), null=True, blank=True)
     current = models.ForeignKey('Assignment', related_name='current', null=True, blank=True)

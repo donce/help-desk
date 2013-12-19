@@ -1,9 +1,8 @@
-from django.contrib.auth.models import AnonymousUser
 from django.http.response import Http404
 from django.shortcuts import render, redirect
 
 from help_desk.forms import ClientIssueForm
-from help_desk.models import Issue, Service, Contract
+from help_desk.models import Issue, Contract, ISSUE_RECEIVE_TYPE_WEBSITE
 
 
 def client_only(function):
@@ -30,6 +29,7 @@ def create_issue(request, client, tab):
         if form.is_valid():
             issue = form.save(commit=False)
             issue.client = client
+            issue.receive_type = ISSUE_RECEIVE_TYPE_WEBSITE
             issue.save()
             return redirect(edit_issue, issue.id)
     else:
