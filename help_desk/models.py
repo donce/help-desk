@@ -96,12 +96,12 @@ class BaseUser(AbstractBaseUser):
 
 class Service(models.Model):
     #TODO: id - string?
-    description = models.TextField(_('Description'))
+    title = models.CharField(_('Title'), max_length=255)
     limit_inc = models.IntegerField(_('Incident limit'))
     limit_req = models.IntegerField(_('Request limit'))
 
     def __unicode__(self):
-        return self.description
+        return self.title
 
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('service', self.id))

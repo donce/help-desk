@@ -275,7 +275,7 @@ MODEL_MANAGEMENT_FIELDS = {
         ('end', 'Pabaiga'),
     ],
     'service': [
-        ('description', 'Aprašymas'),
+        ('title', 'Pavadinimas'),
         ('limit_inc', 'Incidento limitas'),
         ('limit_req', 'Paklausimo limitas')
     ]

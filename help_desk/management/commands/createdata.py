@@ -26,7 +26,7 @@ class Command(BaseCommand):
         employee_b = BaseUser.objects.create_employee('admin2', 'admin2', 'Antanas', 'Antanaitis', ROLE_MANAGER,
                                                      'antanas@antanaitis.lt', '865432101')
 
-        service = Service.objects.create(description='Serverių hostingas', limit_inc=5, limit_req=2)
+        service = Service.objects.create(title='Serverių hostingas', limit_inc=5, limit_req=2)
         issue = client.register_issue(service, ISSUE_TYPE_REQUEST, 'phone', 'Problema', 'Neveikia kazkas...')
         for i in range(10):
             # r = Issue.objects.create(type=ISSUE_TYPE_INCIDENT, client=client, receive_type='phone', service=service)
