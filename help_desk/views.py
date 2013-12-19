@@ -196,7 +196,9 @@ def edit_issue(request, employee, tab, issue_id):
                 issue.status = 'in progress'
 
             #check if assignment is needed
-            if not Issue.objects.get(id=issue_id).assigned_to == issue.assigned_to:
+            if issue.assigned_to == None:
+                issue.current = None
+            elif not Issue.objects.get(id=issue_id).assigned_to == issue.assigned_to:
                 issue.assign(employee, issue.assigned_to)
 
             #save
