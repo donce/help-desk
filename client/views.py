@@ -26,7 +26,7 @@ def home(request):
 @client_only
 def issues(request, client, tab):
     issues = Issue.objects.filter(client=client)
-    return render(request, 'client/issues.html', {
+    return render(request, 'client/issue/issues.html', {
         'tab': tab,
         'issues': issues,
     })
@@ -34,7 +34,7 @@ def issues(request, client, tab):
 
 @client_only
 def create_issue(request, client, tab):
-    return render(request, 'client/create_issue.html', {
+    return render(request, 'client/issue/create_issue.html', {
         'client_issue_form': ClientIssueForm(),
     })
 
@@ -42,7 +42,7 @@ def create_issue(request, client, tab):
 @client_only
 def edit_issue(request, client, tab, issue_id):
     issue = Issue.objects.get(id=int(issue_id))
-    return render(request, 'client/edit_issue.html', {
+    return render(request, 'client/issue/edit_issue.html', {
         'issue': issue,
     })
 
