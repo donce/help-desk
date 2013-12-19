@@ -360,12 +360,12 @@ table.transparent td, table.transparent th{
     border-top-left-radius:0.50em;
 }
 
-.tablist li a:hover {
+.tab:hover {
     background:#00202B; 
     text-decoration:none;
 }
 
-.tablist li a:active {
+.tab:active {
     background:#004C66; 
 }
 
