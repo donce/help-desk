@@ -3,4 +3,10 @@
 {% load issues_table %}
 {% block content %}
 statistics
+<form method="get">
+    {{ form.start }}
+    {{ form.end }}
+    <input type="submit" value="{% trans 'Show' %}">
+</form>
+{{ form.media }}
 {% endblock %}

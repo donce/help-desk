@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import fields
+from common.widgets import DateWidget
 
 from models import Service, Client, Employee, Contract, Issue
 
@@ -22,6 +23,7 @@ class EmployeeForm(forms.ModelForm):
 class ContractForm(forms.ModelForm):
     class Meta:
         model = Contract
+
 
 class IssueForm(forms.ModelForm):
     class Meta:
@@ -46,3 +48,8 @@ class ClientIssueForm(forms.ModelForm):
         model = Issue
         exclude = ('client', 'receive_type', 'closed', 'status', 'rating',
                    'current', 'previous')
+
+
+class StatisticsForm(forms.Form):
+    start = forms.DateField(widget=DateWidget)
+    end = forms.DateField(widget=DateWidget)

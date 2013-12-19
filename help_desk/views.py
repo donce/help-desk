@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 
 from help_desk.administration import XLSXImporter
-from help_desk.forms import ImportForm
+from help_desk.forms import ImportForm, StatisticsForm
 
 from models import Issue
 from forms import MODEL_FORMS, IssueForm
@@ -373,7 +373,7 @@ def import_database(request, employee, tab):
 @tab
 @employee_only
 def statistics(request, employee, tab):
-    print tab
     return render(request, 'management/statistics.html', {
+        'form': StatisticsForm(request.GET),
         'tab': tab,
     })
