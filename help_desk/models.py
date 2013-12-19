@@ -292,6 +292,9 @@ class Employee(models.Model):
     def can_administrate(self):
         return self.is_administrator() or self.is_manager()
 
+    def can_view_statistics(self):
+        return self.is_manager()
+
     def has_permission(self, permission):
         print 'can_' + permission
 

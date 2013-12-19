@@ -3,6 +3,7 @@
 {% block title %}Darbuotojo vieta{% endblock %}
 {% block menu %}
 <!--{% menu_item 'main' _('Main') 'help_desk.views.management_home' %}-->
+{% menu_item 'statistics' _('Statistics') 'help_desk.views.statistics' 'view_statistics' %}
 {% menu_item 'manage_issues' _('Manage issues') 'help_desk.views.manage_issues' 'manage_issues' %}
 {% menu_item 'solve_issues' _('Solve issues') 'help_desk.views.solve_issues' 'solve_issues' %}
 {% menu_item 'models' _('Manage registers') 'help_desk.views.models' 'manage_models' %}
