@@ -101,7 +101,7 @@ class Service(models.Model):
     limit_req = models.IntegerField(_('Request limit'))
 
     def __unicode__(self):
-        return self.description
+        return self.title
 
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('service', self.id))
