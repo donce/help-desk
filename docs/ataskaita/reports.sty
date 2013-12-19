@@ -1,0 +1,20 @@
+%%
+%% reports.sty
+%% Bendras ataskaitų stilius ir komandos.
+%%
+\ProvidesPackage{reports}
+\usepackage{lipsum}
+
+\newcounter{reportsCounter}
+
+% date, heading
+\newenvironment{loggentry}[2]{
+	\subsection{\textbf{#1} \textbf{#2}} 
+%	{\vspace{0.5cm}}
+}
+
+% Example (loggentry, date, heading):
+%
+% \begin{loggentry}{2009-Oct-31}{Snow}
+%     \lipsum[1]
+% \end{loggentry}
