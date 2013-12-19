@@ -35,7 +35,7 @@ class XLSXImporter:
         self.parseDarbuotojai(sheet_darbuotojai) # TODO : user
         self.parseKlientai(sheet_klientai)
         self.parseAtstovai(sheet_atstovai) # TODO : user
-        #self.parseSutartys(sheet_sutartys, book) # FIXME : tuple to date
+        self.parseSutartys(sheet_sutartys, book) # FIXME : tuple to date
         #self.parseKreipiniai(sheet_kreipiniai, book) # FIXME : date tuple problem
         #self.parsePaskyrimai(sheet, book) # FIXME : tuple to date
         #self.parseSutPasl(sheet_sut_pasl)
@@ -104,13 +104,10 @@ class XLSXImporter:
             client = Client.objects.get(id=int(self.trimID(sheet.cell(i, 3).value, "K")))
             
             # FIXME : date tuple problem
-            startTuple = xlrd.xldate_as_tuple(sheet.cell(i, 4).value, workbook.datemode)
-            start = datetime.datetime(*startTuple)
-            endTuple = xlrd.xldate_as_tuple(sheet.cell(i, 5).value, workbook.datemode)
-            end = datetime.datetime(*endTuple)
-            
-            contract = Contract(id=id, number=number, title=title, client=client, start=start, end=end)
-            contract.save()
+            start = self.get_date(sheet.cell_value(i, 4), workbook)
+            end = self.get_date(sheet.cell_value(i, 5), workbook)
+
+            Contract.objects.create(id=id, number=number, title=title, client=client, start=start, end=end)
 
     def parseKreipiniai(self, sheet, workbook):
         for i in range(1, sheet.nrows):
@@ -161,10 +158,18 @@ class XLSXImporter:
             contract = Contract.objects.get(id=int(sheet.cell(i, 0).value))
             service = Service.objects.get(id=int(self.trimID(sheet.cell(i, 1).value, "P")))
             contract.services.add(service)
-            
+
+    def get_date(self, value, workbook):
+        if value:
+            tuple = xlrd.xldate_as_tuple(value, workbook.datemode)
+            return datetime.date(*tuple[:3])
+        return None
+
+    def get_datetime(self, value, workbook):
+        if value:
+            tuple = xlrd.xldate_as_tuple(value, workbook.datemode)
+            return datetime.datetime(*tuple)
+        return None
+
     def trimID(self, id, prefix):
         return int(id.lstrip(prefix))
-        
-        
-         
-            

@@ -1,8 +1,0 @@
-{% extends "management/base.html" %}
-{% load i18n %}
-{% block content %}
-Registrų rūšys:<br/>
-{% for model in models %}
-<a href="{% url 'help_desk.views.model_list' model %}">{{ model|title }}</a><br/>
-{% endfor %}
-{% endblock %}

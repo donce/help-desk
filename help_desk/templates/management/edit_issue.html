@@ -1,0 +1,17 @@
+{% extends "management/base.html" %}
+{% load i18n %}
+{% block content %}
+<form method="POST">
+    <table class="create">
+        {{ issue_form.as_table }}
+        {% csrf_token %}
+        <tr>
+            <th/>
+            <td>
+                <input type="submit" value="{% trans 'Save' %}"/>
+                <a class="action" href="?action=delete">{% trans 'Delete' %}</a>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

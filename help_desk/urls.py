@@ -7,14 +7,16 @@ solve_issues_patterns = patterns('help_desk.views',
 
 manage_issues_patterns = patterns('help_desk.views',
                                   url(r'^$', 'manage_issues'),
+                                  url(r'^create_issue/$', 'create_issue'),
+                                  url(r'^edit_issue/(?P<issue_id>\d+)/$', 'edit_issue'),
                                   )
 
 
 models_actions_patterns = patterns('help_desk.views',
                                    url(r'^$', 'model_list'),
                                    url(r'^add/$', 'model_add'),
-                                   url(r'^edit/(?P<instance>\d+)/$', 'model_edit'),
-                                   url(r'^remove/(?P<instance>\d+)/$', 'model_remove'),
+                                   url(r'^edit/(?P<instance_id>\d+)/$', 'model_edit'),
+                                   url(r'^remove/(?P<instance_id>\d+)/$', 'model_remove'),
                                    )
 
 

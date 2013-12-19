@@ -6,7 +6,7 @@ from help_desk.administration import XLSXImporter
 from help_desk.forms import ImportForm
 
 from models import Issue
-from forms import MODEL_FORMS
+from forms import MODEL_FORMS, IssueForm
 
 
 def employee_only(function):
@@ -87,12 +87,13 @@ def solve_issues(request, employee, tab):
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
     fields = [
-        ('title', 'Pavadinimas'),
-        ('type', 'Tipas'),
-        ('service', 'Paslauga'),
-        ('created', 'Sukurta'),
-        ('closed', 'Pabaigta'),
-        ('status', 'Statusas')
+        ('title', 'Name'),
+        ('type', 'Type'),
+        ('service', 'Service'),
+        ('assigned_to', 'Assigned To'),
+        ('created', 'Created On'),
+        ('closed', 'Closed On'),
+        ('status', 'Status')
     ]
 
     return render(request, 'management/solve_issues.html', {
@@ -124,7 +125,7 @@ def delete_issue(issue):
 @tab
 @employee_only
 def view_issue(request, employee, tab, issue):
-    viewedIssue = Issue.objects.get(id = issue)
+    viewed_issue = Issue.objects.get(id = issue)
 
     action = get_action(request.GET, 'action', ('solve', 'reject', 'return', 'delete'))
     action_funcs = {'solve' : mark_issue_solved,
@@ -133,13 +134,13 @@ def view_issue(request, employee, tab, issue):
                     'delete'  : delete_issue}
 
     if action != None:
-        action_funcs[action](viewedIssue)
+        action_funcs[action](viewed_issue)
 
     if action == 'delete' or action == 'return':
         return redirect('/management/solve_issues')
 
     return render(request, 'management/view_issue.html', {
-        'issue': viewedIssue,
+        'issue': viewed_issue,
         'tab': tab
     })
 
@@ -152,24 +153,94 @@ def manage_issues(request, employee, tab):
 
     filteredIssues = doIssueFiltering(issues, 'assignment', filter)
 
+    fields = [
+        ('title', 'Name'),
+        ('type', 'Type'),
+        ('service', 'Service'),
+        ('assigned_to', 'Assigned To'),
+        ('created', 'Created On'),
+        ('closed', 'Closed On'),
+        ('status', 'Status')
+    ]
+
+
     return render(request, 'management/manage_issues.html', {
+        'fields': fields,
         'issues': filteredIssues,
+        'model' : 'Issue',
         'tab': tab,
     })
 
 
-def get_form(model, instance=None):
+@tab
+@employee_only
+def edit_issue(request, employee, tab, issue_id):
+    issue = Issue.objects.get(id=issue_id)
+    issue_form = IssueForm(instance=issue)
+
+    action = get_action(request.GET, 'action', ('delete'))
+    if action != None:
+        delete_issue(issue)
+        return redirect('/management/manage_issues')
+
+    #if we have already posted
+    if request.method == 'POST':
+        issue_form = IssueForm(request.POST, instance=issue)
+        if issue_form.is_valid():
+
+            #check for status setting
+            issue = issue_form.save(commit=False)
+            if issue.assigned_to == None:
+                issue.status = 'unassigned'
+            elif issue.status == 'unassigned':
+                issue.status = 'in progress'
+
+            #check if assignment is needed
+            if issue.assigned_to == None:
+                issue.current = None
+            elif not Issue.objects.get(id=issue_id).assigned_to == issue.assigned_to:
+                issue.assign(employee, issue.assigned_to)
+
+            #save
+            issue.save();
+            return redirect('/management/manage_issues')
+    return render(request, 'management/edit_issue.html', {
+        'issue_form' : issue_form,
+        'tab' : tab
+    })
+
+@tab
+@employee_only
+def create_issue(request, employee, tab):
+    issue_form = IssueForm
+    if request.method == 'POST':
+        issue_form = IssueForm(data=request.POST)
+        if issue_form.is_valid():
+            issue = issue_form.save(commit=False)
+
+            #take care for the assignment
+            if issue.assigned_to == None:
+                issue.status = 'unassigned'
+                issue.save()
+            else:
+                issue.status = 'in progress'
+                issue.save()
+                issue.assign(employee, issue.assigned_to)
+
+            return redirect('/management/manage_issues')
+
+
+    return render(request, 'management/create_issue.html', {
+        'issue_form': issue_form,
+        'models': IssueForm,
+        'tab': tab,
+    })
+
+def get_form(model):
     if model not in MODEL_FORMS:
         raise Http404
     form = MODEL_FORMS[model]
-    if instance:
-        modelClass = form.Meta.model
-        try:
-            instance = modelClass.objects.get(pk=instance)
-        except modelClass.DoesNotExist:
-            raise Http404
-        return form(instance=instance)
-    return form()
+    return form
 
 
 def get_model(model):
@@ -181,11 +252,8 @@ def get_model(model):
 @tab
 @employee_only
 def models(request, employee, tab):
-    model_types = [name for name in MODEL_FORMS]
-    return render(request, 'management/models/list_all.html', {
-        'models': model_types,
-        'tab': tab,
-    })
+    return model_list(request)
+
 
 MODEL_MANAGEMENT_FIELDS = {
     'client': [
@@ -215,13 +283,14 @@ MODEL_MANAGEMENT_FIELDS = {
 
 @tab
 @employee_only
-def model_list(request, employee, tab, model):
+def model_list(request, employee, tab, model='service'):
     objects = get_model(model).objects.all()
     fields = MODEL_MANAGEMENT_FIELDS[model] if model in MODEL_MANAGEMENT_FIELDS else []
     return render(request, 'management/models/list_objects.html', {
         'objects': objects,
         'fields': fields,
         'model': model,
+        'models': [name for name in MODEL_FORMS],
         'tab': tab,
     })
 
@@ -229,31 +298,53 @@ def model_list(request, employee, tab, model):
 @tab
 @employee_only
 def model_add(request, employee, tab, model):
-    form = get_form(model)
+    form_class = get_form(model)
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(model_list, model)
+    else:
+        form = form_class()
     return render(request, 'management/models/add.html', {
         'form': form,
+        'models': [name for name in MODEL_FORMS],
         'tab': tab,
     })
 
 
 @tab
 @employee_only
-def model_edit(request, employee, tab, model, instance):
-    form = get_form(model, instance)
+def model_edit(request, employee, tab, model, instance_id):
+    form_class = get_form(model)
+    model_class = form_class.Meta.model
+    try:
+        instance = model_class.objects.get(id=instance_id)
+    except model_class.DoesNotExist:
+        raise Http404
+
+    if request.method == 'POST':
+        form = form_class(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect(model_list, model)
+    else:
+        form = form_class(instance=instance)
     return render(request, 'management/models/edit.html', {
         'model': model,
-        'object': get_model(model).objects.get(id=instance),
+        'object': get_model(model).objects.get(id=instance_id),
         'form': form,
+        'models': [name for name in MODEL_FORMS],
         'tab': tab,
     })
 
 
 @tab
 @employee_only
-def model_remove(request, employee, tab, model, instance):
+def model_remove(request, employee, tab, model, instance_id):
     m = get_model(model)
     try:
-        m.objects.get(pk=instance).delete()
+        m.objects.get(pk=instance_id).delete()
     except m.DoesNotExist:
         raise Http404
     return redirect(model_list, model)
@@ -277,4 +368,3 @@ def import_database(request, employee, tab):
             file = request.FILES['file']
             XLSXImporter().import_xlsx(file)
     return redirect(administration)
-

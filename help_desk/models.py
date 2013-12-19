@@ -104,7 +104,7 @@ class Service(models.Model):
         return self.description
 
     def get_absolute_url(self):
-        return reverse('help_desk.views.model_edit', args=('client', self.id))
+        return reverse('help_desk.views.model_edit', args=('service', self.id))
 
 
 class Client(models.Model):
@@ -168,8 +168,9 @@ class Issue(models.Model):
     closed = models.DateTimeField(_('Closed'), null=True)
     status = models.CharField(_('Status'), choices=ISSUE_STATUS_CHOICES, max_length=255)
     rating = models.PositiveIntegerField(_('Rating'), null=True)
-    current = models.ForeignKey('Assignment', related_name='current', null=True)
-    previous = models.ForeignKey('Issue', null=True)#TODO: purpose of this?
+    assigned_to = models.ForeignKey('Employee', verbose_name=_('Employee'), null=True, blank=True)
+    current = models.ForeignKey('Assignment', related_name='current', null=True, blank=True)
+    previous = models.ForeignKey('Issue', null=True, blank=True)#TODO: purpose of this?
 
     def solve(self):
         self.status = 'solved'
@@ -179,6 +180,7 @@ class Issue(models.Model):
     def unsolve(self):
         self.status = 'unassigned'
         self.current = None
+        self.assigned_to = None
         self.closed = None
         self.save()
 
@@ -190,11 +192,14 @@ class Issue(models.Model):
     def unreject(self):
         self.status = 'unassigned'
         self.closed = None
+        self.current = None
+        self.assigned_to = None
         self.save()
 
     def returnIssue(self):
         self.status = 'unassigned'
         self.current = None
+        self.assigned_to = None
         self.save()
 
     def assign(self, assigned, worker):
@@ -205,9 +210,16 @@ class Issue(models.Model):
         self.status = 'in progress'
         self.save()
 
-    def get_absolute_url(self):
-        return reverse('help_desk.views.view_issue', args=(self.id,))
+    def get_absolute_url(self, edit=None):
+        if edit == None:
+            edit=False
+        if(edit):
+            return reverse('help_desk.views.edit_issue', args=(self.id,))
+        else:
+            return reverse('help_desk.views.view_issue', args=(self.id,))
 
+    def __unicode__(self):
+        return self.title
 
 class Assignment(models.Model):
     issue = models.ForeignKey('Issue', verbose_name=_('Issue'))
@@ -219,13 +231,16 @@ class Assignment(models.Model):
     #TODO: result
     time = models.PositiveIntegerField(null=True)
 
+    def __unicode__(self):
+        return self.assigned.first_name + ' ' + self.assigned.last_name
+
 
 class Contract(models.Model):
     number = models.CharField(_('Number'), max_length=255)
     title = models.CharField(_('Title'), max_length=255)
     client = models.ForeignKey(Client, verbose_name=_('Client'))
     start = models.DateField(_('Start'))
-    end = models.DateField(_('End'))
+    end = models.DateField(_('End'), null=True)
     services = models.ManyToManyField('Service', related_name='contracts')
 
     def get_absolute_url(self):
@@ -292,7 +307,7 @@ class Employee(models.Model):
     def issues(self):
         return Issue.objects.filter(current__worker=self)
 
-class deflection(object):
-    Time_deflection = 0
+class deflection(models.Model):
+    Time_deflection = models.IntegerField(_('Time_deflection'))
 
 
