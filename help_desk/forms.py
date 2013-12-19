@@ -46,8 +46,7 @@ class ImportForm(forms.Form):
 class ClientIssueForm(forms.ModelForm):
     class Meta:
         model = Issue
-        exclude = ('client', 'receive_type', 'closed', 'status', 'rating',
-                   'current', 'previous')
+        fields = ('service', 'type', 'title', 'description')
 
 
 class StatisticsForm(forms.Form):

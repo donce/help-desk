@@ -96,7 +96,7 @@ class BaseUser(AbstractBaseUser):
 
 class Service(models.Model):
     #TODO: id - string?
-    description = models.TextField(_('Description'))
+    title = models.CharField(_('Title'), max_length=255)
     limit_inc = models.IntegerField(_('Incident limit'))
     limit_req = models.IntegerField(_('Request limit'))
 
