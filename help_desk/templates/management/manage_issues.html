@@ -7,7 +7,7 @@
 <a class="filter" href="?filter=keep">{% trans 'Assigned' %}</a>
 <a class="filter" href="?filter=drop">{% trans 'Unassigned' %}</a>
 <div class="right">
-	<input type="submit" value="{% trans 'Create' %}"/>
+	<a href="create_issue">{% trans 'Create' %}</a>
 </div>
 {% issues_table model fields issues 'true' %}
 {% endblock %}

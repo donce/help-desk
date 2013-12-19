@@ -176,7 +176,7 @@ def manage_issues(request, employee, tab):
 @employee_only
 def edit_issue(request, employee, tab, issue_id):
     issue = Issue.objects.get(id=issue_id)
-    issueForm = IssueForm(instance=issue)
+    issue_form = IssueForm(instance=issue)
 
     action = get_action(request.GET, 'action', ('delete'))
     if action != None:
@@ -185,11 +185,11 @@ def edit_issue(request, employee, tab, issue_id):
 
     #if we have already posted
     if request.method == 'POST':
-        issueForm = IssueForm(request.POST, instance=issue)
-        if issueForm.is_valid():
+        issue_form = IssueForm(request.POST, instance=issue)
+        if issue_form.is_valid():
 
             #check for status setting
-            issue = issueForm.save(commit=False)
+            issue = issue_form.save(commit=False)
             if issue.assigned_to == None:
                 issue.status = 'unassigned'
             elif issue.status == 'unassigned':
@@ -203,8 +203,29 @@ def edit_issue(request, employee, tab, issue_id):
             issue.save();
             return redirect('/management/manage_issues')
     return render(request, 'management/edit_issue.html', {
-        'issueForm' : issueForm,
+        'issueForm' : issue_form,
         'tab' : tab
+    })
+
+@tab
+@employee_only
+def create_issue(request, employee, tab):
+    issue_form = IssueForm
+    if request.method == 'POST':
+        issue_form = IssueForm(data=request.POST)
+        if issue_form.is_valid():
+            issue = issue_form.save(commit=False)
+            if issue.assigned_to == None:
+                issue.status = 'unassigned'
+            else:
+                issue.status = 'in progress'
+                issue.assign(employee, issue.assigned_to)
+            issue.save()
+            return redirect('/management/manage_issues')
+    return render(request, 'management/create_issue.html', {
+        'issue_form': issue_form,
+        'models': IssueForm,
+        'tab': tab,
     })
 
 def get_form(model):
