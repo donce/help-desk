@@ -308,6 +308,7 @@ def model_add(request, employee, tab, model):
         form = form_class()
     return render(request, 'management/models/add.html', {
         'form': form,
+        'model': model,
         'models': [name for name in MODEL_FORMS],
         'tab': tab,
     })
