@@ -3,7 +3,7 @@
 {% block content %}
 <form method="POST">
     <table class="create">
-        {{ issueForm.as_table }}
+        {{ issue_form.as_table }}
         {% csrf_token %}
         <tr>
             <th/>

@@ -125,7 +125,7 @@ def delete_issue(issue):
 @tab
 @employee_only
 def view_issue(request, employee, tab, issue):
-    viewedIssue = Issue.objects.get(id = issue)
+    viewed_issue = Issue.objects.get(id = issue)
 
     action = get_action(request.GET, 'action', ('solve', 'reject', 'return', 'delete'))
     action_funcs = {'solve' : mark_issue_solved,
@@ -134,13 +134,13 @@ def view_issue(request, employee, tab, issue):
                     'delete'  : delete_issue}
 
     if action != None:
-        action_funcs[action](viewedIssue)
+        action_funcs[action](viewed_issue)
 
     if action == 'delete' or action == 'return':
         return redirect('/management/solve_issues')
 
     return render(request, 'management/view_issue.html', {
-        'issue': viewedIssue,
+        'issue': viewed_issue,
         'tab': tab
     })
 
@@ -203,7 +203,7 @@ def edit_issue(request, employee, tab, issue_id):
             issue.save();
             return redirect('/management/manage_issues')
     return render(request, 'management/edit_issue.html', {
-        'issueForm' : issue_form,
+        'issue_form' : issue_form,
         'tab' : tab
     })
 
