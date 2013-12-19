@@ -1,5 +1,5 @@
 from xlrd import open_workbook
-from help_desk.models import Service, ROLE_ENGINEER, ROLE_MANAGER, ROLE_ADMINISTRATOR, Employee, Client, Issue, Contract, Delegate
+from help_desk.models import Service, ROLE_ENGINEER, ROLE_MANAGER, ROLE_ADMINISTRATOR, Employee, Client, Issue, Contract, Delegate, UserManager
 import models
 import xlrd
 import datetime
@@ -32,9 +32,9 @@ class XLSXImporter:
         sheet_paskyrimai = book.sheet_by_name("Paskyrimai")
 
         self.parsePaslaugos(sheet_paslaugos)
-        #self.parseDarbuotojai(sheet_darbuotojai) # TODO : user
+        self.parseDarbuotojai(sheet_darbuotojai) # TODO : user
         self.parseKlientai(sheet_klientai)
-        #self.parseAtstovai(sheet_atstovai) # TODO : user
+        self.parseAtstovai(sheet_atstovai) # TODO : user
         #self.parseSutartys(sheet_sutartys, book) # FIXME : tuple to date
         #self.parseKreipiniai(sheet_kreipiniai, book) # FIXME : date tuple problem
         #self.parsePaskyrimai(sheet, book) # FIXME : tuple to date
@@ -57,7 +57,6 @@ class XLSXImporter:
             role = sheet.cell(i, 3).value
             phone_number = sheet.cell(i, 4).value
             email = sheet.cell(i, 5).value
-
             if role == 'I':
                 role = ROLE_ENGINEER
             elif role == 'V':
@@ -65,8 +64,10 @@ class XLSXImporter:
             elif role == 'A':
                 role = ROLE_ADMINISTRATOR
 
-            # TODO : user ???
-            employee = Employee(id=id, first_name=first_name, last_name=last_name, role=role, phone_number=phone_number, email=email)
+            userManager = UserManager()
+            username = email
+            password = first_name
+            employee = userManager.create_employee(username, password, first_name, last_name, role, email, phone_number)
             employee.save()
 
     def parseKlientai(self, sheet):
@@ -89,8 +90,10 @@ class XLSXImporter:
             #active = sheet.cell(i,7) #boolean?
             active = True
             
-            # TODO : user ???
-            delegate = Delegate(client=client, first_name=first_name, last_name=last_name, phone_number=phone_number, email=email, active=active)
+            userManager = UserManager()
+            username = email
+            password = first_name
+            delegate = userManager.create_delegate(client, email, password, first_name, last_name, phone_number)
             delegate.save()
 
     def parseSutartys(self, sheet, workbook):
