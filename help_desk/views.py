@@ -217,13 +217,19 @@ def create_issue(request, employee, tab):
         issue_form = IssueForm(data=request.POST)
         if issue_form.is_valid():
             issue = issue_form.save(commit=False)
+
+            #take care for the assignment
             if issue.assigned_to == None:
                 issue.status = 'unassigned'
+                issue.save()
             else:
                 issue.status = 'in progress'
+                issue.save()
                 issue.assign(employee, issue.assigned_to)
-            issue.save()
+
             return redirect('/management/manage_issues')
+
+
     return render(request, 'management/create_issue.html', {
         'issue_form': issue_form,
         'models': IssueForm,
