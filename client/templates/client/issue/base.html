@@ -1,10 +1,10 @@
 ﻿{% extends 'client/base.html' %}
 {% load i18n %}
 {% block content %}
-<a href="{% url 'client.views.create_issue' %}">
+<div><a href="{% url 'client.views.create_issue' %}">
     <button id="naujas_kreipinys_button">{% trans 'New issue' %}</button>
-</a>
-</br>
+</a></div>
+
 <table id="klientas_kreipiniai">
 	<thead>
 		<tr>
