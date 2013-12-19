@@ -2,15 +2,15 @@
 {% load i18n %}
 {% block content %}
 <a href="{% url 'client.views.create_issue' %}">
-    <button>{% trans 'New issue' %}</button>
+    <button id="naujas_kreipinys_button">{% trans 'New issue' %}</button>
 </a>
-
+</br>
 <table id="klientas_kreipiniai">
 	<thead>
 		<tr>
 			<th>{% trans 'Issue' %}</th>
 			<th class="width_10">{% trans 'Type' %}</th>
-			<th class="width_20" >{% trans 'Service' %}</th>
+			<th class="width_25" >{% trans 'Service' %}</th>
 			<th class="width_10">{% trans 'Answer' %}</th>
 		</tr>
 	</thead>

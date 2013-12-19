@@ -222,7 +222,8 @@ tr.row2 {
 }
 
 #naujas_kreipinys_button {
-	margin-left: 37.5%;
+	margin-left: 38%;
+	width:12%;
 }
 
 .issue {
@@ -394,4 +395,8 @@ table.transparent td, table.transparent th{
 	border-top:30px solid #004C66;
 	border-right:5px solid #004C66;
 	border-left:5px solid #004C66;
+}
+
+.width_25{
+	width:25%;
 }
