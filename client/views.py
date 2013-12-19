@@ -23,19 +23,20 @@ def home(request):
     return redirect(create_issue)
 
 
-# @client_only
-# def issues(request, client, tab):
-#     return render(request, 'client/issue/base.html', {
-#         'tab': tab,
-#         'issues': issues,
-#     })
-
-
 @client_only
 def create_issue(request, client, tab):
+    if request.method == 'POST':
+        form = ClientIssueForm(request.POST)
+        if form.is_valid():
+            issue = form.save(commit=False)
+            issue.client = client
+            issue.save()
+            return redirect(edit_issue, issue.id)
+    else:
+        form = ClientIssueForm()
     issues = Issue.objects.filter(client=client)
     return render(request, 'client/issue/create.html', {
-        'client_issue_form': ClientIssueForm(),
+        'client_issue_form': form,
         'issues': issues,
         'tab': tab,
     })
