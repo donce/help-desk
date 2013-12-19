@@ -1,8 +1,11 @@
 {% extends "management/models/base.html" %}
 {% load i18n %}
 {% block model_content %}
+
+<div class="background">
 <form method="POST">
     <table class="create">
+
         {{ form.as_table }}
         {% csrf_token %}
         <tr>
@@ -13,4 +16,6 @@
         </tr>
     </table>
 </form>
+</div>
+</div>
 {% endblock %}
