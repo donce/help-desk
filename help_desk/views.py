@@ -8,6 +8,10 @@ from help_desk.forms import ImportForm, StatisticsForm
 from models import Issue
 from forms import MODEL_FORMS, IssueForm
 
+from datetime import timedelta
+from datetime import datetime
+import pytz
+
 
 def employee_only(function):
     def f(request, *args, **kwargs):
@@ -371,6 +375,45 @@ def import_database(request, employee, tab):
     return redirect(administration)
 
 
+def get_deadine(issue):
+    #can haz zervice?
+    if issue.service == None:
+        return None
+
+    #check if we can haz deadlinez
+    if issue.service.limit_inc == None and issue.type == INC:
+        return None
+    else:
+        limit = issue.service.limit_inc
+
+    if issue.service.limit_req == None and issue.type == REQ:
+        return None
+    else:
+        limit = issue.service.limit_req
+
+    return issue.created + timedelta(hours=limit)
+
+
+def is_late(issue):
+    deadline = get_deadine(issue)
+
+    #check if we even have a deadline
+    if deadline == None:
+        return False
+
+    #compare deadline
+    if datetime.now().replace(tzinfo=pytz.UTC) > deadline:
+        return True
+    return False
+
+def get_late_issues(start, end):
+    late_issues = [];
+    for issue in Issue.objects.all():
+        if is_late(issue) and issue.created >= start and issue.created <= end:
+            late_issues.append(issue)
+    return late_issues
+
+
 @tab
 @employee_only
 def statistics(request, employee, tab):
@@ -380,9 +423,28 @@ def statistics(request, employee, tab):
     if form.is_valid():
         start = form.cleaned_data['start']
         end = form.cleaned_data['end']
+
+    if start != None and end != None:
+        late_issues = get_late_issues(start, end)
+    else:
+        late_issues = []
+
+    fields = [
+        ('title', 'Name'),
+        ('type', 'Type'),
+        ('service', 'Service'),
+        ('assigned_to', 'Assigned To'),
+        ('created', 'Created On'),
+        ('closed', 'Closed On'),
+        ('status', 'Status')
+    ]
+
     return render(request, 'management/statistics.html', {
         'form': form,
         'tab': tab,
         'start': start,
         'end': end,
+        'model' : 'Issue',
+        'fields' : fields,
+        'objects' : late_issues
     })

@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load issues_table %}
 {% block content %}
-statistics
+Show late issues created on:
 <form method="get">
     {{ form.start }}
     {{ form.end }}
@@ -12,5 +12,6 @@ statistics
 {% if start %}
 STATISTICS<br/>
 {{ start }} - {{ end }}
+{% issues_table model fields objects %}
 {% endif %}
 {% endblock %}

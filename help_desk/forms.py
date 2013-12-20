@@ -50,8 +50,8 @@ class ClientIssueForm(forms.ModelForm):
 
 
 class StatisticsForm(forms.Form):
-    start = forms.DateField(widget=DateWidget)
-    end = forms.DateField(widget=DateWidget)
+    start = forms.DateTimeField(widget=DateWidget)
+    end = forms.DateTimeField(widget=DateWidget)
 
     def is_valid(self):
         if super(StatisticsForm, self).is_valid():
