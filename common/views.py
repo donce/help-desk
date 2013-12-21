@@ -8,17 +8,17 @@ from django.contrib.auth import login as login_user, logout as logout_user
 
 from client.views import home as client_home
 from help_desk.models import ROLE_ENGINEER, ROLE_MANAGER
-from help_desk.views import management_home as employee_home, solve_issues, manage_issues
+from help_desk.views import management_home as employee_home, solve_issues, manage_issues, statistics
 
 
 def main(request):
     if request.user.is_employee():
         role = request.user.employee.role
         if role == ROLE_MANAGER:
-            redirect(manage_issues)
+            return redirect(statistics)
         elif role == ROLE_ENGINEER:
             return redirect(solve_issues)
-        return redirect(employee_home)
+        return redirect(manage_issues)
     return redirect(client_home)
 
 
