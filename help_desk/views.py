@@ -1,16 +1,15 @@
 # encoding=utf-8
+from datetime import timedelta
+from datetime import datetime
+
 from django.shortcuts import render, redirect
 from django.http import Http404
+import pytz
 
 from help_desk.administration import XLSXImporter
 from help_desk.forms import ImportForm, StatisticsForm
-
 from models import Issue
 from forms import MODEL_FORMS, IssueForm
-
-from datetime import timedelta
-from datetime import datetime
-import pytz
 
 
 def employee_only(function):
@@ -34,6 +33,7 @@ def tab(function):
         else:
             tab = 'main'
         return function(request, tab, *args, **kwargs)
+
     return f
 
 
@@ -46,6 +46,7 @@ def get_filter(get, name, options):
         value = options[0]
     return value
 
+
 def get_action(get, name, options):
     if name in get:
         value = get[name]
@@ -54,6 +55,7 @@ def get_action(get, name, options):
         return value
     else:
         return None
+
 
 def doIssueFiltering(objList, filterContent, filterType):
     if filterType == 'all':
@@ -107,11 +109,13 @@ def solve_issues(request, employee, tab):
         'tab': tab,
     })
 
+
 def mark_issue_solved(issue):
     if issue.status == 'solved':
         issue.unsolve()
     else:
         issue.solve()
+
 
 def mark_issue_rejected(issue):
     if issue.status == 'rejected':
@@ -119,23 +123,26 @@ def mark_issue_rejected(issue):
     else:
         issue.reject()
 
+
 def unassign_issue(issue):
     issue.returnIssue()
+
 
 def delete_issue(issue):
     #TODO: add warning message
     issue.delete()
 
+
 @tab
 @employee_only
 def view_issue(request, employee, tab, issue):
-    viewed_issue = Issue.objects.get(id = issue)
+    viewed_issue = Issue.objects.get(id=issue)
 
     action = get_action(request.GET, 'action', ('solve', 'reject', 'return', 'delete'))
-    action_funcs = {'solve' : mark_issue_solved,
-                    'reject' : mark_issue_rejected,
-                    'return' : unassign_issue,
-                    'delete'  : delete_issue}
+    action_funcs = {'solve': mark_issue_solved,
+                    'reject': mark_issue_rejected,
+                    'return': unassign_issue,
+                    'delete': delete_issue}
 
     if action != None:
         action_funcs[action](viewed_issue)
@@ -167,11 +174,10 @@ def manage_issues(request, employee, tab):
         ('status', 'Status')
     ]
 
-
     return render(request, 'management/manage_issues.html', {
         'fields': fields,
         'issues': filteredIssues,
-        'model' : 'Issue',
+        'model': 'Issue',
         'tab': tab,
     })
 
@@ -197,9 +203,10 @@ def edit_issue(request, employee, tab, issue_id):
             issue_form.save();
             return redirect('/management/manage_issues')
     return render(request, 'management/edit_issue.html', {
-        'issue_form' : issue_form,
-        'tab' : tab
+        'issue_form': issue_form,
+        'tab': tab
     })
+
 
 @tab
 @employee_only
@@ -211,12 +218,12 @@ def create_issue(request, employee, tab):
             issue_form.save()
             return redirect('/management/manage_issues')
 
-
     return render(request, 'management/create_issue.html', {
         'issue_form': issue_form,
         'models': IssueForm,
         'tab': tab,
     })
+
 
 def get_form(model):
     if model not in MODEL_FORMS:
@@ -262,6 +269,7 @@ MODEL_MANAGEMENT_FIELDS = {
         ('limit_req', 'Paklausimo limitas')
     ]
 }
+
 
 @tab
 @employee_only
@@ -384,6 +392,7 @@ def is_late(issue):
         return True
     return False
 
+
 def get_late_issues(start, end):
     late_issues = [];
     for issue in Issue.objects.all():
@@ -421,7 +430,7 @@ def statistics(request, employee, tab):
         'tab': tab,
         'start': start,
         'end': end,
-        'model' : 'Issue',
-        'fields' : fields,
-        'objects' : late_issues
+        'model': 'Issue',
+        'fields': fields,
+        'objects': late_issues
     })

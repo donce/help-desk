@@ -17,7 +17,7 @@ h1.login {
 	margin-top: 2%;
 }
 
-input[type=submit], .filter, button{
+input[type=submit], .filter, button {
 	border-top: 1px solid #1e445c;
 	background: #1A566B;
 	padding: 5px 10px;
@@ -46,13 +46,13 @@ input[type=submit]:hover, button:hover {
 div.login_center {
 	width: 350px;
 	height: 250px;
-	margin-right:auto;
-	margin-left:auto;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 div.login input[type=submit] {
 	width: 150px;
-	margin-top:10%;
+	margin-top: 10%;
 }
 
 form.login {
@@ -90,7 +90,7 @@ form.login {
 	color: #001433;
 }
 
-.menu_item{
+.menu_item {
 	background: #002E3D;
 	padding: 10px 15px;
 	-webkit-border-radius: 8px;
@@ -101,9 +101,9 @@ form.login {
 	font-family: "Trebuchet MS";
 	text-decoration: none;
 	vertical-align: middle;
-	text-transform:uppercase;
-	font-weight:bold;
-	width:50px;
+	text-transform: uppercase;
+	font-weight: bold;
+	width: 50px;
 }
 
 .menu_item_active {
@@ -112,16 +112,16 @@ form.login {
 	background: -ms-linear-gradient(left, #002E3D 0%, #298AAB 50%, #002E3D 100%);
 }
 
-.menu_item:hover, .filter:hover{
+.menu_item:hover, .filter:hover {
 	background: #00202B;
 	color: #ffffff;
 }
 
-.menu{
-    width:100%;
-    background-color:#002E3D;
-    height:28px;
-    padding-top:10px;
+.menu {
+	width: 100%;
+	background-color: #002E3D;
+	height: 28px;
+	padding-top: 10px;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
@@ -129,14 +129,14 @@ form.login {
 
 .menu_employee_title {
 	float: right;
-	color:white;
+	color: white;
 }
 
 table {
 	font-family: "Trebuchet MS";
 	width: 100%;
 	border-collapse: collapse;
-	}
+}
 
 table.create {
 	width: 30%;
@@ -145,11 +145,11 @@ table.create {
 
 table.create td, th {
 	font-size: 1em;
-	padding: 3px 7px 2px 7px; 
+	padding: 3px 7px 2px 7px;
 }
 
-table.create td{
-	background-color:#C9C9FF;
+table.create td {
+	background-color: #C9C9FF;
 }
 
 table.create th {
@@ -157,18 +157,18 @@ table.create th {
 	text-align: left;
 	padding-top: 5px;
 	padding-bottom: 4px;
-	border:1px solid #002E3D;
-	border-right:1px solid gray;
-	border-left:1px solid gray;
-	background-color:#002E3D;
+	border: 1px solid #002E3D;
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+	background-color: #002E3D;
 }
 
-table.create input[type=submit], table.create button{
-	background-color:#002E3D;
+table.create input[type=submit], table.create button {
+	background-color: #002E3D;
 }
 
-table.create input[type=submit]:hover, table.create button:hover{
-	background-color:#00202B;
+table.create input[type=submit]:hover, table.create button:hover {
+	background-color: #00202B;
 }
 
 td, th {
@@ -176,12 +176,12 @@ td, th {
 	padding: 3px 7px 2px 7px;
 }
 
-td  {
+td {
 	border-right: 1px solid gray;
 }
 
-table.create td  {
-	border:1px solid gray;
+table.create td {
+	border: 1px solid gray;
 }
 
 th {
@@ -223,7 +223,7 @@ tr.row2 {
 
 #naujas_kreipinys_button {
 	margin-left: 38%;
-	width:12%;
+	width: 12%;
 }
 
 .issue {
@@ -242,31 +242,33 @@ tr.row2 {
 }
 
 .left {
-	float:left;
+	float: left;
 }
 
 .center {
-	float:none;
-	margin-right:auto;
-	margin-left:auto;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .issue.center {
-	width:70%;
+	width: 70%;
 }
 
 .lower_2 {
-	margin-top:2%;
+	margin-top: 2%;
 }
 
-.lower_5{
-	margin-top:5%;
+.lower_5 {
+	margin-top: 5%;
 }
-.right.back{
-	margin-right:5%;
+
+.right.back {
+	margin-right: 5%;
 }
-.issue_table{
-	color:white;
+
+.issue_table {
+	color: white;
 }
 
 textarea {
@@ -282,8 +284,8 @@ textarea {
 	height: 60%;
 }
 
-.issue_table input[type=text]{
-	width:90%;
+.issue_table input[type=text] {
+	width: 90%;
 }
 
 #naujas_kreipinys input[type=submit] {
@@ -299,9 +301,10 @@ textarea {
 	background: #00202B;
 }
 
-.issue.no_buttons{
+.issue.no_buttons {
 	height: 75%;
 }
+
 div.vid {
 	margin-left: 5%;
 	margin-top: 2%;
@@ -338,65 +341,65 @@ div.vid {
 	text-align: right;
 }
 
-table.transparent td, table.transparent th{
-	border:transparent;
-	background-color:transparent;
+table.transparent td, table.transparent th {
+	border: transparent;
+	background-color: transparent;
 }
 
-.right{
-	float:right;
+.right {
+	float: right;
 }
 
 .tabs_menu {
-    list-style:none; 
-    height:2em;
-    padding:0; 
-    margin:0; 
-    border: none;
+	list-style: none;
+	height: 2em;
+	padding: 0;
+	margin: 0;
+	border: none;
 }
 
 .tab {
-    float:left;
-    margin-right:0.13em;
-    display:block;
-    padding:2 2em;
-    text-decoration:none;
-    border:0.06em solid #000;
-    border-bottom:0;
-    font:bold 0.88em/2em "Trebuchet MS";
-    color:white;
-    background-color:#002E3D;
-    webkit-border-top-right-radius:0.50em;
-    -webkit-border-top-left-radius:0.50em;
-    -moz-border-radius-topright:0.50em;
-    -moz-border-radius-topleft:0.50em;
-    border-top-right-radius:0.50em;
-    border-top-left-radius:0.50em;
+	float: left;
+	margin-right: 0.13em;
+	display: block;
+	padding: 2 2em;
+	text-decoration: none;
+	border: 0.06em solid #000;
+	border-bottom: 0;
+	font: bold 0.88em/2em "Trebuchet MS";
+	color: white;
+	background-color: #002E3D;
+	webkit-border-top-right-radius: 0.50em;
+	-webkit-border-top-left-radius: 0.50em;
+	-moz-border-radius-topright: 0.50em;
+	-moz-border-radius-topleft: 0.50em;
+	border-top-right-radius: 0.50em;
+	border-top-left-radius: 0.50em;
 }
 
 .tab:hover {
-    background:#00202B; 
-    text-decoration:none;
+	background: #00202B;
+	text-decoration: none;
 }
 
 .tab.current {
-    background:#004C66; 
+	background: #004C66;
 }
 
 .upper {
 	margin-top: -0.3%;
 }
 
-.background{
-	width:100%;
+.background {
+	width: 100%;
 	border-style: outset;
 	background-color: #004C66;
-	border-bottom:30px solid #004C66;
-	border-top:30px solid #004C66;
-	border-right:5px solid #004C66;
-	border-left:5px solid #004C66;
+	border-bottom: 30px solid #004C66;
+	border-top: 30px solid #004C66;
+	border-right: 5px solid #004C66;
+	border-left: 5px solid #004C66;
 }
 
-.width_25{
-	width:25%;
+.width_25 {
+	width: 25%;
 }

@@ -14,7 +14,7 @@ def client_only(function):
             raise Http404
         delegate = user.delegate
         return function(request, delegate.client, *args, **kwargs)
-        # return function(request, *args, **kwargs)
+
     return f
 
 
@@ -51,12 +51,6 @@ def edit_issue(request, client, tab, issue_id):
         'issues': issues,
         'tab': tab,
     })
-
-
-# @client_only
-# def create_issue(request, client, tab):
-#     TODO: implement
-    # return redirect(issues)
 
 
 @client_only

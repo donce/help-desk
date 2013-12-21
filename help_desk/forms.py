@@ -3,7 +3,7 @@ from django.forms import fields
 from common.widgets import DateWidget
 
 from models import Service, Client, Employee, Contract, Issue
-from django.forms import ModelChoiceField
+
 
 class ServiceForm(forms.ModelForm):
     class Meta:

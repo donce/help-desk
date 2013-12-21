@@ -1,8 +1,8 @@
 from django import template
-from django.shortcuts import render
 
 
 register = template.Library()
+
 
 @register.inclusion_tag('management/models/objects_table.html')
 def objects_table(model, fields, objects):

@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 
 register = template.Library()
 
+
 @register.inclusion_tag('common/menu_button.html', takes_context=True)
 def menu_item(context, name, title, view, permission=None):
     if permission:

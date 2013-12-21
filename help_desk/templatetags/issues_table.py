@@ -1,10 +1,8 @@
 from django import template
-from django.shortcuts import render
-from django.db.models import ForeignKey
-
 
 
 register = template.Library()
+
 
 @register.inclusion_tag('management/issues_table.html')
 def issues_table(model, fields, objects, edit=None):

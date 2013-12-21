@@ -1,6 +1,7 @@
 import datetime
 import models
 
+
 def __init__(deflection):
     models.deflection.timeDeflection = deflection
 

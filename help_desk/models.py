@@ -1,11 +1,12 @@
 # encoding=utf-8
+from datetime import datetime
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.urlresolvers import reverse
 from django.db import models
-from datetime import datetime
-
 from django.utils.translation import ugettext_lazy as _
+
 
 PHONE_NUMBER_MAX_LENGTH = 20
 
@@ -119,7 +120,7 @@ class Client(models.Model):
 
     def register_issue(self, service, type, receive_type, title, description):
         return Issue.objects.create(client=self, service=service, type=type, receive_type=receive_type,
-                             title=title, description=description)
+                                    title=title, description=description)
 
 
 class Delegate(models.Model):
@@ -133,6 +134,7 @@ class Delegate(models.Model):
 
     def __unicode__(self):
         return '{0} {1} ({2})'.format(self.first_name, self.last_name, self.client)
+
 
 ISSUE_TYPE_INCIDENT = 'INC'
 ISSUE_TYPE_REQUEST = 'REQ'
@@ -215,14 +217,15 @@ class Issue(models.Model):
 
     def get_absolute_url(self, edit=None):
         if edit == None:
-            edit=False
-        if(edit):
+            edit = False
+        if (edit):
             return reverse('help_desk.views.edit_issue', args=(self.id,))
         else:
             return reverse('help_desk.views.view_issue', args=(self.id,))
 
     def __unicode__(self):
         return self.title
+
 
 class Assignment(models.Model):
     issue = models.ForeignKey('Issue', verbose_name=_('Issue'))
@@ -248,7 +251,6 @@ class Contract(models.Model):
 
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('contract', self.id))
-
 
 
 ROLE_ENGINEER = 'engineer'
@@ -312,6 +314,7 @@ class Employee(models.Model):
 
     def issues(self):
         return Issue.objects.filter(current__worker=self)
+
 
 class deflection(models.Model):
     Time_deflection = models.IntegerField(_('Time_deflection'))
