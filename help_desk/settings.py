@@ -34,8 +34,8 @@ ALLOWED_HOSTS = []
 TIME_ZONE = 'America/Chicago'
 
 LANGUAGES = (
-    ('en', _('English')),
     ('lt', _('Lithuanian')),
+    ('en', _('English')),
 )
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html

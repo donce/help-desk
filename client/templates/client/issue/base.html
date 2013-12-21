@@ -29,6 +29,11 @@
                 {{ issue.service }}
 			</td>
 			<td>
+                {% if issue.status == 'solved' %}
+                +
+                {% elif issue.status == 'rejected' %}
+                -
+                {% endif %}
 			<!--ar gautas atsakymas? pavyzdziui sudeti + ten kur atsakyta-->
 			</td>
 		</tr>
