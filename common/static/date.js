@@ -1,1 +1,3 @@
-jQuery('.date').datepicker();
+$(function() {
+    jQuery('.date_input').datepicker();
+});

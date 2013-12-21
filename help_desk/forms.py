@@ -23,6 +23,10 @@ class EmployeeForm(forms.ModelForm):
 class ContractForm(forms.ModelForm):
     class Meta:
         model = Contract
+        widgets = {
+            'start': DateWidget(),
+            'end': DateWidget(),
+        }
 
 
 class IssueForm(forms.ModelForm):
