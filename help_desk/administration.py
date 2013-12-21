@@ -13,7 +13,6 @@ def clean_database():
     models.Issue.objects.all().delete()
     models.Assignment.objects.all().delete()
     models.Contract.objects.all().delete()
-    models.ContractService.objects.all().delete()
     models.Employee.objects.all().delete()
 
     models.BaseUser.objects.all().delete()
@@ -44,10 +43,10 @@ class XLSXImporter:
     def parse_paslaugos(self, sheet):
         for i in range(1, sheet.nrows):
             id = self.trim_id(sheet.cell(i, 0).value, "P")
-            description = sheet.cell(i, 1).value
+            title = sheet.cell(i, 1).value
             limit_inc = sheet.cell(i, 2).value
             limit_req = sheet.cell(i, 3).value
-            service = Service(id=id, description=description, limit_inc=limit_inc, limit_req=limit_req)
+            service = Service(id=id, title=title, limit_inc=limit_inc, limit_req=limit_req)
             service.save()
 
     def parse_darbuotojai(self, sheet):

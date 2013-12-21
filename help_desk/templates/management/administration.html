@@ -1,7 +1,7 @@
 {% extends "management/base.html" %}
 {% load i18n %}
 {% block content %}
-<input type="submit" value="{% trans 'Wipe data' %}"/>
+<a href="{% url 'help_desk.views.wipe_database' %}"><button>{% trans 'Wipe data' %}</button></a>
 <hr/>
 <h2>{% trans 'Import a structure' %}</h2></br>
 

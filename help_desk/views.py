@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.http import Http404
 import pytz
 
-from help_desk.administration import XLSXImporter
+from help_desk.administration import XLSXImporter, clean_database
 from help_desk.forms import ImportForm, StatisticsForm
 from models import Issue
 from forms import MODEL_FORMS, IssueForm
@@ -360,7 +360,14 @@ def import_database(request, employee, tab):
             XLSXImporter().import_xlsx(file)
     return redirect(administration)
 
+@tab
+@employee_only
+def wipe_database(request, employee, tab):
+    clean_database()
+    return redirect(administration)
 
+
+#TODO: move to class
 def get_deadine(issue):
     #can haz zervice?
     if issue.service == None:
@@ -380,6 +387,7 @@ def get_deadine(issue):
     return issue.created + timedelta(hours=limit)
 
 
+#TODO: move to class
 def is_late(issue):
     deadline = get_deadine(issue)
 
