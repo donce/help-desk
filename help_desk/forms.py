@@ -55,7 +55,6 @@ class IssueForm(forms.ModelForm):
             else:
                 super(IssueForm, self).save()
                 issue.assign(self.employee, self.cleaned_data['assigned_to'])
-
         super(IssueForm, self).save(commit=commit)
 
 
