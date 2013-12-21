@@ -24,8 +24,8 @@ class ContractForm(forms.ModelForm):
     class Meta:
         model = Contract
         widgets = {
-            'start': DateWidget(),
-            'end': DateWidget(),
+            'start': DateWidget,
+            'end': DateWidget,
         }
 
 
@@ -81,8 +81,8 @@ class ClientIssueForm(forms.ModelForm):
 
 
 class StatisticsForm(forms.Form):
-    start = forms.DateTimeField(widget=DateWidget, input_formats=['%m/%d/%Y'])
-    end = forms.DateTimeField(widget=DateWidget, input_formats=['%m/%d/%Y'])
+    start = forms.DateTimeField(widget=DateWidget)
+    end = forms.DateTimeField(widget=DateWidget)
 
     def is_valid(self):
         if super(StatisticsForm, self).is_valid():

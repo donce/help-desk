@@ -1,9 +1,10 @@
 {% extends 'common/skeleton.html' %}
 {% load i18n menu_item time %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block javascript %}
 <script src="/static/jquery-1.10.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="/static/date.js"></script>
+<script src="/static/date_{{ LANGUAGE_CODE }}.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 {% endblock %}
 {% block title %}Help-desk savitarnos svetainė{% endblock %}
