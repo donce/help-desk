@@ -55,7 +55,7 @@ def edit_issue(request, client, tab, issue_id):
 
 @client_only
 def services(request, client, tab):
-    # services = Service.objects.filter(client=client)
+    services = client.get_current_services()
     return render(request, 'client/services.html', {
         'services': services,
         'tab': tab,

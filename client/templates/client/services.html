@@ -8,15 +8,18 @@
 			<th>{% trans 'Description' %}</th>
 		</tr>
 	</thead>
-	<tbody>    
+	<tbody>
+        {% for service in services %}
 		<tr class="{% cycle 'row1' 'row2' %}">
 			<td>
-			<!--gauti paslauga-->
+                {{ service }}
 			</td>
 			<td>
+                {{ service }}
 			<!--gauti aprasyma-->
 			</td>
 		</tr>
+        {% endfor %}
 	</tbody>
 </table>
 {% endblock %}

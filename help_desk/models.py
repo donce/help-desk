@@ -122,6 +122,16 @@ class Client(models.Model):
         return Issue.objects.create(client=self, service=service, type=type, receive_type=receive_type,
                                     title=title, description=description)
 
+    def get_current_contracts(self):
+        #TODO: return only current contracts
+        return Contract.objects.filter(client=self)
+
+    def get_current_services(self):
+        services = []
+        for contract in self.get_current_contracts():
+            for service in contract.services.all():
+                services.append(service)
+        return services
 
 class Delegate(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)

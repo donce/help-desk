@@ -13,13 +13,13 @@
         {% for contract in contracts %}
 		<tr class="{% cycle 'row1' 'row2' %}">
 			<td>
-                {{ contract.service }}
+                {{ contract.title }}
 			</td>
 			<td>
-			<!--gauti pradzia-->
+                {{ contract.start }}
 			</td>
 			<td>
-			<!--gauti pabaiga-->
+                {{ contract.end }}
 			</td>
 		</tr>
         {% endfor %}
