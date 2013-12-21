@@ -3,7 +3,7 @@ from django.forms import fields
 from common.widgets import DateWidget
 
 from models import Service, Client, Employee, Contract, Issue
-
+from django.forms import ModelChoiceField
 
 class ServiceForm(forms.ModelForm):
     class Meta:
@@ -26,9 +26,36 @@ class ContractForm(forms.ModelForm):
 
 
 class IssueForm(forms.ModelForm):
+    assigned_to = forms.ModelChoiceField(queryset=Employee.objects, empty_label='Unassigned', required=False)
+
+    def __init__(self, employee=None, *args, **kwargs):
+        super(IssueForm, self).__init__(*args, **kwargs)
+        self.employee = employee
+
     class Meta:
         model = Issue
         exclude = ('created', 'closed', 'rating', 'status', 'current');
+
+    def save(self, commit=True):
+        issue = super(IssueForm, self).save(commit=False)
+
+        #in case current does not exist yet
+        if issue.current == None:
+            if not self.cleaned_data['assigned_to'] == None:
+                super(IssueForm, self).save(commit=True)
+                issue.assign(self.employee, self.cleaned_data['assigned_to'])
+            else:
+                return None
+
+        #check if we need to reassign anything
+        if not issue.current.worker == self.cleaned_data['assigned_to']:
+            if self.cleaned_data['assigned_to'] == None:
+                issue.current = None
+            else:
+                super(IssueForm, self).save(commit=True)
+                issue.assign(self.employee, self.cleaned_data['assigned_to'])
+
+        return super(IssueForm, self).save(commit=commit)
 
 
 MODEL_FORMS = {

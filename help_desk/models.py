@@ -235,7 +235,7 @@ class Assignment(models.Model):
     time = models.PositiveIntegerField(null=True)
 
     def __unicode__(self):
-        return self.assigned.first_name + ' ' + self.assigned.last_name
+        return self.worker.first_name + ' ' + self.worker.last_name
 
 
 class Contract(models.Model):

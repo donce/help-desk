@@ -94,6 +94,7 @@ def solve_issues(request, employee, tab):
         ('title', 'Name'),
         ('type', 'Type'),
         ('service', 'Service'),
+        ('current', 'Assigned To'),
         ('created', 'Created On'),
         ('closed', 'Closed On'),
         ('status', 'Status')
@@ -160,6 +161,7 @@ def manage_issues(request, employee, tab):
         ('title', 'Name'),
         ('type', 'Type'),
         ('service', 'Service'),
+        ('current', 'Assigned To'),
         ('created', 'Created On'),
         ('closed', 'Closed On'),
         ('status', 'Status')
@@ -178,7 +180,10 @@ def manage_issues(request, employee, tab):
 @employee_only
 def edit_issue(request, employee, tab, issue_id):
     issue = Issue.objects.get(id=issue_id)
-    issue_form = IssueForm(instance=issue)
+    if issue.current == None:
+        issue_form = IssueForm(employee, instance=issue, initial={'assigned_to': None})
+    else:
+        issue_form = IssueForm(employee, instance=issue, initial={'assigned_to': issue.current.worker})
 
     action = get_action(request.GET, 'action', ('delete'))
     if action != None:
@@ -187,10 +192,9 @@ def edit_issue(request, employee, tab, issue_id):
 
     #if we have already posted
     if request.method == 'POST':
-        issue_form = IssueForm(request.POST, instance=issue)
+        issue_form = IssueForm(employee, request.POST, instance=issue)
         if issue_form.is_valid():
-            #save
-            issue.save();
+            issue_form.save();
             return redirect('/management/manage_issues')
     return render(request, 'management/edit_issue.html', {
         'issue_form' : issue_form,
@@ -202,9 +206,9 @@ def edit_issue(request, employee, tab, issue_id):
 def create_issue(request, employee, tab):
     issue_form = IssueForm
     if request.method == 'POST':
-        issue_form = IssueForm(data=request.POST)
+        issue_form = IssueForm(employee, data=request.POST)
         if issue_form.is_valid():
-            issue = issue_form.save()
+            issue_form.save()
             return redirect('/management/manage_issues')
 
 
