@@ -94,7 +94,6 @@ def solve_issues(request, employee, tab):
         ('title', 'Name'),
         ('type', 'Type'),
         ('service', 'Service'),
-        ('assigned_to', 'Assigned To'),
         ('created', 'Created On'),
         ('closed', 'Closed On'),
         ('status', 'Status')
@@ -161,7 +160,6 @@ def manage_issues(request, employee, tab):
         ('title', 'Name'),
         ('type', 'Type'),
         ('service', 'Service'),
-        ('assigned_to', 'Assigned To'),
         ('created', 'Created On'),
         ('closed', 'Closed On'),
         ('status', 'Status')
@@ -191,20 +189,6 @@ def edit_issue(request, employee, tab, issue_id):
     if request.method == 'POST':
         issue_form = IssueForm(request.POST, instance=issue)
         if issue_form.is_valid():
-
-            #check for status setting
-            issue = issue_form.save(commit=False)
-            if issue.assigned_to == None:
-                issue.status = 'unassigned'
-            elif issue.status == 'unassigned':
-                issue.status = 'in progress'
-
-            #check if assignment is needed
-            if issue.assigned_to == None:
-                issue.current = None
-            elif not Issue.objects.get(id=issue_id).assigned_to == issue.assigned_to:
-                issue.assign(employee, issue.assigned_to)
-
             #save
             issue.save();
             return redirect('/management/manage_issues')
@@ -220,17 +204,7 @@ def create_issue(request, employee, tab):
     if request.method == 'POST':
         issue_form = IssueForm(data=request.POST)
         if issue_form.is_valid():
-            issue = issue_form.save(commit=False)
-
-            #take care for the assignment
-            if issue.assigned_to == None:
-                issue.status = 'unassigned'
-                issue.save()
-            else:
-                issue.status = 'in progress'
-                issue.save()
-                issue.assign(employee, issue.assigned_to)
-
+            issue = issue_form.save()
             return redirect('/management/manage_issues')
 
 
@@ -433,7 +407,6 @@ def statistics(request, employee, tab):
         ('title', 'Name'),
         ('type', 'Type'),
         ('service', 'Service'),
-        ('assigned_to', 'Assigned To'),
         ('created', 'Created On'),
         ('closed', 'Closed On'),
         ('status', 'Status')
