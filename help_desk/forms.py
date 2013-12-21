@@ -77,8 +77,8 @@ class ClientIssueForm(forms.ModelForm):
 
 
 class StatisticsForm(forms.Form):
-    start = forms.DateTimeField(widget=DateWidget)
-    end = forms.DateTimeField(widget=DateWidget)
+    start = forms.DateTimeField(widget=DateWidget, input_formats=['%m/%d/%Y'])
+    end = forms.DateTimeField(widget=DateWidget, input_formats=['%m/%d/%Y'])
 
     def is_valid(self):
         if super(StatisticsForm, self).is_valid():
