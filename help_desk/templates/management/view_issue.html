@@ -34,19 +34,26 @@
 		{% trans 'Description' %}:
 		<textarea readonly>{{ issue.description }}</textarea>
 		<div class="lower_2">
+			{% if issue.status == "in progress" %}
 			<a class="action" href="?action=solve"><button class="darker width_20">
-			{% if issue.status == "solved" %}{% trans 'Unsolve' %}
-			{% else %}{% trans 'Solve' %}{% endif %}</button>
+			{% trans 'Solve' %}</button>
 			</a>
+			{% endif %}
 			<div class="right back">
+
+				{% if issue.status == "in progress" %}
 				<a class="action" href="?action=reject"><button class="darker">
-				{% if issue.status == "rejected" %}{% trans 'Unreject' %}
-				{% else %}{% trans 'Reject' %}{% endif %}
+				{% trans 'Reject' %}
 				</button></a>
-				{% if not issue.current == None %}
+				{% endif %}
+
+				{% if not issue.current == None and issue.status == "in progress"  %}
 				<a class="action" href="?action=return"><button class="darker">{% trans 'Return' %}</button></a>
 				{% endif %}
+
+				{% if issue.status == "in progress" %}
 				<a class="action" href="?action=delete"><button class="darker">{% trans 'Delete' %}</button></a>
+				{% endif %}
 			</div>
 		</div>
 	</div>

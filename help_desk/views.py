@@ -111,17 +111,11 @@ def solve_issues(request, employee, tab):
 
 
 def mark_issue_solved(issue):
-    if issue.status == 'solved':
-        issue.unsolve()
-    else:
-        issue.solve()
+    issue.solve()
 
 
 def mark_issue_rejected(issue):
-    if issue.status == 'rejected':
-        issue.unreject();
-    else:
-        issue.reject()
+    issue.reject()
 
 
 def unassign_issue(issue):

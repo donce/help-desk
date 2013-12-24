@@ -192,23 +192,9 @@ class Issue(models.Model):
         self.closed = datetime.now()
         self.save()
 
-    def unsolve(self):
-        self.status = 'unassigned'
-        self.current = None
-        self.assigned_to = None
-        self.closed = None
-        self.save()
-
     def reject(self):
         self.status = 'rejected'
         self.closed = datetime.now()
-        self.save()
-
-    def unreject(self):
-        self.status = 'unassigned'
-        self.closed = None
-        self.current = None
-        self.assigned_to = None
         self.save()
 
     def returnIssue(self):
