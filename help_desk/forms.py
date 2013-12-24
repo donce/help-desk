@@ -64,6 +64,7 @@ class IssueForm(forms.ModelForm):
                 issue.current = None
                 issue.status = 'unassigned'
             else:
+                issue.status = 'in progress'
                 super(IssueForm, self).save()
                 issue.assign(self.employee, self.cleaned_data['assigned_to'])
 
