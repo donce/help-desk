@@ -181,9 +181,9 @@ def manage_issues(request, employee, tab):
 def edit_issue(request, employee, tab, issue_id):
     issue = Issue.objects.get(id=issue_id)
     if issue.current == None:
-        issue_form = IssueForm(employee, instance=issue, initial={'assigned_to': None})
+        issue_form = IssueForm(employee=employee, edit=True, instance=issue, initial={'assigned_to': None})
     else:
-        issue_form = IssueForm(employee, instance=issue, initial={'assigned_to': issue.current.worker})
+        issue_form = IssueForm(employee=employee, edit=True, instance=issue, initial={'assigned_to': issue.current.worker})
 
     action = get_action(request.GET, 'action', ('delete'))
     if action != None:
@@ -192,11 +192,14 @@ def edit_issue(request, employee, tab, issue_id):
 
     #if we have already posted
     if request.method == 'POST':
-        issue_form = IssueForm(employee, request.POST, instance=issue)
+        issue_form = IssueForm(employee, True, request.POST, instance=issue)
         if issue_form.is_valid():
             issue_form.save();
             return redirect('/management/manage_issues')
+        else:
+            print 'invalid form'
     return render(request, 'management/edit_issue.html', {
+        'issue' : issue,
         'issue_form': issue_form,
         'tab': tab
     })
@@ -207,7 +210,7 @@ def edit_issue(request, employee, tab, issue_id):
 def create_issue(request, employee, tab):
     issue_form = IssueForm
     if request.method == 'POST':
-        issue_form = IssueForm(employee, data=request.POST)
+        issue_form = IssueForm(employee, False, data=request.POST)
         if issue_form.is_valid():
             issue_form.save()
             return redirect('/management/manage_issues')

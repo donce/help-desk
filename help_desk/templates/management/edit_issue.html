@@ -4,6 +4,13 @@
 <!--BACK-->
 <form method="POST">
     <table class="create">
+        <tr><th>{% trans 'Client:' %}</th><th>{{ issue.client }}</th></tr>
+        <tr><th>{% trans 'Created:' %}</th><th>{{ issue.created }}</th></tr>
+        <tr><th>{% trans 'Type:' %}</th><th>{{ issue.type }}</th></tr>
+        <tr><th>{% trans 'Receive type:' %}</th><th>{{ issue.receive_type }}</th></tr>
+        <tr><th>{% trans 'Service:' %}</th><th>{{ issue.service }}</th></tr>
+        <tr><th>{% trans 'Status:' %}</th><th>{{ issue.status }}</th></tr>
+
         {{ issue_form.as_table }}
         {% csrf_token %}
         <tr>

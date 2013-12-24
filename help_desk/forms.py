@@ -32,13 +32,19 @@ class ContractForm(forms.ModelForm):
 class IssueForm(forms.ModelForm):
     assigned_to = forms.ModelChoiceField(queryset=Employee.objects, empty_label='Unassigned', required=False)
 
-    def __init__(self, employee=None, *args, **kwargs):
+    def __init__(self, employee=None, edit=False, *args, **kwargs):
         super(IssueForm, self).__init__(*args, **kwargs)
         self.employee = employee
 
+        if edit:
+            del self.fields['client']
+            del self.fields['type']
+            del self.fields['receive_type']
+            del self.fields['service']
+
     class Meta:
         model = Issue
-        exclude = ('created', 'closed', 'rating', 'status', 'current');
+        exclude = ('created', 'closed', 'rating', 'status', 'current')
 
     def save(self, commit=True):
         issue = super(IssueForm, self).save(commit=False)
@@ -59,6 +65,7 @@ class IssueForm(forms.ModelForm):
             else:
                 super(IssueForm, self).save()
                 issue.assign(self.employee, self.cleaned_data['assigned_to'])
+
         super(IssueForm, self).save(commit=commit)
 
 
