@@ -62,6 +62,7 @@ class IssueForm(forms.ModelForm):
         if not issue.current.worker == self.cleaned_data['assigned_to']:
             if self.cleaned_data['assigned_to'] == None:
                 issue.current = None
+                issue.state = 'unassigned'
             else:
                 super(IssueForm, self).save()
                 issue.assign(self.employee, self.cleaned_data['assigned_to'])
