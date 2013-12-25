@@ -312,8 +312,8 @@ class Employee(models.Model):
         return Issue.objects.filter(current__worker=self)
 
 
-class deflection(models.Model):
-    Time_deflection = models.IntegerField(_('Time_deflection'))
+class Deflection(models.Model):
+    time_deflection = models.IntegerField(_('Time_deflection'))
 
 
 

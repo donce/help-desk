@@ -1,16 +1,23 @@
 import datetime
-import models
+from help_desk.models import Deflection
 
 
-def __init__(deflection):
-    models.deflection.timeDeflection = deflection
+def set_deflection(deflection):
+    assert isinstance(deflection, int)
+    if len(Deflection.objects.all()) == 0:
+        Deflection.create(time_deflection=deflection)
+    else:
+        Deflection.objects.all()[0].time_deflection = deflection
 
 
-def __get__():
-    return models.timeDeflection
+def def_deflection():
+    if len(Deflection.objects.all()) == 0:
+        Deflection.create(time_deflection=0)
+    return Deflection.objects.all()[0]
 
 
-def timeinc():
+def get_time():
     ret = datetime.now()
-    ret.add(datetime.day(models.timeDeflection))
+    assert isinstance(ret, datetime)
+    ret.add(datetime.hours(def_deflection()).time_deflection)
     return ret
