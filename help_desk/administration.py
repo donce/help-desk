@@ -1,11 +1,12 @@
 import datetime
 
 from xlrd import open_workbook, xldate_as_tuple
+from django.db import transaction
 
 from help_desk.models import Service, ROLE_ENGINEER, ROLE_MANAGER, ROLE_ADMINISTRATOR, Employee, Client, Issue, Contract, Assignment, BaseUser
 import models
 
-
+@transaction.commit_on_success
 def clean_database():
     models.Service.objects.all().delete()
     models.Client.objects.all().delete()
@@ -17,28 +18,35 @@ def clean_database():
 
     models.BaseUser.objects.all().delete()
 
-
+@transaction.commit_manually
 class XLSXImporter:
     def import_xlsx(self, data):
-        book = open_workbook(file_contents=data.read())
-
-        sheet_paslaugos = book.sheet_by_name("Paslaugos")
-        sheet_darbuotojai = book.sheet_by_name("Darbuotojai")
-        sheet_klientai = book.sheet_by_name("Klientai")
-        sheet_atstovai = book.sheet_by_name("Atstovai")
-        sheet_sutartys = book.sheet_by_name("Sutartys")
-        sheet_sut_pasl = book.sheet_by_name("SutPasl")
-        sheet_kreipiniai = book.sheet_by_name("Kreipiniai")
-        sheet_paskyrimai = book.sheet_by_name("Paskyrimai")
-
-        self.parse_paslaugos(sheet_paslaugos)
-        self.parse_darbuotojai(sheet_darbuotojai)
-        self.parse_klientai(sheet_klientai)
-        self.parse_atstovai(sheet_atstovai)
-        self.parse_sutartys(sheet_sutartys, book)
-        self.parse_kreipiniai(sheet_kreipiniai, book)
-        self.parse_paskyrimai(sheet_paskyrimai, book)
-        self.parse_sut_pasl(sheet_sut_pasl)
+        try:
+            book = open_workbook(file_contents=data.read())
+    
+            sheet_paslaugos = book.sheet_by_name("Paslaugos")
+            sheet_darbuotojai = book.sheet_by_name("Darbuotojai")
+            sheet_klientai = book.sheet_by_name("Klientai")
+            sheet_atstovai = book.sheet_by_name("Atstovai")
+            sheet_sutartys = book.sheet_by_name("Sutartys")
+            sheet_sut_pasl = book.sheet_by_name("SutPasl")
+            sheet_kreipiniai = book.sheet_by_name("Kreipiniai")
+            sheet_paskyrimai = book.sheet_by_name("Paskyrimai")
+    
+            self.parse_paslaugos(sheet_paslaugos)
+            self.parse_darbuotojai(sheet_darbuotojai)
+            self.parse_klientai(sheet_klientai)
+            self.parse_atstovai(sheet_atstovai)
+            self.parse_sutartys(sheet_sutartys, book)
+            self.parse_kreipiniai(sheet_kreipiniai, book)
+            self.parse_paskyrimai(sheet_paskyrimai, book)
+            self.parse_sut_pasl(sheet_sut_pasl)
+        except:
+            transaction.rollback()
+            return False
+        else:
+            transaction.commit()
+            return True
 
     def parse_paslaugos(self, sheet):
         for i in range(1, sheet.nrows):
