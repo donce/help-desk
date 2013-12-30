@@ -94,7 +94,7 @@ def solve_issues(request, employee, tab):
     filtered_issues = doIssueFiltering(issues, 'status', filter)
     fields = [
         ('title', 'Name'),
-        ('type', 'Type'),
+        ('get_type_display', 'Type'),
         ('service', 'Service'),
         ('current', 'Assigned To'),
         ('created', 'Created On'),
@@ -160,7 +160,7 @@ def manage_issues(request, employee, tab):
 
     fields = [
         ('title', 'Name'),
-        ('type', 'Type'),
+        ('get_type_display', 'Type'),
         ('service', 'Service'),
         ('current', 'Assigned To'),
         ('created', 'Created On'),
@@ -423,7 +423,7 @@ def statistics(request, employee, tab):
 
     fields = [
         ('title', 'Name'),
-        ('type', 'Type'),
+        ('get_type_display', 'Type'),
         ('service', 'Service'),
         ('created', 'Created On'),
         ('closed', 'Closed On'),
