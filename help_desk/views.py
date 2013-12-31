@@ -351,6 +351,7 @@ def administration(request, employee, tab):
 @employee_only
 def import_database(request, employee, tab):
     if request.method == 'POST':
+        print request.POST
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
