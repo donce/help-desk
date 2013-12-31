@@ -313,7 +313,7 @@ class Employee(models.Model):
 
 
 class Deflection(models.Model):
-    time_deflection = models.IntegerField(_('Time deflection'))
+    value = models.IntegerField(_('Time deflection'))
 
 
 

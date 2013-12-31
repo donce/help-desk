@@ -154,11 +154,11 @@ msgstr "Aktyvus"
 
 #: help_desk/models.py:153
 msgid "Incident"
-msgstr ""
+msgstr "Incidentas"
 
 #: help_desk/models.py:154
 msgid "Request"
-msgstr ""
+msgstr "Paklausimas"
 
 #: help_desk/models.py:160
 msgid "By phone"
