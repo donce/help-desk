@@ -124,7 +124,7 @@ class XLSXImporter:
             service = Service.objects.get(id=int(self.trim_id(sheet.cell(i, 2).value, "P")))
             type = sheet.cell(i, 3).value
             receive_type = sheet.cell(i, 4).value
-            #title = sheet.cell(i, 5).value
+            title = 'imported'
             description = sheet.cell(i, 5).value
 
             created = self.get_date(sheet.cell(i, 6).value, workbook)
