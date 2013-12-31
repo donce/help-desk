@@ -83,12 +83,6 @@ class ImportForm(forms.Form):
     file = fields.FileField(label='Failas')
 
 
-class ClientIssueForm(forms.ModelForm):
-    class Meta:
-        model = Issue
-        fields = ('service', 'type', 'title', 'description')
-
-
 class StatisticsForm(forms.Form):
     start = forms.DateTimeField(widget=DateWidget)
     end = forms.DateTimeField(widget=DateWidget)
