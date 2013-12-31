@@ -357,6 +357,7 @@ def import_database(request, employee, tab):
             XLSXImporter().import_xlsx(file)
     return redirect(administration)
 
+
 @tab
 @employee_only
 def wipe_database(request, employee, tab):
