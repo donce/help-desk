@@ -196,8 +196,6 @@ def edit_issue(request, employee, tab, issue_id):
         if issue_form.is_valid():
             issue_form.save();
             return redirect('/management/manage_issues')
-        else:
-            print 'invalid form'
     return render(request, 'management/edit_issue.html', {
         'issue' : issue,
         'issue_form': issue_form,
@@ -351,7 +349,6 @@ def administration(request, employee, tab):
 @employee_only
 def import_database(request, employee, tab):
     if request.method == 'POST':
-        print request.POST
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']

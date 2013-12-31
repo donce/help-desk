@@ -28,7 +28,6 @@ class Command(BaseCommand):
         service = Service.objects.create(title='Serverių hostingas', limit_inc=5, limit_req=2)
         issue = client.register_issue(service, ISSUE_TYPE_REQUEST, 'phone', 'Problema', 'Neveikia kazkas...')
         for i in range(10):
-            # r = Issue.objects.create(type=ISSUE_TYPE_INCIDENT, client=client, receive_type='phone', service=service)
             r = client.register_issue(service, ISSUE_TYPE_REQUEST, 'phone', 'Problema', 'Neveikia kazkas...')
             r.assign(employee_b, employee)
 

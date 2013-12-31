@@ -122,6 +122,10 @@ class Client(models.Model):
         return Issue.objects.create(client=self, service=service, type=type, receive_type=receive_type,
                                     title=title, description=description)
 
+    #TODO: implement
+    def make_contract(self):
+        pass
+
     def get_current_contracts(self):
         #TODO: return only current contracts
         return Contract.objects.filter(client=self)
@@ -295,9 +299,6 @@ class Employee(models.Model):
 
     def can_view_statistics(self):
         return self.is_manager()
-
-    def has_permission(self, permission):
-        print 'can_' + permission
 
     def title(self):
         return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.get_role_display())

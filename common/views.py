@@ -30,8 +30,6 @@ def home(request):
         if form.is_valid():
             login_user(request, form.get_user())
             return main(request)
-        else:
-            print 'invalid'
     else:
         form = AuthenticationForm()
     return render(request, 'common/login.html', {
@@ -64,7 +62,6 @@ def set_language(request):
             next = '/'
     response = http.HttpResponseRedirect(next)
     lang_code = request.GET.get('language', None)
-    print 'language', lang_code
     if lang_code and check_for_language(lang_code):
         if hasattr(request, 'session'):
             request.session['django_language'] = lang_code
