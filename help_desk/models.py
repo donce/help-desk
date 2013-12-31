@@ -150,26 +150,26 @@ ISSUE_TYPE_INCIDENT = 'INC'
 ISSUE_TYPE_REQUEST = 'REQ'
 
 ISSUE_TYPE_CHOICES = (
-    (ISSUE_TYPE_INCIDENT, 'Incident'),
-    (ISSUE_TYPE_REQUEST, 'Request'),
+    (ISSUE_TYPE_INCIDENT, _('Incident')),
+    (ISSUE_TYPE_REQUEST, _('Request')),
 )
 
 ISSUE_RECEIVE_TYPE_WEBSITE = 'website'
 
 ISSUE_RECEIVE_TYPE_CHOICES = (
-    ('phone', 'Telefonu'),
-    ('email', 'El. paštu'),
-    (ISSUE_RECEIVE_TYPE_WEBSITE, 'Savitarnos svetainėje'),
+    ('phone', _('By phone')),
+    ('email', _('By e-mail')),
+    (ISSUE_RECEIVE_TYPE_WEBSITE, _('By website')),
 )
 
 #TODO: add statuses
 ISSUE_STATUS_UNASSIGNED = 'unassigned'
 
 ISSUE_STATUS_CHOICES = (
-    (ISSUE_STATUS_UNASSIGNED, 'Unassigned'),
-    ('in progress', 'In Progress'),
-    ('solved', 'Solved'),
-    ('rejected', 'Rejected'),
+    (ISSUE_STATUS_UNASSIGNED, _('Unassigned')),
+    ('in progress', _('In Progress')),
+    ('solved', _('Solved')),
+    ('rejected', _('Rejected')),
 )
 
 
@@ -254,9 +254,9 @@ ROLE_ADMINISTRATOR = 'administrator'
 ROLE_MANAGER = 'manager'
 
 ROLE_CHOICES = (
-    (ROLE_ENGINEER, 'Inžinierius'),
-    (ROLE_ADMINISTRATOR, 'Administratorius'),
-    (ROLE_MANAGER, 'Vadovas'),
+    (ROLE_ENGINEER, _('Engineer')),
+    (ROLE_ADMINISTRATOR, _('Administrator')),
+    (ROLE_MANAGER, _('Manager')),
 )
 
 
@@ -313,7 +313,7 @@ class Employee(models.Model):
 
 
 class Deflection(models.Model):
-    time_deflection = models.IntegerField(_('Time_deflection'))
+    time_deflection = models.IntegerField(_('Time deflection'))
 
 
 

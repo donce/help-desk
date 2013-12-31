@@ -4,12 +4,12 @@
 <!--BACK-->
 <form method="POST">
     <table class="create">
-        <tr><th>{% trans 'Client:' %}</th><td><input type="text" readonly value="{{ issue.client }}"></td></tr>
-        <tr><th>{% trans 'Created:' %}</th><td><input type="text" readonly value="{{ issue.created }}"></td></tr>
-        <tr><th>{% trans 'Type:' %}</th><td><input type="text" readonly value="{{ issue.get_type_display }}"></td></tr>
-        <tr><th>{% trans 'Receive type:' %}</th><td><input type="text" readonly value="{{ issue.receive_type }}"></td></tr>
-        <tr><th>{% trans 'Service:' %}</th><td><input type="text" readonly value="{{ issue.service }}"></td></tr>
-        <tr><th>{% trans 'Status:' %}</th><td><input type="text" readonly value="{{ issue.status }}"></td></tr>
+        <tr><th>{% trans 'Client' %}:</th><td><input type="text" readonly value="{{ issue.client }}"></td></tr>
+        <tr><th>{% trans 'Created' %}:</th><td><input type="text" readonly value="{{ issue.created }}"></td></tr>
+        <tr><th>{% trans 'Type' %}:</th><td><input type="text" readonly value="{{ issue.get_type_display }}"></td></tr>
+        <tr><th>{% trans 'Receive type' %}:</th><td><input type="text" readonly value="{{ issue.receive_type }}"></td></tr>
+        <tr><th>{% trans 'Service' %}:</th><td><input type="text" readonly value="{{ issue.service }}"></td></tr>
+        <tr><th>{% trans 'Status' %}:</th><td><input type="text" readonly value="{{ issue.status }}"></td></tr>
 
         {{ issue_form.as_table }}
         {% csrf_token %}
