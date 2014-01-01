@@ -93,18 +93,9 @@ def solve_issues(request, employee, tab):
     issues = employee.issues()
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
-    fields = [
-        ('title', _('Name')),
-        ('get_type_display', _('Type')),
-        ('service', _('Service')),
-        ('current', _('Assigned To')),
-        ('created', _('Created On')),
-        ('closed', _('Closed On')),
-        ('get_status_display', _('Status'))
-    ]
 
     return render(request, 'management/solve_issues.html', {
-        'fields': fields,
+        'fields': ISSUE_FIELDS,
         'objects': filtered_issues,
         'model': 'Issue',
         'tab': tab,
@@ -159,18 +150,8 @@ def manage_issues(request, employee, tab):
 
     filteredIssues = doIssueFiltering(issues, 'assignment', filter)
 
-    fields = [
-        ('title', _('Name')),
-        ('get_type_display', _('Type')),
-        ('service', _('Service')),
-        ('current', _('Assigned To')),
-        ('created', _('Created On')),
-        ('closed', _('Closed On')),
-        ('get_status_display', _('Status'))
-    ]
-
     return render(request, 'management/manage_issues.html', {
-        'fields': fields,
+        'fields': ISSUE_FIELDS,
         'issues': filteredIssues,
         'model': 'Issue',
         'tab': tab,
@@ -265,6 +246,16 @@ MODEL_MANAGEMENT_FIELDS = {
         ('limit_req', 'Paklausimo limitas')
     ]
 }
+
+ISSUE_FIELDS = [
+    ('title', _('Name')),
+    ('get_type_display', _('Type')),
+    ('service', _('Service')),
+        ('current', _('Assigned To')),
+    ('created', _('Created On')),
+    ('closed', _('Closed On')),
+    ('get_status_display', _('Status'))
+]
 
 
 @tab
@@ -406,6 +397,7 @@ def get_late_issues(start, end):
     return late_issues
 
 
+
 @tab
 @employee_only
 def statistics(request, employee, tab):
@@ -421,21 +413,12 @@ def statistics(request, employee, tab):
     else:
         late_issues = []
 
-    fields = [
-        ('title', _('Name')),
-        ('get_type_display', _('Type')),
-        ('service', _('Service')),
-        ('created', _('Created On')),
-        ('closed', _('Closed On')),
-        ('get_status_display', _('Status'))
-    ]
-
     return render(request, 'management/statistics.html', {
         'form': form,
         'tab': tab,
         'start': start,
         'end': end,
         'model': 'Issue',
-        'fields': fields,
+        'fields': ISSUE_FIELDS,
         'objects': late_issues
     })
