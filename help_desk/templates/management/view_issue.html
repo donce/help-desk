@@ -21,11 +21,11 @@
 				<td>{% trans 'Service' %}:</td>
 				<td><input type="text" readonly value="{{ issue.service }}"></td>
 				<td>{% trans 'Receive type' %}:</td>
-				<td><input type="text" readonly value="{{ issue.receive_type }}"></td>
+				<td><input type="text" readonly value="{{ issue.get_receive_type_display }}"></td>
 			</tr>
 			<tr>
 				<td>{% trans 'Type' %}:</td>
-				<td><input type="text" readonly value="{{ issue.type }}"></td>
+				<td><input type="text" readonly value="{{ issue.get_type_display }}"></td>
 				<td>{% trans 'Created' %}:</td>
 				<td><input type="text" readonly value="{{ issue.created }}"></td>
 			</tr>

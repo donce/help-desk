@@ -100,7 +100,7 @@ def solve_issues(request, employee, tab):
         ('current', _('Assigned To')),
         ('created', _('Created On')),
         ('closed', _('Closed On')),
-        ('status', _('Status'))
+        ('get_status_display', _('Status'))
     ]
 
     return render(request, 'management/solve_issues.html', {
@@ -166,7 +166,7 @@ def manage_issues(request, employee, tab):
         ('current', _('Assigned To')),
         ('created', _('Created On')),
         ('closed', _('Closed On')),
-        ('status', _('Status'))
+        ('get_status_display', _('Status'))
     ]
 
     return render(request, 'management/manage_issues.html', {
@@ -248,7 +248,7 @@ MODEL_MANAGEMENT_FIELDS = {
     'employee': [
         ('first_name', 'Vardas'),
         ('last_name', u'Pavardė'),
-        ('role', 'Pareigos'),
+        ('get_role_display', 'Pareigos'),
         ('phone_number', 'Telefonas'),
         ('email', u'El. paštas')
     ],
@@ -427,7 +427,7 @@ def statistics(request, employee, tab):
         ('service', _('Service')),
         ('created', _('Created On')),
         ('closed', _('Closed On')),
-        ('status', _('Status'))
+        ('get_status_display', _('Status'))
     ]
 
     return render(request, 'management/statistics.html', {
