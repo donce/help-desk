@@ -252,22 +252,18 @@ msgid "English"
 msgstr "Angliškai"
 
 #: .\help_desk\views.py:97 .\help_desk\views.py:163 .\help_desk\views.py:425
-#, fuzzy
 msgid "Name"
-msgstr "Numeris"
+msgstr "Pavadinimas"
 
 #: .\help_desk\views.py:100 .\help_desk\views.py:166
-#, fuzzy
 msgid "Assigned To"
 msgstr "Priskirtas"
 
 #: .\help_desk\views.py:101 .\help_desk\views.py:167 .\help_desk\views.py:428
-#, fuzzy
 msgid "Created On"
 msgstr "Sukurtas"
 
 #: .\help_desk\views.py:102 .\help_desk\views.py:168 .\help_desk\views.py:429
-#, fuzzy
 msgid "Closed On"
 msgstr "Išspręstas"
 
@@ -356,7 +352,6 @@ msgstr "Pašalinti"
 #~ msgid "Main"
 #~ msgstr "Pagrindinis"
 
-#, fuzzy
 #~ msgid "Assign"
 #~ msgstr "Priskirti"
 
@@ -366,7 +361,6 @@ msgstr "Pašalinti"
 #~ msgid "Register"
 #~ msgstr "Registruoti"
 
-#, fuzzy
 #~ msgid "Unsolve"
 #~ msgstr "Neišspręsti"
 
