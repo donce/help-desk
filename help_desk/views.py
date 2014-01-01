@@ -3,6 +3,7 @@ from datetime import timedelta
 from datetime import datetime
 
 from django.shortcuts import render, redirect
+from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 import pytz
 
@@ -93,13 +94,13 @@ def solve_issues(request, employee, tab):
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
     fields = [
-        ('title', 'Name'),
-        ('get_type_display', 'Type'),
-        ('service', 'Service'),
-        ('current', 'Assigned To'),
-        ('created', 'Created On'),
-        ('closed', 'Closed On'),
-        ('status', 'Status')
+        ('title', _('Name')),
+        ('get_type_display', _('Type')),
+        ('service', _('Service')),
+        ('current', _('Assigned To')),
+        ('created', _('Created On')),
+        ('closed', _('Closed On')),
+        ('status', _('Status'))
     ]
 
     return render(request, 'management/solve_issues.html', {
@@ -159,13 +160,13 @@ def manage_issues(request, employee, tab):
     filteredIssues = doIssueFiltering(issues, 'assignment', filter)
 
     fields = [
-        ('title', 'Name'),
-        ('get_type_display', 'Type'),
-        ('service', 'Service'),
-        ('current', 'Assigned To'),
-        ('created', 'Created On'),
-        ('closed', 'Closed On'),
-        ('status', 'Status')
+        ('title', _('Name')),
+        ('get_type_display', _('Type')),
+        ('service', _('Service')),
+        ('current', _('Assigned To')),
+        ('created', _('Created On')),
+        ('closed', _('Closed On')),
+        ('status', _('Status'))
     ]
 
     return render(request, 'management/manage_issues.html', {
@@ -421,12 +422,12 @@ def statistics(request, employee, tab):
         late_issues = []
 
     fields = [
-        ('title', 'Name'),
-        ('get_type_display', 'Type'),
-        ('service', 'Service'),
-        ('created', 'Created On'),
-        ('closed', 'Closed On'),
-        ('status', 'Status')
+        ('title', _('Name')),
+        ('get_type_display', _('Type')),
+        ('service', _('Service')),
+        ('created', _('Created On')),
+        ('closed', _('Closed On')),
+        ('status', _('Status'))
     ]
 
     return render(request, 'management/statistics.html', {

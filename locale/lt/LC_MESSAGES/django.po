@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-01 21:06+0200\n"
+"POT-Creation-Date: 2014-01-01 22:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,7 @@ msgstr "Pabaiga"
 #: .\client\templates\client\services.html.py:7
 #: .\client\templates\client\issue\base.html.py:13
 #: .\client\templates\client\issue\edit.html.py:23 .\help_desk\models.py:182
+#: .\help_desk\views.py:99 .\help_desk\views.py:165 .\help_desk\views.py:427
 #: .\help_desk\templates\management\edit_issue.html.py:11
 #: .\help_desk\templates\management\view_issue.html.py:21
 msgid "Service"
@@ -78,6 +79,7 @@ msgstr "Kreipinys"
 
 #: .\client\templates\client\issue\base.html.py:12
 #: .\client\templates\client\issue\edit.html.py:17 .\help_desk\models.py:183
+#: .\help_desk\views.py:98 .\help_desk\views.py:164 .\help_desk\views.py:426
 #: .\help_desk\templates\management\edit_issue.html.py:9
 #: .\help_desk\templates\management\view_issue.html.py:27
 msgid "Type"
@@ -96,7 +98,7 @@ msgstr "Siųsti"
 #: .\help_desk\models.py:246
 #: .\help_desk\templates\management\view_issue.html.py:15
 msgid "Title"
-msgstr "Tema"
+msgstr "Pavadinimas"
 
 #: .\client\templates\client\issue\edit.html.py:21 .\help_desk\models.py:187
 #: .\help_desk\templates\management\edit_issue.html.py:8
@@ -118,11 +120,11 @@ msgstr "Vartotojo vardas"
 
 #: .\help_desk\models.py:101
 msgid "Incident limit"
-msgstr ""
+msgstr "Incidento limitas"
 
 #: .\help_desk\models.py:102
 msgid "Request limit"
-msgstr ""
+msgstr "Paklausimo limitas"
 
 #: .\help_desk\models.py:113
 msgid "Address"
@@ -203,7 +205,8 @@ msgstr "Registravimo tipas"
 msgid "Closed"
 msgstr "Išspręstas"
 
-#: .\help_desk\models.py:189
+#: .\help_desk\models.py:189 .\help_desk\views.py:103 .\help_desk\views.py:169
+#: .\help_desk\views.py:430
 #: .\help_desk\templates\management\edit_issue.html.py:12
 msgid "Status"
 msgstr "Padėtis"
@@ -248,6 +251,26 @@ msgstr "Lietuviškai"
 msgid "English"
 msgstr "Angliškai"
 
+#: .\help_desk\views.py:97 .\help_desk\views.py:163 .\help_desk\views.py:425
+#, fuzzy
+msgid "Name"
+msgstr "Numeris"
+
+#: .\help_desk\views.py:100 .\help_desk\views.py:166
+#, fuzzy
+msgid "Assigned To"
+msgstr "Priskirtas"
+
+#: .\help_desk\views.py:101 .\help_desk\views.py:167 .\help_desk\views.py:428
+#, fuzzy
+msgid "Created On"
+msgstr "Sukurtas"
+
+#: .\help_desk\views.py:102 .\help_desk\views.py:168 .\help_desk\views.py:429
+#, fuzzy
+msgid "Closed On"
+msgstr "Išspręstas"
+
 #: .\help_desk\templates\management\administration.html.py:4
 msgid "Wipe data"
 msgstr "Išvalyti duomenis"
@@ -261,26 +284,22 @@ msgid "Import"
 msgstr "Importuoti"
 
 #: .\help_desk\templates\management\base.html.py:5
-msgid "Main"
-msgstr "Pagrindinis"
-
-#: .\help_desk\templates\management\base.html.py:6
 msgid "Statistics"
 msgstr "Statistika"
 
-#: .\help_desk\templates\management\base.html.py:7
+#: .\help_desk\templates\management\base.html.py:6
 msgid "Manage issues"
 msgstr "Tvarkyti kreipinius"
 
-#: .\help_desk\templates\management\base.html.py:8
+#: .\help_desk\templates\management\base.html.py:7
 msgid "Solve issues"
 msgstr "Spręsti kreipinius"
 
-#: .\help_desk\templates\management\base.html.py:9
+#: .\help_desk\templates\management\base.html.py:8
 msgid "Manage registers"
 msgstr "Tvarkyti registrus"
 
-#: .\help_desk\templates\management\base.html.py:10
+#: .\help_desk\templates\management\base.html.py:9
 msgid "Administration"
 msgstr "Administracija"
 
@@ -334,6 +353,9 @@ msgstr "Grąžinti"
 msgid "Remove"
 msgstr "Pašalinti"
 
+#~ msgid "Main"
+#~ msgstr "Pagrindinis"
+
 #, fuzzy
 #~ msgid "Assign"
 #~ msgstr "Priskirti"
@@ -343,10 +365,6 @@ msgstr "Pašalinti"
 
 #~ msgid "Register"
 #~ msgstr "Registruoti"
-
-#, fuzzy
-#~ msgid "Assigned to"
-#~ msgstr "Priskirtas"
 
 #, fuzzy
 #~ msgid "Unsolve"
