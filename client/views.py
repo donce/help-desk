@@ -1,7 +1,7 @@
 from django.http.response import Http404
 from django.shortcuts import render, redirect
 
-from help_desk.forms import ClientIssueForm
+from client.forms import IssueForm
 from help_desk.models import Issue, Contract, ISSUE_RECEIVE_TYPE_WEBSITE
 
 
@@ -25,7 +25,7 @@ def home(request):
 @client_only
 def create_issue(request, client, tab):
     if request.method == 'POST':
-        form = ClientIssueForm(request.POST)
+        form = IssueForm(request.POST)
         if form.is_valid():
             issue = form.save(commit=False)
             issue.client = client
@@ -33,7 +33,7 @@ def create_issue(request, client, tab):
             issue.save()
             return redirect(edit_issue, issue.id)
     else:
-        form = ClientIssueForm()
+        form = IssueForm()
     issues = Issue.objects.filter(client=client)
     return render(request, 'client/issue/create.html', {
         'client_issue_form': form,

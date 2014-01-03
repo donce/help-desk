@@ -88,6 +88,7 @@ form.login {
 .menu_employee_title {
 	font-family: "Trebuchet MS";
 	color: #001433;
+	padding-right: 10px;
 }
 
 .menu_item {
@@ -402,4 +403,12 @@ table.transparent td, table.transparent th {
 
 .width_25 {
 	width: 25%;
+}
+
+table a:link{
+	color:black;
+	font-weight: bold;
+}
+table a:visited{
+	color:#666666;
 }

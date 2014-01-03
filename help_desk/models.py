@@ -122,6 +122,10 @@ class Client(models.Model):
         return Issue.objects.create(client=self, service=service, type=type, receive_type=receive_type,
                                     title=title, description=description)
 
+    #TODO: implement
+    def make_contract(self):
+        pass
+
     def get_current_contracts(self):
         #TODO: return only current contracts
         return Contract.objects.filter(client=self)
@@ -150,26 +154,26 @@ ISSUE_TYPE_INCIDENT = 'INC'
 ISSUE_TYPE_REQUEST = 'REQ'
 
 ISSUE_TYPE_CHOICES = (
-    (ISSUE_TYPE_INCIDENT, 'Incident'),
-    (ISSUE_TYPE_REQUEST, 'Request'),
+    (ISSUE_TYPE_INCIDENT, _('Incident')),
+    (ISSUE_TYPE_REQUEST, _('Request')),
 )
 
 ISSUE_RECEIVE_TYPE_WEBSITE = 'website'
 
 ISSUE_RECEIVE_TYPE_CHOICES = (
-    ('phone', 'Telefonu'),
-    ('email', 'El. paštu'),
-    (ISSUE_RECEIVE_TYPE_WEBSITE, 'Savitarnos svetainėje'),
+    ('phone', _('By phone')),
+    ('email', _('By e-mail')),
+    (ISSUE_RECEIVE_TYPE_WEBSITE, _('By website')),
 )
 
 #TODO: add statuses
 ISSUE_STATUS_UNASSIGNED = 'unassigned'
 
 ISSUE_STATUS_CHOICES = (
-    (ISSUE_STATUS_UNASSIGNED, 'Unassigned'),
-    ('in progress', 'In Progress'),
-    ('solved', 'Solved'),
-    ('rejected', 'Rejected'),
+    (ISSUE_STATUS_UNASSIGNED, _('Unassigned')),
+    ('in progress', _('In Progress')),
+    ('solved', _('Solved')),
+    ('rejected', _('Rejected')),
 )
 
 
@@ -254,9 +258,9 @@ ROLE_ADMINISTRATOR = 'administrator'
 ROLE_MANAGER = 'manager'
 
 ROLE_CHOICES = (
-    (ROLE_ENGINEER, 'Inžinierius'),
-    (ROLE_ADMINISTRATOR, 'Administratorius'),
-    (ROLE_MANAGER, 'Vadovas'),
+    (ROLE_ENGINEER, _('Engineer')),
+    (ROLE_ADMINISTRATOR, _('Administrator')),
+    (ROLE_MANAGER, _('Manager')),
 )
 
 
@@ -296,9 +300,6 @@ class Employee(models.Model):
     def can_view_statistics(self):
         return self.is_manager()
 
-    def has_permission(self, permission):
-        print 'can_' + permission
-
     def title(self):
         return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.get_role_display())
 
@@ -313,7 +314,7 @@ class Employee(models.Model):
 
 
 class Deflection(models.Model):
-    time_deflection = models.IntegerField(_('Time_deflection'))
+    value = models.IntegerField(_('Time deflection'))
 
 
 

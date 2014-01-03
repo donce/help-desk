@@ -3,6 +3,7 @@ from datetime import timedelta
 from datetime import datetime
 
 from django.shortcuts import render, redirect
+from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 import pytz
 
@@ -92,18 +93,9 @@ def solve_issues(request, employee, tab):
     issues = employee.issues()
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
-    fields = [
-        ('title', 'Name'),
-        ('get_type_display', 'Type'),
-        ('service', 'Service'),
-        ('current', 'Assigned To'),
-        ('created', 'Created On'),
-        ('closed', 'Closed On'),
-        ('status', 'Status')
-    ]
 
     return render(request, 'management/solve_issues.html', {
-        'fields': fields,
+        'fields': ISSUE_FIELDS,
         'objects': filtered_issues,
         'model': 'Issue',
         'tab': tab,
@@ -158,18 +150,8 @@ def manage_issues(request, employee, tab):
 
     filteredIssues = doIssueFiltering(issues, 'assignment', filter)
 
-    fields = [
-        ('title', 'Name'),
-        ('get_type_display', 'Type'),
-        ('service', 'Service'),
-        ('current', 'Assigned To'),
-        ('created', 'Created On'),
-        ('closed', 'Closed On'),
-        ('status', 'Status')
-    ]
-
     return render(request, 'management/manage_issues.html', {
-        'fields': fields,
+        'fields': ISSUE_FIELDS,
         'issues': filteredIssues,
         'model': 'Issue',
         'tab': tab,
@@ -196,8 +178,6 @@ def edit_issue(request, employee, tab, issue_id):
         if issue_form.is_valid():
             issue_form.save();
             return redirect('/management/manage_issues')
-        else:
-            print 'invalid form'
     return render(request, 'management/edit_issue.html', {
         'issue' : issue,
         'issue_form': issue_form,
@@ -249,7 +229,7 @@ MODEL_MANAGEMENT_FIELDS = {
     'employee': [
         ('first_name', 'Vardas'),
         ('last_name', u'Pavardė'),
-        ('role', 'Pareigos'),
+        ('get_role_display', 'Pareigos'),
         ('phone_number', 'Telefonas'),
         ('email', u'El. paštas')
     ],
@@ -266,6 +246,16 @@ MODEL_MANAGEMENT_FIELDS = {
         ('limit_req', 'Paklausimo limitas')
     ]
 }
+
+ISSUE_FIELDS = [
+    ('title', _('Name')),
+    ('get_type_display', _('Type')),
+    ('service', _('Service')),
+        ('current', _('Assigned To')),
+    ('created', _('Created On')),
+    ('closed', _('Closed On')),
+    ('get_status_display', _('Status'))
+]
 
 
 @tab
@@ -357,6 +347,7 @@ def import_database(request, employee, tab):
             XLSXImporter().import_xlsx(file)
     return redirect(administration)
 
+
 @tab
 @employee_only
 def wipe_database(request, employee, tab):
@@ -406,6 +397,7 @@ def get_late_issues(start, end):
     return late_issues
 
 
+
 @tab
 @employee_only
 def statistics(request, employee, tab):
@@ -421,21 +413,12 @@ def statistics(request, employee, tab):
     else:
         late_issues = []
 
-    fields = [
-        ('title', 'Name'),
-        ('get_type_display', 'Type'),
-        ('service', 'Service'),
-        ('created', 'Created On'),
-        ('closed', 'Closed On'),
-        ('status', 'Status')
-    ]
-
     return render(request, 'management/statistics.html', {
         'form': form,
         'tab': tab,
         'start': start,
         'end': end,
         'model': 'Issue',
-        'fields': fields,
+        'fields': ISSUE_FIELDS,
         'objects': late_issues
     })

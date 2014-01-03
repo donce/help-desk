@@ -1,6 +1,5 @@
-import datetime
 from django import template
-from django.core.urlresolvers import reverse
+from common.deflection import get_time
 
 
 register = template.Library()
@@ -8,7 +7,7 @@ register = template.Library()
 
 @register.inclusion_tag('common/time.html')
 def time():
-    now = datetime.datetime.now()
+    time = get_time().strftime('%H:%M')
     return {
-        'time': now,
+        'time': time,
     }

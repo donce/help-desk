@@ -15,7 +15,7 @@
 				<td>{% trans 'Title' %}:</td>
 				<td><input type="text" readonly value="{{ issue.title }}"></td>
 				<td>{% trans 'Type' %}:</td>
-				<td><input type="text" readonly value="{{ issue.type }}"></td>
+				<td><input type="text" readonly value="{{ issue.get_type_display }}"></td>
 			</tr>
 			<tr>
 				<td>{% trans 'Created' %}:</td>
