@@ -2,7 +2,8 @@ from django import forms
 from django.forms import fields
 from common.widgets import DateWidget
 
-from models import Service, Client, Employee, Contract, Issue
+from models import Service, Client, Employee, Contract, Issue, UserManager
+
 
 
 class ServiceForm(forms.ModelForm):
@@ -16,9 +17,29 @@ class ClientForm(forms.ModelForm):
 
 
 class EmployeeForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, min_length=8)
+
+    def __init__(self, _creating=False, *args, **kwargs):
+        super(EmployeeForm, self).__init__(*args, **kwargs)
+        self.creating = _creating
+
     class Meta:
         model = Employee
+        exclude = ('user')
 
+    def save(self, commit=True):
+        employee = super(EmployeeForm, self).save(False)
+
+        if self.creating:
+            employee.user = BaseUser.objects.create_user(employee.email, self.cleaned_data['password'])
+        elif commit:
+            employee.user.set_password(self.cleaned_data['password'])
+            employee.user.username = self.cleaned_data['email']
+            employee.user.save()
+
+        if commit:
+            super(EmployeeForm, self).save()
+        return employee
 
 class ContractForm(forms.ModelForm):
     class Meta:
