@@ -30,6 +30,7 @@ administration_patterns = patterns('help_desk.views',
                                    url(r'^$', 'administration'),
                                    url(r'import/$', 'import_database'),
                                    url(r'wipe/$', 'wipe_database'),
+                                   url(r'deflection/$', 'deflection' ),
                                    )
 
 
