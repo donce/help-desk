@@ -31,7 +31,7 @@ class UserManager(BaseUserManager):
     def create_delegate(self, client, email, password, first_name, last_name, phone_number):
         user = self.create_user(email, password)
         delegate = Delegate.objects.create(user=user, client=client, first_name=first_name, last_name=last_name,
-                                           phone_number=phone_number)
+                                           phone_number=phone_number, email=email)
         return delegate
 
     def create_employee(self, username, password, first_name, last_name, role, email, phone_number):
@@ -148,6 +148,9 @@ class Delegate(models.Model):
 
     def __unicode__(self):
         return '{0} {1} ({2})'.format(self.first_name, self.last_name, self.client)
+
+    def get_absolute_url(self):
+        return reverse('help_desk.views.model_edit', args=('delegate', self.id))
 
 
 ISSUE_TYPE_INCIDENT = 'INC'

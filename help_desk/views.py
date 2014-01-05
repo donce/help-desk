@@ -246,6 +246,14 @@ MODEL_MANAGEMENT_FIELDS = {
         ('title', 'Pavadinimas'),
         ('limit_inc', 'Incidento limitas'),
         ('limit_req', 'Paklausimo limitas')
+    ],
+    'delegate': [
+        ('client', 'Klientas'),
+        ('first_name', 'Vardas'),
+        ('last_name', u'Pavardė'),
+        ('phone_number', 'Telefonas'),
+        ('email', u'El. paštas'),
+        ('active', 'Aktyvus')
     ]
 }
 
