@@ -9,7 +9,7 @@
     <input class="lower_2" type="submit" value="{% trans 'Import' %}"/>
 </form>
 <hr/>
-<h2>Time deflection</h2>
+<h2>{% trans 'Time deflection' %}</h2>
 <form id="deflection" action="{% url 'help_desk.views.deflection' %}" method="post">
     {% csrf_token %}
     {{deflection_form.as_p }}
