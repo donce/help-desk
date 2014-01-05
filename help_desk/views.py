@@ -7,6 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 import pytz
 from common.deflection import set_deflection, get_deflection
+# from common.views import home as common_home
+import common.views
+
 
 from help_desk.administration import XLSXImporter, clean_database
 from help_desk.forms import ImportForm, StatisticsForm, DeflectionForm
@@ -225,27 +228,27 @@ def models(request, employee, tab):
 
 MODEL_MANAGEMENT_FIELDS = {
     'client': [
-        ('title', 'Pavadinimas'),
-        ('address', 'Adresas')
+        ('title', _('Title')),
+        ('address', _('Address')),
     ],
     'employee': [
-        ('first_name', 'Vardas'),
-        ('last_name', u'Pavardė'),
-        ('get_role_display', 'Pareigos'),
-        ('phone_number', 'Telefonas'),
-        ('email', u'El. paštas')
+        ('first_name', _('First name')),
+        ('last_name', _('Last name')),
+        ('get_role_display', _('Role')),
+        ('phone_number', _('Phone number')),
+        ('email', _('Email')),
     ],
     'contract': [
-        ('number', 'Numeris'),
-        ('title', 'Pavadinimas'),
-        ('client', 'Klientas'),
-        ('start', 'Pradžia'),
-        ('end', 'Pabaiga'),
+        ('number', _('Number')),
+        ('title', _('Title')),
+        ('client', _('Client')),
+        ('start', _('Start')),
+        ('end', _('End')),
     ],
     'service': [
-        ('title', 'Pavadinimas'),
-        ('limit_inc', 'Incidento limitas'),
-        ('limit_req', 'Paklausimo limitas')
+        ('title', _('Title')),
+        ('limit_inc', _('Incident limit')),
+        ('limit_req', _('Request limit')),
     ]
 }
 
@@ -354,22 +357,18 @@ def deflection(request, employee, tab):
 @employee_only
 def import_database(request, employee, tab):
     FILE_EXT_WHITELIST = ['xls','xlsx']
-    print 'import'
     if request.method == 'POST':
-        print 'post'
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
-            print 'valid'
             file = request.FILES['file']
             clean = form.cleaned_data['clean']
             XLSXImporter().import_xlsx(file)
-            if len(file.name.split('.')) == 1:
-                print 'red'
-                return redirect(administration)
-            if file.name.split('.')[-1] in FILE_EXT_WHITELIST:
-                print 'ok'
-                XLSXImporter().import_xlsx(file)
-    return redirect(administration)
+            split = file.name.split('.')
+            if len(split) != 1 and split[-1] in FILE_EXT_WHITELIST:
+                if XLSXImporter().import_xlsx(file, clean):
+                    return redirect(common.views.main)
+
+    return administration(request, tab=tab)
 
 
 #TODO: move to class
@@ -412,7 +411,6 @@ def get_late_issues(start, end):
         if is_late(issue) and issue.created >= start and issue.created <= end:
             late_issues.append(issue)
     return late_issues
-
 
 
 @tab

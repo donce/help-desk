@@ -6,19 +6,20 @@ from django import http
 from django.utils.http import is_safe_url
 from django.contrib.auth import login as login_user, logout as logout_user
 
-from client.views import home as client_home
+import client.views
 from help_desk.models import ROLE_ENGINEER, ROLE_MANAGER
-from help_desk.views import management_home as employee_home, solve_issues, manage_issues, statistics
+import help_desk.views
+
 
 def main(request):
     if request.user.is_employee():
         role = request.user.employee.role
         if role == ROLE_MANAGER:
-            return redirect(statistics)
+            return redirect(help_desk.views.statistics)
         elif role == ROLE_ENGINEER:
-            return redirect(solve_issues)
-        return redirect(manage_issues)
-    return redirect(client_home)
+            return redirect(help_desk.views.solve_issues)
+        return redirect(help_desk.views.manage_issues)
+    return redirect(client.views.client_home)
 
 
 def home(request):

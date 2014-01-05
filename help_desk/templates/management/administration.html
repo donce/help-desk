@@ -12,7 +12,8 @@
 <h2>{% trans 'Time deflection' %}</h2>
 <form id="deflection" action="{% url 'help_desk.views.deflection' %}" method="post">
     {% csrf_token %}
-    {{deflection_form.as_p }}
-    <input class="lower_2" type="submit" value="{% trans 'Deflection' %}"/>
+    {{ deflection_form.deflection }}
+    <br />
+    <input class="lower_2" type="submit" value="{% trans 'Save' %}"/>
 </form>
 {% endblock %}
