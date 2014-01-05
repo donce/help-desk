@@ -6,9 +6,11 @@ from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 import pytz
+from common.deflection import set_deflection, get_deflection
 
 from help_desk.administration import XLSXImporter, clean_database
-from help_desk.forms import ImportForm, StatisticsForm
+from help_desk.forms import ImportForm, StatisticsForm, DeflectionForm
+from help_desk.models import Deflection
 from models import Issue
 from forms import MODEL_FORMS, IssueForm
 
@@ -334,7 +336,18 @@ def administration(request, employee, tab):
     return render(request, 'management/administration.html', {
         'tab': tab,
         'import_form': ImportForm(),
+        'deflection_form': DeflectionForm(initial={'deflection': get_deflection()}),
     })
+
+@tab
+@employee_only
+def deflection(request, employee, tab):
+    if request.method == 'POST':
+        form = DeflectionForm(request.POST)
+        if form.is_valid():
+            deflection = form.cleaned_data['deflection']
+            set_deflection(deflection)
+    return redirect(administration)
 
 
 @tab

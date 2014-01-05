@@ -7,7 +7,9 @@ def set_deflection(deflection):
     if Deflection.objects.count() == 0:
         Deflection.objects.create(value=deflection)
     else:
-        Deflection.objects.all()[0].value = deflection
+        var = Deflection.objects.all()[0]
+        var.value = deflection
+        var.save()
 
 
 def get_deflection():

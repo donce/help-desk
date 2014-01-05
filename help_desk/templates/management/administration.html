@@ -1,15 +1,22 @@
 {% extends "management/base.html" %}
 {% load i18n %}
 {% block content %}
-<a href="{% url 'help_desk.views.wipe_database' %}"><button>{% trans 'Wipe data' %}</button></a>
+<a href="{% url 'help_desk.views.wipe_database' %}">
+    <button>{% trans 'Wipe data' %}</button>
+</a>
 <hr/>
 <h2>{% trans 'Import a structure' %}</h2></br>
 
 <form id="import" action="{% url 'help_desk.views.import_database' %}" method="post" enctype="multipart/form-data">
-{% csrf_token %}
-{{ import_form.as_p }}
-<input class="lower_2" type="submit" value="{% trans 'Import' %}"/>
+    {% csrf_token %}
+    {{ import_form.as_p }}
+    <input class="lower_2" type="submit" value="{% trans 'Import' %}"/>
 </form>
 <hr/>
 <h2>Time deflection</h2>
+<form id="deflection" action="{% url 'help_desk.views.deflection' %}" method="post">
+    {% csrf_token %}
+    {{deflection_form.as_p }}
+    <input class="lower_2" type="submit" value="{% trans 'Deflection' %}"/>
+</form>
 {% endblock %}

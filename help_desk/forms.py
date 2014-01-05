@@ -91,3 +91,7 @@ class StatisticsForm(forms.Form):
         if super(StatisticsForm, self).is_valid():
             return self.cleaned_data['end'] > self.cleaned_data['start']
         return False
+
+
+class DeflectionForm(forms.Form):
+    deflection = fields.IntegerField(label='deflection')
