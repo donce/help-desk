@@ -6,7 +6,6 @@ from django.db import transaction
 from help_desk.models import Service, ROLE_ENGINEER, ROLE_MANAGER, ROLE_ADMINISTRATOR, Employee, Client, Issue, Contract, Assignment, BaseUser
 import models
 
-@transaction.commit_on_success
 def clean_database():
     models.Service.objects.all().delete()
     models.Client.objects.all().delete()
@@ -32,7 +31,9 @@ class XLSXImporter:
             sheet_sut_pasl = book.sheet_by_name("SutPasl")
             sheet_kreipiniai = book.sheet_by_name("Kreipiniai")
             sheet_paskyrimai = book.sheet_by_name("Paskyrimai")
-    
+
+            clean_database()
+
             self.parse_paslaugos(sheet_paslaugos)
             self.parse_darbuotojai(sheet_darbuotojai)
             self.parse_klientai(sheet_klientai)
@@ -41,7 +42,8 @@ class XLSXImporter:
             self.parse_kreipiniai(sheet_kreipiniai, book)
             self.parse_paskyrimai(sheet_paskyrimai, book)
             self.parse_sut_pasl(sheet_sut_pasl)
-        except:
+        except Exception as e:
+            print '%s (%s)' % (e, type(e))
             transaction.rollback()
             return False
         else:
@@ -140,7 +142,7 @@ class XLSXImporter:
             #current = sheet.cell(i, 10).value # TODO : what?
             #previous = sheet.cell(i, 11).value # TODO : purpose of this?
             issue = Issue(id=id, client=client, service=service, type=type,
-                          receive_type=receive_type, description=description,
+                          receive_type=receive_type, title=title, description=description,
                           created=created, closed=closed, rating=rating)
             issue.save()
 

@@ -1,6 +1,8 @@
 from django import forms
+from django.core.validators import MaxValueValidator
 from django.forms import fields
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import date
 from common.widgets import DateWidget
 
 from models import Service, Client, Employee, Contract, Issue
@@ -93,3 +95,7 @@ class StatisticsForm(forms.Form):
         if super(StatisticsForm, self).is_valid():
             return self.cleaned_data['end'] > self.cleaned_data['start']
         return False
+
+
+class DeflectionForm(forms.Form):
+    deflection = fields.IntegerField(label='deflection')
