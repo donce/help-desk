@@ -362,20 +362,15 @@ def deflection(request, employee, tab):
 @employee_only
 def import_database(request, employee, tab):
     FILE_EXT_WHITELIST = ['xls','xlsx']
-    print 'import'
     if request.method == 'POST':
-        print 'post'
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
-            print 'valid'
             file = request.FILES['file']
             clean = form.cleaned_data['clean']
             XLSXImporter().import_xlsx(file)
             if len(file.name.split('.')) == 1:
-                print 'red'
                 return redirect(administration)
             if file.name.split('.')[-1] in FILE_EXT_WHITELIST:
-                print 'ok'
                 XLSXImporter().import_xlsx(file)
     return redirect(administration)
 
