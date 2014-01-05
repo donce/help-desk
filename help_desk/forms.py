@@ -28,11 +28,19 @@ class ClientForm(forms.ModelForm):
 
 
 class EmployeeForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput, min_length=8)
+    password = forms.CharField(widget=forms.PasswordInput, required=False)
 
     def __init__(self, _creating=False, *args, **kwargs):
         super(EmployeeForm, self).__init__(*args, **kwargs)
         self.creating = _creating
+
+    def clean_password(self):
+        data = self.cleaned_data['password']
+        if self.creating and len(data) < 8:
+            raise forms.ValidationError('Ensure this value has at least 8 characters')
+        elif not self.creating and 0 < len(data) < 8:
+            raise forms.ValidationError('Ensure this value has at least 8 characters')
+        return data
 
     class Meta:
         model = Employee
@@ -44,7 +52,8 @@ class EmployeeForm(forms.ModelForm):
         if self.creating:
             employee.user = BaseUser.objects.create_user(employee.email, self.cleaned_data['password'])
         elif commit:
-            employee.user.set_password(self.cleaned_data['password'])
+            if len(self.cleaned_data['password']) > 0:
+                employee.user.set_password(self.cleaned_data['password'])
             employee.user.username = self.cleaned_data['email']
             employee.user.save()
 
@@ -108,11 +117,19 @@ class IssueForm(forms.ModelForm):
 
 
 class DelegateForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput, min_length=8)
+    password = forms.CharField(widget=forms.PasswordInput, required=False)
 
     def __init__(self, _creating=False, *args, **kwargs):
         super(DelegateForm, self).__init__(*args, **kwargs)
         self.creating = _creating
+
+    def clean_password(self):
+        data = self.cleaned_data['password']
+        if self.creating and len(data) < 8:
+            raise forms.ValidationError('Ensure this value has at least 8 characters')
+        elif not self.creating and 0 < len(data) < 8:
+            raise forms.ValidationError('Ensure this value has at least 8 characters')
+        return data
 
     def save(self, commit=True):
         delegate = super(DelegateForm, self).save(commit=False)
@@ -130,8 +147,10 @@ class DelegateForm(forms.ModelForm):
 
         elif commit:
             delegate.user.username = delegate.email
-            delegate.user.set_password(self.cleaned_data['password'])
+            if len(self.cleaned_data['password']) > 0:
+                delegate.user.set_password(self.cleaned_data['password'])
             delegate.user.save()
+            super(DelegateForm, self).save()
 
         return delegate
 
