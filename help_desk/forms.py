@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import fields
+from django.utils.translation import ugettext_lazy as _
 from common.widgets import DateWidget
 
 from models import Service, Client, Employee, Contract, Issue
@@ -81,6 +82,7 @@ MODEL_FORMS = {
 
 class ImportForm(forms.Form):
     file = fields.FileField(label='Failas')
+    clean = fields.BooleanField(required=False, label=_('Clean database'))
 
 
 class StatisticsForm(forms.Form):

@@ -251,7 +251,7 @@ ISSUE_FIELDS = [
     ('title', _('Name')),
     ('get_type_display', _('Type')),
     ('service', _('Service')),
-        ('current', _('Assigned To')),
+    ('current', _('Assigned To')),
     ('created', _('Created On')),
     ('closed', _('Closed On')),
     ('get_status_display', _('Status'))
@@ -344,14 +344,8 @@ def import_database(request, employee, tab):
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
+            clean = form.cleaned_data['clean']
             XLSXImporter().import_xlsx(file)
-    return redirect(administration)
-
-
-@tab
-@employee_only
-def wipe_database(request, employee, tab):
-    clean_database()
     return redirect(administration)
 
 
