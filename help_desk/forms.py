@@ -3,6 +3,7 @@ from django.core.validators import MaxValueValidator
 from django.forms import fields
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import date
+from common.deflection import get_time
 from common.widgets import DateWidget
 
 from models import Service, Client, Employee, Contract, Issue, UserManager, BaseUser
@@ -93,7 +94,7 @@ class IssueForm(forms.ModelForm):
 
     def save(self, commit=True):
         issue = super(IssueForm, self).save(commit=False)
-
+        issue.created = get_time()
         #in case current does not exist yet
         if issue.current == None:
             if not self.cleaned_data['assigned_to'] == None:

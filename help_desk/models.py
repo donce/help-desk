@@ -120,6 +120,7 @@ class Client(models.Model):
         return reverse('help_desk.views.model_edit', args=('client', self.id))
 
     def register_issue(self, service, type, receive_type, title, description):
+
         return Issue.objects.create(client=self, service=service, type=type, receive_type=receive_type,
                                     title=title, description=description, created=get_time())
 

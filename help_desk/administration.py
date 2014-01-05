@@ -189,7 +189,11 @@ class XLSXImporter:
 
             assignment = Assignment(id=id, issue=issue, assigned=assigned,
                                     worker=worker, start=start, end=end, text=text, time=time)
+            
+            issue.current = assignment
+            
             assignment.save()
+            issue.save()
 
     def parse_sut_pasl(self, sheet):
         print 'Parse sutpasl'

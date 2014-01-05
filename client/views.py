@@ -31,8 +31,8 @@ def create_issue(request, client, tab):
             issue = form.save(commit=False)
             issue.client = client
             issue.receive_type = ISSUE_RECEIVE_TYPE_WEBSITE
-            issue.save()
             issue.created = get_time()
+            issue.save()
             return redirect(edit_issue, issue.id)
     else:
         form = IssueForm()
