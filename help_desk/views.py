@@ -280,7 +280,7 @@ def model_list(request, employee, tab, model='service'):
         'objects': objects,
         'fields': fields,
         'model': model,
-        'models': [name for name in MODEL_FORMS],
+        'models': [[name, MODEL_FORMS[name]._meta.model._meta.verbose_name] for name in MODEL_FORMS],
         'tab': tab,
     })
 

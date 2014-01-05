@@ -3,7 +3,7 @@
 {% block content %}
 <div class="tabs_menu">
 	{% for item in models %}
-            <a href="{% url 'help_desk.views.model_list' item %}" class="tab{% if model == item %} current{% endif %}">{{ item|title }}</a>
+            <a href="{% url 'help_desk.views.model_list' item.0 %}" class="tab{% if model == item.0 %} current{% endif %}">{{ item.1|title }}</a>
 	{% endfor %}
     {% block action_buttons %}{% endblock %}
 </div>

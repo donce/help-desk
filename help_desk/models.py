@@ -108,6 +108,9 @@ class Service(models.Model):
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('service', self.id))
 
+    class Meta:
+        verbose_name = _('Service')
+
 
 class Client(models.Model):
     title = models.CharField(_('Title'), max_length=255)
@@ -139,6 +142,10 @@ class Client(models.Model):
                 services.append(service)
         return services
 
+    class Meta:
+        verbose_name = _('Client')
+
+
 class Delegate(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     client = models.ForeignKey(Client, verbose_name=_('Client'))
@@ -153,6 +160,10 @@ class Delegate(models.Model):
 
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('delegate', self.id))
+
+
+    class Meta:
+        verbose_name = _('Delegate')
 
 
 ISSUE_TYPE_INCIDENT = 'INC'
@@ -231,6 +242,9 @@ class Issue(models.Model):
     def __unicode__(self):
         return self.title
 
+    class Meta:
+        verbose_name = _('Issue')
+
 
 class Assignment(models.Model):
     issue = models.ForeignKey('Issue', verbose_name=_('Issue'))
@@ -245,6 +259,9 @@ class Assignment(models.Model):
     def __unicode__(self):
         return self.worker.first_name + ' ' + self.worker.last_name
 
+    class Meta:
+        verbose_name = _('Assignment')
+
 
 class Contract(models.Model):
     number = models.CharField(_('Number'), max_length=255)
@@ -256,6 +273,9 @@ class Contract(models.Model):
 
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('contract', self.id))
+
+    class Meta:
+        verbose_name = _('Contract')
 
 
 ROLE_ENGINEER = 'engineer'
@@ -317,9 +337,12 @@ class Employee(models.Model):
     def issues(self):
         return Issue.objects.filter(current__worker=self)
 
+    class Meta:
+        verbose_name = _('Employee')
+
 
 class Deflection(models.Model):
     value = models.IntegerField(_('Time deflection'))
 
-
-
+    class Meta:
+        verbose_name = _('Deflection')
