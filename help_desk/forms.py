@@ -7,15 +7,23 @@ from common.deflection import get_time
 from common.widgets import DateWidget
 
 from models import Service, Client, Employee, Contract, Issue, UserManager, BaseUser
-
+from help_desk.models import Delegate
 
 
 class ServiceForm(forms.ModelForm):
+    def __init__(self, _creating=False, *args, **kwargs):
+        super(ServiceForm, self).__init__(*args, **kwargs)
+        self.creating = _creating
+
     class Meta:
         model = Service
 
 
 class ClientForm(forms.ModelForm):
+    def __init__(self, _creating=False, *args, **kwargs):
+        super(ClientForm, self).__init__(*args, **kwargs)
+        self.creating = _creating
+
     class Meta:
         model = Client
 
@@ -46,6 +54,10 @@ class EmployeeForm(forms.ModelForm):
         return employee
 
 class ContractForm(forms.ModelForm):
+    def __init__(self, _creating=False, *args, **kwargs):
+        super(ContractForm, self).__init__(*args, **kwargs)
+        self.creating = _creating
+
     class Meta:
         model = Contract
         widgets = {
@@ -96,10 +108,43 @@ class IssueForm(forms.ModelForm):
         super(IssueForm, self).save(commit=commit)
 
 
+class DelegateForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, min_length=8)
+
+    def __init__(self, _creating=False, *args, **kwargs):
+        super(DelegateForm, self).__init__(*args, **kwargs)
+        self.creating = _creating
+
+    def save(self, commit=True):
+        delegate = super(DelegateForm, self).save(commit=False)
+
+        if self.creating:
+            BaseUser.objects.create_delegate(
+                delegate.client,
+                delegate.email,
+                self.cleaned_data['password'],
+                delegate.first_name,
+                delegate.last_name,
+                delegate.phone_number
+            )
+            return delegate
+
+        elif commit:
+            delegate.user.username = delegate.email
+            delegate.user.set_password(self.cleaned_data['password'])
+            delegate.user.save()
+
+        return delegate
+
+    class Meta:
+        model = Delegate
+        exclude = ('user',)
+
 MODEL_FORMS = {
     'service': ServiceForm,
     'client': ClientForm,
     'employee': EmployeeForm,
+    'delegate': DelegateForm,
     'contract': ContractForm,
 }
 
