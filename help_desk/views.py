@@ -279,7 +279,7 @@ def model_list(request, employee, tab, model='service'):
 def model_add(request, employee, tab, model):
     form_class = get_form(model)
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = form_class(True, data=request.POST)
         if form.is_valid():
             form.save()
             return redirect(model_list, model)
@@ -304,7 +304,7 @@ def model_edit(request, employee, tab, model, instance_id):
         raise Http404
 
     if request.method == 'POST':
-        form = form_class(request.POST, instance=instance)
+        form = form_class(False, data=request.POST, instance=instance)
         if form.is_valid():
             form.save()
             return redirect(model_list, model)
