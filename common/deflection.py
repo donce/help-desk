@@ -1,19 +1,21 @@
 from datetime import datetime, timedelta
-from help_desk.models import Deflection
+import help_desk.models
 
 
 def set_deflection(deflection):
     assert isinstance(deflection, int)
-    if Deflection.objects.count() == 0:
-        Deflection.objects.create(value=deflection)
+    if help_desk.models.Deflection.objects.count() == 0:
+        help_desk.models.Deflection.objects.create(value=deflection)
     else:
-        Deflection.objects.all()[0].value = deflection
+        var = help_desk.models.Deflection.objects.all()[0]
+        var.value = deflection
+        var.save()
 
 
 def get_deflection():
-    if Deflection.objects.count() == 0:
+    if help_desk.models.Deflection.objects.count() == 0:
         return 0
-    return Deflection.objects.all()[0].value
+    return help_desk.models.Deflection.objects.all()[0].value
 
 
 def get_time():

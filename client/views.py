@@ -2,6 +2,7 @@ from django.http.response import Http404
 from django.shortcuts import render, redirect
 
 from client.forms import IssueForm
+from common.deflection import get_time
 from help_desk.models import Issue, Contract, ISSUE_RECEIVE_TYPE_WEBSITE
 
 
@@ -31,6 +32,7 @@ def create_issue(request, client, tab):
             issue.client = client
             issue.receive_type = ISSUE_RECEIVE_TYPE_WEBSITE
             issue.save()
+            issue.created = get_time()
             return redirect(edit_issue, issue.id)
     else:
         form = IssueForm()
