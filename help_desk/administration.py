@@ -2,8 +2,12 @@ import datetime
 
 from xlrd import open_workbook, xldate_as_tuple
 from django.db import transaction
+from pytz import timezone
+import pytz
 
 from help_desk.models import Service, ROLE_ENGINEER, ROLE_MANAGER, ROLE_ADMINISTRATOR, Employee, Client, Issue, Contract, Assignment, BaseUser
+from django.contrib.sessions.models import Session
+from django.contrib.auth.models import User
 import models
 
 def clean_database():
@@ -17,12 +21,14 @@ def clean_database():
 
     models.BaseUser.objects.all().delete()
 
-@transaction.commit_manually
 class XLSXImporter:
-    def import_xlsx(self, data):
-        try:
-            book = open_workbook(file_contents=data.read())
     
+    @transaction.commit_manually
+    def import_xlsx(self, data, clear_all=True):
+        try:
+            print "Importing"
+            book = open_workbook(file_contents=data.read())
+            
             sheet_paslaugos = book.sheet_by_name("Paslaugos")
             sheet_darbuotojai = book.sheet_by_name("Darbuotojai")
             sheet_klientai = book.sheet_by_name("Klientai")
@@ -32,7 +38,9 @@ class XLSXImporter:
             sheet_kreipiniai = book.sheet_by_name("Kreipiniai")
             sheet_paskyrimai = book.sheet_by_name("Paskyrimai")
 
-            clean_database()
+            if clear_all:
+                print 'clear db'
+                clean_database()
 
             self.parse_paslaugos(sheet_paslaugos)
             self.parse_darbuotojai(sheet_darbuotojai)
@@ -42,15 +50,20 @@ class XLSXImporter:
             self.parse_kreipiniai(sheet_kreipiniai, book)
             self.parse_paskyrimai(sheet_paskyrimai, book)
             self.parse_sut_pasl(sheet_sut_pasl)
+            for s in Session.objects.all():
+                s.delete()
         except Exception as e:
+            print 'IMPORT ERROR'
             print '%s (%s)' % (e, type(e))
             transaction.rollback()
             return False
         else:
             transaction.commit()
+            print 'Done!'
             return True
 
     def parse_paslaugos(self, sheet):
+        print 'Parse paslaugos'
         for i in range(1, sheet.nrows):
             id = self.trim_id(sheet.cell(i, 0).value, "P")
             title = sheet.cell(i, 1).value
@@ -60,6 +73,7 @@ class XLSXImporter:
             service.save()
 
     def parse_darbuotojai(self, sheet):
+        print 'Parse darbuotojai'
         for i in range(1, sheet.nrows):
             id = int(sheet.cell(i, 0).value)
             first_name = sheet.cell(i, 1).value
@@ -81,6 +95,7 @@ class XLSXImporter:
             employee.save()
 
     def parse_klientai(self, sheet):
+        print 'Parse klientai'
         for i in range(1, sheet.nrows):
             id = int(self.trim_id(sheet.cell(i, 0).value, "K"))
             title = sheet.cell(i, 1).value
@@ -90,6 +105,7 @@ class XLSXImporter:
             client.save()
 
     def parse_atstovai(self, sheet):
+        print 'Parse atstovai'
         for i in range(1, sheet.nrows):
             id = int(sheet.cell(i, 0).value)
             client = Client.objects.get(id=int(self.trim_id(sheet.cell(i, 1).value, "K")))
@@ -107,6 +123,7 @@ class XLSXImporter:
             delegate.save()
 
     def parse_sutartys(self, sheet, workbook):
+        print 'Parse sutartys'
         for i in range(1, sheet.nrows):
             id = int(sheet.cell(i, 0).value)
             number = sheet.cell(i, 1).value
@@ -120,6 +137,7 @@ class XLSXImporter:
             Contract.objects.create(id=id, number=number, title=title, client=client, start=start, end=end)
 
     def parse_kreipiniai(self, sheet, workbook):
+        print 'Parse kreipiniai'
         for i in range(1, sheet.nrows):
             id = int(sheet.cell(i, 0).value)
             client = Client.objects.get(id=int(self.trim_id(sheet.cell(i, 1).value, "K")))
@@ -132,7 +150,16 @@ class XLSXImporter:
             created = self.get_date(sheet.cell(i, 6).value, workbook)
             closed = self.get_date(sheet.cell(i, 7).value, workbook)
 
-            #status = sheet.cell(i, 8).value
+            status = sheet.cell(i, 8).value
+            if status == 'I':
+                status = 'solved'
+            elif status == 'P':
+                status = 'in progress'
+            elif status == 'A':
+                status = 'rejected'
+            elif status == 'N':
+                status = 'unassigned'
+            
             rating = sheet.cell(i, 9).value
             if rating == '':
                 rating = 3
@@ -141,12 +168,13 @@ class XLSXImporter:
 
             #current = sheet.cell(i, 10).value # TODO : what?
             #previous = sheet.cell(i, 11).value # TODO : purpose of this?
-            issue = Issue(id=id, client=client, service=service, type=type,
+            issue = Issue(id=id, client=client, service=service, type=type, status=status,
                           receive_type=receive_type, title=title, description=description,
                           created=created, closed=closed, rating=rating)
             issue.save()
-
+    
     def parse_paskyrimai(self, sheet, workbook):
+        print 'Parse paskyrimai'
         for i in range(1, sheet.nrows):
             id = int(sheet.cell(i, 0).value)
             issue = Issue.objects.get(id=int(sheet.cell(i, 1).value))
@@ -161,23 +189,32 @@ class XLSXImporter:
 
             assignment = Assignment(id=id, issue=issue, assigned=assigned,
                                     worker=worker, start=start, end=end, text=text, time=time)
+            assignment.save()
 
     def parse_sut_pasl(self, sheet):
+        print 'Parse sutpasl'
         for i in range(1, sheet.nrows):
             contract = Contract.objects.get(id=int(sheet.cell(i, 0).value))
             service = Service.objects.get(id=int(self.trim_id(sheet.cell(i, 1).value, "P")))
             contract.services.add(service)
+            contract.save()
 
     def get_date(self, value, workbook):
         if value:
             tuple = xldate_as_tuple(value, workbook.datemode)
-            return datetime.date(*tuple[:3])
+            #tz = pytz.timezone(pytz.tzinfo)
+            dt = datetime.date(*tuple[:3])
+            #return tz.localize(dt)
+            return dt;
         return None
 
     def get_datetime(self, value, workbook):
         if value:
-            tuple = xldate_as_tuple(value, workbook.datemode)
-            return datetime.datetime(*tuple)
+            #tz = pytz.timezone(pytz.tzinfo)
+            #print tz
+            dt = datetime.datetime(*tuple)
+            return dt;
+            #return tz.localize(dt)
         return None
 
     def trim_id(self, id, prefix):
