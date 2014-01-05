@@ -249,6 +249,14 @@ MODEL_MANAGEMENT_FIELDS = {
         ('title', _('Title')),
         ('limit_inc', _('Incident limit')),
         ('limit_req', _('Request limit')),
+    ],
+    'delegate': [
+        ('client', 'Klientas'),
+        ('first_name', 'Vardas'),
+        ('last_name', u'Pavardė'),
+        ('phone_number', 'Telefonas'),
+        ('email', u'El. paštas'),
+        ('active', 'Aktyvus'),
     ]
 }
 
@@ -367,7 +375,6 @@ def import_database(request, employee, tab):
             if len(split) != 1 and split[-1] in FILE_EXT_WHITELIST:
                 if XLSXImporter().import_xlsx(file, clean):
                     return redirect(common.views.main)
-
     return administration(request, tab=tab)
 
 
