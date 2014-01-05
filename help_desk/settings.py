@@ -1,4 +1,5 @@
 # Django settings for help_desk project.
+import os
 from django.utils.translation import ugettext_lazy as _
 
 DEBUG = True
@@ -11,10 +12,13 @@ ADMINS = (
 MANAGERS = ADMINS
 AUTH_USER_MODEL = 'help_desk.BaseUser'
 
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db', # Or path to database file if using sqlite3.
+        'NAME': os.path.join(SITE_ROOT, 'db'), # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
