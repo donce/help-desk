@@ -251,12 +251,12 @@ MODEL_MANAGEMENT_FIELDS = {
         ('limit_req', _('Request limit')),
     ],
     'delegate': [
-        ('client', 'Klientas'),
-        ('first_name', 'Vardas'),
-        ('last_name', u'Pavardė'),
-        ('phone_number', 'Telefonas'),
-        ('email', u'El. paštas'),
-        ('active', 'Aktyvus'),
+        ('client', _('Client')),
+        ('first_name', _('First name')),
+        ('last_name', _('Last name')),
+        ('phone_number', _('Phone number')),
+        ('email', _('Email')),
+        ('active', _('Active')),
     ]
 }
 
