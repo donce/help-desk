@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import date
 from common.widgets import DateWidget
 
-from models import Service, Client, Employee, Contract, Issue, UserManager
+from models import Service, Client, Employee, Contract, Issue, UserManager, BaseUser
 
 
 
@@ -28,7 +28,7 @@ class EmployeeForm(forms.ModelForm):
 
     class Meta:
         model = Employee
-        exclude = ('user')
+        exclude = ('user',)
 
     def save(self, commit=True):
         employee = super(EmployeeForm, self).save(False)
