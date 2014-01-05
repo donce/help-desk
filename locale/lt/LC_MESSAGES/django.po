@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-05 17:11-0600\n"
+"POT-Creation-Date: 2014-01-05 17:15-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -345,6 +345,10 @@ msgstr "Priskirti"
 #: help_desk/templates/management/solve_issues.html:7
 msgid "Unsolved"
 msgstr "Neišspręsti"
+
+#: help_desk/templates/management/statistics.html:5
+msgid "Show late issues created on"
+msgstr "Rodyti pavėluotus kreipinius sukurtus"
 
 #: help_desk/templates/management/statistics.html:9
 msgid "Show"

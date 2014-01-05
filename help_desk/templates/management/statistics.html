@@ -2,14 +2,13 @@
 {% load i18n %}
 {% load issues_table %}
 {% block content %}
-Show late issues created on:
+{% trans 'Show late issues created on' %}:
 <form method="get">
     {{ form.start }}
     {{ form.end }}
     <input type="submit" value="{% trans 'Show' %}">
 </form>
 {% if start %}
-STATISTICS<br/>
 {{ start }} - {{ end }}
 {% issues_table model fields objects %}
 {% endif %}
