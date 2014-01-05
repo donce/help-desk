@@ -353,11 +353,15 @@ def deflection(request, employee, tab):
 @tab
 @employee_only
 def import_database(request, employee, tab):
+    FILE_EXT_WHITELIST = ['.xls','.xlsx']
     if request.method == 'POST':
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
-            XLSXImporter().import_xlsx(file)
+            if len(file.name.split('.')) == 1:
+                return redirect(administration)
+            if file.name.split('.')[-1] in FILE_EXT_WHITELIST:
+                XLSXImporter().import_xlsx(file)
     return redirect(administration)
 
 
