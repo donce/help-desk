@@ -261,7 +261,7 @@ ISSUE_FIELDS = [
     ('title', _('Name')),
     ('get_type_display', _('Type')),
     ('service', _('Service')),
-        ('current', _('Assigned To')),
+    ('current', _('Assigned To')),
     ('created', _('Created On')),
     ('closed', _('Closed On')),
     ('get_status_display', _('Status'))
@@ -361,22 +361,22 @@ def deflection(request, employee, tab):
 @tab
 @employee_only
 def import_database(request, employee, tab):
-    FILE_EXT_WHITELIST = ['.xls','.xlsx']
+    FILE_EXT_WHITELIST = ['xls','xlsx']
+    print 'import'
     if request.method == 'POST':
+        print 'post'
         form = ImportForm(request.POST, request.FILES)
         if form.is_valid():
+            print 'valid'
             file = request.FILES['file']
+            clean = form.cleaned_data['clean']
+            XLSXImporter().import_xlsx(file)
             if len(file.name.split('.')) == 1:
+                print 'red'
                 return redirect(administration)
             if file.name.split('.')[-1] in FILE_EXT_WHITELIST:
+                print 'ok'
                 XLSXImporter().import_xlsx(file)
-    return redirect(administration)
-
-
-@tab
-@employee_only
-def wipe_database(request, employee, tab):
-    clean_database()
     return redirect(administration)
 
 

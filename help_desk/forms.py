@@ -1,6 +1,7 @@
 from django import forms
 from django.core.validators import MaxValueValidator
 from django.forms import fields
+from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import date
 from common.widgets import DateWidget
 
@@ -149,6 +150,7 @@ MODEL_FORMS = {
 
 class ImportForm(forms.Form):
     file = fields.FileField(label='Failas')
+    clean = fields.BooleanField(required=False, label=_('Clean database'))
 
 
 class StatisticsForm(forms.Form):

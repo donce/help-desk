@@ -6,10 +6,11 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from common.deflection import get_time
 
 
 PHONE_NUMBER_MAX_LENGTH = 20
-
+EMAIL_MAX_LENGTH = 75
 
 class UserManager(BaseUserManager):
     def create_user(self, username, password=None):
@@ -42,7 +43,7 @@ class UserManager(BaseUserManager):
 
 
 class BaseUser(AbstractBaseUser):
-    username = models.CharField(_('Username'), max_length=40, unique=True, db_index=True)
+    username = models.CharField(_('Username'), max_length=EMAIL_MAX_LENGTH, unique=True, db_index=True)
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
@@ -120,7 +121,7 @@ class Client(models.Model):
 
     def register_issue(self, service, type, receive_type, title, description):
         return Issue.objects.create(client=self, service=service, type=type, receive_type=receive_type,
-                                    title=title, description=description)
+                                    title=title, description=description, created=get_time())
 
     #TODO: implement
     def make_contract(self):
@@ -143,7 +144,7 @@ class Delegate(models.Model):
     first_name = models.CharField(_('First name'), max_length=255)
     last_name = models.CharField(_('Last name'), max_length=255)
     phone_number = models.CharField(_('Phone number'), max_length=PHONE_NUMBER_MAX_LENGTH)
-    email = models.CharField(_('Email'), max_length=255)
+    email = models.EmailField(_('Email'), max_length=EMAIL_MAX_LENGTH)
     active = models.BooleanField(_('Active'), default=True)
 
     def __unicode__(self):
@@ -186,8 +187,8 @@ class Issue(models.Model):
     type = models.CharField(_('Type'), choices=ISSUE_TYPE_CHOICES, max_length=255)
     receive_type = models.CharField(_('Receive type'), choices=ISSUE_RECEIVE_TYPE_CHOICES, max_length=255)
     title = models.CharField(_('Title'), max_length=255)
-    description = models.TextField(_('Description'))
-    created = models.DateTimeField(_('Created'), auto_now_add=True)
+    description = models.TextField(_('Description'), max_length=4096)
+    created = models.DateTimeField(_('Created'))
     closed = models.DateTimeField(_('Closed'), null=True)
     status = models.CharField(_('Status'), choices=ISSUE_STATUS_CHOICES, max_length=255, default=ISSUE_STATUS_UNASSIGNED)
     rating = models.PositiveIntegerField(_('Rating'), null=True)
@@ -273,7 +274,7 @@ class Employee(models.Model):
     last_name = models.CharField(_('Last name'), max_length=255)
     role = models.CharField(_('Role'), choices=ROLE_CHOICES, max_length=255)
     phone_number = models.CharField(_('Phone number'), max_length=PHONE_NUMBER_MAX_LENGTH)
-    email = models.CharField(_('Email'), max_length=255)
+    email = models.EmailField(_('Email'), max_length=EMAIL_MAX_LENGTH)
 
     def is_engineer(self):
         return self.role == ROLE_ENGINEER
