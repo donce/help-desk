@@ -4,8 +4,8 @@
 {% block content %}
 <!--sudeti filteriu funkcionaluma-->
 <a class="filter" href="?filter=all">{% trans 'All' %}</a>
-<a class="filter" href="?filter=keep">{% trans 'Assigned' %}</a>
-<a class="filter" href="?filter=drop">{% trans 'Unassigned' %}</a>
+<a class="filter" href="?filter=keep">{% trans 'Assigned' context 'Many' %}</a>
+<a class="filter" href="?filter=drop">{% trans 'Unassigned' context 'Many' %}</a>
 <div class="right">
 	<a href="create_issue"><button>{% trans 'Create' %}</button></a>
 </div>

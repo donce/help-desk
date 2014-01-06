@@ -3,7 +3,7 @@
 {% load issues_table %}
 {% block content %}
 <a class="filter" href="?filter=all">{% trans 'All' %}</a>
-<a class="filter" href="?filter=keep">{% trans 'Solved' %}</a>
+<a class="filter" href="?filter=keep">{% trans 'Solved' context 'Many' %}</a>
 <a class="filter" href="?filter=drop">{% trans 'Unsolved' %}</a>
 <!-- biski lipa ant mygtukų -->
 {% issues_table model fields objects %}
