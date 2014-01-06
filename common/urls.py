@@ -9,6 +9,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
                        url(r'^$', 'common.views.home', name='home'),
+                       url(r'^profile/$', 'common.views.profile'),
                        url(r'^logout/$', 'common.views.logout', name='logout'),
                        url(r'^change_language/$', 'common.views.set_language'),
 

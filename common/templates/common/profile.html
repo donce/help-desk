@@ -1,0 +1,12 @@
+{% extends "common/templates/common/base.html" %}
+{% load i18n %}
+{% block model_content %}
+
+<div class="background">
+<form method="POST">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit" value="{% trans 'Save' %}"/>
+</form>
+</div>
+{% endblock %}

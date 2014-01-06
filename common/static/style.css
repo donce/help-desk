@@ -417,3 +417,29 @@ table a:visited{
 .width_15{
 	width:15%;
 }
+
+.arrow-up {
+	width: 0; 
+	height: 0; 
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;	
+	border-bottom: 8px solid white;
+}
+
+.arrow-down {
+	width: 0; 
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;	
+	border-top: 8px solid white;
+}
+
+.rodykles {
+	float: left;
+	padding-left: 10px;
+	padding-top: 3px;
+}
+
+.padding_5{
+	padding-top:5px;
+}

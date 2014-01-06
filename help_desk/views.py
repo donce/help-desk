@@ -94,7 +94,18 @@ def management_home(request, employee, tab):
 @tab
 @employee_only
 def solve_issues(request, employee, tab):
-    issues = employee.issues()
+    sorting = get_action(request.GET, 'sort',
+                         ('title', '-title',
+                          'type', '-type',
+                          'service', '-service',
+                          'current', '-current',
+                          'created', '-created',
+                          'closed', '-closed',
+                          'status', '-status'))
+    if sorting is None:
+        issues = Issue.objects.all()
+    else:
+        issues = Issue.objects.all().order_by(sorting)
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
 
@@ -149,11 +160,22 @@ def view_issue(request, employee, tab, issue):
 @tab
 @employee_only
 def manage_issues(request, employee, tab):
-    issues = Issue.objects.all()
+    sorting = get_action(request.GET, 'sort',
+                         ('title', '-title',
+                          'type', '-type',
+                          'service', '-service',
+                          'current', '-current',
+                          'created', '-created',
+                          'closed', '-closed',
+                          'status', '-status'))
+
+    if sorting is None:
+        issues = Issue.objects.all()
+    else:
+        issues = Issue.objects.all().order_by(sorting)
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
 
     filteredIssues = doIssueFiltering(issues, 'assignment', filter)
-
     return render(request, 'management/manage_issues.html', {
         'fields': ISSUE_FIELDS,
         'issues': filteredIssues,
@@ -263,20 +285,29 @@ model_items = [[name, MODEL_FORMS[name]._meta.model._meta.verbose_name] for name
 
 
 ISSUE_FIELDS = [
-    ('title', _('Name')),
-    ('get_type_display', _('Type')),
-    ('service', _('Service')),
-    ('current', _('Assigned To')),
-    ('created', _('Created On')),
-    ('closed', _('Closed On')),
-    ('get_status_display', _('Status'))
+    ('title', _('Name'), 'title'),
+    ('get_type_display', _('Type'), 'type'),
+    ('service', _('Service'), 'service'),
+    ('current', _('Assigned To'), 'current'),
+    ('created', _('Created On'), 'created'),
+    ('closed', _('Closed On'), 'closed'),
+    ('get_status_display', _('Status'), 'status')
 ]
 
 
 @tab
 @employee_only
 def model_list(request, employee, tab, model='service'):
-    objects = get_model(model).objects.all()
+    sorting_keys = ()
+    for field in MODEL_MANAGEMENT_FIELDS[model]:
+        sorting_keys = sorting_keys + (field[0], '-' + field[0])
+
+    sorting = get_action(request.GET, 'sort', sorting_keys)
+
+    if sorting is None:
+        objects = get_model(model).objects.all()
+    else:
+        objects = get_model(model).objects.all().order_by(sorting)
     fields = MODEL_MANAGEMENT_FIELDS[model] if model in MODEL_MANAGEMENT_FIELDS else []
     return render(request, 'management/models/list_objects.html', {
         'objects': objects,
@@ -388,44 +419,10 @@ def import_database(request, employee, tab):
     return administration(request, tab=tab, form=form)
 
 
-#TODO: move to class
-def get_deadine(issue):
-    #can haz zervice?
-    if issue.service == None:
-        return None
-
-    #check if we can haz deadlinez
-    if issue.service.limit_inc == None and issue.type == INC:
-        return None
-    else:
-        limit = issue.service.limit_inc
-
-    if issue.service.limit_req == None and issue.type == REQ:
-        return None
-    else:
-        limit = issue.service.limit_req
-
-    return issue.created + timedelta(hours=limit)
-
-
-#TODO: move to class
-def is_late(issue):
-    deadline = get_deadine(issue)
-
-    #check if we even have a deadline
-    if deadline == None:
-        return False
-
-    #compare deadline
-    if datetime.now().replace(tzinfo=pytz.UTC) > deadline:
-        return True
-    return False
-
-
 def get_late_issues(start, end):
     late_issues = [];
     for issue in Issue.objects.all():
-        if is_late(issue) and issue.created >= start and issue.created <= end:
+        if issue.is_late() and start <= issue.created <= end:
             late_issues.append(issue)
     return late_issues
 
