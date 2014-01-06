@@ -129,9 +129,6 @@ def unassign_issue(issue):
     issue.returnIssue()
 
 
-def delete_issue(issue):
-    #TODO: add warning message
-    issue.delete()
 
 
 @tab
@@ -193,11 +190,6 @@ def edit_issue(request, employee, tab, issue_id):
     else:
         issue_form = IssueForm(employee=employee, edit=True, instance=issue, initial={'assigned_to': issue.current.worker})
 
-    action = get_action(request.GET, 'action', ('delete'))
-    if action != None:
-        delete_issue(issue)
-        return redirect('/management/manage_issues')
-
     #if we have already posted
     if request.method == 'POST':
         issue_form = IssueForm(employee, True, request.POST, instance=issue)
@@ -205,11 +197,18 @@ def edit_issue(request, employee, tab, issue_id):
             issue_form.save();
             return redirect('/management/manage_issues')
     return render(request, 'management/edit_issue.html', {
-        'issue' : issue,
+        'issue': issue,
+        'issue_id': issue_id,
         'issue_form': issue_form,
         'tab': tab
     })
 
+@tab
+@employee_only
+def delete_issue(request, employee, tab, issue_id):
+    issue = Issue.objects.get(id=issue_id)
+    issue.delete()
+    return redirect('/management/manage_issues')
 
 @tab
 @employee_only
