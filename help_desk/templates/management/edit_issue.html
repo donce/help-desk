@@ -10,7 +10,7 @@
         <tr><th>{% trans 'Receive type' %}:</th><td><a>{{ issue.get_receive_type_display }}</a></td></tr>
         <tr><th>{% trans 'Service' %}:</th><td><a>{{ issue.service }}</a></td></tr>
         <tr><th>{% trans 'Status' %}:</th><td><a>{{ issue.get_status_display }}</a></td></tr>
-
+		
         {{ issue_form.as_table }}
         {% csrf_token %}
         <tr>
@@ -24,7 +24,6 @@
         </tr>
     </table>
 </form>
-
-{% issue_history issue %}
+<div class="edit_issue_history">{% issue_history issue %}</div>
 
 {% endblock %}
