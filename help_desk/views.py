@@ -103,9 +103,9 @@ def solve_issues(request, employee, tab):
                           'closed', '-closed',
                           'status', '-status'))
     if sorting is None:
-        issues = Issue.objects.all()
+        issues = Issue.objects.filter(current__worker=employee)
     else:
-        issues = Issue.objects.all().order_by(sorting)
+        issues = Issue.objects.filter(current__worker=employee).order_by(sorting)
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
 
