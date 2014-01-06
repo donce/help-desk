@@ -50,13 +50,15 @@ def create_issue(request, client, tab):
 def edit_issue(request, client, tab, issue_id):
     issues = Issue.objects.filter(client=client)
     issue = Issue.objects.get(id=int(issue_id))
+    rating_form = None
     if request.method == 'POST':
         rating_form = RatingForm(request.POST)
         if rating_form.is_valid():
             issue.rating = rating_form.cleaned_data['rating']
             issue.save()
     else:
-        rating_form = RatingForm(initial={'rating': issue.rating})
+        if issue.status == 'solved':
+            rating_form = RatingForm(initial={'rating': issue.rating})
     return render(request, 'client/issue/edit.html', {
         'issue': issue,
         'issues': issues,
@@ -88,9 +90,3 @@ def information(request, client, tab):
     return render(request, 'client/information.html', {
         'tab': tab,
     })
-
-# @client_only
-# def rating(request, client, tab):
-#         return render(request, 'client/issue/rating.html', {
-#         'tab': tab,
-#     })
