@@ -172,7 +172,7 @@ class XLSXImporter:
 
             issue = Issue(id=id, client=client, service=service, type=type, status=status,
                           receive_type=receive_type, title=title, description=description,
-                          created=created, closed=closed, rating=rating, previous=previous)
+                          created=created, closed=closed, rating=rating)
             issue.save()
     
     def parse_paskyrimai(self, sheet, workbook):
