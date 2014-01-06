@@ -152,7 +152,7 @@ class Delegate(models.Model):
     first_name = models.CharField(_('First name'), max_length=255)
     last_name = models.CharField(_('Last name'), max_length=255)
     phone_number = models.CharField(_('Phone number'), max_length=PHONE_NUMBER_MAX_LENGTH)
-    email = models.EmailField(_('Email'), max_length=EMAIL_MAX_LENGTH)
+    email = models.EmailField(_('Email'), max_length=EMAIL_MAX_LENGTH, unique=True)
     active = models.BooleanField(_('Active'), default=True)
 
     def __unicode__(self):
@@ -295,7 +295,7 @@ class Employee(models.Model):
     last_name = models.CharField(_('Last name'), max_length=255)
     role = models.CharField(_('Role'), choices=ROLE_CHOICES, max_length=255)
     phone_number = models.CharField(_('Phone number'), max_length=PHONE_NUMBER_MAX_LENGTH)
-    email = models.EmailField(_('Email'), max_length=EMAIL_MAX_LENGTH)
+    email = models.EmailField(_('Email'), max_length=EMAIL_MAX_LENGTH, unique=True)
 
     def is_engineer(self):
         return self.role == ROLE_ENGINEER
