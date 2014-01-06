@@ -30,9 +30,9 @@
 			</td>
 			<td>
                 {% if issue.status == 'solved' %}
-                +
+                {% trans 'Solved' %}
                 {% elif issue.status == 'rejected' %}
-                -
+                {% trans 'Rejected' %}
                 {% endif %}
 			<!--ar gautas atsakymas? pavyzdziui sudeti + ten kur atsakyta-->
 			</td>
