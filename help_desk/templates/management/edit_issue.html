@@ -1,5 +1,5 @@
 {% extends "management/base.html" %}
-{% load i18n %}
+{% load i18n issue_history %}
 {% block content %}
 <!--BACK-->
 <form method="POST">
@@ -24,5 +24,7 @@
         </tr>
     </table>
 </form>
+
+{% issue_history issue %}
 
 {% endblock %}
