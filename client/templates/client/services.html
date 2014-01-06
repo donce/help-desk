@@ -5,7 +5,6 @@
 	<thead>
 		<tr>
 			<th class="width_20">{% trans 'Service' %}</th>
-			<th>{% trans 'Description' %}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -13,10 +12,6 @@
 		<tr class="{% cycle 'row1' 'row2' %}">
 			<td>
                 {{ service }}
-			</td>
-			<td>
-                {{ service }}
-			<!--gauti aprasyma-->
 			</td>
 		</tr>
         {% endfor %}
