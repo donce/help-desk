@@ -479,3 +479,7 @@ table a:visited{
 	margin:auto;
 	border: 1px solid gray;
 }
+
+table.create.profilis {
+	width: 30%;
+}
