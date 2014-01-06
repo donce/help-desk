@@ -409,6 +409,11 @@ table a:link{
 	color:black;
 	font-weight: bold;
 }
+
 table a:visited{
 	color:#666666;
+}
+
+.px_200 {
+	width:200px;
 }
