@@ -1,0 +1,14 @@
+{% load menu_item %}
+{% if is_employee %}
+{% menu_item 'statistics' _('Statistics') 'help_desk.views.statistics' 'view_statistics' %}
+{% menu_item 'manage_issues' _('Manage issues') 'help_desk.views.manage_issues' 'manage_issues' %}
+{% menu_item 'solve_issues' _('Solve issues') 'help_desk.views.solve_issues' 'solve_issues' %}
+{% menu_item 'models' _('Manage registers') 'help_desk.views.models' 'manage_models' %}
+{% menu_item 'administration' _('Administration') 'help_desk.views.administration' 'administrate' %}
+{% else %}
+{% menu_item 'issues' _('Issues') 'client.views.create_issue' %}
+{% menu_item 'services' _('Services') 'client.views.services' %}
+{% menu_item 'contracts' _('Contracts') 'client.views.contracts' %}
+{% menu_item 'information' _('Information') 'client.views.information' %}
+{% include 'common/menu_button.html' with url=logout_url title=_('Logout') %}
+{% endif %}
