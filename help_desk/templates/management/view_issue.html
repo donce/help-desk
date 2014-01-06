@@ -50,10 +50,6 @@
 				{% if not issue.current == None and issue.status == "in progress"  %}
 				<a class="action" href="?action=return"><button class="darker">{% trans 'Return' %}</button></a>
 				{% endif %}
-
-				{% if issue.status == "in progress" %}
-				<a class="action" href="?action=delete"><button class="darker">{% trans 'Delete' %}</button></a>
-				{% endif %}
 			</div>
 		</div>
 	</div>
