@@ -7,13 +7,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 import pytz
 from common.deflection import set_deflection, get_deflection
-# from common.views import home as common_home
 import common.views
 
 
-from help_desk.administration import XLSXImporter, clean_database
+from help_desk.administration import XLSXImporter
 from help_desk.forms import ImportForm, StatisticsForm, DeflectionForm
-from help_desk.models import Deflection
 from models import Issue
 from forms import MODEL_FORMS, IssueForm
 
@@ -374,7 +372,6 @@ def import_database(request, employee, tab):
         if form.is_valid():
             file = request.FILES['file']
             clean = form.cleaned_data['clean']
-            XLSXImporter().import_xlsx(file)
             split = file.name.split('.')
             if len(split) != 1 and split[-1] in FILE_EXT_WHITELIST:
                 if XLSXImporter().import_xlsx(file, clean):
