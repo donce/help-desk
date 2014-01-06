@@ -156,11 +156,10 @@ class Delegate(models.Model):
     active = models.BooleanField(_('Active'), default=True)
 
     def __unicode__(self):
-        return '{0} {1} ({2})'.format(self.first_name, self.last_name, self.client)
+        return u'{0} {1} ({2})'.format(self.first_name, self.last_name, self.client)
 
     def get_absolute_url(self):
         return reverse('help_desk.views.model_edit', args=('delegate', self.id))
-
 
     class Meta:
         verbose_name = _('Delegate')
