@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-06 14:29+0200\n"
+"POT-Creation-Date: 2014-01-06 14:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -301,7 +301,8 @@ msgstr "Importuoti struktūrą"
 
 #: help_desk/templates/management/administration.html:6
 msgid "Importing a file can erase all data! Are you sure you want to continue?"
-msgstr "Failo importavimas gali ištrinti visus duomenis! Ar tikrai norite tęsti?"
+msgstr ""
+"Failo importavimas gali ištrinti visus duomenis! Ar tikrai norite tęsti?"
 
 #: help_desk/templates/management/administration.html:9
 msgid "Import"
@@ -379,6 +380,10 @@ msgid "Return"
 msgstr "Grąžinti"
 
 #: help_desk/templates/management/models/objects_table.html:16
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: help_desk/templates/management/models/objects_table.html:17
 msgid "Remove"
 msgstr "Pašalinti"
 
@@ -387,9 +392,6 @@ msgstr "Pašalinti"
 
 #~ msgid "Assign"
 #~ msgstr "Priskirti"
-
-#~ msgid "Edit"
-#~ msgstr "Redaguoti"
 
 #~ msgid "Register"
 #~ msgstr "Registruoti"
