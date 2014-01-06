@@ -1,4 +1,4 @@
-﻿{% extends 'client/issue/base.html' %}
+{% extends 'client/issue/base.html' %}
 {% load i18n %}
 {% block right %}
 <div class="issue no_buttons">
@@ -28,7 +28,7 @@
         {% trans 'Description' %}:
         <textarea readonly>{{ issue.description }}</textarea>
         
-        <form id="rating" action="" method="post">
+        <form id="rating" action="{% url 'client.views.rating' %}" method="post">
             {% csrf_token %}
             {{ rating_form.rating }}
             <input class="lower_2" type="submit" value="{% trans 'Save' %}"/>
