@@ -256,7 +256,7 @@ class Assignment(models.Model):
     time = models.PositiveIntegerField(null=True)
 
     def __unicode__(self):
-        return self.worker.first_name + ' ' + self.worker.last_name
+        return self.issue.__unicode__() + ' ' + self.worker.__unicode__()
 
     class Meta:
         verbose_name = _('Assignment')
