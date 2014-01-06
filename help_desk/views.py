@@ -248,35 +248,35 @@ def models(request, employee, tab):
 
 MODEL_MANAGEMENT_FIELDS = {
     'client': [
-        ('title', _('Title')),
-        ('address', _('Address')),
+        ('title', _('Title'), 'title'),
+        ('address', _('Address'), 'address'),
     ],
     'employee': [
-        ('first_name', _('First name')),
-        ('last_name', _('Last name')),
-        ('get_role_display', _('Role')),
-        ('phone_number', _('Phone number')),
-        ('email', _('Email')),
+        ('first_name', _('First name'), 'first_name'),
+        ('last_name', _('Last name'), 'last_name'),
+        ('get_role_display', _('Role'), 'role'),
+        ('phone_number', _('Phone number'), 'phone_number'),
+        ('email', _('Email'), 'email'),
     ],
     'contract': [
-        ('number', _('Number')),
-        ('title', _('Title')),
-        ('client', _('Client')),
-        ('start', _('Start')),
-        ('end', _('End')),
+        ('number', _('Number'), 'number'),
+        ('title', _('Title'), 'title'),
+        ('client', _('Client'), 'client'),
+        ('start', _('Start'), 'start'),
+        ('end', _('End'), 'end'),
     ],
     'service': [
-        ('title', _('Title')),
-        ('limit_inc', _('Incident limit')),
-        ('limit_req', _('Request limit')),
+        ('title', _('Title'), 'title'),
+        ('limit_inc', _('Incident limit'), 'limit_inc'),
+        ('limit_req', _('Request limit'), 'limit_req'),
     ],
     'delegate': [
-        ('client', _('Client')),
-        ('first_name', _('First name')),
-        ('last_name', _('Last name')),
-        ('phone_number', _('Phone number')),
-        ('email', _('Email')),
-        ('active', _('Active')),
+        ('client', _('Client'), 'client'),
+        ('first_name', _('First name'), 'first_name'),
+        ('last_name', _('Last name'), 'last_name'),
+        ('phone_number', _('Phone number'), 'phone_number'),
+        ('email', _('Email'), 'email'),
+        ('active', _('Active'), 'active'),
     ]
 }
 
