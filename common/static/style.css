@@ -421,17 +421,25 @@ table a:visited{
 .arrow-up {
 	width: 0; 
 	height: 0; 
-	margin-top: 5%;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;	
-	border-bottom: 10px solid white;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;	
+	border-bottom: 8px solid white;
 }
 
 .arrow-down {
 	width: 0; 
 	height: 0;
-	margin-top: 5%;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;	
-	border-top: 10px solid white;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;	
+	border-top: 8px solid white;
+}
+
+.rodykles {
+	float: left;
+	padding-left: 10px;
+	padding-top: 3px;
+}
+
+.padding_5{
+	padding-top:5px;
 }
