@@ -7,6 +7,7 @@
 			<th class="width_50">{% trans 'Contract' %}</th>
 			<th>{% trans 'Start' %}</th>
 			<th>{% trans 'End' %}</th>
+            <th>{% trans 'Services' %}</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,6 +22,11 @@
 			<td>
                 {{ contract.end }}
 			</td>
+            <td>
+                {% for service in contract.services.all %}
+                <li>{{ service }}</li>
+                {% endfor %}
+            </td>
 		</tr>
         {% endfor %}
 	</tbody>
