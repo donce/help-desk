@@ -6,7 +6,7 @@ register = template.Library()
 
 
 @register.inclusion_tag('management/issues_table.html')
-def issues_table(model, fields, objects, edit=None):
+def issues_table(model, fields, objects, edit=False):
     obj = []
     for object in objects:
         values = []
@@ -19,12 +19,9 @@ def issues_table(model, fields, objects, edit=None):
                 values[-1] = values[-1].strftime("%Y-%m-%d %H:%M:%S")
                 
             #TODO: implement Foreign key recognition
-
-        if len(values) > 0:
-            values[0] = u'<a href="{0}">{1}</a>'.format(object.get_absolute_url(edit), values[0])
-
         obj.append((object.id, values))
     return {
+        'edit': edit,
         'fields': fields,
         'objects': obj,
         'model': model,

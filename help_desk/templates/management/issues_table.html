@@ -5,6 +5,7 @@
 {% for name, title in fields %}
 <th>{{ title }}</th>
 {% endfor %}
+<th></th>
 </thead>
 <tbody>
 {% for id, object in objects %}
@@ -12,6 +13,13 @@
     {% for field in object %}
         <td>{{ field|safe }}</td>
     {% endfor %}
+       <td>
+            {% if edit %}
+                <a href="{% url 'help_desk.views.edit_issue' id %}"><button>{% trans 'Edit' %}</button></a>
+            {% else %}
+                <a href="{% url 'help_desk.views.view_issue' id %}"><button>{% trans 'Show' %}</button></a>
+            {% endif %}
+       </td>
 </tr>
 {% endfor %}
 </tbody>
