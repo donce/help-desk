@@ -27,12 +27,14 @@
         </p>
         {% trans 'Description' %}:
         <textarea readonly>{{ issue.description }}</textarea>
-        
+
+        {% if issue.status == 'solved' %}
         <form id="rating" action="" method="post">
             {% csrf_token %}
             {{ rating_form.rating }}
             <input class="lower_2" type="submit" value="{% trans 'Save' %}"/>
         </form>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

@@ -9,7 +9,6 @@
     <input type="submit" value="{% trans 'Show' %}">
 </form>
 {% if start %}
-{{ start }} - {{ end }}
 {% issues_table model fields objects %}
 {% endif %}
 {% endblock %}
