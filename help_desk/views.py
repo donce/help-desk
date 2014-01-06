@@ -1,6 +1,8 @@
 # encoding=utf-8
 from datetime import timedelta
 from datetime import datetime
+from django.forms.forms import NON_FIELD_ERRORS
+from django.forms.util import ErrorList
 
 from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
@@ -372,10 +374,16 @@ def import_database(request, employee, tab):
         if form.is_valid():
             file = request.FILES['file']
             clean = form.cleaned_data['clean']
+            errors = form._errors.setdefault(NON_FIELD_ERRORS, ErrorList())
             split = file.name.split('.')
             if len(split) != 1 and split[-1] in FILE_EXT_WHITELIST:
                 if XLSXImporter().import_xlsx(file, clean):
-                    return redirect(common.views.main)
+                    return redirect('/')
+                else:
+                    errors.append(_('Error while importing file occurred.'))
+            else:
+                errors.append(_('Wrong file format.'))
+
     else:
         form = ImportForm()
     return administration(request, tab=tab, form=form)
