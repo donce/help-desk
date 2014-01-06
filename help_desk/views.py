@@ -9,7 +9,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 import pytz
 from common.deflection import set_deflection, get_deflection
-import common.views
 
 
 from help_desk.administration import XLSXImporter

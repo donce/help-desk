@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-06 14:38+0200\n"
+"POT-Creation-Date: 2014-01-06 14:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,19 +44,19 @@ msgid "Contract"
 msgstr "Sutartis"
 
 #: client/templates/client/contracts.html:8 help_desk/models.py:253
-#: help_desk/models.py:270 help_desk/views.py:245
+#: help_desk/models.py:270 help_desk/views.py:244
 msgid "Start"
 msgstr "Pradžia"
 
 #: client/templates/client/contracts.html:9 help_desk/models.py:254
-#: help_desk/models.py:271 help_desk/views.py:246
+#: help_desk/models.py:271 help_desk/views.py:245
 msgid "End"
 msgstr "Pabaiga"
 
 #: client/templates/client/services.html:7
 #: client/templates/client/issue/base.html:13
 #: client/templates/client/issue/edit.html:23 help_desk/models.py:112
-#: help_desk/models.py:198 help_desk/views.py:269
+#: help_desk/models.py:198 help_desk/views.py:268
 #: help_desk/templates/management/edit_issue.html:11
 #: help_desk/templates/management/view_issue.html:21
 msgid "Service"
@@ -79,7 +79,7 @@ msgstr "Kreipinys"
 
 #: client/templates/client/issue/base.html:12
 #: client/templates/client/issue/edit.html:17 help_desk/models.py:199
-#: help_desk/views.py:268 help_desk/templates/management/edit_issue.html:9
+#: help_desk/views.py:267 help_desk/templates/management/edit_issue.html:9
 #: help_desk/templates/management/view_issue.html:27
 msgid "Type"
 msgstr "Tipas"
@@ -94,7 +94,7 @@ msgstr "Siųsti"
 
 #: client/templates/client/issue/edit.html:15 help_desk/models.py:101
 #: help_desk/models.py:116 help_desk/models.py:201 help_desk/models.py:268
-#: help_desk/views.py:231 help_desk/views.py:243 help_desk/views.py:249
+#: help_desk/views.py:230 help_desk/views.py:242 help_desk/views.py:248
 #: help_desk/templates/management/view_issue.html:15
 msgid "Title"
 msgstr "Pavadinimas"
@@ -121,46 +121,46 @@ msgstr "Išvalyti duomenų bazę"
 msgid "Username"
 msgstr "Vartotojo vardas"
 
-#: help_desk/models.py:102 help_desk/views.py:250
+#: help_desk/models.py:102 help_desk/views.py:249
 msgid "Incident limit"
 msgstr "Incidento limitas"
 
-#: help_desk/models.py:103 help_desk/views.py:251
+#: help_desk/models.py:103 help_desk/views.py:250
 msgid "Request limit"
 msgstr "Paklausimo limitas"
 
-#: help_desk/models.py:117 help_desk/views.py:232
+#: help_desk/models.py:117 help_desk/views.py:231
 msgid "Address"
 msgstr "Adresas"
 
 #: help_desk/models.py:146 help_desk/models.py:151 help_desk/models.py:197
-#: help_desk/models.py:269 help_desk/views.py:244 help_desk/views.py:254
+#: help_desk/models.py:269 help_desk/views.py:243 help_desk/views.py:253
 #: help_desk/templates/management/edit_issue.html:7
 #: help_desk/templates/management/view_issue.html:17
 msgid "Client"
 msgstr "Klientas"
 
-#: help_desk/models.py:152 help_desk/models.py:294 help_desk/views.py:235
-#: help_desk/views.py:255
+#: help_desk/models.py:152 help_desk/models.py:294 help_desk/views.py:234
+#: help_desk/views.py:254
 msgid "First name"
 msgstr "Vardas"
 
-#: help_desk/models.py:153 help_desk/models.py:295 help_desk/views.py:236
-#: help_desk/views.py:256
+#: help_desk/models.py:153 help_desk/models.py:295 help_desk/views.py:235
+#: help_desk/views.py:255
 msgid "Last name"
 msgstr "Pavardė"
 
-#: help_desk/models.py:154 help_desk/models.py:297 help_desk/views.py:238
-#: help_desk/views.py:257
+#: help_desk/models.py:154 help_desk/models.py:297 help_desk/views.py:237
+#: help_desk/views.py:256
 msgid "Phone number"
 msgstr "Telefono numeris"
 
-#: help_desk/models.py:155 help_desk/models.py:298 help_desk/views.py:239
-#: help_desk/views.py:258
+#: help_desk/models.py:155 help_desk/models.py:298 help_desk/views.py:238
+#: help_desk/views.py:257
 msgid "Email"
 msgstr "Paštas"
 
-#: help_desk/models.py:156 help_desk/views.py:259
+#: help_desk/models.py:156 help_desk/views.py:258
 msgid "Active"
 msgstr "Aktyvus"
 
@@ -213,7 +213,7 @@ msgstr "Registravimo tipas"
 msgid "Closed"
 msgstr "Išspręstas"
 
-#: help_desk/models.py:205 help_desk/views.py:273
+#: help_desk/models.py:205 help_desk/views.py:272
 #: help_desk/templates/management/edit_issue.html:12
 msgid "Status"
 msgstr "Padėtis"
@@ -230,7 +230,7 @@ msgstr "Tekstas"
 msgid "Assignment"
 msgstr "Paskyrimas"
 
-#: help_desk/models.py:267 help_desk/views.py:242
+#: help_desk/models.py:267 help_desk/views.py:241
 msgid "Number"
 msgstr "Numeris"
 
@@ -246,7 +246,7 @@ msgstr "Administratorius"
 msgid "Manager"
 msgstr "Vadovas"
 
-#: help_desk/models.py:296 help_desk/views.py:237
+#: help_desk/models.py:296 help_desk/views.py:236
 msgid "Role"
 msgstr "Rolė"
 
@@ -271,27 +271,27 @@ msgstr "Lietuviškai"
 msgid "English"
 msgstr "Angliškai"
 
-#: help_desk/views.py:267
+#: help_desk/views.py:266
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: help_desk/views.py:270
+#: help_desk/views.py:269
 msgid "Assigned To"
 msgstr "Priskirtas"
 
-#: help_desk/views.py:271
+#: help_desk/views.py:270
 msgid "Created On"
 msgstr "Sukurtas"
 
-#: help_desk/views.py:272
+#: help_desk/views.py:271
 msgid "Closed On"
 msgstr "Išspręstas"
 
-#: help_desk/views.py:383
+#: help_desk/views.py:382
 msgid "Error while importing file occurred."
 msgstr "Importuojant įvyko klaida."
 
-#: help_desk/views.py:385
+#: help_desk/views.py:384
 msgid "Wrong file format."
 msgstr "Blogas failo formatas."
 
@@ -386,6 +386,14 @@ msgstr "Redaguoti"
 #: help_desk/templates/management/models/objects_table.html:17
 msgid "Remove"
 msgstr "Pašalinti"
+
+#: help_desk/templatetags/objects_table.py:17
+msgid "True"
+msgstr "Taip"
+
+#: help_desk/templatetags/objects_table.py:17
+msgid "False"
+msgstr "Ne"
 
 #~ msgid "Main"
 #~ msgstr "Pagrindinis"

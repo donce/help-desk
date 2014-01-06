@@ -1,4 +1,6 @@
 from django import template
+from django.utils.translation import ugettext_lazy as _
+from django.db.models import Model
 
 
 register = template.Library()
@@ -8,9 +10,14 @@ register = template.Library()
 def objects_table(model, fields, objects):
     obj = []
     for object in objects:
-        values = [getattr(object, field[0]) for field in fields]
-        if len(values) > 0:
-            values[0] = u'<a href="{0}">{1}</a>'.format(object.get_absolute_url(), values[0])
+        values = []
+        for field in fields:
+            value = getattr(object, field[0])
+            if isinstance(value, bool):
+                value = _('True') if value else _('False')
+            elif isinstance(value, Model):
+                value = '<a href="{0}">{1}</a>'.format(value.get_absolute_url(), str(value))
+            values.append(value)
         obj.append((object.id, values))
     return {
         'fields': fields,
