@@ -140,7 +140,7 @@ table {
 }
 
 table.create {
-	width: 70%;
+	width: 55%;
 	margin: auto;
 }
 
@@ -162,6 +162,7 @@ table.create th {
 	border-right: 1px solid gray;
 	border-left: 1px solid gray;
 	background-color: #002E3D;
+	width:20%;
 }
 
 table.create input[type=submit], table.create button {
@@ -472,7 +473,7 @@ table a:visited{
 }
 
 .edit_issue_history {
-	width: 70%;
+	width: 55%;
 	font-family: "Trebuchet MS";
 	background-color: #C9C9FF;
 	margin:auto;
