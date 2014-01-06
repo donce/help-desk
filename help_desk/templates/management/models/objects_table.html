@@ -2,7 +2,7 @@
 <table>
 <thead>
 {% for name, title in fields %}
-<th>{{ title }}</th>
+<th>{{ title }}<a href="?sort={{ name }}">+</a><a href="?sort=-{{ name }}">-</a></th>
 {% endfor %}
 <th></th>
 </thead>
