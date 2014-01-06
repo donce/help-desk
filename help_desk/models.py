@@ -1,11 +1,12 @@
 # encoding=utf-8
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+import pytz
 from common.deflection import get_time
 
 
@@ -229,6 +230,36 @@ class Issue(models.Model):
         self.current = assignment
         self.status = 'in progress'
         self.save()
+
+    def get_deadine(self):
+        #can haz zervice?
+        if self.service is None:
+            return None
+
+        #check if we can haz deadlinez
+        if self.service.limit_inc is None and self.type == INC:
+            return None
+        else:
+            limit = self.service.limit_inc
+
+        if self.service.limit_req is None and self.type == REQ:
+            return None
+        else:
+            limit = self.service.limit_req
+
+        return self.created + timedelta(hours=limit)
+
+    def is_late(self):
+        deadline = self.get_deadine()
+
+        #check if we even have a deadline
+        if deadline is None:
+            return False
+
+        #compare deadline
+        if datetime.now().replace(tzinfo=pytz.UTC) > deadline:
+            return True
+        return False
 
     def get_absolute_url(self, edit=None):
         if edit == None:
