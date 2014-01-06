@@ -56,7 +56,6 @@ def edit_issue(request, client, tab, issue_id):
             issue.rating = rating_form.cleaned_data['rating']
             issue.save()
     else:
-        print 'set', issue.rating
         rating_form = RatingForm(initial={'rating': issue.rating})
     return render(request, 'client/issue/edit.html', {
         'issue': issue,
