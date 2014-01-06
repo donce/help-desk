@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-05 17:15-0600\n"
+"POT-Creation-Date: 2014-01-06 14:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr "Pabaiga"
 #: client/templates/client/services.html:7
 #: client/templates/client/issue/base.html:13
 #: client/templates/client/issue/edit.html:23 help_desk/models.py:112
-#: help_desk/models.py:198 help_desk/views.py:266
+#: help_desk/models.py:198 help_desk/views.py:269
 #: help_desk/templates/management/edit_issue.html:11
 #: help_desk/templates/management/view_issue.html:21
 msgid "Service"
@@ -79,7 +79,7 @@ msgstr "Kreipinys"
 
 #: client/templates/client/issue/base.html:12
 #: client/templates/client/issue/edit.html:17 help_desk/models.py:199
-#: help_desk/views.py:265 help_desk/templates/management/edit_issue.html:9
+#: help_desk/views.py:268 help_desk/templates/management/edit_issue.html:9
 #: help_desk/templates/management/view_issue.html:27
 msgid "Type"
 msgstr "Tipas"
@@ -213,7 +213,7 @@ msgstr "Registravimo tipas"
 msgid "Closed"
 msgstr "Išspręstas"
 
-#: help_desk/models.py:205 help_desk/views.py:270
+#: help_desk/models.py:205 help_desk/views.py:273
 #: help_desk/templates/management/edit_issue.html:12
 msgid "Status"
 msgstr "Padėtis"
@@ -263,33 +263,37 @@ msgstr "Laiko nuokrypis"
 msgid "Deflection"
 msgstr "Laiko nuokrypis"
 
-#: help_desk/settings.py:37
+#: help_desk/settings.py:41
 msgid "Lithuanian"
 msgstr "Lietuviškai"
 
-#: help_desk/settings.py:38
+#: help_desk/settings.py:42
 msgid "English"
 msgstr "Angliškai"
 
-#: help_desk/views.py:264
+#: help_desk/views.py:267
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: help_desk/views.py:267
+#: help_desk/views.py:270
 msgid "Assigned To"
 msgstr "Priskirtas"
 
-#: help_desk/views.py:268
+#: help_desk/views.py:271
 msgid "Created On"
 msgstr "Sukurtas"
 
-#: help_desk/views.py:269
+#: help_desk/views.py:272
 msgid "Closed On"
 msgstr "Išspręstas"
 
 #: help_desk/templates/management/administration.html:4
 msgid "Import a structure"
 msgstr "Importuoti struktūrą"
+
+#: help_desk/templates/management/administration.html:6
+msgid "Importing a file can erase all data! Are you sure you want to continue?"
+msgstr "Failo importavimas gali ištrinti visus duomenis! Ar tikrai norite tęsti?"
 
 #: help_desk/templates/management/administration.html:9
 msgid "Import"

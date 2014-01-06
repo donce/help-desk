@@ -346,12 +346,13 @@ def model_remove(request, employee, tab, model, instance_id):
 
 @tab
 @employee_only
-def administration(request, employee, tab):
+def administration(request, employee, tab, form=ImportForm()):
     return render(request, 'management/administration.html', {
         'tab': tab,
-        'import_form': ImportForm(),
+        'import_form': form,
         'deflection_form': DeflectionForm(initial={'deflection': get_deflection()}),
     })
+
 
 @tab
 @employee_only
@@ -378,7 +379,9 @@ def import_database(request, employee, tab):
             if len(split) != 1 and split[-1] in FILE_EXT_WHITELIST:
                 if XLSXImporter().import_xlsx(file, clean):
                     return redirect(common.views.main)
-    return administration(request, tab=tab)
+    else:
+        form = ImportForm()
+    return administration(request, tab=tab, form=form)
 
 
 #TODO: move to class
