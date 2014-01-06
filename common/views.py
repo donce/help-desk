@@ -7,7 +7,8 @@ from django.utils.http import is_safe_url
 from django.contrib.auth import login as login_user, logout as logout_user
 
 import client.views
-from help_desk.models import ROLE_ENGINEER, ROLE_MANAGER
+from common.forms import UserForm
+from help_desk.models import ROLE_ENGINEER, ROLE_MANAGER, BaseUser
 import help_desk.views
 
 
@@ -68,3 +69,9 @@ def set_language(request):
         else:
             response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang_code)
     return response
+
+def profile(request):
+    form = UserForm()
+    return render(request, 'management/models/add.html', {
+        'form': form,
+    })
