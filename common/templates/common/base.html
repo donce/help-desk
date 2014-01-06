@@ -20,7 +20,9 @@
 		{% include 'common/languages.html' %}
 	</div>
 	<div class="menu_employee_title">
+        <a class="profile" href="{% url 'common.views.profile' %}">
 		{{ user.get_full_name }}
+        </a>
 		{% time %}
 	</div>
 </div>

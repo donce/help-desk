@@ -103,9 +103,9 @@ def solve_issues(request, employee, tab):
                           'closed', '-closed',
                           'status', '-status'))
     if sorting is None:
-        issues = Issue.objects.all()
+        issues = Issue.objects.filter(current__worker=employee)
     else:
-        issues = Issue.objects.all().order_by(sorting)
+        issues = Issue.objects.filter(current__worker=employee).order_by(sorting)
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
 
@@ -129,9 +129,6 @@ def unassign_issue(issue):
     issue.returnIssue()
 
 
-def delete_issue(issue):
-    #TODO: add warning message
-    issue.delete()
 
 
 @tab
@@ -193,11 +190,6 @@ def edit_issue(request, employee, tab, issue_id):
     else:
         issue_form = IssueForm(employee=employee, edit=True, instance=issue, initial={'assigned_to': issue.current.worker})
 
-    action = get_action(request.GET, 'action', ('delete'))
-    if action != None:
-        delete_issue(issue)
-        return redirect('/management/manage_issues')
-
     #if we have already posted
     if request.method == 'POST':
         issue_form = IssueForm(employee, True, request.POST, instance=issue)
@@ -205,11 +197,18 @@ def edit_issue(request, employee, tab, issue_id):
             issue_form.save();
             return redirect('/management/manage_issues')
     return render(request, 'management/edit_issue.html', {
-        'issue' : issue,
+        'issue': issue,
+        'issue_id': issue_id,
         'issue_form': issue_form,
         'tab': tab
     })
 
+@tab
+@employee_only
+def delete_issue(request, employee, tab, issue_id):
+    issue = Issue.objects.get(id=issue_id)
+    issue.delete()
+    return redirect('/management/manage_issues')
 
 @tab
 @employee_only
@@ -419,44 +418,10 @@ def import_database(request, employee, tab):
     return administration(request, tab=tab, form=form)
 
 
-#TODO: move to class
-def get_deadine(issue):
-    #can haz zervice?
-    if issue.service == None:
-        return None
-
-    #check if we can haz deadlinez
-    if issue.service.limit_inc == None and issue.type == INC:
-        return None
-    else:
-        limit = issue.service.limit_inc
-
-    if issue.service.limit_req == None and issue.type == REQ:
-        return None
-    else:
-        limit = issue.service.limit_req
-
-    return issue.created + timedelta(hours=limit)
-
-
-#TODO: move to class
-def is_late(issue):
-    deadline = get_deadine(issue)
-
-    #check if we even have a deadline
-    if deadline == None:
-        return False
-
-    #compare deadline
-    if datetime.now().replace(tzinfo=pytz.UTC) > deadline:
-        return True
-    return False
-
-
 def get_late_issues(start, end):
     late_issues = [];
     for issue in Issue.objects.all():
-        if is_late(issue) and issue.created >= start and issue.created <= end:
+        if issue.is_late() and start <= issue.created <= end:
             late_issues.append(issue)
     return late_issues
 

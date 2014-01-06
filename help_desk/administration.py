@@ -166,8 +166,10 @@ class XLSXImporter:
             else:
                 rating = int(rating)
 
-            #current = sheet.cell(i, 10).value # TODO : what?
-            #previous = sheet.cell(i, 11).value # TODO : purpose of this?
+            # previous = None
+            # if sheet.cell(i, 11).value:
+            #     previous = Issue.objects.get(id=sheet.cell(i, 11).value)
+
             issue = Issue(id=id, client=client, service=service, type=type, status=status,
                           receive_type=receive_type, title=title, description=description,
                           created=created, closed=closed, rating=rating)

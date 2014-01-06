@@ -3,7 +3,14 @@
 <table  class="has_filters">
 <thead>
 {% for name, title, sortKey in fields %}
-<th>{{ title }}<a href="?sort={{ sortKey }}">+</a><a href="?sort=-{{ sortKey }}">-</a></th>
+<th>
+	<div class="left">{{ title }}</div>
+	<div class="rodykles">
+		<a href="?sort={{ sortKey }}"><div class="arrow-up"></div></a>
+		<div class="padding_5"></div>
+		<a href="?sort=-{{ sortKey }}"><div class="arrow-down"></div></a>
+	</div>
+</th>
 {% endfor %}
 <th></th>
 </thead>
@@ -16,6 +23,7 @@
        <td>
             {% if edit %}
                 <a href="{% url 'help_desk.views.edit_issue' id %}"><button>{% trans 'Edit' %}</button></a>
+                <a href="{% url 'help_desk.views.delete_issue' id %}"><button>{% trans 'Delete' %}</button></a>
             {% else %}
                 <a href="{% url 'help_desk.views.view_issue' id %}"><button>{% trans 'Show' %}</button></a>
             {% endif %}

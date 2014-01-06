@@ -1,1 +1,5 @@
-HISTORY
+{% for line in lines %}
+<ul>
+    <li>{{ line.0 }}: </br> {{ line.1 }}</li>
+</ul>
+{% endfor %}
