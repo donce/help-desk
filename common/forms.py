@@ -10,6 +10,3 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = BaseUser
-
-
-

@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.conf import settings
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.utils.translation import check_for_language
 from django import http
@@ -71,7 +72,21 @@ def set_language(request):
     return response
 
 def profile(request):
-    form = UserForm()
+    if request.method == 'POST':  # If the form has been submitted...
+        print 'post'
+        form = UserForm(request.POST)  # A form bound to the POST data
+        if form.is_valid():  # All validation rules pass
+            print 'valid'
+            form.save()
+            # Process the data in form.cleaned_data
+            # ...
+        else:
+            print 'not valid'
+            for error in form.errors.items():
+                print error
+    else:
+        form = UserForm()  # An unbound form
+
     return render(request, 'common/profile.html', {
         'form': form,
     })
