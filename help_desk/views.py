@@ -419,44 +419,10 @@ def import_database(request, employee, tab):
     return administration(request, tab=tab, form=form)
 
 
-#TODO: move to class
-def get_deadine(issue):
-    #can haz zervice?
-    if issue.service == None:
-        return None
-
-    #check if we can haz deadlinez
-    if issue.service.limit_inc == None and issue.type == INC:
-        return None
-    else:
-        limit = issue.service.limit_inc
-
-    if issue.service.limit_req == None and issue.type == REQ:
-        return None
-    else:
-        limit = issue.service.limit_req
-
-    return issue.created + timedelta(hours=limit)
-
-
-#TODO: move to class
-def is_late(issue):
-    deadline = get_deadine(issue)
-
-    #check if we even have a deadline
-    if deadline == None:
-        return False
-
-    #compare deadline
-    if datetime.now().replace(tzinfo=pytz.UTC) > deadline:
-        return True
-    return False
-
-
 def get_late_issues(start, end):
     late_issues = [];
     for issue in Issue.objects.all():
-        if is_late(issue) and issue.created >= start and issue.created <= end:
+        if issue.is_late() and start <= issue.created <= end:
             late_issues.append(issue)
     return late_issues
 
