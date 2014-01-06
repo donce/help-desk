@@ -103,7 +103,7 @@ TEMPLATE_LOADERS = (
 )
 
 LOCALE_PATHS = (
-    'locale',
+    os.path.join(SITE_ROOT, '../locale'),
 )
 
 MIDDLEWARE_CLASSES = (
@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'common',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    # 'debug_toolbar',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

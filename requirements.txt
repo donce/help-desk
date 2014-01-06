@@ -2,3 +2,4 @@ django
 django-extensions
 xlrd
 pytz
+django-debug-toolbar
