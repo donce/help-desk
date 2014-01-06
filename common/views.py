@@ -19,7 +19,7 @@ def main(request):
         elif role == ROLE_ENGINEER:
             return redirect(help_desk.views.solve_issues)
         return redirect(help_desk.views.manage_issues)
-    return redirect(client.views.client_home)
+    return redirect(client.views.home)
 
 
 def home(request):
