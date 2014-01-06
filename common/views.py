@@ -72,6 +72,6 @@ def set_language(request):
 
 def profile(request):
     form = UserForm()
-    return render(request, 'management/models/add.html', {
+    return render(request, 'common/profile.html', {
         'form': form,
     })

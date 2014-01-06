@@ -140,7 +140,7 @@ table {
 }
 
 table.create {
-	width: 30%;
+	width: 70%;
 	margin: auto;
 }
 
@@ -254,6 +254,7 @@ tr.row2 {
 
 .issue.center {
 	width: 70%;
+	height:65%;
 }
 
 .lower_2 {
@@ -283,6 +284,10 @@ textarea {
 
 textarea {
 	height: 60%;
+}
+
+.issue.center textarea {
+	height: 45%;
 }
 
 .issue_table input[type=text] {
@@ -442,4 +447,34 @@ table a:visited{
 
 .padding_5{
 	padding-top:5px;
+}
+
+.profile {
+	color: white;
+	font-weight: bold;
+}
+
+.profile:hover, .profile:active {
+	color: #298AAB;
+}
+
+.solve_issues_history {
+	width: 70%;
+	font-family: "Trebuchet MS";
+	color: white;
+	margin-top: 1%;
+	border-style: outset;
+	background-color: #004C66;
+	border-bottom-color: #004C66;
+	border-left-color: #008AB8;
+	border-right-color: #004C66;
+	border-top-color: #008AB8;
+}
+
+.edit_issue_history {
+	width: 70%;
+	font-family: "Trebuchet MS";
+	background-color: #C9C9FF;
+	margin:auto;
+	border: 1px solid gray;
 }

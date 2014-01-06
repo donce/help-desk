@@ -7,6 +7,7 @@ register = template.Library()
 
 @register.inclusion_tag('common/menu_button.html', takes_context=True)
 def menu_item(context, name, title, view, permission=None):
+    tab = context['tab'] if 'tab' in context else ''
     if permission:
         func = getattr(context['user'].employee, 'can_' + permission, None)
         if func and not func():
@@ -15,5 +16,5 @@ def menu_item(context, name, title, view, permission=None):
         'name': name,
         'title': title,
         'url': reverse(view),
-        'selected': context['tab'] == name,
+        'selected': tab == name,
     }
