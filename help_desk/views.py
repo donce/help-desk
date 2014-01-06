@@ -260,6 +260,9 @@ MODEL_MANAGEMENT_FIELDS = {
     ]
 }
 
+model_items = [[name, MODEL_FORMS[name]._meta.model._meta.verbose_name] for name in MODEL_FORMS]
+
+
 ISSUE_FIELDS = [
     ('title', _('Name')),
     ('get_type_display', _('Type')),
@@ -280,7 +283,7 @@ def model_list(request, employee, tab, model='service'):
         'objects': objects,
         'fields': fields,
         'model': model,
-        'models': [[name, MODEL_FORMS[name]._meta.model._meta.verbose_name] for name in MODEL_FORMS],
+        'models': model_items,
         'tab': tab,
     })
 
@@ -299,7 +302,7 @@ def model_add(request, employee, tab, model):
     return render(request, 'management/models/add.html', {
         'form': form,
         'model': model,
-        'models': [name for name in MODEL_FORMS],
+        'models': model_items,
         'tab': tab,
     })
 
@@ -325,7 +328,7 @@ def model_edit(request, employee, tab, model, instance_id):
         'model': model,
         'object': get_model(model).objects.get(id=instance_id),
         'form': form,
-        'models': [name for name in MODEL_FORMS],
+        'models': model_items,
         'tab': tab,
     })
 
