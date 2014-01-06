@@ -23,6 +23,7 @@
        <td>
             {% if edit %}
                 <a href="{% url 'help_desk.views.edit_issue' id %}"><button>{% trans 'Edit' %}</button></a>
+                <a href="{% url 'help_desk.views.delete_issue' id %}"><button>{% trans 'Delete' %}</button></a>
             {% else %}
                 <a href="{% url 'help_desk.views.view_issue' id %}"><button>{% trans 'Show' %}</button></a>
             {% endif %}
