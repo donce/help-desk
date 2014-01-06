@@ -12,7 +12,7 @@
     {% for field in object %}
         <td>{{ field|safe }}</td>
     {% endfor %}
-        <td>
+        <td class="width_15">
             <a href="{% url 'help_desk.views.model_edit' model id %}"><button>{% trans 'Edit' %}</button></a>
             <a href="{% url 'help_desk.views.model_remove' model id %}"><button>{% trans 'Remove' %}</button></a>
         </td>
