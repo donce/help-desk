@@ -2,8 +2,8 @@
 
 <table  class="has_filters">
 <thead>
-{% for name, title in fields %}
-<th>{{ title }}</th>
+{% for name, title, sortKey in fields %}
+<th>{{ title }}<a href="?sort={{ sortKey }}">+</a><a href="?sort=-{{ sortKey }}">-</a></th>
 {% endfor %}
 <th></th>
 </thead>

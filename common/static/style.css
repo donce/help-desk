@@ -417,3 +417,21 @@ table a:visited{
 .width_15{
 	width:15%;
 }
+
+.arrow-up {
+	width: 0; 
+	height: 0; 
+	margin-top: 5%;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;	
+	border-bottom: 10px solid white;
+}
+
+.arrow-down {
+	width: 0; 
+	height: 0;
+	margin-top: 5%;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;	
+	border-top: 10px solid white;
+}
