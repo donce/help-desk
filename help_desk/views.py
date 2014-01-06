@@ -103,8 +103,9 @@ def solve_issues(request, employee, tab):
                           'closed', '-closed',
                           'status', '-status'))
     if sorting is None:
-        sorting = 'title'
-    issues = employee.issues().order_by(sorting)
+        issues = Issue.objects.all()
+    else:
+        issues = Issue.objects.all().order_by(sorting)
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
     filtered_issues = doIssueFiltering(issues, 'status', filter)
 
@@ -167,10 +168,11 @@ def manage_issues(request, employee, tab):
                           'created', '-created',
                           'closed', '-closed',
                           'status', '-status'))
-    if sorting is None:
-        sorting = 'title'
 
-    issues = Issue.objects.order_by(sorting).all()
+    if sorting is None:
+        issues = Issue.objects.all()
+    else:
+        issues = Issue.objects.all().order_by(sorting)
     filter = get_filter(request.GET, 'filter', ('all', 'keep', 'drop'))
 
     filteredIssues = doIssueFiltering(issues, 'assignment', filter)
@@ -296,7 +298,16 @@ ISSUE_FIELDS = [
 @tab
 @employee_only
 def model_list(request, employee, tab, model='service'):
-    objects = get_model(model).objects.all()
+    sorting_keys = ()
+    for field in MODEL_MANAGEMENT_FIELDS[model]:
+        sorting_keys = sorting_keys + (field[0], '-' + field[0])
+
+    sorting = get_action(request.GET, 'sort', sorting_keys)
+
+    if sorting is None:
+        objects = get_model(model).objects.all()
+    else:
+        objects = get_model(model).objects.all().order_by(sorting)
     fields = MODEL_MANAGEMENT_FIELDS[model] if model in MODEL_MANAGEMENT_FIELDS else []
     return render(request, 'management/models/list_objects.html', {
         'objects': objects,
