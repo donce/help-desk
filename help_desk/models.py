@@ -237,14 +237,14 @@ class Issue(models.Model):
             return None
 
         #check if we can haz deadlinez
-        if self.service.limit_inc is None and self.type == INC:
+        if self.service.limit_inc is None and self.type == ISSUE_TYPE_INCIDENT:
             return None
-        else:
+        elif self.type == ISSUE_TYPE_INCIDENT:
             limit = self.service.limit_inc
 
-        if self.service.limit_req is None and self.type == REQ:
+        if self.service.limit_req is None and self.type == ISSUE_TYPE_REQUEST:
             return None
-        else:
+        elif self.type == ISSUE_TYPE_REQUEST:
             limit = self.service.limit_req
 
         return self.created + timedelta(hours=limit)
@@ -257,7 +257,7 @@ class Issue(models.Model):
             return False
 
         #compare deadline
-        if datetime.now().replace(tzinfo=pytz.UTC) > deadline:
+        if datetime.now() > deadline:
             return True
         return False
 
