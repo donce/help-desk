@@ -1,5 +1,5 @@
 {% extends "management/models/base.html" %}
-{% load i18n %}
+{% load i18n issue_history %}
 {% block content %}
 <!--BACK-->
 <div class="issue center">
@@ -57,6 +57,7 @@
 			</div>
 		</div>
 	</div>
+    {% issue_history issue %}
 </div>
 <!-- and others -->
 
