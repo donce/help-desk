@@ -60,7 +60,10 @@ def edit_issue(request, client, tab, issue_id):
         if issue.status == 'solved':
             rating_form = RatingForm(initial={'rating': issue.rating})
 
-    assign = issue.assignment_set.latest('start')
+    try:
+        assign = issue.assignment_set.latest('start')
+    except Assignment.DoesNotExist:
+        assign = None
     return render(request, 'client/issue/edit.html', {
         'issue': issue,
         'latestAssign': assign,
