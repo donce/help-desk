@@ -15,9 +15,9 @@ def issue_history(issue):
         message = _('Assigned to {0}').format(assignment.worker)
         lines.append((assignment.start, message))
 
-    if issue.closed:
-        status = (_('Resolved') if issue.status == 'solved' else _('Rejected')) + '.'
-        lines.append((issue.closed, status + ' ' + assignment.comment))
+        if assignment.end:
+            lines.append((assignment.end, assignment.status + ' ' + assignment.comment))
+
     return {
         'lines': lines,
     }

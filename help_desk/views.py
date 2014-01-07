@@ -8,8 +8,7 @@ from django.shortcuts import render, redirect
 from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 import pytz
-from common.deflection import set_deflection, get_deflection
-
+from common.deflection import set_deflection, get_deflection, get_time
 
 from help_desk.administration import XLSXImporter
 from help_desk.forms import ImportForm, StatisticsForm, DeflectionForm
@@ -143,10 +142,26 @@ def view_issue(request, employee, tab, issue):
 
         if 'solve' in request.POST:
             mark_issue_solved(viewed_issue)
+            viewed_issue.current.status = 'Solved.'
+            viewed_issue.current.end = get_time()
+            viewed_issue.current.save()
+            viewed_issue.current = None
+            viewed_issue.save()
+
         elif 'reject' in request.POST:
             mark_issue_rejected(viewed_issue)
+            viewed_issue.current.status = 'Rejected.'
+            viewed_issue.current.end = get_time()
+            viewed_issue.current.save()
+            viewed_issue.current = None
+            viewed_issue.save()
+
         elif 'return' in request.POST:
+            viewed_issue.current.status = 'Returned.'
+            viewed_issue.current.end = get_time()
+            viewed_issue.current.save()
             unassign_issue(viewed_issue)
+            viewed_issue.save()
 
         return redirect('/management/solve_issues')
 

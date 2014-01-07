@@ -491,6 +491,9 @@ table a:visited{
 }
 
 table.create.profilis {
-	width: 30%;
+	width: 35%;
 }
 
+table.create.profilis th{
+	width: 40%;
+}

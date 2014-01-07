@@ -277,6 +277,7 @@ class Assignment(models.Model):
     worker = models.ForeignKey('Employee', related_name='working')
     start = models.DateTimeField(_('Start'))
     end = models.DateTimeField(_('End'), null=True)
+    status = models.CharField(_('Status'), max_length=255, default=ISSUE_STATUS_UNASSIGNED)
     text = models.TextField(_('Text'))
     comment = models.TextField(_('Answer'), max_length=4096)
 

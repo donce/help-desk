@@ -3,11 +3,11 @@
 {% block right %}
 
 <div id="naujas_kreipinys_edit">
-{% if issue.current and issue.status != 'in progress' %}
+{% if latestAssign and issue.status != 'in progress' %}
 <div class="issue answer">
 	<div class="vid">
 		<a>{% trans 'Answer' %}</a>
-		<textarea readonly>{{ issue.current.comment }}</textarea>
+		<textarea readonly>{{ latestAssign.comment }}</textarea>
 
         {% if issue.status == 'solved' %}
 		<a>{% trans 'Rating' %}</a>
