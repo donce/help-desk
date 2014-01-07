@@ -34,7 +34,6 @@
 		{% trans 'Description' %}:
 		<textarea readonly>{{ issue.description }}</textarea>
 
-        {% if issue.status == "in progress" %}
         {% trans 'Answer' %}:
         <form action="" method="POST">
             {% csrf_token %}
@@ -47,7 +46,6 @@
 			</div>
 			</div>
         </form>
-        {% endif %}
 	</div>
 </div>
 <div class="solve_issues_history center">{% issue_history issue %}</div>
