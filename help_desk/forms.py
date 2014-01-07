@@ -100,6 +100,7 @@ class IssueForm(forms.ModelForm):
         if issue.current == None:
             if not self.cleaned_data['assigned_to'] == None:
                 super(IssueForm, self).save(commit=True)
+                issue.closed = None
                 issue.assign(self.employee, self.cleaned_data['assigned_to'])
             else:
                 super(IssueForm, self).save()
@@ -112,6 +113,7 @@ class IssueForm(forms.ModelForm):
                 issue.status = 'unassigned'
             else:
                 issue.status = 'in progress'
+                issue.closed = None
                 super(IssueForm, self).save()
                 issue.assign(self.employee, self.cleaned_data['assigned_to'])
 
