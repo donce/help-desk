@@ -9,14 +9,14 @@ register = template.Library()
 @register.inclusion_tag('management/issue_history.html')
 def issue_history(issue):
     lines = []
-    lines.append((issue.created, 'Created.'))
+    lines.append((issue.created, _('Created') + '.'))
 
     for assignment in issue.assignment_set.all():
-        message = u'Assigned to {0}.'.format(assignment.worker)
+        message = _('Assigned to {0}').format(assignment.worker)
         lines.append((assignment.start, message))
 
     if issue.closed:
-        status = 'Resolved.' if issue.status == 'solved' else 'Rejected.'
+        status = (_('Resolved') if issue.status == 'solved' else _('Rejected')) + '.'
         lines.append((issue.closed, status + ' ' + assignment.comment))
     return {
         'lines': lines,
