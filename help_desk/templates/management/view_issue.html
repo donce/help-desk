@@ -48,26 +48,6 @@
 			</div>
         </form>
         {% endif %}
-
-		<!--<div class="lower_2">
-			{% if issue.status == "in progress" %}
-			<a class="action" href="?action=solve"><button class="darker width_20">
-			{% trans 'Solve' %}</button>
-			</a>
-			{% endif %}
-			<div class="right back">
-
-				{% if issue.status == "in progress" %}
-				<a class="action" href="?action=reject"><button class="darker">
-				{% trans 'Reject' %}
-				</button></a>
-				{% endif %}
-
-				{% if not issue.current == None and issue.status == "in progress"  %}
-				<a class="action" href="?action=return"><button class="darker">{% trans 'Return' %}</button></a>
-				{% endif %}
-			</div>
-		</div>-->
 	</div>
 </div>
 <div class="solve_issues_history center">{% issue_history issue %}</div>
