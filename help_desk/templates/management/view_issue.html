@@ -40,10 +40,10 @@
             {% csrf_token %}
             <textarea name="answer">{{ comment }}</textarea>
 			<div class="lower_2">
-            <button class="darker width_20" name="solve">Solve</button>
+            <button class="darker width_20" name="solve">{% trans 'Solve' %}</button>
 			<div class="right back">
-            <button class="darker" name="reject">Reject</button>
-            <button class="darker" name="return">Return</button>
+            <button class="darker" name="reject">{% trans 'Reject' %}</button>
+            <button class="darker" name="return">{% trans 'Return' %}</button>
 			</div>
 			</div>
         </form>

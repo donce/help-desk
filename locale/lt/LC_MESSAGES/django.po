@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-07 02:32+0200\n"
+"POT-Creation-Date: 2014-01-07 03:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,7 +64,7 @@ msgid "Type"
 msgstr "Tipas"
 
 #: client/templates/client/issue/base.html:14 help_desk/models.py:281
-#: help_desk/templates/management/view_issue.html:36
+#: help_desk/templates/management/view_issue.html:38
 msgid "Answer"
 msgstr "Atsakymas"
 
@@ -100,13 +100,33 @@ msgstr "Sukurtas"
 msgid "Description"
 msgstr "Aprašymas"
 
-#: client/templates/client/issue/edit.html:35
+#: client/templates/client/issue/edit.html:36
 #: common/templates/common/profile.html:12
 #: help_desk/templates/management/administration.html:17
 #: help_desk/templates/management/edit_issue.html:19
 #: help_desk/templates/management/models/edit.html:13
 msgid "Save"
 msgstr "Išsaugoti"
+
+#: common/forms.py:8
+msgid "Old password"
+msgstr "Senas slaptažodis"
+
+#: common/forms.py:9
+msgid "New password"
+msgstr "Naujas slaptažodis"
+
+#: common/forms.py:10
+msgid "New password again"
+msgstr "Pakartokite naują slaptažodis"
+
+#: common/forms.py:20
+msgid "Old password incorrect."
+msgstr "Neteisingas slaptažodis."
+
+#: common/forms.py:22
+msgid "Passwords does not match."
+msgstr "Slaptažodžiai nesutampa."
 
 #: common/templates/common/base.html:21 common/templates/common/menu.html:13
 msgid "Logout"
@@ -388,15 +408,15 @@ msgstr "Neišspręsti"
 msgid "Show late issues created on"
 msgstr "Rodyti pavėluotus kreipinius sukurtus"
 
-#: help_desk/templates/management/view_issue.html:48
+#: help_desk/templates/management/view_issue.html:43
 msgid "Solve"
 msgstr "Išspręsti"
 
-#: help_desk/templates/management/view_issue.html:55
+#: help_desk/templates/management/view_issue.html:45
 msgid "Reject"
 msgstr "Atmesti"
 
-#: help_desk/templates/management/view_issue.html:60
+#: help_desk/templates/management/view_issue.html:46
 msgid "Return"
 msgstr "Grąžinti"
 

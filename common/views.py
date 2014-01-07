@@ -8,7 +8,7 @@ from django.utils.http import is_safe_url
 from django.contrib.auth import login as login_user, logout as logout_user
 
 import client.views
-from common.forms import UserForm
+from common.forms import UserForm, ProfileForm
 from help_desk.models import ROLE_ENGINEER, ROLE_MANAGER, BaseUser
 import help_desk.views
 
@@ -71,21 +71,14 @@ def set_language(request):
             response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang_code)
     return response
 
+
 def profile(request):
-    if request.method == 'POST':  # If the form has been submitted...
-        print 'post'
-        form = UserForm(request.POST)  # A form bound to the POST data
-        if form.is_valid():  # All validation rules pass
+    if request.method == 'POST':
+        form = ProfileForm(request.user, request.POST)
+        if form.is_valid():
             print 'valid'
-            form.save()
-            # Process the data in form.cleaned_data
-            # ...
-        else:
-            print 'not valid'
-            for error in form.errors.items():
-                print error
     else:
-        form = UserForm()  # An unbound form
+        form = ProfileForm(request.user)
 
     return render(request, 'common/profile.html', {
         'form': form,
