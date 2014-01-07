@@ -1,6 +1,25 @@
 from django import forms
+from django.utils.translation import ugettext as _
 
 from help_desk.models import BaseUser
+
+
+class ProfileForm(forms.Form):
+    old = forms.CharField(widget=forms.PasswordInput, label=_('Old password'))
+    new = forms.CharField(widget=forms.PasswordInput, label=_('New password'))
+    new2 = forms.CharField(widget=forms.PasswordInput, label=_('New password again'))
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super(ProfileForm, self).__init__(*args, **kwargs)
+
+
+    def clean(self):
+        cleaned_data = super(ProfileForm, self).clean()
+        if 'old' in cleaned_data and not self.user.check_password(cleaned_data['old']):
+            self._errors['old'] = (_('Old password incorrect.'),)
+        if 'new' in cleaned_data and 'new2' in cleaned_data and cleaned_data['new'] != cleaned_data['new2']:
+            self._errors['new2'] = (_('Passwords does not match.'),)
 
 
 class UserForm(forms.ModelForm):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-07 02:32+0200\n"
+"POT-Creation-Date: 2014-01-07 03:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "Paslaugos"
 
 #: client/templates/client/services.html:7
 #: client/templates/client/issue/base.html:13
-#: client/templates/client/issue/edit.html:23 help_desk/models.py:112
+#: client/templates/client/issue/edit.html:42 help_desk/models.py:112
 #: help_desk/models.py:193 help_desk/views.py:296
 #: help_desk/templates/management/edit_issue.html:11
 #: help_desk/templates/management/view_issue.html:21
@@ -57,14 +57,15 @@ msgid "Issue"
 msgstr "Kreipinys"
 
 #: client/templates/client/issue/base.html:12
-#: client/templates/client/issue/edit.html:17 help_desk/models.py:194
+#: client/templates/client/issue/edit.html:36 help_desk/models.py:194
 #: help_desk/views.py:295 help_desk/templates/management/edit_issue.html:9
 #: help_desk/templates/management/view_issue.html:27
 msgid "Type"
 msgstr "Tipas"
 
-#: client/templates/client/issue/base.html:14 help_desk/models.py:281
-#: help_desk/templates/management/view_issue.html:36
+#: client/templates/client/issue/base.html:14
+#: client/templates/client/issue/edit.html:9 help_desk/models.py:281
+#: help_desk/templates/management/view_issue.html:37
 msgid "Answer"
 msgstr "Atsakymas"
 
@@ -81,32 +82,60 @@ msgstr "Atmestas"
 msgid "Send"
 msgstr "Siųsti"
 
-#: client/templates/client/issue/edit.html:15 help_desk/models.py:101
+#: client/templates/client/issue/edit.html:13 help_desk/models.py:201
+msgid "Rating"
+msgstr "Vertinimas"
+
+#: client/templates/client/issue/edit.html:17
+msgid "Rate"
+msgstr "Vertinti"
+
+#: client/templates/client/issue/edit.html:34 help_desk/models.py:101
 #: help_desk/models.py:116 help_desk/models.py:196 help_desk/models.py:295
 #: help_desk/views.py:258 help_desk/views.py:270 help_desk/views.py:276
 #: help_desk/templates/management/view_issue.html:15
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: client/templates/client/issue/edit.html:21 help_desk/models.py:198
+#: client/templates/client/issue/edit.html:40 help_desk/models.py:198
 #: help_desk/templates/management/edit_issue.html:8
 #: help_desk/templates/management/view_issue.html:29
 #: help_desk/templatetags/issue_history.py:12
 msgid "Created"
 msgstr "Sukurtas"
 
-#: client/templates/client/issue/edit.html:28 help_desk/models.py:197
+#: client/templates/client/issue/edit.html:47 help_desk/models.py:197
 #: help_desk/templates/management/view_issue.html:34
 msgid "Description"
 msgstr "Aprašymas"
 
-#: client/templates/client/issue/edit.html:35
+#: client/templates/client/issue/edit.html:55
 #: common/templates/common/profile.html:12
 #: help_desk/templates/management/administration.html:17
 #: help_desk/templates/management/edit_issue.html:19
 #: help_desk/templates/management/models/edit.html:13
 msgid "Save"
 msgstr "Išsaugoti"
+
+#: common/forms.py:8
+msgid "Old password"
+msgstr "Senas slaptažodis"
+
+#: common/forms.py:9
+msgid "New password"
+msgstr "Naujas slaptažodis"
+
+#: common/forms.py:10
+msgid "New password again"
+msgstr "Pakartokite naują slaptažodį"
+
+#: common/forms.py:20
+msgid "Old password incorrect."
+msgstr "Neteisingas slaptažodis."
+
+#: common/forms.py:22
+msgid "Passwords does not match."
+msgstr "Slaptažodžiai nesutampa."
 
 #: common/templates/common/base.html:21 common/templates/common/menu.html:13
 msgid "Logout"
@@ -151,6 +180,10 @@ msgstr "Sutartys"
 #: common/templates/common/menu.html:12
 msgid "Information"
 msgstr "Informacija"
+
+#: help_desk/forms.py:79
+msgid "Assigned to"
+msgstr "Priskirtas"
 
 #: help_desk/forms.py:174
 msgid "Clean database"
@@ -249,9 +282,9 @@ msgstr "Išspręstas"
 msgid "Status"
 msgstr "Padėtis"
 
-#: help_desk/models.py:201
-msgid "Rating"
-msgstr "Vertinimas"
+#: help_desk/models.py:203
+msgid "Previous"
+msgstr "Buvęs"
 
 #: help_desk/models.py:280
 msgid "Text"
@@ -388,15 +421,15 @@ msgstr "Neišspręsti"
 msgid "Show late issues created on"
 msgstr "Rodyti pavėluotus kreipinius sukurtus"
 
-#: help_desk/templates/management/view_issue.html:48
+#: help_desk/templates/management/view_issue.html:42
 msgid "Solve"
 msgstr "Išspręsti"
 
-#: help_desk/templates/management/view_issue.html:55
+#: help_desk/templates/management/view_issue.html:44
 msgid "Reject"
 msgstr "Atmesti"
 
-#: help_desk/templates/management/view_issue.html:60
+#: help_desk/templates/management/view_issue.html:45
 msgid "Return"
 msgstr "Grąžinti"
 

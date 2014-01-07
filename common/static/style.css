@@ -228,19 +228,33 @@ tr.row2 {
 	width: 12%;
 }
 
-.issue {
+#naujas_kreipinys, #naujas_kreipinys_edit{
+	float:right;
 	width: 49%;
-	float: right;
+}
+.issue {
 	font-family: "Trebuchet MS";
 	color: white;
 	margin-top: 1%;
 	border-style: outset;
 	background-color: #004C66;
-	height: 80%;
+	height: 70%;
 	border-bottom-color: #004C66;
 	border-left-color: #008AB8;
 	border-right-color: #004C66;
 	border-top-color: #008AB8;
+}
+
+.issue.no_buttons {
+	height: 55%;
+}
+
+.issue.answer {
+	height: 40%;
+}
+
+.issue.answer textarea {
+	height: 60%;
 }
 
 .left {
@@ -284,7 +298,7 @@ textarea {
 }
 
 textarea {
-	height: 60%;
+	height: 50%;
 }
 
 .issue.center textarea {
@@ -306,10 +320,6 @@ textarea {
 
 .darker:hover, input.darker:hover {
 	background: #00202B;
-}
-
-.issue.no_buttons {
-	height: 75%;
 }
 
 div.vid {
@@ -481,6 +491,9 @@ table a:visited{
 }
 
 table.create.profilis {
-	width: 30%;
+	width: 35%;
 }
 
+table.create.profilis th{
+	width: 40%;
+}
