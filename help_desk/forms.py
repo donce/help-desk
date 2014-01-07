@@ -94,7 +94,8 @@ class IssueForm(forms.ModelForm):
 
     def save(self, commit=True):
         issue = super(IssueForm, self).save(commit=False)
-        issue.created = get_time()
+        if not issue.created:
+            issue.created = get_time()
         #in case current does not exist yet
         if issue.current == None:
             if not self.cleaned_data['assigned_to'] == None:

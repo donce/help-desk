@@ -98,7 +98,6 @@ class BaseUser(AbstractBaseUser):
 
 
 class Service(models.Model):
-    #TODO: id - string?
     title = models.CharField(_('Title'), max_length=255)
     limit_inc = models.IntegerField(_('Incident limit'))
     limit_req = models.IntegerField(_('Request limit'))
@@ -127,10 +126,6 @@ class Client(models.Model):
 
         return Issue.objects.create(client=self, service=service, type=type, receive_type=receive_type,
                                     title=title, description=description, created=get_time())
-
-    #TODO: implement
-    def make_contract(self):
-        pass
 
     def get_current_contracts(self):
         #TODO: return only current contracts
@@ -209,12 +204,12 @@ class Issue(models.Model):
 
     def solve(self):
         self.status = 'solved'
-        self.closed = datetime.now()
+        self.closed = get_time()
         self.save()
 
     def reject(self):
         self.status = 'rejected'
-        self.closed = datetime.now()
+        self.closed = get_time()
         self.save()
 
     def returnIssue(self):
@@ -224,7 +219,7 @@ class Issue(models.Model):
         self.save()
 
     def assign(self, assigned, worker):
-        assignment = Assignment.objects.create(issue=self, assigned=assigned, worker=worker)
+        assignment = Assignment.objects.create(issue=self, assigned=assigned, worker=worker, start=get_time())
         #if (self.current)
         #self.current.end = NOW
         self.current = assignment
@@ -257,7 +252,7 @@ class Issue(models.Model):
             return False
 
         #compare deadline
-        if datetime.now() > deadline:
+        if get_time() > deadline:
             return True
         return False
 
@@ -280,7 +275,7 @@ class Assignment(models.Model):
     issue = models.ForeignKey('Issue', verbose_name=_('Issue'))
     assigned = models.ForeignKey('Employee', related_name='assigned')
     worker = models.ForeignKey('Employee', related_name='working')
-    start = models.DateTimeField(_('Start'), auto_now_add=True)
+    start = models.DateTimeField(_('Start'))
     end = models.DateTimeField(_('End'), null=True)
     text = models.TextField(_('Text'))
     #TODO: result
