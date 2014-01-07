@@ -8,417 +8,424 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-07 02:32+0200\n"
+"POT-Creation-Date: 2014-01-07 03:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: client/templates/client/contracts.html:7 help_desk/models.py:305
+#: .\client\templates\client\contracts.html.py:7 .\help_desk\models.py:305
 msgid "Contract"
 msgstr "Sutartis"
 
-#: client/templates/client/contracts.html:8 help_desk/models.py:278
-#: help_desk/models.py:297 help_desk/views.py:272
+#: .\client\templates\client\contracts.html.py:8 .\help_desk\models.py:278
+#: .\help_desk\models.py:297 .\help_desk\views.py:272
 msgid "Start"
 msgstr "Pradžia"
 
-#: client/templates/client/contracts.html:9 help_desk/models.py:279
-#: help_desk/models.py:298 help_desk/views.py:273
+#: .\client\templates\client\contracts.html.py:9 .\help_desk\models.py:279
+#: .\help_desk\models.py:298 .\help_desk\views.py:273
 msgid "End"
 msgstr "Pabaiga"
 
-#: client/templates/client/contracts.html:10
-#: common/templates/common/menu.html:10
+#: .\client\templates\client\contracts.html.py:10
+#: .\common\templates\common\menu.html.py:10
 msgid "Services"
 msgstr "Paslaugos"
 
-#: client/templates/client/services.html:7
-#: client/templates/client/issue/base.html:13
-#: client/templates/client/issue/edit.html:23 help_desk/models.py:112
-#: help_desk/models.py:193 help_desk/views.py:296
-#: help_desk/templates/management/edit_issue.html:11
-#: help_desk/templates/management/view_issue.html:21
+#: .\client\templates\client\services.html.py:7
+#: .\client\templates\client\issue\base.html.py:13
+#: .\client\templates\client\issue\edit.html.py:42 .\help_desk\models.py:112
+#: .\help_desk\models.py:193 .\help_desk\views.py:296
+#: .\help_desk\templates\management\edit_issue.html.py:11
+#: .\help_desk\templates\management\view_issue.html.py:21
 msgid "Service"
 msgstr "Paslauga"
 
-#: client/templates/client/issue/base.html:5
+#: .\client\templates\client\issue\base.html.py:5
 msgid "New issue"
 msgstr "Naujas kreipinys"
 
-#: client/templates/client/issue/base.html:11 help_desk/models.py:271
-#: help_desk/models.py:275
+#: .\client\templates\client\issue\base.html.py:11 .\help_desk\models.py:271
+#: .\help_desk\models.py:275
 msgid "Issue"
 msgstr "Kreipinys"
 
-#: client/templates/client/issue/base.html:12
-#: client/templates/client/issue/edit.html:17 help_desk/models.py:194
-#: help_desk/views.py:295 help_desk/templates/management/edit_issue.html:9
-#: help_desk/templates/management/view_issue.html:27
+#: .\client\templates\client\issue\base.html.py:12
+#: .\client\templates\client\issue\edit.html.py:36 .\help_desk\models.py:194
+#: .\help_desk\views.py:295
+#: .\help_desk\templates\management\edit_issue.html.py:9
+#: .\help_desk\templates\management\view_issue.html.py:27
 msgid "Type"
 msgstr "Tipas"
 
-#: client/templates/client/issue/base.html:14 help_desk/models.py:281
-#: help_desk/templates/management/view_issue.html:36
+#: .\client\templates\client\issue\base.html.py:14
+#: .\client\templates\client\issue\edit.html.py:9 .\help_desk\models.py:281
+#: .\help_desk\templates\management\view_issue.html.py:37
 msgid "Answer"
 msgstr "Atsakymas"
 
-#: client/templates/client/issue/base.html:33 help_desk/models.py:186
+#: .\client\templates\client\issue\base.html.py:33 .\help_desk\models.py:186
 msgid "Solved"
 msgstr "Išspręstas"
 
-#: client/templates/client/issue/base.html:35 help_desk/models.py:187
-#: help_desk/templatetags/issue_history.py:19
+#: .\client\templates\client\issue\base.html.py:35 .\help_desk\models.py:187
+#: .\help_desk\templatetags\issue_history.py:19
 msgid "Rejected"
 msgstr "Atmestas"
 
-#: client/templates/client/issue/create.html:9
+#: .\client\templates\client\issue\create.html.py:9
 msgid "Send"
 msgstr "Siųsti"
 
-#: client/templates/client/issue/edit.html:15 help_desk/models.py:101
-#: help_desk/models.py:116 help_desk/models.py:196 help_desk/models.py:295
-#: help_desk/views.py:258 help_desk/views.py:270 help_desk/views.py:276
-#: help_desk/templates/management/view_issue.html:15
-msgid "Title"
-msgstr "Pavadinimas"
-
-#: client/templates/client/issue/edit.html:21 help_desk/models.py:198
-#: help_desk/templates/management/edit_issue.html:8
-#: help_desk/templates/management/view_issue.html:29
-#: help_desk/templatetags/issue_history.py:12
-msgid "Created"
-msgstr "Sukurtas"
-
-#: client/templates/client/issue/edit.html:28 help_desk/models.py:197
-#: help_desk/templates/management/view_issue.html:34
-msgid "Description"
-msgstr "Aprašymas"
-
-#: client/templates/client/issue/edit.html:35
-#: common/templates/common/profile.html:12
-#: help_desk/templates/management/administration.html:17
-#: help_desk/templates/management/edit_issue.html:19
-#: help_desk/templates/management/models/edit.html:13
-msgid "Save"
-msgstr "Išsaugoti"
-
-#: common/templates/common/base.html:21 common/templates/common/menu.html:13
-msgid "Logout"
-msgstr "Atsijungti"
-
-#: common/templates/common/login.html:8
-msgid "Customer self-service"
-msgstr "Klientų savitarnos svetainė"
-
-#: common/templates/common/login.html:17
-msgid "Login"
-msgstr "Prisijungti"
-
-#: common/templates/common/menu.html:3
-msgid "Statistics"
-msgstr "Statistika"
-
-#: common/templates/common/menu.html:4
-msgid "Manage issues"
-msgstr "Tvarkyti kreipinius"
-
-#: common/templates/common/menu.html:5
-msgid "Solve issues"
-msgstr "Spręsti kreipinius"
-
-#: common/templates/common/menu.html:6
-msgid "Manage registers"
-msgstr "Tvarkyti registrus"
-
-#: common/templates/common/menu.html:7
-msgid "Administration"
-msgstr "Administracija"
-
-#: common/templates/common/menu.html:9
-msgid "Issues"
-msgstr "Kreipiniai"
-
-#: common/templates/common/menu.html:11
-msgid "Contracts"
-msgstr "Sutartys"
-
-#: common/templates/common/menu.html:12
-msgid "Information"
-msgstr "Informacija"
-
-#: help_desk/forms.py:174
-msgid "Clean database"
-msgstr "Išvalyti duomenų bazę"
-
-#: help_desk/models.py:47
-msgid "Username"
-msgstr "Vartotojo vardas"
-
-#: help_desk/models.py:102 help_desk/views.py:277
-msgid "Incident limit"
-msgstr "Incidento limitas"
-
-#: help_desk/models.py:103 help_desk/views.py:278
-msgid "Request limit"
-msgstr "Paklausimo limitas"
-
-#: help_desk/models.py:117 help_desk/views.py:259
-msgid "Address"
-msgstr "Adresas"
-
-#: help_desk/models.py:142 help_desk/models.py:147 help_desk/models.py:192
-#: help_desk/models.py:296 help_desk/views.py:271 help_desk/views.py:281
-#: help_desk/templates/management/edit_issue.html:7
-#: help_desk/templates/management/view_issue.html:17
-msgid "Client"
-msgstr "Klientas"
-
-#: help_desk/models.py:148 help_desk/models.py:321 help_desk/views.py:262
-#: help_desk/views.py:282
-msgid "First name"
-msgstr "Vardas"
-
-#: help_desk/models.py:149 help_desk/models.py:322 help_desk/views.py:263
-#: help_desk/views.py:283
-msgid "Last name"
-msgstr "Pavardė"
-
-#: help_desk/models.py:150 help_desk/models.py:324 help_desk/views.py:265
-#: help_desk/views.py:284
-msgid "Phone number"
-msgstr "Telefono numeris"
-
-#: help_desk/models.py:151 help_desk/models.py:325 help_desk/views.py:266
-#: help_desk/views.py:285
-msgid "Email"
-msgstr "Paštas"
-
-#: help_desk/models.py:152 help_desk/views.py:286
-msgid "Active"
-msgstr "Aktyvus"
-
-#: help_desk/models.py:161
-msgid "Delegate"
-msgstr "Atstovas"
-
-#: help_desk/models.py:168
-msgid "Incident"
-msgstr "Incidentas"
-
-#: help_desk/models.py:169
-msgid "Request"
-msgstr "Paklausimas"
-
-#: help_desk/models.py:175
-msgid "By phone"
-msgstr "Telefonu"
-
-#: help_desk/models.py:176
-msgid "By e-mail"
-msgstr "El. paštu"
-
-#: help_desk/models.py:177
-msgid "By website"
-msgstr "Savitarnos svetainėje"
-
-#: help_desk/models.py:184
-msgid "Unassigned"
-msgstr "Nepriskirtas"
-
-#: help_desk/models.py:185
-msgid "In Progress"
-msgstr "Priskirtas"
-
-#: help_desk/models.py:195 help_desk/templates/management/edit_issue.html:10
-#: help_desk/templates/management/view_issue.html:23
-msgid "Receive type"
-msgstr "Registravimo tipas"
-
-#: help_desk/models.py:199
-msgid "Closed"
-msgstr "Išspręstas"
-
-#: help_desk/models.py:200 help_desk/views.py:300
-#: help_desk/templates/management/edit_issue.html:12
-msgid "Status"
-msgstr "Padėtis"
-
-#: help_desk/models.py:201
+#: .\client\templates\client\issue\edit.html.py:13 .\help_desk\models.py:201
 msgid "Rating"
 msgstr "Vertinimas"
 
-#: help_desk/models.py:280
+#: .\client\templates\client\issue\edit.html.py:17
+msgid "Rate"
+msgstr "Vertinti"
+
+#: .\client\templates\client\issue\edit.html.py:34 .\help_desk\models.py:101
+#: .\help_desk\models.py:116 .\help_desk\models.py:196
+#: .\help_desk\models.py:295 .\help_desk\views.py:258 .\help_desk\views.py:270
+#: .\help_desk\views.py:276
+#: .\help_desk\templates\management\view_issue.html.py:15
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: .\client\templates\client\issue\edit.html.py:40 .\help_desk\models.py:198
+#: .\help_desk\templates\management\edit_issue.html.py:8
+#: .\help_desk\templates\management\view_issue.html.py:29
+#: .\help_desk\templatetags\issue_history.py:12
+msgid "Created"
+msgstr "Sukurtas"
+
+#: .\client\templates\client\issue\edit.html.py:47 .\help_desk\models.py:197
+#: .\help_desk\templates\management\view_issue.html.py:34
+msgid "Description"
+msgstr "Aprašymas"
+
+#: .\client\templates\client\issue\edit.html.py:55
+#: .\common\templates\common\profile.html.py:12
+#: .\help_desk\templates\management\administration.html.py:17
+#: .\help_desk\templates\management\edit_issue.html.py:19
+#: .\help_desk\templates\management\models\edit.html.py:13
+msgid "Save"
+msgstr "Išsaugoti"
+
+#: .\common\templates\common\base.html.py:21
+#: .\common\templates\common\menu.html.py:13
+msgid "Logout"
+msgstr "Atsijungti"
+
+#: .\common\templates\common\login.html.py:8
+msgid "Customer self-service"
+msgstr "Klientų savitarnos svetainė"
+
+#: .\common\templates\common\login.html.py:17
+msgid "Login"
+msgstr "Prisijungti"
+
+#: .\common\templates\common\menu.html.py:3
+msgid "Statistics"
+msgstr "Statistika"
+
+#: .\common\templates\common\menu.html.py:4
+msgid "Manage issues"
+msgstr "Tvarkyti kreipinius"
+
+#: .\common\templates\common\menu.html.py:5
+msgid "Solve issues"
+msgstr "Spręsti kreipinius"
+
+#: .\common\templates\common\menu.html.py:6
+msgid "Manage registers"
+msgstr "Tvarkyti registrus"
+
+#: .\common\templates\common\menu.html.py:7
+msgid "Administration"
+msgstr "Administracija"
+
+#: .\common\templates\common\menu.html.py:9
+msgid "Issues"
+msgstr "Kreipiniai"
+
+#: .\common\templates\common\menu.html.py:11
+msgid "Contracts"
+msgstr "Sutartys"
+
+#: .\common\templates\common\menu.html.py:12
+msgid "Information"
+msgstr "Informacija"
+
+#: .\help_desk\forms.py:174
+msgid "Clean database"
+msgstr "Išvalyti duomenų bazę"
+
+#: .\help_desk\models.py:47
+msgid "Username"
+msgstr "Vartotojo vardas"
+
+#: .\help_desk\models.py:102 .\help_desk\views.py:277
+msgid "Incident limit"
+msgstr "Incidento limitas"
+
+#: .\help_desk\models.py:103 .\help_desk\views.py:278
+msgid "Request limit"
+msgstr "Paklausimo limitas"
+
+#: .\help_desk\models.py:117 .\help_desk\views.py:259
+msgid "Address"
+msgstr "Adresas"
+
+#: .\help_desk\models.py:142 .\help_desk\models.py:147
+#: .\help_desk\models.py:192 .\help_desk\models.py:296
+#: .\help_desk\views.py:271 .\help_desk\views.py:281
+#: .\help_desk\templates\management\edit_issue.html.py:7
+#: .\help_desk\templates\management\view_issue.html.py:17
+msgid "Client"
+msgstr "Klientas"
+
+#: .\help_desk\models.py:148 .\help_desk\models.py:321
+#: .\help_desk\views.py:262 .\help_desk\views.py:282
+msgid "First name"
+msgstr "Vardas"
+
+#: .\help_desk\models.py:149 .\help_desk\models.py:322
+#: .\help_desk\views.py:263 .\help_desk\views.py:283
+msgid "Last name"
+msgstr "Pavardė"
+
+#: .\help_desk\models.py:150 .\help_desk\models.py:324
+#: .\help_desk\views.py:265 .\help_desk\views.py:284
+msgid "Phone number"
+msgstr "Telefono numeris"
+
+#: .\help_desk\models.py:151 .\help_desk\models.py:325
+#: .\help_desk\views.py:266 .\help_desk\views.py:285
+msgid "Email"
+msgstr "Paštas"
+
+#: .\help_desk\models.py:152 .\help_desk\views.py:286
+msgid "Active"
+msgstr "Aktyvus"
+
+#: .\help_desk\models.py:161
+msgid "Delegate"
+msgstr "Atstovas"
+
+#: .\help_desk\models.py:168
+msgid "Incident"
+msgstr "Incidentas"
+
+#: .\help_desk\models.py:169
+msgid "Request"
+msgstr "Paklausimas"
+
+#: .\help_desk\models.py:175
+msgid "By phone"
+msgstr "Telefonu"
+
+#: .\help_desk\models.py:176
+msgid "By e-mail"
+msgstr "El. paštu"
+
+#: .\help_desk\models.py:177
+msgid "By website"
+msgstr "Savitarnos svetainėje"
+
+#: .\help_desk\models.py:184
+msgid "Unassigned"
+msgstr "Nepriskirtas"
+
+#: .\help_desk\models.py:185
+msgid "In Progress"
+msgstr "Priskirtas"
+
+#: .\help_desk\models.py:195
+#: .\help_desk\templates\management\edit_issue.html.py:10
+#: .\help_desk\templates\management\view_issue.html.py:23
+msgid "Receive type"
+msgstr "Registravimo tipas"
+
+#: .\help_desk\models.py:199
+msgid "Closed"
+msgstr "Išspręstas"
+
+#: .\help_desk\models.py:200 .\help_desk\views.py:300
+#: .\help_desk\templates\management\edit_issue.html.py:12
+msgid "Status"
+msgstr "Padėtis"
+
+#: .\help_desk\models.py:280
 msgid "Text"
 msgstr "Tekstas"
 
-#: help_desk/models.py:290
+#: .\help_desk\models.py:290
 msgid "Assignment"
 msgstr "Paskyrimas"
 
-#: help_desk/models.py:294 help_desk/views.py:269
+#: .\help_desk\models.py:294 .\help_desk\views.py:269
 msgid "Number"
 msgstr "Numeris"
 
-#: help_desk/models.py:313
+#: .\help_desk\models.py:313
 msgid "Engineer"
 msgstr "Inžinierius"
 
-#: help_desk/models.py:314
+#: .\help_desk\models.py:314
 msgid "Administrator"
 msgstr "Administratorius"
 
-#: help_desk/models.py:315
+#: .\help_desk\models.py:315
 msgid "Manager"
 msgstr "Vadovas"
 
-#: help_desk/models.py:323 help_desk/views.py:264
+#: .\help_desk\models.py:323 .\help_desk\views.py:264
 msgid "Role"
 msgstr "Rolė"
 
-#: help_desk/models.py:368
+#: .\help_desk\models.py:368
 msgid "Employee"
 msgstr "Darbuotojas"
 
-#: help_desk/models.py:372
-#: help_desk/templates/management/administration.html:12
+#: .\help_desk\models.py:372
+#: .\help_desk\templates\management\administration.html.py:12
 msgid "Time deflection"
 msgstr "Laiko nuokrypis"
 
-#: help_desk/models.py:375
+#: .\help_desk\models.py:375
 msgid "Deflection"
 msgstr "Laiko nuokrypis"
 
-#: help_desk/settings.py:41
+#: .\help_desk\settings.py:41
 msgid "Lithuanian"
 msgstr "Lietuviškai"
 
-#: help_desk/settings.py:42
+#: .\help_desk\settings.py:42
 msgid "English"
 msgstr "Angliškai"
 
-#: help_desk/views.py:294
+#: .\help_desk\views.py:294
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: help_desk/views.py:297
+#: .\help_desk\views.py:297
 msgid "Assigned To"
 msgstr "Priskirtas"
 
-#: help_desk/views.py:298
+#: .\help_desk\views.py:298
 msgid "Created On"
 msgstr "Sukurtas"
 
-#: help_desk/views.py:299
+#: .\help_desk\views.py:299
 msgid "Closed On"
 msgstr "Išspręstas"
 
-#: help_desk/views.py:419
+#: .\help_desk\views.py:419
 msgid "Error while importing file occurred."
 msgstr "Importuojant įvyko klaida."
 
-#: help_desk/views.py:421
+#: .\help_desk\views.py:421
 msgid "Wrong file format."
 msgstr "Blogas failo formatas."
 
-#: help_desk/templates/management/administration.html:4
+#: .\help_desk\templates\management\administration.html.py:4
 msgid "Import a structure"
 msgstr "Importuoti struktūrą"
 
-#: help_desk/templates/management/administration.html:6
+#: .\help_desk\templates\management\administration.html.py:6
 msgid "Importing a file can erase all data! Are you sure you want to continue?"
 msgstr ""
 "Failo importavimas gali ištrinti visus duomenis! Ar tikrai norite tęsti?"
 
-#: help_desk/templates/management/administration.html:9
+#: .\help_desk\templates\management\administration.html.py:9
 msgid "Import"
 msgstr "Importuoti"
 
-#: help_desk/templates/management/create_issue.html:12
-#: help_desk/templates/management/manage_issues.html:10
-#: help_desk/templates/management/models/add.html:14
-#: help_desk/templates/management/models/list_objects.html:5
+#: .\help_desk\templates\management\create_issue.html.py:12
+#: .\help_desk\templates\management\manage_issues.html.py:10
+#: .\help_desk\templates\management\models\add.html.py:14
+#: .\help_desk\templates\management\models\list_objects.html.py:5
 msgid "Create"
 msgstr "Sukurti"
 
-#: help_desk/templates/management/issues_table.html:25
-#: help_desk/templates/management/models/objects_table.html:23
+#: .\help_desk\templates\management\issues_table.html.py:25
+#: .\help_desk\templates\management\models\objects_table.html.py:23
 msgid "Edit"
 msgstr "Redaguoti"
 
-#: help_desk/templates/management/issues_table.html:26
+#: .\help_desk\templates\management\issues_table.html.py:26
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: help_desk/templates/management/issues_table.html:28
-#: help_desk/templates/management/statistics.html:9
+#: .\help_desk\templates\management\issues_table.html.py:28
+#: .\help_desk\templates\management\statistics.html.py:9
 msgid "Show"
 msgstr "Rodyti"
 
-#: help_desk/templates/management/manage_issues.html:6
-#: help_desk/templates/management/solve_issues.html:5
+#: .\help_desk\templates\management\manage_issues.html.py:6
+#: .\help_desk\templates\management\solve_issues.html.py:5
 msgid "All"
 msgstr "Visi"
 
-#: help_desk/templates/management/manage_issues.html:7
+#: .\help_desk\templates\management\manage_issues.html.py:7
 msgctxt "Many"
 msgid "Assigned"
 msgstr "Priskirti"
 
-#: help_desk/templates/management/manage_issues.html:8
+#: .\help_desk\templates\management\manage_issues.html.py:8
 msgctxt "Many"
 msgid "Unassigned"
 msgstr "Nepriskirti"
 
-#: help_desk/templates/management/solve_issues.html:6
+#: .\help_desk\templates\management\solve_issues.html.py:6
 msgctxt "Many"
 msgid "Solved"
 msgstr "Išspręsti"
 
-#: help_desk/templates/management/solve_issues.html:7
+#: .\help_desk\templates\management\solve_issues.html.py:7
 msgid "Unsolved"
 msgstr "Neišspręsti"
 
-#: help_desk/templates/management/statistics.html:5
+#: .\help_desk\templates\management\statistics.html.py:5
 msgid "Show late issues created on"
 msgstr "Rodyti pavėluotus kreipinius sukurtus"
 
-#: help_desk/templates/management/view_issue.html:48
-msgid "Solve"
-msgstr "Išspręsti"
-
-#: help_desk/templates/management/view_issue.html:55
-msgid "Reject"
-msgstr "Atmesti"
-
-#: help_desk/templates/management/view_issue.html:60
-msgid "Return"
-msgstr "Grąžinti"
-
-#: help_desk/templates/management/models/objects_table.html:24
+#: .\help_desk\templates\management\models\objects_table.html.py:24
 msgid "Remove"
 msgstr "Pašalinti"
 
-#: help_desk/templatetags/issue_history.py:15
+#: .\help_desk\templatetags\issue_history.py:15
 msgid "Assigned to {0}"
 msgstr "{0} buvo priskirtas"
 
-#: help_desk/templatetags/issue_history.py:19
+#: .\help_desk\templatetags\issue_history.py:19
 msgid "Resolved"
 msgstr "Išspręstas"
 
-#: help_desk/templatetags/objects_table.py:17
+#: .\help_desk\templatetags\objects_table.py:17
 msgid "True"
 msgstr "Taip"
 
-#: help_desk/templatetags/objects_table.py:17
+#: .\help_desk\templatetags\objects_table.py:17
 msgid "False"
 msgstr "Ne"
+
+#~ msgid "Solve"
+#~ msgstr "Išspręsti"
+
+#~ msgid "Reject"
+#~ msgstr "Atmesti"
+
+#~ msgid "Return"
+#~ msgstr "Grąžinti"
 
 #~ msgid "Assign"
 #~ msgstr "Priskirti"
