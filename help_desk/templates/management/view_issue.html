@@ -33,6 +33,15 @@
 		</p>
 		{% trans 'Description' %}:
 		<textarea readonly>{{ issue.description }}</textarea>
+        {% trans 'Answer' %}:
+        <form action="" method="POST">
+            {% csrf_token %}
+            <textarea name="answer">{{ comment }}</textarea>
+            <button name="solve">Solve</button>
+            <button name="reject">Reject</button>
+            <button name="return">Return</button>
+        </form>
+
 		<div class="lower_2">
 			{% if issue.status == "in progress" %}
 			<a class="action" href="?action=solve"><button class="darker width_20">

@@ -136,19 +136,26 @@ def unassign_issue(issue):
 def view_issue(request, employee, tab, issue):
     viewed_issue = Issue.objects.get(id=issue)
 
-    action = get_action(request.GET, 'action', ('solve', 'reject', 'return', 'delete'))
-    action_funcs = {'solve': mark_issue_solved,
-                    'reject': mark_issue_rejected,
-                    'return': unassign_issue,
-                    'delete': delete_issue}
+    if request.method == 'POST':
+        if viewed_issue.current is not None:
+            viewed_issue.current.comment = request.POST['answer']
+            viewed_issue.current.save()
 
-    if action != None:
-        action_funcs[action](viewed_issue)
+        if 'solve' in request.POST:
+            mark_issue_solved(viewed_issue)
+        elif 'reject' in request.POST:
+            mark_issue_rejected(viewed_issue)
+        elif 'return' in request.POST:
+            unassign_issue(viewed_issue)
 
-    if action == 'delete' or action == 'return':
         return redirect('/management/solve_issues')
 
+    comment = None
+    if viewed_issue.current is not None:
+        comment = viewed_issue.current.comment
+
     return render(request, 'management/view_issue.html', {
+        'comment': comment,
         'issue': viewed_issue,
         'tab': tab
     })

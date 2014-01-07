@@ -278,6 +278,8 @@ class Assignment(models.Model):
     start = models.DateTimeField(_('Start'))
     end = models.DateTimeField(_('End'), null=True)
     text = models.TextField(_('Text'))
+    comment = models.TextField(_('Answer'), max_length=4096)
+
     #TODO: result
     time = models.PositiveIntegerField(null=True)
 

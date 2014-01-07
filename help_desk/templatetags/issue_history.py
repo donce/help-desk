@@ -17,7 +17,7 @@ def issue_history(issue):
 
     if issue.closed:
         status = 'Resolved.' if issue.status == 'solved' else 'Rejected.'
-        lines.append((issue.closed, status))
+        lines.append((issue.closed, status + ' ' + assignment.comment))
     return {
         'lines': lines,
     }
