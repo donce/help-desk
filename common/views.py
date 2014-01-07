@@ -76,7 +76,8 @@ def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.user, request.POST)
         if form.is_valid():
-            print 'valid'
+            request.user.set_password(form.cleaned_data['new'])
+            request.user.save()
     else:
         form = ProfileForm(request.user)
 

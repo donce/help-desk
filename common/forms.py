@@ -1,5 +1,5 @@
 from django import forms
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from help_desk.models import BaseUser
 
@@ -20,6 +20,7 @@ class ProfileForm(forms.Form):
             self._errors['old'] = (_('Old password incorrect.'),)
         if 'new' in cleaned_data and 'new2' in cleaned_data and cleaned_data['new'] != cleaned_data['new2']:
             self._errors['new2'] = (_('Passwords does not match.'),)
+        return cleaned_data
 
 
 class UserForm(forms.ModelForm):
@@ -32,15 +33,14 @@ class UserForm(forms.ModelForm):
     def clean_password(self):
         data = self.cleaned_data['password']
         if self.creating and len(data) < 8:
-            raise forms.ValidationError('Ensure this value has at least 8 characters')
+            raise forms.ValidationError('Ensure this value has at least 8 characters')#TODO: translate
         elif not self.creating and 0 < len(data) < 8:
-            raise forms.ValidationError('Ensure this value has at least 8 characters')
+            raise forms.ValidationError('Ensure this value has at least 8 characters')#TODO: translate
         return data
 
     def save(self, commit=True):
         user = super(UserForm, self).save(commit=False)
 
-        print "saving"
         if commit:
             user.username = user.email
             if len(self.cleaned_data['password']) > 0:
