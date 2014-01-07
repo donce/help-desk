@@ -1,6 +1,25 @@
 ﻿{% extends 'client/issue/base.html' %}
 {% load i18n %}
 {% block right %}
+
+<div id="naujas_kreipinys_edit">
+{% if issue.current and issue.status != 'in progress' %}
+<div class="issue answer">
+	<div class="vid">
+		<a>{% trans 'Answer' %}</a>
+		<textarea readonly>{{ issue.current.comment }}</textarea>
+
+        {% if issue.status == 'solved' %}
+		<a>{% trans 'Rating' %}</a>
+        <form id="rating" action="" method="post">
+            {% csrf_token %}
+            {{ rating_form.rating }}
+            <input class="lower_2" type="submit" value="{% trans 'Rate' %}"/>
+		</form>
+		{% endif %}
+	</div>
+</div>
+{% endif %}
 <div class="issue no_buttons">
     <div class="vid">
         <table class="transparent issue_table">
@@ -27,7 +46,7 @@
         </p>
         {% trans 'Description' %}:
         <textarea readonly>{{ issue.description }}</textarea>
-        {% if issue.current and issue.status != 'in progress' %}<textarea readonly>{{ issue.current.comment }}</textarea>{% endif %}
+       <!-- {% if issue.current and issue.status != 'in progress' %}<textarea readonly>{{ issue.current.comment }}</textarea>{% endif %}
 
         {% if issue.status == 'solved' %}
         <form id="rating" action="" method="post">
@@ -35,7 +54,8 @@
             {{ rating_form.rating }}
             <input class="lower_2" type="submit" value="{% trans 'Save' %}"/>
         </form>
-        {% endif %}
+        {% endif %}-->
     </div>
+</div>
 </div>
 {% endblock %}
