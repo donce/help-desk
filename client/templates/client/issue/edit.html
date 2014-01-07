@@ -27,6 +27,7 @@
         </p>
         {% trans 'Description' %}:
         <textarea readonly>{{ issue.description }}</textarea>
+        {% if issue.current and issue.status != 'in progress' %}<textarea readonly>{{ issue.current.comment }}</textarea>{% endif %}
 
         {% if issue.status == 'solved' %}
         <form id="rating" action="" method="post">
