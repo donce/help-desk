@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-07 03:22+0200\n"
+"POT-Creation-Date: 2014-01-07 03:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,7 +127,7 @@ msgstr "Naujas slaptažodis"
 
 #: common/forms.py:10
 msgid "New password again"
-msgstr "Pakartokite naują slaptažodis"
+msgstr "Pakartokite naują slaptažodį"
 
 #: common/forms.py:20
 msgid "Old password incorrect."
@@ -180,6 +180,10 @@ msgstr "Sutartys"
 #: common/templates/common/menu.html:12
 msgid "Information"
 msgstr "Informacija"
+
+#: help_desk/forms.py:79
+msgid "Assigned to"
+msgstr "Priskirtas"
 
 #: help_desk/forms.py:174
 msgid "Clean database"
@@ -277,6 +281,10 @@ msgstr "Išspręstas"
 #: help_desk/templates/management/edit_issue.html:12
 msgid "Status"
 msgstr "Padėtis"
+
+#: help_desk/models.py:203
+msgid "Previous"
+msgstr "Buvęs"
 
 #: help_desk/models.py:280
 msgid "Text"

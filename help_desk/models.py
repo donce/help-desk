@@ -200,7 +200,7 @@ class Issue(models.Model):
     status = models.CharField(_('Status'), choices=ISSUE_STATUS_CHOICES, max_length=255, default=ISSUE_STATUS_UNASSIGNED)
     rating = models.PositiveIntegerField(_('Rating'), null=True)
     current = models.ForeignKey('Assignment', related_name='current', null=True, blank=True)
-    previous = models.ForeignKey('Issue', null=True, blank=True)#TODO: purpose of this?
+    previous = models.ForeignKey('Issue', null=True, blank=True, verbose_name=_('Previous'))#TODO: purpose of this?
 
     def solve(self):
         self.status = 'solved'

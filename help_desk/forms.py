@@ -76,7 +76,7 @@ class ContractForm(forms.ModelForm):
 
 
 class IssueForm(forms.ModelForm):
-    assigned_to = forms.ModelChoiceField(queryset=Employee.objects, empty_label='Unassigned', required=False)
+    assigned_to = forms.ModelChoiceField(queryset=Employee.objects, empty_label='Unassigned', required=False, label=_('Assigned to'))
 
     def __init__(self, employee=None, edit=False, *args, **kwargs):
         super(IssueForm, self).__init__(*args, **kwargs)
