@@ -39,13 +39,17 @@
         <form action="" method="POST">
             {% csrf_token %}
             <textarea name="answer">{{ comment }}</textarea>
-            <button name="solve">Solve</button>
-            <button name="reject">Reject</button>
-            <button name="return">Return</button>
+			<div class="lower_2">
+            <button class="darker width_20" name="solve">Solve</button>
+			<div class="right back">
+            <button class="darker" name="reject">Reject</button>
+            <button class="darker" name="return">Return</button>
+			</div>
+			</div>
         </form>
         {% endif %}
 
-		<div class="lower_2">
+		<!--<div class="lower_2">
 			{% if issue.status == "in progress" %}
 			<a class="action" href="?action=solve"><button class="darker width_20">
 			{% trans 'Solve' %}</button>
@@ -63,10 +67,9 @@
 				<a class="action" href="?action=return"><button class="darker">{% trans 'Return' %}</button></a>
 				{% endif %}
 			</div>
-		</div>
+		</div>-->
 	</div>
 </div>
 <div class="solve_issues_history center">{% issue_history issue %}</div>
-<!-- and others -->
 
 {% endblock %}
