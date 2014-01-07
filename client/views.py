@@ -5,7 +5,7 @@ from client.forms import IssueForm, RatingForm
 # import client.forms
 from common.deflection import get_time
 # import help_desk.models
-from help_desk.models import Issue, Contract, ISSUE_RECEIVE_TYPE_WEBSITE
+from help_desk.models import Issue, Contract, ISSUE_RECEIVE_TYPE_WEBSITE, Assignment
 
 
 def client_only(function):
@@ -59,8 +59,11 @@ def edit_issue(request, client, tab, issue_id):
     else:
         if issue.status == 'solved':
             rating_form = RatingForm(initial={'rating': issue.rating})
+
+    assign = issue.assignment_set.latest('start')
     return render(request, 'client/issue/edit.html', {
         'issue': issue,
+        'latestAssign': assign,
         'issues': issues,
         'tab': tab,
         'rating_form': rating_form,
