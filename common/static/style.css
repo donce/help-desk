@@ -255,7 +255,7 @@ tr.row2 {
 
 .issue.center {
 	width: 70%;
-	height:65%;
+	height: 90%;
 }
 
 .lower_2 {
@@ -288,7 +288,7 @@ textarea {
 }
 
 .issue.center textarea {
-	height: 45%;
+	height: 28%;
 }
 
 .issue_table input[type=text] {
